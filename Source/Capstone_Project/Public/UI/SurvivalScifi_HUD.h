@@ -31,4 +31,13 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* Inventory;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void ShowInventory();
+
+	UFUNCTION(BlueprintCallable)
+	void HideInventory();
+
+	bool IsShowingInventory() { return Inventory != nullptr; }
 };

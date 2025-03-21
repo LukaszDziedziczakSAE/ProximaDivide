@@ -13,6 +13,16 @@ void ASurvivalScifi_HUD::BeginPlay()
 
 	if (ActionBarClass != nullptr) ActionBar = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), ActionBarClass);
 	if (ActionBar != nullptr) ActionBar->AddToViewport();
+}
 
+void ASurvivalScifi_HUD::ShowInventory()
+{
 	if (InventoryClass != nullptr) Inventory = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), InventoryClass);
+	if (Inventory != nullptr) Inventory->AddToViewport();
+}
+
+void ASurvivalScifi_HUD::HideInventory()
+{
+	if (Inventory != nullptr) Inventory->RemoveFromViewport();
+	Inventory = nullptr;
 }

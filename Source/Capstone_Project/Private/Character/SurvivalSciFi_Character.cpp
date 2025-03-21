@@ -2,7 +2,7 @@
 
 
 #include "Character/SurvivalSciFi_Character.h"
-#include "Character/InventoryComponent.h"
+#include "Item/InventoryComponent.h"
 #include "Character/HealthComponent.h"
 #include "Character/PaperdollComponent.h"
 

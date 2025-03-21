@@ -6,6 +6,7 @@
 #include "EnhancedInputComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Character/PlayerCharacter.h"
+#include "UI/SurvivalScifi_HUD.h"
 
 void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 {
@@ -42,7 +43,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 	{
 		Input->BindAction(IA_Move, ETriggerEvent::Triggered, this, &ASurvivalScifi_PlayerController::Move);
 		Input->BindAction(IA_Look, ETriggerEvent::Triggered, this, &ASurvivalScifi_PlayerController::Look);
-		Input->BindAction(IA_Inventory, ETriggerEvent::Triggered, this, &ASurvivalScifi_PlayerController::ToggleInventory);
+		Input->BindAction(IA_Inventory, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::ToggleInventory);
 	}
 
 	else
@@ -53,7 +54,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 
 void ASurvivalScifi_PlayerController::Move(const FInputActionValue& Value)
 {
-	if (PlayerCharacter != nullptr)
+	if (PlayerCharacter != nullptr && AllowMove())
 	{
 		FRotator CharacterRotation = PlayerCharacter->GetControlRotation();
 
@@ -69,11 +70,35 @@ void ASurvivalScifi_PlayerController::Move(const FInputActionValue& Value)
 
 void ASurvivalScifi_PlayerController::Look(const FInputActionValue& Value)
 {
+	if (!AllowLook()) return;
+
 	AddYawInput(Value.Get<FVector2D>().X);
 	AddPitchInput(-1 * Value.Get<FVector2D>().Y);
 }
 
 void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& Value)
 {
+	if (!GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory())
+	{
+		GetHUD<ASurvivalScifi_HUD>()->ShowInventory();
+		SetShowMouseCursor(true);
+		SetInputMode(FInputModeGameAndUI());
+	}
 
+	else
+	{
+		GetHUD<ASurvivalScifi_HUD>()->HideInventory();
+		SetShowMouseCursor(false);
+		SetInputMode(FInputModeGameOnly());
+	}
+}
+
+bool ASurvivalScifi_PlayerController::AllowLook()
+{
+	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory();
+}
+
+bool ASurvivalScifi_PlayerController::AllowMove()
+{
+	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory();
 }

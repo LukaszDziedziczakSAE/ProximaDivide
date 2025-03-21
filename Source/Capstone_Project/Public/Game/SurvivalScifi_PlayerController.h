@@ -6,9 +6,6 @@
 #include "GameFramework/PlayerController.h"
 #include "SurvivalScifi_PlayerController.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class CAPSTONE_PROJECT_API ASurvivalScifi_PlayerController : public APlayerController
 {
@@ -43,4 +40,10 @@ protected:
 	
 	UFUNCTION()
 	void ToggleInventory(const FInputActionValue& Value);
+
+	UFUNCTION()
+	bool AllowLook();
+	
+	UFUNCTION()
+	bool AllowMove();
 };
