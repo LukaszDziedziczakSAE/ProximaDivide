@@ -29,6 +29,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Inventory;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Run;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
@@ -46,4 +49,10 @@ protected:
 	
 	UFUNCTION()
 	bool AllowMove();
+
+	UFUNCTION()
+	void RunStart();
+
+	UFUNCTION()
+	void RunEnd();
 };

@@ -3,6 +3,7 @@
 
 #include "Item/SurvivalScifi_Item.h"
 #include "Item/ItemDataAsset.h"
+#include "Components/BoxComponent.h"
 
 // Sets default values
 ASurvivalScifi_Item::ASurvivalScifi_Item()
@@ -13,6 +14,8 @@ ASurvivalScifi_Item::ASurvivalScifi_Item()
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	Mesh->SetupAttachment(GetRootComponent());
 
+	Collider = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collider"));
+	Collider->SetupAttachment(Mesh);
 }
 
 // Called when the game starts or when spawned
@@ -27,5 +30,14 @@ void ASurvivalScifi_Item::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ASurvivalScifi_Item::Interact(APlayerCharacter* PlayerCharacter)
+{
+}
+
+FString ASurvivalScifi_Item::InteractionText()
+{
+	return TEXT("Pick Up ") + DataAsset->Name;
 }
 

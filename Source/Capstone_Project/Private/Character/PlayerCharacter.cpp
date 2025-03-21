@@ -4,6 +4,7 @@
 #include "Character/PlayerCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Character/OxygenComponent.h"
+#include "Character/PlayerInteractionComponent.h"
 
 
 // Sets default values
@@ -14,9 +15,12 @@ APlayerCharacter::APlayerCharacter()
 
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComponent->SetupAttachment(GetRootComponent());
+	//CameraComponent->SetupAttachment(GetMesh(), TEXT("Head"));
 	CameraComponent->bUsePawnControlRotation = true;
 
 	OxygenComponent = CreateDefaultSubobject< UOxygenComponent>(TEXT("Oxygen"));
+
+	PlayerInteractionComponent = CreateDefaultSubobject<UPlayerInteractionComponent>(TEXT("Player Interaction Component"));
 
 	FPS_Arms = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Arms"));
 	FPS_Arms->SetupAttachment(CameraComponent);

@@ -5,6 +5,7 @@
 #include "Item/InventoryComponent.h"
 #include "Character/HealthComponent.h"
 #include "Character/PaperdollComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 ASurvivalSciFi_Character::ASurvivalSciFi_Character()
@@ -21,7 +22,7 @@ ASurvivalSciFi_Character::ASurvivalSciFi_Character()
 void ASurvivalSciFi_Character::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	SetMovementSpeed(false);
 }
 
 // Called every frame
@@ -36,5 +37,10 @@ void ASurvivalSciFi_Character::SetupPlayerInputComponent(UInputComponent* Player
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ASurvivalSciFi_Character::SetMovementSpeed(bool IsRunning)
+{
+	GetCharacterMovement()->MaxWalkSpeed = IsRunning ? RunningSpeed : WalkingSpeed;
 }
 

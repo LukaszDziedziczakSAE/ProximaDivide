@@ -44,6 +44,8 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Move, ETriggerEvent::Triggered, this, &ASurvivalScifi_PlayerController::Move);
 		Input->BindAction(IA_Look, ETriggerEvent::Triggered, this, &ASurvivalScifi_PlayerController::Look);
 		Input->BindAction(IA_Inventory, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::ToggleInventory);
+		Input->BindAction(IA_Run, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::RunStart);
+		Input->BindAction(IA_Run, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::RunEnd);
 	}
 
 	else
@@ -101,4 +103,20 @@ bool ASurvivalScifi_PlayerController::AllowLook()
 bool ASurvivalScifi_PlayerController::AllowMove()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory();
+}
+
+void ASurvivalScifi_PlayerController::RunStart()
+{
+	if (PlayerCharacter != nullptr)
+	{
+		PlayerCharacter->SetMovementSpeed(true);
+	}
+}
+
+void ASurvivalScifi_PlayerController::RunEnd()
+{
+	if (PlayerCharacter != nullptr)
+	{
+		PlayerCharacter->SetMovementSpeed(false);
+	}
 }

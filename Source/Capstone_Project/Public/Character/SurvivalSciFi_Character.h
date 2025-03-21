@@ -28,6 +28,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UPaperdollComponent* PaperdollComponent;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Movement")
+	float WalkingSpeed{ 200.0f };
+
+	UPROPERTY(EditDefaultsOnly, Category = "Movement")
+	float RunningSpeed{ 500.0f };
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -37,4 +43,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	UInventoryComponent* GetInventoryComponent() { return InventoryComponent; }
+
+	UFUNCTION(BlueprintCallable)
+	void SetMovementSpeed(bool IsRunning);
 };

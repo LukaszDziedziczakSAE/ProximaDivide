@@ -26,6 +26,9 @@ protected:
 	class UOxygenComponent* OxygenComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UPlayerInteractionComponent* PlayerInteractionComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPS_Arms;
 
 public:	
@@ -34,5 +37,8 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UFUNCTION()
+	UCameraComponent* GetCameraComponent() { return CameraComponent; }
 
 };

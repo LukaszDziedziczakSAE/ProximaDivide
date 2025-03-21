@@ -21,7 +21,13 @@ protected:
 	TSubclassOf<USurvivalScifiUserWidget> ActionBarClass;
 
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<USurvivalScifiUserWidget> InventoryClass;
+	TSubclassOf<class UPlayerInventoryUserWidget> InventoryClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<USurvivalScifiUserWidget> InteractionClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<USurvivalScifiUserWidget> CrosshairClass;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
@@ -30,7 +36,13 @@ protected:
 	USurvivalScifiUserWidget* ActionBar;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	USurvivalScifiUserWidget* Inventory;
+	UPlayerInventoryUserWidget* Inventory;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USurvivalScifiUserWidget* Interaction;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USurvivalScifiUserWidget* Crosshair;
 
 public:
 	UFUNCTION(BlueprintCallable)
@@ -39,5 +51,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void HideInventory();
 
+	UFUNCTION(BlueprintPure)
 	bool IsShowingInventory() { return Inventory != nullptr; }
+
+	UFUNCTION()
+	void ShowInteraction();
+
+	UFUNCTION()
+	void HideInteraction();
+
+	UFUNCTION(BlueprintPure)
+	bool IsShowingInteraction(){ return Interaction != nullptr; }
 };

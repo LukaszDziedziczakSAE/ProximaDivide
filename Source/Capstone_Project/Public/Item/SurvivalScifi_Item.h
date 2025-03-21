@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Interface/Interaction.h"
 #include "SurvivalScifi_Item.generated.h"
 
 UCLASS()
-class CAPSTONE_PROJECT_API ASurvivalScifi_Item : public AActor
+class CAPSTONE_PROJECT_API ASurvivalScifi_Item : public AActor, public IInteraction
 {
 	GENERATED_BODY()
 	
@@ -20,6 +21,9 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UBoxComponent* Collider;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UStaticMeshComponent* Mesh;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
@@ -29,4 +33,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void Interact(class APlayerCharacter* PlayerCharacter) override;
+
+	virtual FString InteractionText() override;
 };
