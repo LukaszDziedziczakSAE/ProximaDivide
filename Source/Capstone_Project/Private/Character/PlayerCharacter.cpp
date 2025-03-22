@@ -5,6 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "Character/OxygenComponent.h"
 #include "Character/PlayerInteractionComponent.h"
+#include "Item/InventoryComponent.h"
 
 
 // Sets default values
@@ -45,5 +46,17 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void APlayerCharacter::Interact()
+{
+	PlayerInteractionComponent->Interact();
+}
+
+bool APlayerCharacter::TryPickUpItem(UItemDataAsset* Item)
+{
+	if (InventoryComponent->TryAddItem(Item)) return true;
+
+	return false;
 }
 

@@ -32,6 +32,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Run;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Interact;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
@@ -55,4 +58,7 @@ protected:
 
 	UFUNCTION()
 	void RunEnd();
+
+	UFUNCTION()
+	void Interact();
 };

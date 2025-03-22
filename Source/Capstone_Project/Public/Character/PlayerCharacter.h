@@ -41,4 +41,9 @@ public:
 	UFUNCTION()
 	UCameraComponent* GetCameraComponent() { return CameraComponent; }
 
+	UFUNCTION()
+	void Interact();
+
+	UFUNCTION(BlueprintCallable)
+	bool TryPickUpItem(class UItemDataAsset* Item);
 };

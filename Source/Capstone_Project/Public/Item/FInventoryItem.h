@@ -16,4 +16,6 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FIntPoint Position{ 1,1 };
+
+	TArray<FIntPoint> OccupiedSlots();
 };

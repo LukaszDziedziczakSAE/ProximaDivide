@@ -38,4 +38,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	FString GetInteractionText();
+
+	UFUNCTION()
+	void Interact();
 };

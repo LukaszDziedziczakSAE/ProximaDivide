@@ -4,6 +4,7 @@
 #include "Item/SurvivalScifi_Item.h"
 #include "Item/ItemDataAsset.h"
 #include "Components/BoxComponent.h"
+#include "Character/PlayerCharacter.h"
 
 // Sets default values
 ASurvivalScifi_Item::ASurvivalScifi_Item()
@@ -34,6 +35,10 @@ void ASurvivalScifi_Item::Tick(float DeltaTime)
 
 void ASurvivalScifi_Item::Interact(APlayerCharacter* PlayerCharacter)
 {
+	if (PlayerCharacter->TryPickUpItem(DataAsset))
+	{
+		Destroy();
+	}
 }
 
 FString ASurvivalScifi_Item::InteractionText()

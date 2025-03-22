@@ -46,6 +46,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Inventory, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::ToggleInventory);
 		Input->BindAction(IA_Run, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::RunStart);
 		Input->BindAction(IA_Run, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::RunEnd);
+		Input->BindAction(IA_Interact, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Interact);
 	}
 
 	else
@@ -118,5 +119,13 @@ void ASurvivalScifi_PlayerController::RunEnd()
 	if (PlayerCharacter != nullptr)
 	{
 		PlayerCharacter->SetMovementSpeed(false);
+	}
+}
+
+void ASurvivalScifi_PlayerController::Interact()
+{
+	if (PlayerCharacter != nullptr)
+	{
+		PlayerCharacter->Interact();
 	}
 }

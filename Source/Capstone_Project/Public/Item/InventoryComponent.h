@@ -26,6 +26,18 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FIntPoint Size{ 1,1 };
 
+	UFUNCTION()
+	TArray<FIntPoint> Slots();
+
+	UFUNCTION()
+	TArray<FIntPoint> GetOccupiedSlots();
+
+	UFUNCTION()
+	TArray<FIntPoint> GetAvailableSlotsFor(class UItemDataAsset* DataAsset);
+
+	UFUNCTION()
+	bool ItemCanFitInSlot(FIntPoint Slot, UItemDataAsset* Item, TArray<FIntPoint> OccupiedSlots);
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -35,4 +47,7 @@ public:
 
 	UFUNCTION()
 	TArray<struct FInventoryItem> GetItems() { return Items; }
+
+	UFUNCTION()
+	bool TryAddItem(UItemDataAsset* DataAsset);
 };
