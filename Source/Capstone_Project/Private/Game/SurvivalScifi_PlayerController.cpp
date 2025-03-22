@@ -13,6 +13,9 @@ void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 	Super::OnPossess(aPawn);
 
 	PlayerCharacter = Cast<APlayerCharacter>(aPawn);
+
+	SetShowMouseCursor(false);
+	SetInputMode(FInputModeGameOnly());
 }
 
 void ASurvivalScifi_PlayerController::SetupInputComponent()
