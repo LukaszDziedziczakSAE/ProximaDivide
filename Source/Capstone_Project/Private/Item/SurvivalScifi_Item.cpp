@@ -13,7 +13,8 @@ ASurvivalScifi_Item::ASurvivalScifi_Item()
 	PrimaryActorTick.bCanEverTick = true;
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	Mesh->SetupAttachment(GetRootComponent());
+	SetRootComponent(Mesh);
+	//Mesh->SetupAttachment(GetRootComponent());
 
 	Collider = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collider"));
 	Collider->SetupAttachment(Mesh);

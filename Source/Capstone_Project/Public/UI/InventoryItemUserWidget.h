@@ -12,13 +12,17 @@ class CAPSTONE_PROJECT_API UInventoryItemUserWidget : public UUserWidget
 	GENERATED_BODY()
 
 protected:
-	//UPROPERTY(meta = (BindWidget))
-	//class USizeBox* SizeBox;
 
 	UPROPERTY(meta = (BindWidget))
 	class UImage* ItemImage;
 
+	UPROPERTY()
+	class UItemDataAsset* Item;
+
 public:
 	UFUNCTION()
-	void Set(class UItemDataAsset* ItemData, float CellSize);
+	void Set(UItemDataAsset* ItemData, float CellSize, bool Roated);
+
+	UFUNCTION()
+	void Orient(bool IsRotated);
 };

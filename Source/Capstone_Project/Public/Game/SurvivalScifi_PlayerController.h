@@ -35,6 +35,24 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Interact;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Slot1;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Slot2;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Slot3;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Slot4;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Slot5;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Use;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
@@ -61,4 +79,25 @@ protected:
 
 	UFUNCTION()
 	void Interact();
+
+	UFUNCTION()
+	void Slot1();
+
+	UFUNCTION()
+	void Slot2();
+
+	UFUNCTION()
+	void Slot3();
+
+	UFUNCTION()
+	void Slot4();
+
+	UFUNCTION()
+	void Slot5();
+
+	UFUNCTION()
+	void UseItem();
+
+	UFUNCTION()
+	void UseItemEnd();
 };

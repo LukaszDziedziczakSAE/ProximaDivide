@@ -41,7 +41,7 @@ TArray<FIntPoint> UInventoryComponent::GetOccupiedSlots()
 
 	for (FInventoryItem Item : Items)
 	{
-		for (FIntPoint Slot : Item.OccupiedSlots())
+		for (FIntPoint Slot : Item.GetOccupiedSlots())
 			OccupiedSlots.Add(Slot);
 	}
 

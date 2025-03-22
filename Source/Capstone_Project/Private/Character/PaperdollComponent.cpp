@@ -2,6 +2,7 @@
 
 
 #include "Character/PaperdollComponent.h"
+#include "Item/EquipableItemDataAsset.h"
 
 // Sets default values for this component's properties
 UPaperdollComponent::UPaperdollComponent()
@@ -30,5 +31,90 @@ void UPaperdollComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+}
+
+bool UPaperdollComponent::TryAddEquipable(UEquipableItemDataAsset* Equipable)
+{
+	if (Slot1.Item == nullptr)
+	{
+		Slot1.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+	}
+
+	else if (Slot2.Item == nullptr)
+	{
+		Slot2.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+	}
+
+	else if (Slot3.Item == nullptr)
+	{
+		Slot3.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+	}
+
+	else if (Slot4.Item == nullptr)
+	{
+		Slot4.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+	}
+
+	else if (Slot5.Item == nullptr)
+	{
+		Slot5.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+	}
+
+	return false;
+}
+
+FSlotItem UPaperdollComponent::GetCurrentSlot()
+{
+	switch (Index)
+	{
+	case 1:
+		return Slot1;
+
+	case 2:
+		return Slot2;
+
+	case 3:
+		return Slot3;
+
+	case 4:
+		return Slot4;
+
+	case 5:
+		return Slot5;
+
+	default:
+		return FSlotItem();
+	}
+	
+}
+
+EAnimHandsType UPaperdollComponent::GetCurrentAnimHandsType()
+{
+	if (Index >= 0 && Index <= 5 && GetCurrentSlot().Item != nullptr)
+		return GetCurrentSlot().Item->AnimHandsType;
+
+	return EAnimHandsType::None;
+}
+
+void UPaperdollComponent::SelectSlot(int SlotNumber)
+{
+	if (SlotNumber == Index) Index = 0;
+	else Index = SlotNumber;
+	OnSlotChange.Broadcast();
+}
+
+bool UPaperdollComponent::IsCurrentSlotHaveItem()
+{
+	return Index >= 0 && Index <= 5 && GetCurrentSlot().Item != nullptr;
 }
 

@@ -19,13 +19,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class UInventoryComponent* InventoryComponent;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class UHealthComponent* HealthComponent;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class UPaperdollComponent* PaperdollComponent;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Movement")
@@ -33,6 +33,12 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Movement")
 	float RunningSpeed{ 500.0f };
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class AEquipableItem* RightHandItem;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool UseItemDown;
 
 public:	
 	// Called every frame
@@ -44,6 +50,36 @@ public:
 	UFUNCTION(BlueprintPure)
 	UInventoryComponent* GetInventoryComponent() { return InventoryComponent; }
 
+	UFUNCTION(BlueprintPure)
+	UPaperdollComponent* GetPaperdollComponent() { return PaperdollComponent; }
+
 	UFUNCTION(BlueprintCallable)
 	void SetMovementSpeed(bool IsRunning);
+
+	UFUNCTION(BlueprintCallable)
+	bool TryPickUpItem(class UItemDataAsset* Item);
+
+	UFUNCTION()
+	void SelectSlot(int SlotNumber);
+
+	UFUNCTION()
+	virtual void SpawnRightHand();
+
+	UFUNCTION()
+	void DespawnRightHand();
+
+	UFUNCTION()
+	void UseItem();
+
+	UFUNCTION()
+	void UseItemRepeating();
+
+	UFUNCTION()
+	void UseItemEnd();
+
+	UFUNCTION()
+	virtual float PlayMontage(UAnimMontage* Montage);
+
+	UFUNCTION(BlueprintPure)
+	bool GetUseItemDown() { return UseItemDown; }
 };

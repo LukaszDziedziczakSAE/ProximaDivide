@@ -44,6 +44,10 @@ public:
 	UFUNCTION()
 	void Interact();
 
-	UFUNCTION(BlueprintCallable)
-	bool TryPickUpItem(class UItemDataAsset* Item);
+	virtual void SpawnRightHand() override;
+
+	UFUNCTION(BlueprintPure)
+	USkeletalMeshComponent* GetFPS_Arms() { return FPS_Arms; }
+
+	virtual float PlayMontage(UAnimMontage* Montage) override;
 };

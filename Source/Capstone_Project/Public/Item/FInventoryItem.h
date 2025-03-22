@@ -17,5 +17,12 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FIntPoint Position{ 1,1 };
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	bool Rotated;
+
 	TArray<FIntPoint> OccupiedSlots();
+
+	TArray<FIntPoint> OccupiedSlotsRotated();
+
+	TArray<FIntPoint> GetOccupiedSlots() { return Rotated ? OccupiedSlotsRotated() : OccupiedSlots(); }
 };

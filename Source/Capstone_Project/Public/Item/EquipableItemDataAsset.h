@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Item/ItemDataAsset.h"
+#include "Character/EAnimHandsType.h"
 #include "EquipableItemDataAsset.generated.h"
 
 UCLASS()
@@ -11,4 +12,10 @@ class CAPSTONE_PROJECT_API UEquipableItemDataAsset : public UItemDataAsset
 {
 	GENERATED_BODY()
 	
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	EAnimHandsType AnimHandsType;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class ASurvivalScifi_Item> RightHand;
 };

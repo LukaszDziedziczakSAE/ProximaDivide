@@ -9,6 +9,7 @@
 #include "Item/FInventoryItem.h"
 #include "UI/InventoryItemUserWidget.h"
 #include "Components/Overlay.h"
+#include "Item/ItemDataAsset.h"
 
 void UInventoryUserWidget::NativeDestruct()
 {
@@ -42,10 +43,28 @@ void UInventoryUserWidget::SetInventory(UInventoryComponent* Inventory)
 	for (FInventoryItem InventoryItem : InventoryComponent->GetItems())
 	{
 		UInventoryItemUserWidget* InventoryItemWidget = CreateWidget<UInventoryItemUserWidget>(GetWorld(), ItemClass);
-		//Grid->AddChildToUniformGrid(InventoryItemWidget, InventoryItem.Position.Y - 1, InventoryItem.Position.X - 1);
 		InventoryOverlay->AddChildToOverlay(InventoryItemWidget);
-		InventoryItemWidget->SetPadding(FMargin{ (InventoryItem.Position.X - 1) * CellSize, (InventoryItem.Position.Y - 1) * CellSize, 0, 0});
-		InventoryItemWidget->Set(InventoryItem.Item, CellSize);
+		//InventoryItemWidget->SetRenderTransformPivot(FVector2D::ZeroVector);
+
+		InventoryItemWidget->Set(InventoryItem.Item, CellSize, InventoryItem.Rotated);
+
+		if (InventoryItem.Rotated)
+		{
+			InventoryItemWidget->SetPadding(FMargin{
+				(InventoryItem.Position.X - 1)* CellSize,
+				(InventoryItem.Position.Y - 1)* CellSize,
+				0, 0 });
+		}
+		else
+		{
+			InventoryItemWidget->SetPadding(FMargin{ 
+				(InventoryItem.Position.X - 1) * CellSize, 
+				(InventoryItem.Position.Y - 1) * CellSize, 
+				0, 0 });
+		}
+
+		
+
 		Items.Add(InventoryItemWidget);
 	}
 

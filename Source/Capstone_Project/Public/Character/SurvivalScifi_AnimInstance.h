@@ -4,11 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "Character/EAnimHandsType.h"
 #include "SurvivalScifi_AnimInstance.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class CAPSTONE_PROJECT_API USurvivalScifi_AnimInstance : public UAnimInstance
 {
@@ -22,8 +20,14 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	float Speed;
 	
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class ASurvivalSciFi_Character* Character;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	EAnimHandsType AnimHandsType;
+
+	UFUNCTION()
+	void UpdateHandsType();
 
 public:
 	virtual void NativeBeginPlay() override;

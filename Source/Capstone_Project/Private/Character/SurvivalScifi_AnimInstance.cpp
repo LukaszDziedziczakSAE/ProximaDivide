@@ -4,12 +4,17 @@
 #include "Character/SurvivalScifi_AnimInstance.h"
 #include "Character/SurvivalSciFi_Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Character/PaperdollComponent.h"
 
 void USurvivalScifi_AnimInstance::NativeBeginPlay()
 {
 	Super::NativeBeginPlay();
 
 	Character = Cast<ASurvivalSciFi_Character>(GetOwningActor());
+	
+	if (Character == nullptr) return;
+	UpdateHandsType();
+	Character->GetPaperdollComponent()->OnSlotChange.AddDynamic(this, &USurvivalScifi_AnimInstance::UpdateHandsType);
 }
 
 void USurvivalScifi_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
@@ -19,4 +24,9 @@ void USurvivalScifi_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	if (Character == nullptr) return;
 
 	Speed = Character->GetCharacterMovement()->Velocity.Length();
+}
+
+void USurvivalScifi_AnimInstance::UpdateHandsType()
+{
+	AnimHandsType = Character->GetPaperdollComponent()->GetCurrentAnimHandsType();
 }

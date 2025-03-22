@@ -6,6 +6,9 @@
 #include "Character/OxygenComponent.h"
 #include "Character/PlayerInteractionComponent.h"
 #include "Item/InventoryComponent.h"
+#include "Character/PaperdollComponent.h"
+#include "Item/EquipableItem.h"
+#include "Item/EquipableItemDataAsset.h"
 
 
 // Sets default values
@@ -16,7 +19,6 @@ APlayerCharacter::APlayerCharacter()
 
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComponent->SetupAttachment(GetRootComponent());
-	//CameraComponent->SetupAttachment(GetMesh(), TEXT("Head"));
 	CameraComponent->bUsePawnControlRotation = true;
 
 	OxygenComponent = CreateDefaultSubobject< UOxygenComponent>(TEXT("Oxygen"));
@@ -53,10 +55,21 @@ void APlayerCharacter::Interact()
 	PlayerInteractionComponent->Interact();
 }
 
-bool APlayerCharacter::TryPickUpItem(UItemDataAsset* Item)
+void APlayerCharacter::SpawnRightHand()
 {
-	if (InventoryComponent->TryAddItem(Item)) return true;
+	DespawnRightHand();
 
-	return false;
+	if (PaperdollComponent->IsCurrentSlotHaveItem())
+	{
+		RightHandItem = GetWorld()->SpawnActor<AEquipableItem>(PaperdollComponent->GetCurrentSlot().Item->RightHand);
+		RightHandItem->AttachToComponent(FPS_Arms, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("RightHand"));
+		RightHandItem->UpdateRelatives();
+		RightHandItem->SetOwner(this);
+	}
+}
+
+float APlayerCharacter::PlayMontage(UAnimMontage* Montage)
+{
+	return FPS_Arms->GetAnimInstance()->Montage_Play(Montage);
 }
 

@@ -15,3 +15,18 @@ TArray<FIntPoint> FInventoryItem::OccupiedSlots()
 
     return OccupiedSlots;
 }
+
+TArray<FIntPoint> FInventoryItem::OccupiedSlotsRotated()
+{
+    TArray<FIntPoint> OccupiedSlots;
+
+    for (int x = Position.X; x < Position.X + Item->Size.Y; x++)
+    {
+        for (int y = Position.Y; y < Position.Y + Item->Size.X; y++)
+        {
+            OccupiedSlots.Add(FIntPoint{ x,y });
+        }
+    }
+
+    return OccupiedSlots;
+}

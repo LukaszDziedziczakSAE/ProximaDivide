@@ -47,6 +47,13 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Run, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::RunStart);
 		Input->BindAction(IA_Run, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::RunEnd);
 		Input->BindAction(IA_Interact, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Interact);
+		Input->BindAction(IA_Slot1, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Slot1);
+		Input->BindAction(IA_Slot2, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Slot2);
+		Input->BindAction(IA_Slot3, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Slot3);
+		Input->BindAction(IA_Slot4, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Slot4);
+		Input->BindAction(IA_Slot5, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Slot5);
+		Input->BindAction(IA_Use, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::UseItem);
+		Input->BindAction(IA_Use, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::UseItemEnd);
 	}
 
 	else
@@ -128,4 +135,39 @@ void ASurvivalScifi_PlayerController::Interact()
 	{
 		PlayerCharacter->Interact();
 	}
+}
+
+void ASurvivalScifi_PlayerController::Slot1()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(1);
+}
+
+void ASurvivalScifi_PlayerController::Slot2()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(2);
+}
+
+void ASurvivalScifi_PlayerController::Slot3()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(3);
+}
+
+void ASurvivalScifi_PlayerController::Slot4()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(4);
+}
+
+void ASurvivalScifi_PlayerController::Slot5()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(5);
+}
+
+void ASurvivalScifi_PlayerController::UseItem()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->UseItemRepeating();
+}
+
+void ASurvivalScifi_PlayerController::UseItemEnd()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->UseItemEnd();
 }
