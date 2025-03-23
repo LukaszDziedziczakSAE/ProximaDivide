@@ -53,6 +53,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Use;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Jump;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
@@ -100,4 +103,7 @@ protected:
 
 	UFUNCTION()
 	void UseItemEnd();
+
+	UFUNCTION()
+	void Jump();
 };

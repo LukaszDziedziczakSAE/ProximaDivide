@@ -34,6 +34,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Movement")
 	float RunningSpeed{ 500.0f };
 
+	UPROPERTY(EditDefaultsOnly, Category = "Movement")
+	float JumpForce{ 100.0f };
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class AEquipableItem* RightHandItem;
 
@@ -82,4 +85,5 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool GetUseItemDown() { return UseItemDown; }
+
 };

@@ -57,6 +57,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Slot5, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Slot5);
 		Input->BindAction(IA_Use, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::UseItem);
 		Input->BindAction(IA_Use, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::UseItemEnd);
+		Input->BindAction(IA_Jump, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Jump);
 	}
 
 	else
@@ -173,4 +174,9 @@ void ASurvivalScifi_PlayerController::UseItem()
 void ASurvivalScifi_PlayerController::UseItemEnd()
 {
 	if (PlayerCharacter != nullptr) PlayerCharacter->UseItemEnd();
+}
+
+void ASurvivalScifi_PlayerController::Jump()
+{
+	if (PlayerCharacter != nullptr) PlayerCharacter->Jump();
 }
