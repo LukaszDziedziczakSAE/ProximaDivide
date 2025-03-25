@@ -54,13 +54,13 @@ protected:
 	EDoorState DoorState;
 
 	UPROPERTY(EditAnywhere)
-	FVector OpenLocation;
+	FVector OpenLocation{ 0, -145.0, 0 };
 
 	UPROPERTY(EditAnywhere)
 	FVector ClosedLocation;
 
 	UPROPERTY(EditAnywhere)
-	float Speed;
+	float Speed{ 250.0f };
 
 	UPROPERTY(EditAnywhere)
 	class UBoxComponent* Collider;
@@ -105,4 +105,7 @@ public:
 
 	UFUNCTION()
 	void SetMode(EDoorMode Mode) { DoorMode = Mode; }
+
+	UFUNCTION(BlueprintPure)
+	EDoorState GetDoorState() { return DoorState; }
 };

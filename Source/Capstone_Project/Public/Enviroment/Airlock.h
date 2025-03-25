@@ -1,0 +1,80 @@
+// Written and owned by Lukasz Dziedziczak. Copywrite 2025
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "Interface/SwitchActivated.h"
+#include "Airlock.generated.h"
+
+UENUM(BlueprintType)
+enum class EAirlockState : uint8
+{
+	OpenOut UMETA(DisplayName = "Open Out"),
+	OpenIn UMETA(DisplayName = "Open In"),
+	CyclingIn UMETA(DisplayName = "Cycling In"),
+	CyclingOut UMETA(DisplayName = "Cycling Out")
+};
+
+UCLASS()
+class CAPSTONE_PROJECT_API AAirlock : public AActor
+{
+	GENERATED_BODY()
+	
+public:	
+	// Sets default values for this actor's properties
+	AAirlock();
+
+	UPROPERTY(EditAnywhere)
+	USceneComponent* Root;
+
+	UPROPERTY(EditAnywhere)
+	class ADoor* InnerDoor;
+
+	UPROPERTY(EditAnywhere)
+	ADoor* OuterDoor;
+
+	UPROPERTY(EditDefaultsOnly)
+	float CycleTime{ 2.0f };
+
+	UPROPERTY(EditAnywhere)
+	class UPointLightComponent* Light;
+
+	UPROPERTY(EditAnywhere)
+	EAirlockState AirlockState;
+
+	UPROPERTY(EditAnywhere)
+	FLinearColor CyclingColor;
+
+	UPROPERTY(VisibleAnywhere)
+	FLinearColor StandbyColor;
+
+	UPROPERTY()
+	float Timer;
+
+	UFUNCTION()
+	bool DoorsClosed();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+	void OuterSwitchPress();
+
+	UFUNCTION()
+	void InnerSwitchPress();
+
+	UFUNCTION()
+	void InsideInnerSwitchPress();
+
+	UFUNCTION()
+	void InsideOuterSwitchPress();
+
+	UFUNCTION()
+	EAirlockState GetAirlockState() { return AirlockState; }
+};

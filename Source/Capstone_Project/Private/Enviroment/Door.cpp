@@ -114,6 +114,8 @@ void ADoor::Close()
 
 void ADoor::ToggleState()
 {
+	UE_LOG(LogTemp, Warning, TEXT("Door state toggled"));
+
 	if (DoorState == EDoorState::Open) 
 		DoorState = EDoorState::Closing;
 	
