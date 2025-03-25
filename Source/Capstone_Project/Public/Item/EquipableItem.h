@@ -6,9 +6,9 @@
 #include "Item/SurvivalScifi_Item.h"
 #include "EquipableItem.generated.h"
 
-/**
- * 
- */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartUsingSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEndUsingSignature);
+
 UCLASS()
 class CAPSTONE_PROJECT_API AEquipableItem : public ASurvivalScifi_Item
 {
@@ -45,4 +45,11 @@ public:
 
 	UFUNCTION()
 	UAnimMontage* GetUseMontage() { return UseMontage; }
+
+	UPROPERTY(BlueprintAssignable)
+	FOnStartUsingSignature OnStartUsing;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnEndUsingSignature OnEndUsing;
+
 };

@@ -36,4 +36,7 @@ public:
 	virtual void Interact(class APlayerCharacter* PlayerCharacter) override;
 
 	virtual FString InteractionText() override;
+
+	UFUNCTION()
+	UBoxComponent* GetCollider() { return Collider; }
 };

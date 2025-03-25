@@ -27,7 +27,7 @@ void ASurvivalScifi_HUD::ShowInventory()
 
 void ASurvivalScifi_HUD::HideInventory()
 {
-	if (Inventory != nullptr) Inventory->RemoveFromViewport();
+	if (Inventory != nullptr) Inventory->RemoveFromParent();
 	Inventory = nullptr;
 }
 
@@ -47,7 +47,7 @@ void ASurvivalScifi_HUD::HideInteraction()
 {
 	if (Interaction != nullptr)
 	{
-		Interaction->RemoveFromViewport();
+		Interaction->RemoveFromParent();
 		Interaction = nullptr;
 		//UE_LOG(LogTemp, Warning, TEXT("Hiding interaction text"));
 	}

@@ -72,6 +72,9 @@ FString UPlayerInteractionComponent::GetInteractionText()
 
 	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
 
+	if (Interaction == nullptr || Interaction->InteractionText() == TEXT(""))
+		return TEXT("");
+
 	return TEXT("Press E to ") + Interaction->InteractionText();
 }
 

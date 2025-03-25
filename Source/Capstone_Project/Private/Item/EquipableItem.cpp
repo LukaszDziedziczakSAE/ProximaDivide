@@ -24,10 +24,14 @@ void AEquipableItem::Use()
 		FTimerHandle  UseTimer;
 		GetWorld()->GetTimerManager().SetTimer(UseTimer, this, &AEquipableItem::UseFinish, t * PercentageBusy, false);
 	}
+
+	OnStartUsing.Broadcast();
 }
 
 void AEquipableItem::UseFinish()
 {
 	Busy = false;
 	if (GetOwner<ASurvivalSciFi_Character>()->GetUseItemDown()) Use();
+
+	OnEndUsing.Broadcast();
 }

@@ -1,0 +1,108 @@
+// Written and owned by Lukasz Dziedziczak. Copywrite 2025
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "Interface/SwitchActivated.h"
+#include "Door.generated.h"
+
+UENUM(BlueprintType)
+enum class EDoorMode : uint8
+{
+	Manual UMETA(DisplayName = "Manual"),
+	ManualOpen UMETA(DisplayName = "Manual Open"),
+	Automatic UMETA(DisplayName = "Automatic"),
+	Offline UMETA(DisplayName = "Offline")
+};
+
+UENUM(BlueprintType)
+enum class EDoorState : uint8
+{
+	Closed UMETA(DisplayName = "Closed"),
+	Open UMETA(DisplayName = "Open"),
+	Opening UMETA(DisplayName = "Opening"),
+	Closing UMETA(DisplayName = "Closing")
+};
+
+UCLASS()
+class CAPSTONE_PROJECT_API ADoor : public AActor, public ISwitchActivated
+{
+	GENERATED_BODY()
+	
+public:	
+	// Sets default values for this actor's properties
+	ADoor();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere)
+	USceneComponent* Root;
+
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* DoorMesh;
+
+	UPROPERTY(EditAnywhere)
+	EDoorMode DoorMode;
+
+	UPROPERTY(EditAnywhere)
+	bool Locked;
+
+	UPROPERTY(VisibleAnywhere)
+	EDoorState DoorState;
+
+	UPROPERTY(EditAnywhere)
+	FVector OpenLocation;
+
+	UPROPERTY(EditAnywhere)
+	FVector ClosedLocation;
+
+	UPROPERTY(EditAnywhere)
+	float Speed;
+
+	UPROPERTY(EditAnywhere)
+	class UBoxComponent* Collider;
+
+	UFUNCTION()
+	void OnColliderBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void OnColliderEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	UPROPERTY(VisibleAnywhere)
+	int CharactersInOverlap;
+
+	UFUNCTION()
+	void OpeningTick(float DeltaTime);
+
+	UFUNCTION()
+	void ClosingTick(float DeltaTime);
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	void Open();
+
+	UFUNCTION(BlueprintCallable)
+	void Close();
+
+	UFUNCTION(BlueprintCallable)
+	void ToggleState();
+
+	virtual void SwitchActivation() override;
+
+	virtual FString InteractionText() override;
+
+	UFUNCTION(BlueprintCallable)
+	void Lock() { Locked = true; }
+
+	UFUNCTION(BlueprintCallable)
+	void Unlock() { Locked = false; }
+
+	UFUNCTION()
+	void SetMode(EDoorMode Mode) { DoorMode = Mode; }
+};
