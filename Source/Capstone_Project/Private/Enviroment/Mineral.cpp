@@ -26,3 +26,8 @@ void AMineral::Tick(float DeltaTime)
 
 }
 
+bool AMineral::IsSucessfulHit()
+{
+	float random = FMath::RandRange(0.0f, 1.0f);
+	return random <= SpawnProbability;
+}

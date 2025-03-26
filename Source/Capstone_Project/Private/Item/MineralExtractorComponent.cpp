@@ -5,6 +5,8 @@
 #include "Item/EquipableItem.h"
 #include "Components/BoxComponent.h"
 #include "Enviroment/Mineral.h"
+#include "Character/PlayerCharacter.h"
+#include "Item/InventoryComponent.h"
 
 // Sets default values for this component's properties
 UMineralExtractorComponent::UMineralExtractorComponent()
@@ -29,16 +31,21 @@ void UMineralExtractorComponent::BeginPlay()
 
 	EquipableItem->OnStartUsing.AddDynamic(this, &UMineralExtractorComponent::ActivateExtraction);
 	EquipableItem->OnEndUsing.AddDynamic(this, &UMineralExtractorComponent::DeactivateExtraction);
+
+	Inventory = Cast<APlayerCharacter>(GetWorld()->GetFirstPlayerController()->GetCharacter())->GetInventoryComponent();
+
+	if (Inventory == nullptr) UE_LOG(LogTemp, Error, TEXT("Missing inventory ref"));
 }
 
 void UMineralExtractorComponent::OnColliderBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (!Active) return;
+	if (!Active || Inventory == nullptr) return;
 
 	AMineral* Mineral = Cast<AMineral>(OtherActor);
-	if (Mineral == nullptr) return;
-
-	UE_LOG(LogTemp, Warning, TEXT("Hit Mineral"));
+	if (Mineral != nullptr && Mineral->GetDataAsset() != nullptr && Mineral->IsSucessfulHit())
+	{
+		Inventory->TryAddItem(Mineral->GetDataAsset());
+	}
 	DeactivateExtraction();
 }
 

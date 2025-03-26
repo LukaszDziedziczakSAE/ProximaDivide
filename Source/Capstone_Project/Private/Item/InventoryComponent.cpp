@@ -64,6 +64,18 @@ TArray<FIntPoint> UInventoryComponent::GetAvailableSlotsFor(UItemDataAsset* Data
 
 bool UInventoryComponent::ItemCanFitInSlot(FIntPoint Slot, UItemDataAsset* Item, TArray<FIntPoint> OccupiedSlots)
 {
+	if (!SlotIsValid(Slot))
+	{
+		UE_LOG(LogTemp, Error, TEXT("Item cannot fit slot invlaid"));
+		return false;
+	}
+
+	if (Item == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Item ref invalid cannot fit inventory"));
+		return false;
+	}
+
 	for (int x = Slot.X; x < Slot.X + Item->Size.X; x++)
 	{
 		if (x > Size.X) return false;
@@ -72,10 +84,15 @@ bool UInventoryComponent::ItemCanFitInSlot(FIntPoint Slot, UItemDataAsset* Item,
 		{
 			if (y > Size.Y) return false;
 
-			if (OccupiedSlots.Contains(FIntPoint{ x,y })) return false;
+			if (OccupiedSlots.Num() > 0 && OccupiedSlots.Contains(FIntPoint{ x,y })) return false;
 		}
 	}
 	return true;
+}
+
+bool UInventoryComponent::SlotIsValid(FIntPoint Slot)
+{
+	return Slot.X > 0 && Slot.X <= Size.X && Slot.Y > 0 && Slot.Y <= Size.Y;
 }
 
 // Called every frame

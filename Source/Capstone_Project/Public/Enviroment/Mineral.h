@@ -22,8 +22,20 @@ protected:
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* Mesh;
 
+	// items that is extracted from this node
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UItemDataAsset* DataAsset;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float SpawnProbability{ 1.0 }; // as a percentage
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION()
+	bool IsSucessfulHit();
+
+	UFUNCTION()
+	UItemDataAsset* GetDataAsset() { return DataAsset; }
 };

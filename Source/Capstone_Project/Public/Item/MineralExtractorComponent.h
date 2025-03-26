@@ -35,9 +35,12 @@ protected:
 	UFUNCTION()
 	void DeactivateExtraction();
 
+	UPROPERTY(VisibleAnywhere)
+	class UInventoryComponent* Inventory;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+	
 };

@@ -20,7 +20,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<struct FInventoryItem> Items;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
@@ -37,6 +37,9 @@ protected:
 
 	UFUNCTION()
 	bool ItemCanFitInSlot(FIntPoint Slot, UItemDataAsset* Item, TArray<FIntPoint> OccupiedSlots);
+
+	UFUNCTION()
+	bool SlotIsValid(FIntPoint Slot);
 
 public:	
 	// Called every frame
