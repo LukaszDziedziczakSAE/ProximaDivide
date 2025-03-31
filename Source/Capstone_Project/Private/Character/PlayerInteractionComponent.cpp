@@ -25,6 +25,19 @@ void UPlayerInteractionComponent::BeginPlay()
 }
 
 
+void UPlayerInteractionComponent::InputModeUI(bool UIMode)
+{
+	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+	if (PlayerController == nullptr) return;
+
+	PlayerController->SetShowMouseCursor(UIMode);
+	if (UIMode)
+		PlayerController->SetInputMode(FInputModeGameAndUI());
+	else
+		PlayerController->SetInputMode(FInputModeGameOnly());
+	IsInUIMode = UIMode;
+}
+
 // Called every frame
 void UPlayerInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
@@ -61,9 +74,6 @@ void UPlayerInteractionComponent::TickComponent(float DeltaTime, ELevelTick Tick
 		HUD->HideInteraction();
 		InteractionInterface.SetObject(nullptr);
 	}
-
-	//UE_LOG(LogTemp, Warning, TEXT("Showing interaction: %s"), HUD->IsShowingInteraction() ? TEXT("true") : TEXT("false"));
-	
 }
 
 FString UPlayerInteractionComponent::GetInteractionText()
@@ -83,5 +93,16 @@ void UPlayerInteractionComponent::Interact()
 	if (InteractionInterface.GetObject() == nullptr) return;
 	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
 	Interaction->Interact(PlayerCharacter);
+
+	HUD->ResetInteraction();
+}
+
+bool UPlayerInteractionComponent::InteractableIsCraftingMachine()
+{
+	if (InteractionInterface.GetObject() == nullptr) return false;
+
+	class ACraftingMachine* CraftingMachine = Cast<ACraftingMachine>(InteractionInterface.GetObject());
+
+	return CraftingMachine != nullptr;
 }
 

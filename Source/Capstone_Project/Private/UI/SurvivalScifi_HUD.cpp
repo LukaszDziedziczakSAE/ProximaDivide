@@ -4,6 +4,7 @@
 #include "UI/SurvivalScifi_HUD.h"
 #include "UI/SurvivalScifiUserWidget.h"
 #include "UI/PlayerInventoryUserWidget.h"
+#include "UI/CraftingMenuUserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -52,4 +53,34 @@ void ASurvivalScifi_HUD::HideInteraction()
 		//UE_LOG(LogTemp, Warning, TEXT("Hiding interaction text"));
 	}
 	
+}
+
+void ASurvivalScifi_HUD::ResetInteraction()
+{
+	HideInteraction();
+	ShowInteraction();
+}
+
+void ASurvivalScifi_HUD::ShowCraftingMenu()
+{
+	if (CraftingMenu == nullptr && CraftingMenuClass != nullptr)
+		CraftingMenu = CreateWidget<UCraftingMenuUserWidget>(GetWorld(), CraftingMenuClass);
+
+	if (CraftingMenu != nullptr && !CraftingMenu->IsInViewport())
+		CraftingMenu->AddToViewport();
+
+	GetOwningPlayerController()->SetShowMouseCursor(true);
+	GetOwningPlayerController()->SetInputMode(FInputModeGameAndUI());
+}
+
+void ASurvivalScifi_HUD::HideCraftingMenu()
+{
+	if (CraftingMenu != nullptr)
+	{
+		CraftingMenu->RemoveFromParent();
+		CraftingMenu = nullptr;
+	}
+
+	GetOwningPlayerController()->SetShowMouseCursor(false);
+	GetOwningPlayerController()->SetInputMode(FInputModeGameOnly());
 }

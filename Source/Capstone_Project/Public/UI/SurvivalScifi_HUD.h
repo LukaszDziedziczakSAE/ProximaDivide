@@ -29,6 +29,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<USurvivalScifiUserWidget> CrosshairClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UCraftingMenuUserWidget> CraftingMenuClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -43,6 +46,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* Crosshair;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UCraftingMenuUserWidget* CraftingMenu;
 
 public:
 	UFUNCTION(BlueprintCallable)
@@ -62,4 +68,16 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool IsShowingInteraction(){ return Interaction != nullptr; }
+
+	UFUNCTION()
+	void ResetInteraction();
+
+	UFUNCTION()
+	void ShowCraftingMenu();
+
+	UFUNCTION()
+	void HideCraftingMenu();
+
+	UFUNCTION(BlueprintPure)
+	bool IsShowingCraftingMenu() { return CraftingMenu != nullptr; }
 };

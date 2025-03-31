@@ -32,6 +32,12 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	TScriptInterface<class IInteraction> InteractionInterface;
 
+	UFUNCTION()
+	void InputModeUI(bool UIMode);
+
+	UPROPERTY(VisibleAnywhere)
+	bool IsInUIMode;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -41,4 +47,7 @@ public:
 
 	UFUNCTION()
 	void Interact();
+
+	UFUNCTION()
+	bool InteractableIsCraftingMachine();
 };

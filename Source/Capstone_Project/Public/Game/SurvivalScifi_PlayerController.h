@@ -106,4 +106,5 @@ protected:
 
 	UFUNCTION()
 	void Jump();
+
 };
