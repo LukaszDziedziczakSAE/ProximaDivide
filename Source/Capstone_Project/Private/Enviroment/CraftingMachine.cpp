@@ -4,6 +4,9 @@
 #include "Enviroment/CraftingMachine.h"
 #include "Components/BoxComponent.h"
 #include "UI/SurvivalScifi_HUD.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
+
 
 // Sets default values
 ACraftingMachine::ACraftingMachine()
@@ -22,6 +25,9 @@ ACraftingMachine::ACraftingMachine()
 
 	CraftingItemPosition = CreateDefaultSubobject<USceneComponent>(TEXT("Crafting Item Position"));
 	CraftingItemPosition->SetupAttachment(Machine);
+
+	CraftingLaser = CreateDefaultSubobject<UNiagaraComponent>(TEXT("Crafting Laser"));
+	CraftingLaser->SetupAttachment(Machine);
 }
 
 // Called when the game starts or when spawned
@@ -69,6 +75,9 @@ void ACraftingMachine::OpeningTick(float DeltaTime)
 		Rotation.Pitch = OpenAngle;
 		Tray->SetRelativeRotation(Rotation);
 		CraftingMachineState = ECraftingMachineState::Standby;
+
+		CraftingLaser->Activate();
+		CraftingLaser->SetVectorParameter(TEXT("BeamEndVec"), CraftingItemPosition->GetComponentLocation());
 	}
 }
 
@@ -124,6 +133,8 @@ void ACraftingMachine::Interact(APlayerCharacter* PlayerCharacter)
 		CraftingMachineState = ECraftingMachineState::Closing;
 
 		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->HideCraftingMenu();
+
+		CraftingLaser->Deactivate();
 	}
 }
 

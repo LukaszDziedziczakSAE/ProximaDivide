@@ -69,6 +69,9 @@ protected:
 	UFUNCTION()
 	void CraftingTick(float DeltaTime);
 
+	UPROPERTY(EditAnywhere)
+	class UNiagaraComponent* CraftingLaser;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
