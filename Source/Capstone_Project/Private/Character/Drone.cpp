@@ -2,6 +2,9 @@
 
 
 #include "Character/Drone.h"
+#include "Character/DroneScanningComponent.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 
 // Sets default values
 ADrone::ADrone()
@@ -11,6 +14,11 @@ ADrone::ADrone()
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	SetRootComponent(Mesh);
+
+	DroneScanningComponent = CreateDefaultSubobject<UDroneScanningComponent>(TEXT("Drone Scanning Component"));
+
+	ScanningEffect = CreateDefaultSubobject<UNiagaraComponent>(TEXT("Scanning Effect"));
+	ScanningEffect->SetupAttachment(Mesh);
 }
 
 // Called when the game starts or when spawned
