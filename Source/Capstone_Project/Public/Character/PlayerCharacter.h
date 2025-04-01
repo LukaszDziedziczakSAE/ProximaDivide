@@ -38,8 +38,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintPure)
 	UCameraComponent* GetCameraComponent() { return CameraComponent; }
+
+	UFUNCTION(BlueprintPure)
+	UPlayerInteractionComponent* GetPlayerInteractionComponent() { return PlayerInteractionComponent; }
 
 	UFUNCTION()
 	void Interact();

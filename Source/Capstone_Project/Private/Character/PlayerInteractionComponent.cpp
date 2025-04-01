@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Interface/Interaction.h"
 #include "UI/SurvivalScifi_HUD.h"
+#include "Enviroment/CraftingMachine.h"
 
 UPlayerInteractionComponent::UPlayerInteractionComponent()
 {
@@ -104,5 +105,11 @@ bool UPlayerInteractionComponent::InteractableIsCraftingMachine()
 	class ACraftingMachine* CraftingMachine = Cast<ACraftingMachine>(InteractionInterface.GetObject());
 
 	return CraftingMachine != nullptr;
+}
+
+ACraftingMachine* UPlayerInteractionComponent::GetCraftingMachine()
+{
+	if (InteractionInterface.GetObject() == nullptr) return nullptr;
+	return Cast<ACraftingMachine>(InteractionInterface.GetObject());
 }
 

@@ -80,4 +80,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool IsShowingCraftingMenu() { return CraftingMenu != nullptr; }
+
+	UFUNCTION()
+	void UpdateCraftingMenu();
 };

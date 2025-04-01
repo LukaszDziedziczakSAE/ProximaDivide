@@ -2,7 +2,7 @@
 
 
 #include "Item/InventoryComponent.h"
-#include "Item/FInventoryItem.h"
+
 #include "Item/ItemDataAsset.h"
 
 UInventoryComponent::UInventoryComponent()

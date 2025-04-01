@@ -84,3 +84,9 @@ void ASurvivalScifi_HUD::HideCraftingMenu()
 	GetOwningPlayerController()->SetShowMouseCursor(false);
 	GetOwningPlayerController()->SetInputMode(FInputModeGameOnly());
 }
+
+void ASurvivalScifi_HUD::UpdateCraftingMenu()
+{
+	if (CraftingMenu != nullptr)
+		CraftingMenu->UpdateCraftingScreen();
+}

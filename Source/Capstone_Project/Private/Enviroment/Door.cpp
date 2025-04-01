@@ -3,6 +3,7 @@
 
 #include "Enviroment/Door.h"
 #include "Components/BoxComponent.h"
+#include "Character/SurvivalSciFi_Character.h"
 
 // Sets default values
 ADoor::ADoor()

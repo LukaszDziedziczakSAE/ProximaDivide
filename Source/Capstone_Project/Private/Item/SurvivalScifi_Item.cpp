@@ -24,7 +24,6 @@ ASurvivalScifi_Item::ASurvivalScifi_Item()
 void ASurvivalScifi_Item::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -45,5 +44,20 @@ void ASurvivalScifi_Item::Interact(APlayerCharacter* PlayerCharacter)
 FString ASurvivalScifi_Item::InteractionText()
 {
 	return TEXT("Pick Up ") + DataAsset->Name;
+}
+
+void ASurvivalScifi_Item::SetMaterial(UMaterialInterface* Material)
+{
+	Mesh->SetMaterial(0, Material);
+}
+
+void ASurvivalScifi_Item::SetOverlayMaterial(UMaterialInterface* Material)
+{
+	Mesh->SetOverlayMaterial(Material);
+}
+
+FVector ASurvivalScifi_Item::GetBoxExtent()
+{
+	return Collider->GetScaledBoxExtent();
 }
 

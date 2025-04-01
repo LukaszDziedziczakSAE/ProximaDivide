@@ -50,4 +50,7 @@ public:
 
 	UFUNCTION()
 	bool InteractableIsCraftingMachine();
+
+	UFUNCTION()
+	class ACraftingMachine* GetCraftingMachine();
 };

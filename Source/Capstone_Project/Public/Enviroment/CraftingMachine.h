@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/Interaction.h"
+#include "Item/RecipeDataAsset.h"
 #include "CraftingMachine.generated.h"
 
 UENUM(BlueprintType)
@@ -14,7 +15,8 @@ enum class ECraftingMachineState : uint8
 	Opening UMETA(DisplayName = "Opening"),
 	Closing UMETA(DisplayName = "Closing"),
 	Standby UMETA(DisplayName = "Standby"),
-	Crafting UMETA(DisplayName = "Crafting")
+	Crafting UMETA(DisplayName = "Crafting"),
+	Finishing UMETA(DisplayName = "Finishing")
 };
 
 UCLASS()
@@ -69,8 +71,47 @@ protected:
 	UFUNCTION()
 	void CraftingTick(float DeltaTime);
 
+	UFUNCTION()
+	void FinishingTick(float DeltaTime);
+
 	UPROPERTY(EditAnywhere)
 	class UNiagaraComponent* CraftingLaser;
+
+	UPROPERTY(VisibleAnywhere)
+	URecipeDataAsset* CurrentlyCrafting;
+
+	UPROPERTY(VisibleAnywhere)
+	class ASurvivalScifi_Item* CurrentlyCraftingItem;
+
+	UPROPERTY(EditAnywhere)
+	UMaterialInterface* CraftingMaterialPrefab;
+
+	UPROPERTY(VisibleAnywhere)
+	UMaterialInstanceDynamic* CraftingMaterial;
+
+	UPROPERTY(EditAnywhere)
+	UMaterialInterface* CurrentlyCraftingItemMaterial;
+
+	UFUNCTION()
+	float GetLaserHeight();
+
+	UFUNCTION()
+	FVector GetLaserPosition(float DeltaTime);
+
+	UPROPERTY(EditAnywhere)
+	float LaserMovementSpeed{ 100.0f };
+
+	UPROPERTY()
+	FVector CurrentLaserPoint;
+
+	UPROPERTY()
+	FVector TargetLaserPoint;
+
+	UFUNCTION()
+	void SetNextTargetLaserPoint();
+
+	UPROPERTY(EditAnywhere)
+	float PostCraftingPause{ 2.5f };
 
 public:	
 	// Called every frame
@@ -84,5 +125,20 @@ public:
 	TArray<class URecipeDataAsset*> GetRecipes() { return Recipes; }
 
 	UFUNCTION()
+	TArray<URecipeDataAsset*> GetRecipesByType(ECraftingMenuType CraftingMenuType);
+
+	UFUNCTION()
 	float GetProgress();
+
+	UFUNCTION()
+	void Craft(URecipeDataAsset* Recipe);
+
+	UFUNCTION()
+	ECraftingMachineState GetCraftingMachineState() { return CraftingMachineState; }
+	
+	UFUNCTION()
+	URecipeDataAsset* GetCurrentlyCrafting(){ return CurrentlyCrafting; }
+
+	UFUNCTION()
+	FText CraftingStatusText();
 };

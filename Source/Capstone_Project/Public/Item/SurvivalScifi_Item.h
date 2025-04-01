@@ -39,4 +39,16 @@ public:
 
 	UFUNCTION()
 	UBoxComponent* GetCollider() { return Collider; }
+
+	UFUNCTION()
+	UMaterialInterface* GetMaterial() { return Mesh->GetMaterial(0); }
+
+	UFUNCTION()
+	void SetMaterial(UMaterialInterface* Material);
+
+	UFUNCTION()
+	void SetOverlayMaterial(UMaterialInterface* Material);
+
+	UFUNCTION()
+	FVector GetBoxExtent();
 };

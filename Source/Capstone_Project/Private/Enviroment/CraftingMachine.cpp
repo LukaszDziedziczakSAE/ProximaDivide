@@ -6,6 +6,8 @@
 #include "UI/SurvivalScifi_HUD.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
+#include "Item/ItemDataAsset.h"
+#include "Item/SurvivalScifi_Item.h"
 
 
 // Sets default values
@@ -38,6 +40,67 @@ void ACraftingMachine::BeginPlay()
 	ClosedAngle = Tray->GetRelativeRotation().Pitch;
 }
 
+float ACraftingMachine::GetLaserHeight()
+{
+	float StartingHeight = CraftingItemPosition->GetComponentLocation().Z;
+	float EndHeight = StartingHeight + CurrentlyCraftingItem->GetBoxExtent().Z + CurrentlyCrafting->CraftingLaserHeightOffset;
+
+	return FMath::Lerp(StartingHeight, EndHeight, GetProgress());
+}
+
+FVector ACraftingMachine::GetLaserPosition(float DeltaTime)
+{
+	CurrentLaserPoint.Z = GetLaserHeight();
+	TargetLaserPoint.Z = CurrentLaserPoint.Z;
+
+	FVector Step = TargetLaserPoint - CurrentLaserPoint;
+	Step.Normalize();
+	Step *= LaserMovementSpeed * DeltaTime;
+
+	if (Step.Length() > FVector::Distance(CurrentLaserPoint, TargetLaserPoint))
+	{
+		CurrentLaserPoint += Step;
+	}
+	else
+	{
+		CurrentLaserPoint = TargetLaserPoint;
+		SetNextTargetLaserPoint();
+	}
+
+	return CurrentLaserPoint;
+}
+
+void ACraftingMachine::SetNextTargetLaserPoint()
+{
+	int Random = FMath::RandRange(0, 3);
+	FVector Target = CraftingItemPosition->GetComponentLocation();
+
+	switch (Random)
+	{
+	case 0:
+		Target.X -= CurrentlyCraftingItem->GetBoxExtent().X / 2;
+		Target.Y = FMath::RandRange(Target.Y - (CurrentlyCraftingItem->GetBoxExtent().Y / 2), Target.Y + (CurrentlyCraftingItem->GetBoxExtent().Y / 2));
+		break;
+
+	case 1:
+		Target.X += CurrentlyCraftingItem->GetBoxExtent().X / 2;
+		Target.Y = FMath::RandRange(Target.Y - (CurrentlyCraftingItem->GetBoxExtent().Y / 2), Target.Y + (CurrentlyCraftingItem->GetBoxExtent().Y / 2));
+		break;
+
+	case 2:
+		Target.X = FMath::RandRange(Target.X - (CurrentlyCraftingItem->GetBoxExtent().X / 2), Target.X + (CurrentlyCraftingItem->GetBoxExtent().X / 2));
+		Target.Y -= CurrentlyCraftingItem->GetBoxExtent().Y / 2;
+		break;
+
+	case 3:
+		Target.X = FMath::RandRange(Target.X - (CurrentlyCraftingItem->GetBoxExtent().X / 2), Target.X + (CurrentlyCraftingItem->GetBoxExtent().X / 2));
+		Target.Y += CurrentlyCraftingItem->GetBoxExtent().Y / 2;
+		break;
+	}
+
+	TargetLaserPoint = Target;
+}
+
 // Called every frame
 void ACraftingMachine::Tick(float DeltaTime)
 {
@@ -55,6 +118,10 @@ void ACraftingMachine::Tick(float DeltaTime)
 
 	case ECraftingMachineState::Crafting:
 		CraftingTick(DeltaTime);
+		break;
+
+	case ECraftingMachineState::Finishing:
+		FinishingTick(DeltaTime);
 		break;
 	}
 }
@@ -76,8 +143,7 @@ void ACraftingMachine::OpeningTick(float DeltaTime)
 		Tray->SetRelativeRotation(Rotation);
 		CraftingMachineState = ECraftingMachineState::Standby;
 
-		CraftingLaser->Activate();
-		CraftingLaser->SetVectorParameter(TEXT("BeamEndVec"), CraftingItemPosition->GetComponentLocation());
+		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
 	}
 }
 
@@ -108,11 +174,39 @@ void ACraftingMachine::CraftingTick(float DeltaTime)
 
 	if (Timer > 0)
 	{
+		CraftingMaterial->SetScalarParameterValue(TEXT("DissolveAmount"), 100 - (GetProgress() * 100));
+		CurrentlyCraftingItem->SetMaterial(CraftingMaterial);
 
+		CraftingLaser->SetVectorParameter(TEXT("BeamEndVec"), GetLaserPosition(DeltaTime));
 	}
 	else
 	{
+		CraftingMachineState = ECraftingMachineState::Finishing;
+		Timer = PostCraftingPause;
+		CraftingLaser->Deactivate();
+		CurrentlyCrafting = nullptr;
+		CurrentlyCraftingItem->SetMaterial(CurrentlyCraftingItemMaterial);
+
+		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
+	}
+}
+
+void ACraftingMachine::FinishingTick(float DeltaTime)
+{
+	Timer -= DeltaTime;
+
+	if (Timer > 0)
+	{
+	}
+
+	else
+	{
 		CraftingMachineState = ECraftingMachineState::Standby;
+
+		CurrentlyCraftingItem->Destroy();
+		// add item to inventory
+
+		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
 	}
 }
 
@@ -134,7 +228,7 @@ void ACraftingMachine::Interact(APlayerCharacter* PlayerCharacter)
 
 		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->HideCraftingMenu();
 
-		CraftingLaser->Deactivate();
+		
 	}
 }
 
@@ -146,7 +240,18 @@ FString ACraftingMachine::InteractionText()
 
 	default: return TEXT("");
 	}
-	
+}
+
+TArray<class URecipeDataAsset*> ACraftingMachine::GetRecipesByType(ECraftingMenuType CraftingMenuType)
+{
+	TArray<class URecipeDataAsset*> List;
+
+	for (URecipeDataAsset* Recipe : Recipes)
+	{
+		if (Recipe->CraftingMenuType == CraftingMenuType) List.Add(Recipe);
+	}
+
+	return List;
 }
 
 float ACraftingMachine::GetProgress()
@@ -159,7 +264,44 @@ float ACraftingMachine::GetProgress()
 	case ECraftingMachineState::Closing:
 		return 1 - (Timer / OpenCloseTime);
 
+	case ECraftingMachineState::Crafting:
+		return 1 - (Timer / CurrentlyCrafting->BuiltTime);
+
 	default: return 1.0f;
 	}
+}
+
+void ACraftingMachine::Craft(URecipeDataAsset* Recipe)
+{
+	CurrentlyCrafting = Recipe;
+	CraftingMachineState = ECraftingMachineState::Crafting;
+
+
+	Timer = CurrentlyCrafting->BuiltTime;
+
+	CurrentlyCraftingItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(CurrentlyCrafting->Item->ItemClass, CraftingItemPosition->GetComponentLocation(), CraftingItemPosition->GetComponentRotation());
+
+	CraftingMaterial = UMaterialInstanceDynamic::Create(CraftingMaterialPrefab, this);
+	CurrentlyCraftingItemMaterial = CurrentlyCraftingItem->GetMaterial();
+
+	CraftingLaser->Activate();
+	SetNextTargetLaserPoint();
+	CurrentLaserPoint = CraftingItemPosition->GetComponentLocation();
+	CraftingLaser->SetVectorParameter(TEXT("BeamEndVec"), CurrentLaserPoint);
+
+
+	GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
+}
+
+FText ACraftingMachine::CraftingStatusText()
+{
+	FString Text = TEXT("Crafting ");
+	Text += CurrentlyCrafting->Item->Name;
+	Text += TEXT(" (");
+	int Prog = FMath::Floor(GetProgress() * 100);
+	Text += FString::FromInt(Prog);
+	Text += TEXT("%)");
+
+	return FText::FromString(Text);
 }
 

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Item/FInventoryItem.h"
 #include "InventoryComponent.generated.h"
 
 
@@ -21,7 +22,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TArray<struct FInventoryItem> Items;
+	TArray<FInventoryItem> Items;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FIntPoint Size{ 1,1 };

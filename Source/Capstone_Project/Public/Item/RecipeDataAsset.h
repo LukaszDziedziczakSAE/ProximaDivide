@@ -45,4 +45,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	ECraftingMenuType CraftingMenuType;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float CraftingLaserHeightOffset{ 0.0f };
 };
