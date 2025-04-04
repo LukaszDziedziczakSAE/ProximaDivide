@@ -17,19 +17,22 @@ void AEquipableItem::BeginPlay()
 {
 	Super::BeginPlay();
 
+	//EquipSoundID = PlayWiseEvent(EquipSound, true);
+
 	//FOnAkPostEventCallback nullCallback;
 	//UAkGameplayStatics::PostEvent(EquipSound, this, 0, nullCallback);
 
 	//EquipSound->
 	//AkComponent->PostAkEvent(EquipSound);
-	if (EquipSound != nullptr)
-	{
-		if (!EquipSound->IsLoaded()) EquipSound->LoadData();
-		//EquipSound->PostOnActor(this, FOnAkPostEventCallback(), 0, true);
-		FOnAkPostEventCallback nullCallback;
-		EquipSoundID = UAkGameplayStatics::PostEvent(EquipSound, this, 0, nullCallback);
-		UE_LOG(LogTemp, Log, TEXT("Wwise Event Playing %d"), EquipSoundID);
-	}
+	// 
+	//if (EquipSound != nullptr)
+	//{
+	//	if (!EquipSound->IsLoaded()) EquipSound->LoadData();
+	//	//EquipSound->PostOnActor(this, FOnAkPostEventCallback(), 0, true);
+	//	FOnAkPostEventCallback nullCallback;
+	//	EquipSoundID = UAkGameplayStatics::PostEvent(EquipSound, this, 0, nullCallback);
+	//	UE_LOG(LogTemp, Log, TEXT("Wwise Event Playing %d"), EquipSoundID);
+	//}
 	
 }
 
@@ -41,7 +44,7 @@ int32 AEquipableItem::PlayWiseEvent(UAkAudioEvent* Event, bool bStopWhenAttached
 	{
 		FOnAkPostEventCallback nullCalback;
 		PlayingID = UAkGameplayStatics::PostEvent(Event, this, int32(0), nullCalback, bStopWhenAttachedToDestoryed);
-		UE_LOG(LogTemp, Log, TEXT("Wwise Event Playing"));
+		UE_LOG(LogTemp, Log, TEXT("Wwise Event: %s Playing"), *Event->GetName());
 	}
 	else
 	{

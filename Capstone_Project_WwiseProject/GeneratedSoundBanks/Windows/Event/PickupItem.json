@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{BEF49E00-27F6-413F-B88E-CF2D5D6844F0}",
     "Language": "SFX",
-    "Hash": "{7396EAA1-C3ED-9957-C188-A6B736F7CC1B}",
+    "Hash": "{C6341FA3-B6EF-0825-8DCC-9DE27214CFA8}",
     "ObjectPath": "PickupItem",
     "ShortName": "PickupItem",
     "Path": "Event/PickupItem.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "94099-Hockey_helmet_put_in_bag-BLASTWAVEFX-29415.wav",
       "Path": "Media/480201553.wem",
-      "CachePath": "01/{0158A2F4-D3E8-296E-51DD-7ECAA3EC3E1D}.wem"
+      "CachePath": "56/{56C040D4-3E71-2296-CD02-FAF42EAAE777}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{765AA6A1-2F91-6F3F-B9C5-11C7C8665920}"
+  "FileHash": "{2A53B79E-DE84-98BE-0D27-B9D27E9A0686}"
  }
 }

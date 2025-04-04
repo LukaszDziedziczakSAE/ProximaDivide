@@ -9,6 +9,7 @@
 #include "Character/PaperdollComponent.h"
 #include "Item/EquipableItem.h"
 #include "Item/EquipableItemDataAsset.h"
+#include "AkGameplayStatics.h"
 
 
 // Sets default values
@@ -65,6 +66,8 @@ void APlayerCharacter::SpawnRightHand()
 		RightHandItem->AttachToComponent(FPS_Arms, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("RightHand"));
 		RightHandItem->UpdateRelatives();
 		RightHandItem->SetOwner(this);
+
+		RightHandItem->EquipSoundID = UAkGameplayStatics::PostEvent(RightHandItem->EquipSound, this, int32(0), FOnAkPostEventCallback(), true);
 	}
 }
 

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{D451F829-F65B-4898-9752-336E24920DB5}",
     "Language": "SFX",
-    "Hash": "{03D5E7E1-538E-FFE2-DAB2-36F260B534BD}",
+    "Hash": "{C87C9B4B-AAB1-E806-D85A-3330BF29208F}",
     "ObjectPath": "Pickaxe_Equip",
     "ShortName": "Pickaxe_Equip",
     "Path": "Event/Pickaxe_Equip.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "88940-Hatchet_pick_up_scrape_rocks_axe-BLASTWAVEFX-26542.wav",
       "Path": "Media/820318597.wem",
-      "CachePath": "99/{9948F4D9-26DB-2A40-7595-69637CB9AD0E}.wem"
+      "CachePath": "3E/{3E9ABEB0-C8CB-B4FD-1CEF-76FD82F16CA5}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{6140A5FD-7FC5-D94F-530E-A9E928D74912}"
+  "FileHash": "{2ED14EAD-039D-B1FC-D74C-FA7033DDABAC}"
  }
 }
