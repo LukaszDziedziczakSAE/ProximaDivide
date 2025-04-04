@@ -280,6 +280,7 @@ void ACraftingMachine::Craft(URecipeDataAsset* Recipe)
 	Timer = CurrentlyCrafting->BuiltTime;
 
 	CurrentlyCraftingItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(CurrentlyCrafting->Item->ItemClass, CraftingItemPosition->GetComponentLocation(), CraftingItemPosition->GetComponentRotation());
+	CurrentlyCraftingItem->GetMesh()->SetSimulatePhysics(false);
 
 	CraftingMaterial = UMaterialInstanceDynamic::Create(CraftingMaterialPrefab, this);
 	CurrentlyCraftingItemMaterial = CurrentlyCraftingItem->GetMaterial();

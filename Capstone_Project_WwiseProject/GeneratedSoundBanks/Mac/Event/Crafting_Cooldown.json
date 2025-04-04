@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1959857989",
+    "Type": "Event",
+    "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
+    "Language": "SFX",
+    "Hash": "{55EE5909-5F2A-53B3-9679-1CFC2B78A714}",
+    "ObjectPath": "Crafting_Cooldown",
+    "ShortName": "Crafting_Cooldown",
+    "Path": "Event/Crafting_Cooldown.bnk",
+    "Events": [
+     {
+      "Id": "1959857989",
+      "Name": "Crafting_Cooldown",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Cooldown",
+      "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C9AEF66C-4CC4-4871-C35F-DD473C70B07C}"
+ }
+}

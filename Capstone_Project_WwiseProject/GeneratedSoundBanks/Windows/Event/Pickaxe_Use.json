@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "248136778",
+    "Type": "Event",
+    "GUID": "{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}",
+    "Language": "SFX",
+    "Hash": "{F0F2104C-C37D-81F2-C42E-802E063D614C}",
+    "ObjectPath": "Pickaxe_Use",
+    "ShortName": "Pickaxe_Use",
+    "Path": "Event/Pickaxe_Use.bnk",
+    "Events": [
+     {
+      "Id": "248136778",
+      "Name": "Pickaxe_Use",
+      "ObjectPath": "\\Events\\Default Work Unit\\Equipment\\Pickaxe\\Pickaxe_Use",
+      "GUID": "{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{5F492AA0-0F59-9F14-40DC-3189059A453C}"
+ }
+}

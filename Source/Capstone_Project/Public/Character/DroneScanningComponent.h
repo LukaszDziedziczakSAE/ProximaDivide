@@ -20,6 +20,24 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditDefaultsOnly)
+	float MinAngle;
+
+	UPROPERTY(EditDefaultsOnly)
+	float MaxAngle;
+
+	UPROPERTY(EditDefaultsOnly)
+	float RotationSpeed;
+
+	UFUNCTION()
+	void RotateEffect(float DeltaTime);
+
+	UPROPERTY(EditDefaultsOnly)
+	class UNiagaraComponent* ScanningEffect;
+
+	UPROPERTY(VisibleAnywhere)
+	bool bIsAdvancing;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

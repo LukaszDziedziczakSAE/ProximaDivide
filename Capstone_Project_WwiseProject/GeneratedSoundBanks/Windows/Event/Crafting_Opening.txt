@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3367727870	Crafting_Opening			\Default Work Unit\Interactions\CraftingMachine\Crafting_Opening	
+

@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "535830432",
+    "Type": "Event",
+    "GUID": "{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}",
+    "Language": "SFX",
+    "Hash": "{EEBA6DCC-5F9A-3414-BFA8-BE698E90D3F0}",
+    "ObjectPath": "Door_Open",
+    "ShortName": "Door_Open",
+    "Path": "Event/Door_Open.bnk",
+    "Events": [
+     {
+      "Id": "535830432",
+      "Name": "Door_Open",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\Doors\\Door_Open",
+      "GUID": "{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{2B06BAFE-6B39-2452-48A6-90A647937C82}"
+ }
+}

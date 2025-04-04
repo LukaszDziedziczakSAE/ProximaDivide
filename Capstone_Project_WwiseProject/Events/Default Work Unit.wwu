@@ -14,6 +14,62 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Folder Name="Interactions" ID="{7C52DA0E-DB75-4F31-9637-D32232E1B00B}" ShortID="99114424">
+					<ChildrenList>
+						<Folder Name="Doors" ID="{CB128DBC-CF2D-4F39-B173-25D523BEB095}" ShortID="804695194">
+							<ChildrenList>
+								<Event Name="Door_Open" ID="{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}"/>
+								<Event Name="Door_Close" ID="{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}"/>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Switches" ID="{CE7FCAE6-AE36-4E05-A293-BFCDCCA8BCE6}" ShortID="764472130">
+							<ChildrenList>
+								<Event Name="Switch_Activate" ID="{6CFE73CE-490D-481B-BAB9-82841C8EAD65}"/>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="CraftingMachine" ID="{C1F4299B-5EDA-4CC2-AF8F-ED3485AE4ED4}" ShortID="596953106">
+							<ChildrenList>
+								<Event Name="Crafting_Opening" ID="{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}"/>
+								<Event Name="Crafting_Closing" ID="{24998CC0-0795-463D-9F73-EDDD1AF2C52D}"/>
+								<Event Name="Crafting_Crafting" ID="{AC466B88-8C0C-4678-95EB-EEDBFAF9ACA2}"/>
+								<Event Name="Crafting_Cooldown" ID="{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}"/>
+							</ChildrenList>
+						</Folder>
+						<Event Name="PickupItem" ID="{BEF49E00-27F6-413F-B88E-CF2D5D6844F0}">
+							<ChildrenList>
+								<Action Name="" ID="{AD4647E4-109D-41B4-AB48-FE0C1B9FCC33}" ShortID="676728077">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pickup_Item" ID="{2F49A0CF-0351-418A-A261-BAFA44F13AA3}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Equipment" ID="{5BD4DAF4-A83A-4BCA-B121-6756844BBC1E}" ShortID="220977130">
+					<ChildrenList>
+						<Folder Name="Pickaxe" ID="{81D459E5-DF97-4BB0-84D3-AF6E83DFEF9A}" ShortID="512291935">
+							<ChildrenList>
+								<Event Name="Pickaxe_Equip" ID="{D451F829-F65B-4898-9752-336E24920DB5}">
+									<ChildrenList>
+										<Action Name="" ID="{B096DB06-6CD4-4BFA-81A4-DDBDAC0A2A8D}" ShortID="524521484">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pickaxe_Equip" ID="{60EDB41B-E593-4E35-AD98-1C397317B73F}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Pickaxe_Unequip" ID="{37F3A2A2-AADA-493A-A350-F7F2BB53A5D2}"/>
+								<Event Name="Pickaxe_Strike" ID="{58BD67DC-7844-4000-888D-2587FDB03F76}"/>
+								<Event Name="Pickaxe_Use" ID="{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}"/>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

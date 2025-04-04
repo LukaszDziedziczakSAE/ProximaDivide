@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3016565752",
+    "Type": "Event",
+    "GUID": "{BEF49E00-27F6-413F-B88E-CF2D5D6844F0}",
+    "Language": "SFX",
+    "Hash": "{7396EAA1-C3ED-9957-C188-A6B736F7CC1B}",
+    "ObjectPath": "PickupItem",
+    "ShortName": "PickupItem",
+    "Path": "Event/PickupItem.bnk",
+    "Media": [
+     {
+      "Id": "480201553",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "94099-Hockey_helmet_put_in_bag-BLASTWAVEFX-29415.wav",
+      "Path": "Media/480201553.wem",
+      "CachePath": "01/{0158A2F4-D3E8-296E-51DD-7ECAA3EC3E1D}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3016565752",
+      "Name": "PickupItem",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\PickupItem",
+      "GUID": "{BEF49E00-27F6-413F-B88E-CF2D5D6844F0}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.47862533",
+      "DurationMax": "0.47862533",
+      "MediaRefs": [
+       {
+        "Id": "480201553"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{DCE0AE26-D2CC-884F-9FA1-95C1EB31F4E7}"
+ }
+}

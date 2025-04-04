@@ -113,6 +113,7 @@ bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset)
 		InventoryItem.Item = DataAsset;
 		InventoryItem.Position = AvailableSlots[0];
 		Items.Add(InventoryItem);
+		OnItemAdded.Broadcast(InventoryItem);
 		return true;
 	}
 

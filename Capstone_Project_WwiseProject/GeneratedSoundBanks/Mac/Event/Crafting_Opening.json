@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3367727870",
+    "Type": "Event",
+    "GUID": "{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}",
+    "Language": "SFX",
+    "Hash": "{55E1084B-DE9C-B1D9-CD77-BFBFCA873105}",
+    "ObjectPath": "Crafting_Opening",
+    "ShortName": "Crafting_Opening",
+    "Path": "Event/Crafting_Opening.bnk",
+    "Events": [
+     {
+      "Id": "3367727870",
+      "Name": "Crafting_Opening",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Opening",
+      "GUID": "{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{06F88AD0-9E87-3CF3-17D7-009F0EC89757}"
+ }
+}

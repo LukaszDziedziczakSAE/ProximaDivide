@@ -62,7 +62,7 @@ void APlayerCharacter::SpawnRightHand()
 	if (PaperdollComponent->IsCurrentSlotHaveItem())
 	{
 		RightHandItem = GetWorld()->SpawnActor<AEquipableItem>(PaperdollComponent->GetCurrentSlot().Item->RightHand);
-		RightHandItem->AttachToComponent(FPS_Arms, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("RightHand"));
+		RightHandItem->AttachToComponent(FPS_Arms, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("RightHand"));
 		RightHandItem->UpdateRelatives();
 		RightHandItem->SetOwner(this);
 	}

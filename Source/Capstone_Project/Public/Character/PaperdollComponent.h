@@ -64,6 +64,9 @@ public:
 	int GetCurrentSlotNumber() { return Index; }
 
 	UFUNCTION(BlueprintCallable)
+	FSlotItem GetSlot(int SlotNumber);
+
+	UFUNCTION(BlueprintCallable)
 	FSlotItem GetCurrentSlot();
 
 	UFUNCTION(BlueprintPure)
@@ -86,6 +89,9 @@ public:
 
 	UFUNCTION()
 	void SelectSlot(int SlotNumber);
+
+	UFUNCTION()
+	bool DoesSlotHaveItem(int SlotNumber);
 
 	UFUNCTION(BlueprintPure)
 	bool IsCurrentSlotHaveItem();

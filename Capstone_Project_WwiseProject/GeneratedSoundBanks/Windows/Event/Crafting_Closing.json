@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1516176439",
+    "Type": "Event",
+    "GUID": "{24998CC0-0795-463D-9F73-EDDD1AF2C52D}",
+    "Language": "SFX",
+    "Hash": "{EF017CB4-AE5E-EAF6-1356-DB850642716D}",
+    "ObjectPath": "Crafting_Closing",
+    "ShortName": "Crafting_Closing",
+    "Path": "Event/Crafting_Closing.bnk",
+    "Events": [
+     {
+      "Id": "1516176439",
+      "Name": "Crafting_Closing",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Closing",
+      "GUID": "{24998CC0-0795-463D-9F73-EDDD1AF2C52D}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3734C77B-ADB9-C658-2DD5-8B79AFFBA1EC}"
+ }
+}

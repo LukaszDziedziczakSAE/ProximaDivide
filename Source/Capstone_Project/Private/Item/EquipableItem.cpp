@@ -3,12 +3,58 @@
 
 #include "Item/EquipableItem.h"
 #include "Character/SurvivalSciFi_Character.h"
+#include "AkGameplayStatics.h"
+#include "AkComponent.h"
+#include "AkAudioEvent.h"
+
+
+AEquipableItem::AEquipableItem()
+{
+	AkComponent = CreateDefaultSubobject<UAkComponent>(TEXT("AkComponent"));
+}
+
+void AEquipableItem::BeginPlay()
+{
+	Super::BeginPlay();
+
+	//FOnAkPostEventCallback nullCallback;
+	//UAkGameplayStatics::PostEvent(EquipSound, this, 0, nullCallback);
+
+	//EquipSound->
+	//AkComponent->PostAkEvent(EquipSound);
+	if (EquipSound != nullptr)
+	{
+		if (!EquipSound->IsLoaded()) EquipSound->LoadData();
+		//EquipSound->PostOnActor(this, FOnAkPostEventCallback(), 0, true);
+		FOnAkPostEventCallback nullCallback;
+		EquipSoundID = UAkGameplayStatics::PostEvent(EquipSound, this, 0, nullCallback);
+		UE_LOG(LogTemp, Log, TEXT("Wwise Event Playing %d"), EquipSoundID);
+	}
+	
+}
+
+int32 AEquipableItem::PlayWiseEvent(UAkAudioEvent* Event, bool bStopWhenAttachedToDestoryed)
+{
+	int PlayingID = AK_INVALID_PLAYING_ID;
+
+	if (Event)
+	{
+		FOnAkPostEventCallback nullCalback;
+		PlayingID = UAkGameplayStatics::PostEvent(Event, this, int32(0), nullCalback, bStopWhenAttachedToDestoryed);
+		UE_LOG(LogTemp, Log, TEXT("Wwise Event Playing"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Wwise Event reference on EquipableItem is invalid"));
+	}
+
+	return PlayingID;
+}
 
 void AEquipableItem::UpdateRelatives()
 {
 	SetActorRelativeLocation(RelativeLocation);
 	SetActorRelativeRotation(RelativeRotation);
-	//SetActorRelativeScale3D(FVector::OneVector);
 }
 
 void AEquipableItem::Use()

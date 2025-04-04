@@ -51,4 +51,7 @@ public:
 
 	UFUNCTION()
 	FVector GetBoxExtent();
+
+	UFUNCTION(BlueprintPure)
+	UStaticMeshComponent* GetMesh() { return Mesh; }
 };

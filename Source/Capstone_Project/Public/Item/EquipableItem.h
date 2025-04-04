@@ -14,7 +14,15 @@ class CAPSTONE_PROJECT_API AEquipableItem : public ASurvivalScifi_Item
 {
 	GENERATED_BODY()
 
+public:
+	AEquipableItem();
+
 protected:
+	virtual void BeginPlay() override;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UAkComponent* AkComponent;
+
 	UPROPERTY(EditDefaultsOnly)
 	FVector RelativeLocation;
 
@@ -33,7 +41,33 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	bool Busy;
 
+	UFUNCTION()
+	int32 PlayWiseEvent(UAkAudioEvent* Event, bool bStopWhenAttachedToDestoryed);
+
 public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UAkAudioEvent* EquipSound;
+	int32 EquipSoundID;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UAkAudioEvent* UnequipSound;
+	int32 UnequipSoundID;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UAkAudioEvent* UseSound;
+	int32 UseSoundID;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UAkAudioEvent* StrikeSound;
+	int32 StrikeSoundID;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnStartUsingSignature OnStartUsing;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnEndUsingSignature OnEndUsing;
+
+
 	UFUNCTION()
 	void UpdateRelatives();
 	
@@ -45,11 +79,5 @@ public:
 
 	UFUNCTION()
 	UAnimMontage* GetUseMontage() { return UseMontage; }
-
-	UPROPERTY(BlueprintAssignable)
-	FOnStartUsingSignature OnStartUsing;
-
-	UPROPERTY(BlueprintAssignable)
-	FOnEndUsingSignature OnEndUsing;
 
 };

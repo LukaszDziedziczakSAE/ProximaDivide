@@ -7,6 +7,8 @@
 #include "Item/FInventoryItem.h"
 #include "InventoryComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnItemAddedSignature, FInventoryItem, InventoryItem);
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class CAPSTONE_PROJECT_API UInventoryComponent : public UActorComponent
@@ -54,4 +56,7 @@ public:
 
 	UFUNCTION()
 	bool TryAddItem(UItemDataAsset* DataAsset);
+
+	UPROPERTY(BlueprintAssignable)
+	FOnItemAddedSignature OnItemAdded;
 };

@@ -58,6 +58,8 @@ bool ASurvivalSciFi_Character::TryPickUpItem(UItemDataAsset* Item)
 
 void ASurvivalSciFi_Character::SelectSlot(int SlotNumber)
 {
+	if (!PaperdollComponent->DoesSlotHaveItem(SlotNumber)) return;
+
 	PaperdollComponent->SelectSlot(SlotNumber);
 	SpawnRightHand();
 }

@@ -73,9 +73,9 @@ bool UPaperdollComponent::TryAddEquipable(UEquipableItemDataAsset* Equipable)
 	return false;
 }
 
-FSlotItem UPaperdollComponent::GetCurrentSlot()
+FSlotItem UPaperdollComponent::GetSlot(int SlotNumber)
 {
-	switch (Index)
+	switch (SlotNumber)
 	{
 	case 1:
 		return Slot1;
@@ -95,7 +95,11 @@ FSlotItem UPaperdollComponent::GetCurrentSlot()
 	default:
 		return FSlotItem();
 	}
-	
+}
+
+FSlotItem UPaperdollComponent::GetCurrentSlot()
+{
+	return GetSlot(Index);
 }
 
 EAnimHandsType UPaperdollComponent::GetCurrentAnimHandsType()
@@ -108,9 +112,16 @@ EAnimHandsType UPaperdollComponent::GetCurrentAnimHandsType()
 
 void UPaperdollComponent::SelectSlot(int SlotNumber)
 {
+	if (GetSlot(SlotNumber).Item == nullptr) return;
+
 	if (SlotNumber == Index) Index = 0;
 	else Index = SlotNumber;
 	OnSlotChange.Broadcast();
+}
+
+bool UPaperdollComponent::DoesSlotHaveItem(int SlotNumber)
+{
+	return Index >= 0 && Index <= 5 && GetSlot(SlotNumber).Item != nullptr;
 }
 
 bool UPaperdollComponent::IsCurrentSlotHaveItem()

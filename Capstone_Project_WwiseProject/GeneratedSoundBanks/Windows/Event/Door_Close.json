@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "128625444",
+    "Type": "Event",
+    "GUID": "{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}",
+    "Language": "SFX",
+    "Hash": "{009FF68C-8204-E001-CBAF-C4F7180A45F4}",
+    "ObjectPath": "Door_Close",
+    "ShortName": "Door_Close",
+    "Path": "Event/Door_Close.bnk",
+    "Events": [
+     {
+      "Id": "128625444",
+      "Name": "Door_Close",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\Doors\\Door_Close",
+      "GUID": "{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CE7813EF-230D-B947-24B3-DABF5049AA26}"
+ }
+}

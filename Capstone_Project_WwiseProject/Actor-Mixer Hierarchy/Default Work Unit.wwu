@@ -59,7 +59,94 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Playlist">
+							<Reference>
+								<ObjectRef Name="StartScreenMusic" ID="{D222D648-0F74-4130-91B9-BD78A89FD39E}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</RandomSequenceContainer>
+				<Folder Name="Interactions" ID="{47BCEF9E-742B-4A96-B56F-D986030C65FD}" ShortID="319437509">
+					<ChildrenList>
+						<Sound Name="Pickup_Item" ID="{2F49A0CF-0351-418A-A261-BAFA44F13AA3}" ShortID="518070160">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="94099-Hockey_helmet_put_in_bag-BLASTWAVEFX-29415" ID="{8F732294-051F-433C-8E97-E5F1766957E9}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.0521578980871467"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.146246655420823"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="1.28247067061337"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.76109599958253"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>94099-Hockey_helmet_put_in_bag-BLASTWAVEFX-29415.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="480201553"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="94099-Hockey_helmet_put_in_bag-BLASTWAVEFX-29415" ID="{8F732294-051F-433C-8E97-E5F1766957E9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Equpment" ID="{E615A137-C847-476E-B7B9-DA50CD851E76}" ShortID="20853832">
+					<ChildrenList>
+						<Folder Name="Pickaxe" ID="{729C5D43-B5E6-499C-B9DF-66B8DEDF29D7}" ShortID="238962382">
+							<ChildrenList>
+								<Sound Name="Pickaxe_Equip" ID="{60EDB41B-E593-4E35-AD98-1C397317B73F}" ShortID="727986968">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="88940-Hatchet_pick_up_scrape_rocks_axe-BLASTWAVEFX-26542" ID="{C5ECF620-6F55-41C8-BAE2-55D57B1A410C}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.157026934229638"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0.108905776965717"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0949759682840552"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.733636561622081"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>88940-Hatchet_pick_up_scrape_rocks_axe-BLASTWAVEFX-26542.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="820318597"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="88940-Hatchet_pick_up_scrape_rocks_axe-BLASTWAVEFX-26542" ID="{C5ECF620-6F55-41C8-BAE2-55D57B1A410C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

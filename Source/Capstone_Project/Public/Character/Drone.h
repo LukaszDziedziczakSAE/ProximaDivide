@@ -20,10 +20,16 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere)
+	USceneComponent* Root;
+
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* Mesh;
 
 	UPROPERTY(EditAnywhere)
 	class UDroneScanningComponent* DroneScanningComponent;
+
+	UPROPERTY(EditAnywhere)
+	class UDroneMovementComponent* DroneMovementComponent;
 
 	UPROPERTY(EditAnywhere)
 	class UNiagaraComponent* ScanningEffect;
@@ -37,4 +43,10 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	UDroneScanningComponent* GetDroneScanningComponent() { return DroneScanningComponent; }
+
+	UFUNCTION(BlueprintPure)
+	UNiagaraComponent* GetScanningEffect() { return ScanningEffect; }
+
+	UFUNCTION()
+	UStaticMeshComponent* GetMesh() { return Mesh; }
 };
