@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{24998CC0-0795-463D-9F73-EDDD1AF2C52D}",
     "Language": "SFX",
-    "Hash": "{EF017CB4-AE5E-EAF6-1356-DB850642716D}",
+    "Hash": "{86512F7E-A91C-6B34-A3A2-79C08121DB3E}",
     "ObjectPath": "Crafting_Closing",
     "ShortName": "Crafting_Closing",
     "Path": "Event/Crafting_Closing.bnk",
@@ -20,7 +20,6 @@
       "Name": "Crafting_Closing",
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Closing",
       "GUID": "{24998CC0-0795-463D-9F73-EDDD1AF2C52D}",
-      "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "0"
@@ -28,6 +27,6 @@
     ]
    }
   ],
-  "FileHash": "{36C31104-6295-8961-AB14-9C53F3C7BDB2}"
+  "FileHash": "{F9BBD520-3FDA-A3B8-B29D-FDFFB64465D0}"
  }
 }

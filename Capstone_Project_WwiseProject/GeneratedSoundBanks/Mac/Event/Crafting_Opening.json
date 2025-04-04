@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}",
     "Language": "SFX",
-    "Hash": "{55E1084B-DE9C-B1D9-CD77-BFBFCA873105}",
+    "Hash": "{57EBE696-57CA-88E7-F422-8F6883963345}",
     "ObjectPath": "Crafting_Opening",
     "ShortName": "Crafting_Opening",
     "Path": "Event/Crafting_Opening.bnk",
@@ -20,7 +20,6 @@
       "Name": "Crafting_Opening",
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Opening",
       "GUID": "{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}",
-      "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "0"
@@ -28,6 +27,6 @@
     ]
    }
   ],
-  "FileHash": "{06F88AD0-9E87-3CF3-17D7-009F0EC89757}"
+  "FileHash": "{E0A554F2-5850-1AEF-4EC1-9D6B3F8643CD}"
  }
 }

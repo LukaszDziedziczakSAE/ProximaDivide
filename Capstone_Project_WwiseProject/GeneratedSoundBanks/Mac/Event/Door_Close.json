@@ -10,24 +10,39 @@
     "Type": "Event",
     "GUID": "{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}",
     "Language": "SFX",
-    "Hash": "{009FF68C-8204-E001-CBAF-C4F7180A45F4}",
+    "Hash": "{6D71FB13-5BAB-06D6-8B32-28A4C3D97D0B}",
     "ObjectPath": "Door_Close",
     "ShortName": "Door_Close",
     "Path": "Event/Door_Close.bnk",
+    "Media": [
+     {
+      "Id": "809409738",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "doorOpen.wav",
+      "Path": "Media/809409738.wem",
+      "CachePath": "1B/{1BEE7471-9E6D-74D9-5332-DFC41C162237}.wem"
+     }
+    ],
     "Events": [
      {
       "Id": "128625444",
       "Name": "Door_Close",
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\Doors\\Door_Close",
       "GUID": "{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}",
-      "MaxAttenuation": "0",
       "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationMin": "0.79824775",
+      "DurationMax": "1.2310665",
+      "MediaRefs": [
+       {
+        "Id": "809409738"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{180D6C5C-150F-1D77-50BE-ED2DD9296582}"
+  "FileHash": "{B7933020-8521-2F8C-5589-73E0664B12C2}"
  }
 }

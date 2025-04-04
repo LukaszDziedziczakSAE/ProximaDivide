@@ -10,24 +10,39 @@
     "Type": "Event",
     "GUID": "{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}",
     "Language": "SFX",
-    "Hash": "{EEBA6DCC-5F9A-3414-BFA8-BE698E90D3F0}",
+    "Hash": "{1CAA4956-9B6E-694C-5F76-A425147EA2B4}",
     "ObjectPath": "Door_Open",
     "ShortName": "Door_Open",
     "Path": "Event/Door_Open.bnk",
+    "Media": [
+     {
+      "Id": "809409738",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "doorOpen.wav",
+      "Path": "Media/809409738.wem",
+      "CachePath": "1B/{1BEE7471-9E6D-74D9-5332-DFC41C162237}.wem"
+     }
+    ],
     "Events": [
      {
       "Id": "535830432",
       "Name": "Door_Open",
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\Doors\\Door_Open",
       "GUID": "{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}",
-      "MaxAttenuation": "0",
       "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationMin": "0.79824775",
+      "DurationMax": "1.2310665",
+      "MediaRefs": [
+       {
+        "Id": "809409738"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{2B06BAFE-6B39-2452-48A6-90A647937C82}"
+  "FileHash": "{855D94D7-7DEA-F622-D3C0-A2652DA163B5}"
  }
 }

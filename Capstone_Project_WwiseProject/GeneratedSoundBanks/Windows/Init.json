@@ -71,9 +71,37 @@
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Music",
       "GUID": "{EAD7FF9F-D980-4EBB-A430-3B46A98CC925}"
      }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "63790334",
+      "Name": "SurfaceType",
+      "ObjectPath": "\\Switches\\Default Work Unit\\SurfaceType",
+      "GUID": "{20EFFC19-9FE0-4EED-B91E-18B5A72F470B}",
+      "Switches": [
+       {
+        "Id": "1132214669",
+        "Name": "Interior",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SurfaceType\\Interior",
+        "GUID": "{79778D44-4CBA-44F5-AF78-04A199474DDB}"
+       },
+       {
+        "Id": "2195636714",
+        "Name": "Dirt",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SurfaceType\\Dirt",
+        "GUID": "{0CD224EE-5460-46F3-86ED-951E89F908A0}"
+       },
+       {
+        "Id": "2473969246",
+        "Name": "Metal",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SurfaceType\\Metal",
+        "GUID": "{2AEA3EE5-4CE6-49FB-903E-9579BC747E3E}"
+       }
+      ]
+     }
     ]
    }
   ],
-  "FileHash": "{D12CB59C-0351-DA4E-6B68-E80B5786A6DC}"
+  "FileHash": "{2AA0A700-D338-6FC0-A69B-23563024CDF1}"
  }
 }

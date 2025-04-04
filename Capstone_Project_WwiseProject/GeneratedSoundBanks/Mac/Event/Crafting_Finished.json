@@ -1,0 +1,32 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "724601160",
+    "Type": "Event",
+    "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
+    "Language": "SFX",
+    "Hash": "{7E262738-875C-0144-BD8D-7581E6990EC9}",
+    "ObjectPath": "Crafting_Finished",
+    "ShortName": "Crafting_Finished",
+    "Path": "Event/Crafting_Finished.bnk",
+    "Events": [
+     {
+      "Id": "724601160",
+      "Name": "Crafting_Finished",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Finished",
+      "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{8667F29E-09C6-A4FA-289F-CAA45E1ED004}"
+ }
+}

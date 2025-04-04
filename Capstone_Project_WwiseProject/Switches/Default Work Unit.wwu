@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{7F630BE6-AA7D-40DD-B429-3CC033AB14D6}" SchemaVersion="123">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{7F630BE6-AA7D-40DD-B429-3CC033AB14D6}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{7F630BE6-AA7D-40DD-B429-3CC033AB14D6}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="SurfaceType" ID="{20EFFC19-9FE0-4EED-B91E-18B5A72F470B}">
+					<ChildrenList>
+						<Switch Name="Dirt" ID="{0CD224EE-5460-46F3-86ED-951E89F908A0}"/>
+						<Switch Name="Interior" ID="{79778D44-4CBA-44F5-AF78-04A199474DDB}"/>
+						<Switch Name="Metal" ID="{2AEA3EE5-4CE6-49FB-903E-9579BC747E3E}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>

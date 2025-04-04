@@ -4,6 +4,7 @@
 #include "Enviroment/Door.h"
 #include "Components/BoxComponent.h"
 #include "Character/SurvivalSciFi_Character.h"
+#include "AkGameplayStatics.h"
 
 // Sets default values
 ADoor::ADoor()
@@ -104,13 +105,19 @@ void ADoor::ClosingTick(float DeltaTime)
 void ADoor::Open()
 {
 	if (DoorState == EDoorState::Closed)
+	{
 		DoorState = EDoorState::Opening;
+		UAkGameplayStatics::PostEvent(DoorOpenEvent, this, int32(0), FOnAkPostEventCallback(), true);
+	}
 }
 
 void ADoor::Close()
 {
 	if (DoorState == EDoorState::Open)
+	{
 		DoorState = EDoorState::Closing;
+		UAkGameplayStatics::PostEvent(DoorCloseEvent, this, int32(0), FOnAkPostEventCallback(), true);
+	}
 }
 
 void ADoor::ToggleState()

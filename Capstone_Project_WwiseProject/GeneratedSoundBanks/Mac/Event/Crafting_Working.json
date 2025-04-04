@@ -1,0 +1,32 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3985867599",
+    "Type": "Event",
+    "GUID": "{AC466B88-8C0C-4678-95EB-EEDBFAF9ACA2}",
+    "Language": "SFX",
+    "Hash": "{F7634B8D-20FA-D289-21F5-F96BDCED836A}",
+    "ObjectPath": "Crafting_Working",
+    "ShortName": "Crafting_Working",
+    "Path": "Event/Crafting_Working.bnk",
+    "Events": [
+     {
+      "Id": "3985867599",
+      "Name": "Crafting_Working",
+      "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Working",
+      "GUID": "{AC466B88-8C0C-4678-95EB-EEDBFAF9ACA2}",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{FAE8D04A-9F63-4E2F-426D-3C144AB6A2E7}"
+ }
+}

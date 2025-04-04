@@ -18,8 +18,28 @@
 					<ChildrenList>
 						<Folder Name="Doors" ID="{CB128DBC-CF2D-4F39-B173-25D523BEB095}" ShortID="804695194">
 							<ChildrenList>
-								<Event Name="Door_Open" ID="{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}"/>
-								<Event Name="Door_Close" ID="{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}"/>
+								<Event Name="Door_Open" ID="{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}">
+									<ChildrenList>
+										<Action Name="" ID="{0C1BD961-6B38-4A4A-8F43-905FFA8E3DC8}" ShortID="19462324">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Door_Open" ID="{5179A685-BE60-459F-A5D1-98D9058CAA05}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Door_Close" ID="{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}">
+									<ChildrenList>
+										<Action Name="" ID="{2998E558-28CB-4C3A-A874-5A6AC48723BB}" ShortID="761714144">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Door_Close" ID="{50CF75AF-BAD0-449B-B146-80ED63EEB567}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Switches" ID="{CE7FCAE6-AE36-4E05-A293-BFCDCCA8BCE6}" ShortID="764472130">
@@ -29,10 +49,64 @@
 						</Folder>
 						<Folder Name="CraftingMachine" ID="{C1F4299B-5EDA-4CC2-AF8F-ED3485AE4ED4}" ShortID="596953106">
 							<ChildrenList>
-								<Event Name="Crafting_Opening" ID="{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}"/>
-								<Event Name="Crafting_Closing" ID="{24998CC0-0795-463D-9F73-EDDD1AF2C52D}"/>
-								<Event Name="Crafting_Crafting" ID="{AC466B88-8C0C-4678-95EB-EEDBFAF9ACA2}"/>
-								<Event Name="Crafting_Cooldown" ID="{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}"/>
+								<Event Name="Crafting_Opening" ID="{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}">
+									<ChildrenList>
+										<Action Name="" ID="{93374D19-C89D-4805-B907-CEEC7AC9ECE4}" ShortID="219297094">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="CraftingMachine_Open" ID="{8F094EB4-EB9A-4EB3-8F13-28D764B32400}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Crafting_Closing" ID="{24998CC0-0795-463D-9F73-EDDD1AF2C52D}">
+									<ChildrenList>
+										<Action Name="" ID="{7B8B1B9D-1341-4C09-B702-6CE251CC399A}" ShortID="992464669">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="CraftingMachine_Close" ID="{EEC2214A-2954-4232-B2F9-CE29498A252B}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Crafting_Working" ID="{AC466B88-8C0C-4678-95EB-EEDBFAF9ACA2}">
+									<ChildrenList>
+										<Action Name="" ID="{641BB8FB-7C72-4B9A-8F28-61C6FEEC729C}" ShortID="349402959">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="CraftingMachine_Working" ID="{E6708AC2-239D-431A-AB0D-37727EEF6FD6}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Crafting_Finished" ID="{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}">
+									<ChildrenList>
+										<Action Name="" ID="{15CF3228-D152-4CCB-BB83-08A0807C4BEE}" ShortID="275157459">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="CraftingMachine_Finish" ID="{8D5820CC-7089-4B18-92DA-4AC93FACE9F0}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Crafting_Stop" ID="{55BA20A3-2F3B-4A36-B0D7-FBFE26166A14}">
+									<ChildrenList>
+										<Action Name="" ID="{80FA9F7F-A263-425E-AEA7-C451C53228C8}" ShortID="950423391">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="CraftingMachine_Working" ID="{E6708AC2-239D-431A-AB0D-37727EEF6FD6}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Event Name="PickupItem" ID="{BEF49E00-27F6-413F-B88E-CF2D5D6844F0}">
@@ -68,6 +142,21 @@
 								<Event Name="Pickaxe_Use" ID="{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}"/>
 							</ChildrenList>
 						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Player" ID="{565852B6-C06E-4DAA-92C1-17FBBDAB20A6}" ShortID="741306934">
+					<ChildrenList>
+						<Event Name="Footstep" ID="{CB9907E8-10D8-40F0-9517-6611F0858A5A}">
+							<ChildrenList>
+								<Action Name="" ID="{3C06C9B1-4324-4DBE-B70F-5365026B8A55}" ShortID="193754619">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Footstep" ID="{361A1929-3831-416A-BF54-F75BF16C27D7}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
