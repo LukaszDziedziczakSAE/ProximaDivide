@@ -3,60 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}" PersistMode="Standalone">
 			<ChildrenList>
-				<RandomSequenceContainer Name="StartScreenMusic" ID="{E9B69EF1-4ACF-4EFF-B1E2-E7FFA5B08DBF}" ShortID="774652742">
-					<PropertyList>
-						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
-						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<Sound Name="StartScreenMusic" ID="{D222D648-0F74-4130-91B9-BD78A89FD39E}" ShortID="240756591">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-5</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="2-Dark fantasy Studio-Reloaded (seamless)" ID="{92B61456-1B25-482C-9734-F9E7B9F41E9C}">
-									<Language>SFX</Language>
-									<AudioFile>2-Dark fantasy Studio-Reloaded (seamless).wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="897487694"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="2-Dark fantasy Studio-Reloaded (seamless)" ID="{92B61456-1B25-482C-9734-F9E7B9F41E9C}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-					<ObjectLists>
-						<ObjectList Name="Playlist">
-							<Reference>
-								<ObjectRef Name="StartScreenMusic" ID="{D222D648-0F74-4130-91B9-BD78A89FD39E}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
-							</Reference>
-						</ObjectList>
-					</ObjectLists>
-				</RandomSequenceContainer>
 				<Folder Name="Equpment" ID="{E615A137-C847-476E-B7B9-DA50CD851E76}" ShortID="20853832">
 					<ChildrenList>
 						<Folder Name="Pickaxe" ID="{729C5D43-B5E6-499C-B9DF-66B8DEDF29D7}" ShortID="238962382">
@@ -140,6 +86,11 @@
 								<Sound Name="Door_Open" ID="{5179A685-BE60-459F-A5D1-98D9058CAA05}" ShortID="177065689">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="CenterPercentage" Type="int32">
+											<ValueList>
+												<Value>100</Value>
+											</ValueList>
+										</Property>
 										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
@@ -180,6 +131,11 @@
 								<Sound Name="Door_Close" ID="{50CF75AF-BAD0-449B-B146-80ED63EEB567}" ShortID="953112928">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="CenterPercentage" Type="int32">
+											<ValueList>
+												<Value>100</Value>
+											</ValueList>
+										</Property>
 										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
@@ -1096,6 +1052,111 @@
 										<SwitchRef Name="Dirt" ID="{0CD224EE-5460-46F3-86ED-951E89F908A0}"/>
 										<ItemList>
 											<ItemRef Name="Dirt" ID="{61EC57A1-BBCE-4276-8826-BB4BA39F9A8A}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Ambient" ID="{B7B0F383-6B2B-48E0-AEB3-55AAF5E45075}" ShortID="869016117">
+					<ChildrenList>
+						<SwitchContainer Name="AmbientAtmosphere" ID="{7DC019F4-2F83-4149-93A4-645F8F8D6B08}" ShortID="745780583">
+							<PropertyList>
+								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+								<Property Name="SwitchBehavior" Type="int16" Value="1"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Inside" ID="{F53BDEA3-FA41-4209-A807-6C9225C147F8}" WorkUnitID="{00399EE1-F1EE-4553-91E8-F56FBF6992A0}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Ambient" ID="{427B765F-9C62-4E73-9A5E-8C5358F6E389}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Enviroment" ID="{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}" WorkUnitID="{00399EE1-F1EE-4553-91E8-F56FBF6992A0}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Exterior" ID="{0277DA61-AFC6-4C17-BEB3-EA023C46AFC1}" ShortID="270694748">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="324938-ambient_Bieszczady_shelter_home_top_mountain_wind_blows_stereo_D100" ID="{D7163C4A-9CB5-49EF-93D7-FF6859EB144A}">
+											<Language>SFX</Language>
+											<AudioFile>324938-ambient_Bieszczady_shelter_home_top_mountain_wind_blows_stereo_D100.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="112375236"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="324938-ambient_Bieszczady_shelter_home_top_mountain_wind_blows_stereo_D100" ID="{D7163C4A-9CB5-49EF-93D7-FF6859EB144A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Interior" ID="{8A6D6C93-8CD3-4D8F-B37E-A260E84AD03D}" ShortID="731048225">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="125232-Room_tone_with_air_conditioning_steady_and_ambient" ID="{8092772F-56E4-44DF-A626-8206C8E47684}">
+											<Language>SFX</Language>
+											<AudioFile>125232-Room_tone_with_air_conditioning_steady_and_ambient.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="998091077"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="125232-Room_tone_with_air_conditioning_steady_and_ambient" ID="{8092772F-56E4-44DF-A626-8206C8E47684}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Exterior" ID="{0277DA61-AFC6-4C17-BEB3-EA023C46AFC1}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="Interior" ID="{8A6D6C93-8CD3-4D8F-B37E-A260E84AD03D}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Outside" ID="{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"/>
+										<ItemList>
+											<ItemRef Name="Exterior" ID="{0277DA61-AFC6-4C17-BEB3-EA023C46AFC1}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Inside" ID="{F53BDEA3-FA41-4209-A807-6C9225C147F8}"/>
+										<ItemList>
+											<ItemRef Name="Interior" ID="{8A6D6C93-8CD3-4D8F-B37E-A260E84AD03D}"/>
 										</ItemList>
 									</Grouping>
 								</GroupingList>

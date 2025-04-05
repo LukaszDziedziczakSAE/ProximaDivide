@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{1C6EDFA5-0DA9-69FD-5904-63F1EE0A4E49}",
+    "Hash": "{B5FE38CE-3B89-75E7-B658-FB5BB48D1033}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -72,6 +72,34 @@
       "GUID": "{EAD7FF9F-D980-4EBB-A430-3B46A98CC925}"
      }
     ],
+    "StateGroups": [
+     {
+      "Id": "3909959462",
+      "Name": "Enviroment",
+      "ObjectPath": "\\States\\Default Work Unit\\Enviroment",
+      "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
+      "States": [
+       {
+        "Id": "438105790",
+        "Name": "Outside",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Outside",
+        "GUID": "{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\None",
+        "GUID": "{2BFE9924-4A9E-4F29-AD9B-560230966B40}"
+       },
+       {
+        "Id": "3553349781",
+        "Name": "Inside",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Inside",
+        "GUID": "{F53BDEA3-FA41-4209-A807-6C9225C147F8}"
+       }
+      ]
+     }
+    ],
     "SwitchGroups": [
      {
       "Id": "63790334",
@@ -102,6 +130,6 @@
     ]
    }
   ],
-  "FileHash": "{7A32D1EB-FF53-C18E-34C3-2663AF3F171E}"
+  "FileHash": "{50B4DA75-A16C-4459-ED7E-C03F5E5F310D}"
  }
 }

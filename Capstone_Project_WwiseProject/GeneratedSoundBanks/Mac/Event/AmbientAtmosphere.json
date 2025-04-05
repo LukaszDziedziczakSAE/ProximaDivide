@@ -1,0 +1,107 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2189653179",
+    "Type": "Event",
+    "GUID": "{BCC4B4F6-5E14-4BDB-B92D-3BF16A834C67}",
+    "Language": "SFX",
+    "Hash": "{C7FE563A-B724-8EEB-0669-391C1C7BDEE4}",
+    "ObjectPath": "AmbientAtmosphere",
+    "ShortName": "AmbientAtmosphere",
+    "Path": "Event/AmbientAtmosphere.bnk",
+    "Media": [
+     {
+      "Id": "112375236",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "324938-ambient_Bieszczady_shelter_home_top_mountain_wind_blows_stereo_D100.wav",
+      "Path": "Media/112375236.wem",
+      "CachePath": "85/{85B9321B-43B7-B18A-9263-A1B69AFD912B}.wem"
+     },
+     {
+      "Id": "998091077",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "125232-Room_tone_with_air_conditioning_steady_and_ambient.wav",
+      "Path": "Media/998091077.wem",
+      "CachePath": "EA/{EAE0D501-C746-07F2-01A4-F16E397F9DC5}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2189653179",
+      "Name": "AmbientAtmosphere",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\AmbientAtmosphere",
+      "GUID": "{BCC4B4F6-5E14-4BDB-B92D-3BF16A834C67}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "438105790",
+         "GUID": "{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "112375236"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "3553349781",
+         "GUID": "{F53BDEA3-FA41-4209-A807-6C9225C147F8}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "998091077"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "3909959462",
+      "Name": "Enviroment",
+      "ObjectPath": "\\States\\Default Work Unit\\Enviroment",
+      "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
+      "States": [
+       {
+        "Id": "438105790",
+        "Name": "Outside",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Outside",
+        "GUID": "{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\None",
+        "GUID": "{2BFE9924-4A9E-4F29-AD9B-560230966B40}"
+       },
+       {
+        "Id": "3553349781",
+        "Name": "Inside",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Inside",
+        "GUID": "{F53BDEA3-FA41-4209-A807-6C9225C147F8}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{13523323-A333-2020-A56F-D31B8173408B}"
+ }
+}

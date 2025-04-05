@@ -5,10 +5,10 @@
 			<ChildrenList>
 				<Event Name="StartScreenMusic" ID="{B70AE9EC-3F0E-45ED-ADE8-15523F3F0B7F}">
 					<ChildrenList>
-						<Action Name="" ID="{2A0034D0-BE4C-4978-8F72-FFBD98DCF8BF}" ShortID="386123192">
+						<Action Name="" ID="{9EDA13DC-E08F-4A5C-BD8A-4B1107149A96}" ShortID="41408938">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="StartScreenMusic" ID="{D222D648-0F74-4130-91B9-BD78A89FD39E}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+									<ObjectRef Name="StartScreenMusic" ID="{89287293-CC70-4422-8A08-11F7E90E9BF1}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -162,6 +162,35 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Footstep" ID="{361A1929-3831-416A-BF54-F75BF16C27D7}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Enviroment" ID="{EEE6074F-280A-403D-8AFC-C60FDB747CDC}" ShortID="538379654">
+					<ChildrenList>
+						<Event Name="AmbientAtmosphere" ID="{BCC4B4F6-5E14-4BDB-B92D-3BF16A834C67}">
+							<ChildrenList>
+								<Action Name="" ID="{1C96CC7D-AA64-4CCC-B7F8-21432AE398E7}" ShortID="590920311">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="AmbientAtmosphere" ID="{7DC019F4-2F83-4149-93A4-645F8F8D6B08}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="AmbientAtmosphereStop" ID="{5BBC162D-A344-469A-875F-DA72CFE57144}">
+							<ChildrenList>
+								<Action Name="" ID="{A77A9E9C-9B39-47B7-B24A-1921B9402305}" ShortID="961004134">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="AmbientAtmosphere" ID="{7DC019F4-2F83-4149-93A4-645F8F8D6B08}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

@@ -1,0 +1,11 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2189653179	AmbientAtmosphere			\Default Work Unit\Enviroment\AmbientAtmosphere	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	3909959462	Enviroment			\Default Work Unit\Enviroment	
+
+State	ID	Name	State Group			Notes
+	438105790	Outside	Enviroment			
+	748895195	None	Enviroment			
+	3553349781	Inside	Enviroment			
+

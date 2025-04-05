@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{ED4DA6F6-7639-45E3-B788-57F93507E4BA}",
     "Language": "SFX",
-    "Hash": "{E2341F2D-9C0E-A956-2AF6-1CBBFF9D8956}",
+    "Hash": "{13283C21-4FE3-BC1E-F827-02EB2ACE3F89}",
     "ObjectPath": "Press_Switch",
     "ShortName": "Press_Switch",
     "Path": "Event/Press_Switch.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "212725-hifi-button-007.wav",
       "Path": "Media/655488007.wem",
-      "CachePath": "F9/{F9724FD3-F9AA-A36D-F894-AB76CFE55348}.wem"
+      "CachePath": "5C/{5C29421F-B547-87F5-6A0E-08444C5DA4B1}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{E85E3D74-5568-E4AC-351F-5F5A59BC3F70}"
+  "FileHash": "{AEFCF53F-F17F-7DFF-BC95-3F7986212BB7}"
  }
 }

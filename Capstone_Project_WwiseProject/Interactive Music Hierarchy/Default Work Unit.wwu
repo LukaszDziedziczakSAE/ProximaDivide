@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}" PersistMode="Standalone">
 			<ChildrenList>
 				<MusicPlaylistContainer Name="StartScreenMusic" ID="{89287293-CC70-4422-8A08-11F7E90E9BF1}" ShortID="921208459">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -13,7 +20,20 @@
 						</Reference>
 						<Reference Name="PlaylistRoot">
 							<Custom>
-								<MusicPlaylistItem Name="" ID="{08CA5A04-61D9-4AA6-93AB-2F5AC2DE3CBA}" ShortID="692721566"/>
+								<MusicPlaylistItem Name="" ID="{08CA5A04-61D9-4AA6-93AB-2F5AC2DE3CBA}" ShortID="692721566">
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{93A9A408-C7C3-4B10-AE29-30E4131BA555}" ShortID="796455806">
+											<PropertyList>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Segment">
+													<ObjectRef Name="2-Dark Fantasy Studio- Reloaded" ID="{9899A77C-7D0E-4067-AD51-1839496619A7}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+												</Reference>
+											</ReferenceList>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
 							</Custom>
 						</Reference>
 						<Reference Name="TransitionRoot">
@@ -32,6 +52,94 @@
 							</Custom>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="2-Dark Fantasy Studio- Reloaded" ID="{9899A77C-7D0E-4067-AD51-1839496619A7}" ShortID="927604762">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="126000"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="2-Dark Fantasy Studio- Reloaded" ID="{8A7581C4-8121-4285-AAC5-4BC366BB3274}" ShortID="665136880">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{ADB31D27-5F1D-4DA7-BCED-97F1D94E9BBB}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="2-Dark Fantasy Studio- Reloaded" ID="{6C8A8C75-8E42-43E3-AB26-B2164C5589A1}">
+											<Language>SFX</Language>
+											<AudioFile>2-Dark Fantasy Studio- Reloaded.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="180261933"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Sequences">
+											<Reference>
+												<Local>
+													<MusicTrackSequence Name="" ID="{EFE3FCAF-0B42-4C32-B314-BE7ABCF92A9F}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<Reference>
+																	<Local>
+																		<MusicClip Name="2-Dark Fantasy Studio- Reloaded" ID="{826F2A7D-BC3E-4A6F-9FB8-03F5F98E783A}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="126000"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="2-Dark Fantasy Studio- Reloaded" ID="{6C8A8C75-8E42-43E3-AB26-B2164C5589A1}"/>
+																		</MusicClip>
+																	</Local>
+																</Reference>
+															</ObjectList>
+														</ObjectLists>
+													</MusicTrackSequence>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicTrack>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{09430613-9502-4CD2-9A83-D546FA9731E1}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{1EF2AEBB-9F98-4288-A346-0B14BFBE34A0}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="126000"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+					</ChildrenList>
 				</MusicPlaylistContainer>
 			</ChildrenList>
 		</WorkUnit>

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
     "Language": "SFX",
-    "Hash": "{B62BC3C7-72E6-A65B-B8D9-83A6DBAB763A}",
+    "Hash": "{9235AB59-DA34-899D-81E7-057225F5113A}",
     "ObjectPath": "Crafting_Finished",
     "ShortName": "Crafting_Finished",
     "Path": "Event/Crafting_Finished.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "528510-SCIWeap-Energy_Launcher_Cooldown_01-JATH-RDSN.wav",
       "Path": "Media/186398851.wem",
-      "CachePath": "D3/{D3BAD219-F07B-0BC6-30E5-DBCB8DFA1C79}.wem"
+      "CachePath": "8F/{8F7200CD-C7F8-D831-0DFB-FFB6BF6D2E7D}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{90FE2089-1725-6331-C010-A92940BE547D}"
+  "FileHash": "{5D1EB2A5-8A8A-B09A-1AB2-1944490461B0}"
  }
 }

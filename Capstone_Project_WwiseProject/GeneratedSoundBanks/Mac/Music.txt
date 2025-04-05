@@ -2,5 +2,5 @@ Event	ID	Name			Wwise Object Path	Notes
 	2495197720	StartScreenMusic			\Default Work Unit\StartScreenMusic	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	897487694	StartScreenMusic	C:\Dev_Unreal\Capstone_Project\Capstone_Project_WwiseProject\.cache\E8\{E8426E60-E56F-4CEF-CD00-15CA97285397}.wem		\Actor-Mixer Hierarchy\Default Work Unit\StartScreenMusic\StartScreenMusic		18698496
+	180261933	2-Dark Fantasy Studio- Reloaded	C:\Dev_Unreal\Capstone_Project\Capstone_Project_WwiseProject\.cache\6C\{6C13342F-75A5-017C-516A-C528A3F66CA6}.wem		\Interactive Music Hierarchy\Default Work Unit\StartScreenMusic\2-Dark Fantasy Studio- Reloaded\2-Dark Fantasy Studio- Reloaded		22226496
 

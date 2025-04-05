@@ -10,18 +10,18 @@
     "Type": "User",
     "GUID": "{FE2C163D-388F-4DF2-94E4-25F807FE7889}",
     "Language": "SFX",
-    "Hash": "{22850897-F532-B8E7-A892-A468EBA2BF95}",
+    "Hash": "{C5E8391D-CF96-55BC-DBAC-DFF09B1DD5EF}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
     "Media": [
      {
-      "Id": "897487694",
+      "Id": "180261933",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "2-Dark fantasy Studio-Reloaded (seamless).wav",
-      "CachePath": "E8/{E8426E60-E56F-4CEF-CD00-15CA97285397}.wem"
+      "ShortName": "2-Dark Fantasy Studio- Reloaded.wav",
+      "CachePath": "6C/{6C13342F-75A5-017C-516A-C528A3F66CA6}.wem"
      }
     ],
     "Events": [
@@ -31,17 +31,17 @@
       "ObjectPath": "\\Events\\Default Work Unit\\StartScreenMusic",
       "GUID": "{B70AE9EC-3F0E-45ED-ADE8-15523F3F0B7F}",
       "DurationType": "OneShot",
-      "DurationMin": "106",
-      "DurationMax": "106",
+      "DurationMin": "126",
+      "DurationMax": "126",
       "MediaRefs": [
        {
-        "Id": "897487694"
+        "Id": "180261933"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{BBCFEEC2-CD4C-AB9E-EFAA-0201FA3AD26B}"
+  "FileHash": "{50C2EB8F-37B4-03CE-911A-97D01AC61CB1}"
  }
 }
