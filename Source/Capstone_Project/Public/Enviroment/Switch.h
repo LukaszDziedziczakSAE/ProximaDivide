@@ -32,6 +32,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 	AActor* Activatee;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio")
+	class UAkAudioEvent* SwitchActivatedSound;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

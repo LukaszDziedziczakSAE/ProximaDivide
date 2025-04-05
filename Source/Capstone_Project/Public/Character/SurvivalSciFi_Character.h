@@ -43,6 +43,18 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool UseItemDown;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Footsteps")
+	class UAkAudioEvent* FootstepEvent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Footsteps")
+	class UAkSwitchValue* DirtValue;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Footsteps")
+	UAkSwitchValue* InteriorValue;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Footsteps")
+	UAkSwitchValue* MetalValue;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -85,5 +97,8 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool GetUseItemDown() { return UseItemDown; }
+
+	UFUNCTION(BlueprintCallable)
+	void Footstep();
 
 };

@@ -8,6 +8,7 @@
 #include "NiagaraComponent.h"
 #include "Item/ItemDataAsset.h"
 #include "Item/SurvivalScifi_Item.h"
+#include "AkGameplayStatics.h"
 
 
 // Sets default values
@@ -188,6 +189,9 @@ void ACraftingMachine::CraftingTick(float DeltaTime)
 		CurrentlyCraftingItem->SetMaterial(CurrentlyCraftingItemMaterial);
 
 		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
+
+		UAkGameplayStatics::PostEvent(RunningSoundStop, this, int32(0), FOnAkPostEventCallback(), false);
+		UAkGameplayStatics::PostEvent(FinishedSound, this, int32(0), FOnAkPostEventCallback(), false);
 	}
 }
 
@@ -219,6 +223,8 @@ void ACraftingMachine::Interact(APlayerCharacter* PlayerCharacter)
 		CraftingMachineState = ECraftingMachineState::Opening;
 
 		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->ShowCraftingMenu();
+
+		UAkGameplayStatics::PostEvent(OpeningSound, this, int32(0), FOnAkPostEventCallback(), false);
 	}
 
 	else if (CraftingMachineState == ECraftingMachineState::Standby)
@@ -228,7 +234,7 @@ void ACraftingMachine::Interact(APlayerCharacter* PlayerCharacter)
 
 		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->HideCraftingMenu();
 
-		
+		UAkGameplayStatics::PostEvent(ClosingSound, this, int32(0), FOnAkPostEventCallback(), false);
 	}
 }
 
@@ -292,6 +298,8 @@ void ACraftingMachine::Craft(URecipeDataAsset* Recipe)
 
 
 	GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
+
+	UAkGameplayStatics::PostEvent(RunningSound, this, int32(0), FOnAkPostEventCallback(), false);
 }
 
 FText ACraftingMachine::CraftingStatusText()

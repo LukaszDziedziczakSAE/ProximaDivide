@@ -44,7 +44,17 @@
 						</Folder>
 						<Folder Name="Switches" ID="{CE7FCAE6-AE36-4E05-A293-BFCDCCA8BCE6}" ShortID="764472130">
 							<ChildrenList>
-								<Event Name="Switch_Activate" ID="{6CFE73CE-490D-481B-BAB9-82841C8EAD65}"/>
+								<Event Name="Press_Switch" ID="{ED4DA6F6-7639-45E3-B788-57F93507E4BA}">
+									<ChildrenList>
+										<Action Name="" ID="{FB68640C-679B-4C8A-BE4F-DBFD1C67EF0C}" ShortID="973796504">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Press_Switch" ID="{C1228425-BD2D-4CBB-9A3E-9F55A611CD66}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="CraftingMachine" ID="{C1F4299B-5EDA-4CC2-AF8F-ED3485AE4ED4}" ShortID="596953106">

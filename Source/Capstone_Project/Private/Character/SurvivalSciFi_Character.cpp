@@ -8,6 +8,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Item/EquipableItem.h"
 #include "Item/EquipableItemDataAsset.h"
+#include "AkGameplayStatics.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ASurvivalSciFi_Character::ASurvivalSciFi_Character()
@@ -107,4 +109,38 @@ void ASurvivalSciFi_Character::UseItem()
 float ASurvivalSciFi_Character::PlayMontage(UAnimMontage* Montage)
 {
 	return GetMesh()->GetAnimInstance()->Montage_Play(Montage);
+}
+
+void ASurvivalSciFi_Character::Footstep()
+{
+	
+	FHitResult Hit;
+	FVector Start = GetActorLocation();
+	FVector End = Start + FVector(0,0,-150.0f);
+	FCollisionQueryParams CollisionQueryParams;
+	CollisionQueryParams.bReturnPhysicalMaterial = true;
+	GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECollisionChannel::ECC_Visibility, CollisionQueryParams);
+	if (Hit.bBlockingHit && Hit.GetActor() != nullptr)
+	{
+		switch (UGameplayStatics::GetSurfaceType(Hit))
+		{
+		case SurfaceType1:
+			UAkGameplayStatics::SetSwitch(DirtValue, this);
+			break;
+
+		case SurfaceType2:
+			UAkGameplayStatics::SetSwitch(InteriorValue, this);
+			break;
+
+		case SurfaceType3:
+			UAkGameplayStatics::SetSwitch(MetalValue, this);
+			break;
+
+		default:
+			TEnumAsByte<EPhysicalSurface> SurfaceType = UGameplayStatics::GetSurfaceType(Hit);
+			UE_LOG(LogTemp, Warning, TEXT("Hit SurfaceType%s"), *FString::FromInt(SurfaceType.GetValue()));
+		}
+	}
+
+	UAkGameplayStatics::PostEvent(FootstepEvent, this, int32(0), FOnAkPostEventCallback(), true);
 }

@@ -10,10 +10,21 @@
     "Type": "Event",
     "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
     "Language": "SFX",
-    "Hash": "{7E262738-875C-0144-BD8D-7581E6990EC9}",
+    "Hash": "{B62BC3C7-72E6-A65B-B8D9-83A6DBAB763A}",
     "ObjectPath": "Crafting_Finished",
     "ShortName": "Crafting_Finished",
     "Path": "Event/Crafting_Finished.bnk",
+    "Media": [
+     {
+      "Id": "186398851",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "528510-SCIWeap-Energy_Launcher_Cooldown_01-JATH-RDSN.wav",
+      "Path": "Media/186398851.wem",
+      "CachePath": "D3/{D3BAD219-F07B-0BC6-30E5-DBCB8DFA1C79}.wem"
+     }
+    ],
     "Events": [
      {
       "Id": "724601160",
@@ -21,12 +32,17 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Finished",
       "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
       "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationMin": "2.5853994",
+      "DurationMax": "2.5853994",
+      "MediaRefs": [
+       {
+        "Id": "186398851"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{8667F29E-09C6-A4FA-289F-CAA45E1ED004}"
+  "FileHash": "{6B7ED2B3-F0E0-2B60-ECDC-3305FF0F3A05}"
  }
 }

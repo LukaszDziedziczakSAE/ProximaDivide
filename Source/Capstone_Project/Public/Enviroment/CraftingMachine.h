@@ -113,6 +113,21 @@ protected:
 	UPROPERTY(EditAnywhere)
 	float PostCraftingPause{ 2.5f };
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio")
+	class UAkAudioEvent* OpeningSound;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio")
+	UAkAudioEvent* ClosingSound;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio")
+	UAkAudioEvent* RunningSound;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio")
+	UAkAudioEvent* RunningSoundStop;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio")
+	UAkAudioEvent* FinishedSound;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

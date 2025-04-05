@@ -10,11 +10,20 @@
     "Type": "Event",
     "GUID": "{CB9907E8-10D8-40F0-9517-6611F0858A5A}",
     "Language": "SFX",
-    "Hash": "{DF48AAB5-CB62-F22B-86A1-268998CD0933}",
+    "Hash": "{F6BE3D75-F585-B9CD-F8A8-EF3563397639}",
     "ObjectPath": "Footstep",
     "ShortName": "Footstep",
     "Path": "Event/Footstep.bnk",
     "Media": [
+     {
+      "Id": "22777294",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480731-Old_Schooner_Boat_Metal_Floor_Footstep_4.wav",
+      "Path": "Media/22777294.wem",
+      "CachePath": "7A/{7A444ED5-9568-7BEE-DACC-90DD548D5877}.wem"
+     },
      {
       "Id": "45123231",
       "Language": "SFX",
@@ -25,13 +34,31 @@
       "CachePath": "06/{06668CA8-A2E1-CE8B-3398-D921E0E50D54}.wem"
      },
      {
-      "Id": "106866045",
+      "Id": "98473269",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "footstep-sand3.wav",
-      "Path": "Media/106866045.wem",
-      "CachePath": "47/{47DD4570-673D-2411-1EDE-73E86D14A403}.wem"
+      "ShortName": "480744-Old_Schooner_Boat_Metal_Floor_Footstep_3.wav",
+      "Path": "Media/98473269.wem",
+      "CachePath": "0B/{0BC4A72E-6F1F-D7D6-C116-ED8AFFCC1118}.wem"
+     },
+     {
+      "Id": "169529713",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480733-Old_Schooner_Boat_Metal_Floor_Footstep_6.wav",
+      "Path": "Media/169529713.wem",
+      "CachePath": "EE/{EE35154E-D527-97C2-6951-B8ED3B509040}.wem"
+     },
+     {
+      "Id": "209249309",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480676-Clunky_Metal_Gangway_Footstep_12.wav",
+      "Path": "Media/209249309.wem",
+      "CachePath": "8B/{8B6A17CB-9079-CCC2-18FD-6B14DA8464CE}.wem"
      },
      {
       "Id": "313982117",
@@ -50,6 +77,15 @@
       "ShortName": "footstep-rock7.wav",
       "Path": "Media/326064580.wem",
       "CachePath": "79/{792E6333-5813-17A0-2FE8-9FCF7AFFC30F}.wem"
+     },
+     {
+      "Id": "363961872",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480673-Clunky_Metal_Gangway_Footstep_9.wav",
+      "Path": "Media/363961872.wem",
+      "CachePath": "33/{331EBD4A-03C2-93F3-2D53-CE5682E94FC4}.wem"
      },
      {
       "Id": "401101945",
@@ -79,13 +115,22 @@
       "CachePath": "40/{40A596F0-21C5-FD58-F9DA-4B944C5E9DBD}.wem"
      },
      {
-      "Id": "547365503",
+      "Id": "459570507",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "footstep-sand6.wav",
-      "Path": "Media/547365503.wem",
-      "CachePath": "9E/{9E52769A-07A6-E2AB-4CA5-745EFA44C029}.wem"
+      "ShortName": "480732-Old_Schooner_Boat_Metal_Floor_Footstep_5.wav",
+      "Path": "Media/459570507.wem",
+      "CachePath": "8E/{8EE52319-5136-EACB-FF7A-66B41020F281}.wem"
+     },
+     {
+      "Id": "505464025",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480734-Old_Schooner_Boat_Metal_Floor_Footstep_7.wav",
+      "Path": "Media/505464025.wem",
+      "CachePath": "E0/{E05D4D82-BF26-5F72-2046-1B0DADB9BEBB}.wem"
      },
      {
       "Id": "571949773",
@@ -97,40 +142,40 @@
       "CachePath": "EF/{EFC59CF4-37D5-EF0F-F93E-3351DB6AA15B}.wem"
      },
      {
-      "Id": "575485553",
+      "Id": "613153763",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "footstep-sand1.wav",
-      "Path": "Media/575485553.wem",
-      "CachePath": "7E/{7E89CD0D-A7C0-625D-C4C2-CF5838C84802}.wem"
+      "ShortName": "480741-Old_Schooner_Boat_Metal_Floor_Footstep_14.wav",
+      "Path": "Media/613153763.wem",
+      "CachePath": "2C/{2C08F45C-E9F0-B0E4-DE68-A899E4D5D5FE}.wem"
      },
      {
-      "Id": "635422892",
+      "Id": "667286100",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "footstep-sand4.wav",
-      "Path": "Media/635422892.wem",
-      "CachePath": "2A/{2ABDE6B6-9D78-E009-3E54-FB3A47D6E8CF}.wem"
+      "ShortName": "480730-Old_Schooner_Boat_Metal_Floor_Footstep_1.wav",
+      "Path": "Media/667286100.wem",
+      "CachePath": "89/{890A9790-9736-DBE7-782A-7A3BB04294EB}.wem"
      },
      {
-      "Id": "767699300",
+      "Id": "681726661",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "footstep-sand5.wav",
-      "Path": "Media/767699300.wem",
-      "CachePath": "C6/{C631B988-6E60-534A-E860-74F61ADC6411}.wem"
+      "ShortName": "480675-Clunky_Metal_Gangway_Footstep_11.wav",
+      "Path": "Media/681726661.wem",
+      "CachePath": "48/{48917850-A353-B938-D030-0A494E1CDE63}.wem"
      },
      {
-      "Id": "777745857",
+      "Id": "782074833",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "footstep-sand2.wav",
-      "Path": "Media/777745857.wem",
-      "CachePath": "54/{549AE832-377A-F326-EFFB-38DFA73FC409}.wem"
+      "ShortName": "480743-Old_Schooner_Boat_Metal_Floor_Footstep_2.wav",
+      "Path": "Media/782074833.wem",
+      "CachePath": "72/{72723511-67DB-723D-4F88-9E88F7290ADA}.wem"
      },
      {
       "Id": "792158178",
@@ -158,6 +203,51 @@
       "ShortName": "footstep-rock3.wav",
       "Path": "Media/943118001.wem",
       "CachePath": "69/{69DA61D5-62C3-07C8-FC68-971159AB50C4}.wem"
+     },
+     {
+      "Id": "965335148",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480677-Clunky_Metal_Gangway_Footstep_13.wav",
+      "Path": "Media/965335148.wem",
+      "CachePath": "F2/{F28731D0-07BE-FD4C-801B-20F3AB84E4F5}.wem"
+     },
+     {
+      "Id": "967299393",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480738-Old_Schooner_Boat_Metal_Floor_Footstep_11.wav",
+      "Path": "Media/967299393.wem",
+      "CachePath": "A3/{A30A6BEE-0193-6634-325A-9C1F0528F898}.wem"
+     },
+     {
+      "Id": "1003383924",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480672-Clunky_Metal_Gangway_Footstep_8.wav",
+      "Path": "Media/1003383924.wem",
+      "CachePath": "97/{97788C3D-EE41-C010-A0A9-0C3C0BCC6A4B}.wem"
+     },
+     {
+      "Id": "1030008878",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480674-Clunky_Metal_Gangway_Footstep_10.wav",
+      "Path": "Media/1030008878.wem",
+      "CachePath": "9B/{9B551CAB-5CCA-D25A-8755-44246C041BBB}.wem"
+     },
+     {
+      "Id": "1059329625",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "480680-Clunky_Metal_Gangway_Footstep_4.wav",
+      "Path": "Media/1059329625.wem",
+      "CachePath": "C5/{C57C9497-73ED-A5C9-5D1F-C04ACD1923C3}.wem"
      }
     ],
     "Events": [
@@ -167,8 +257,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Player\\Footstep",
       "GUID": "{CB9907E8-10D8-40F0-9517-6611F0858A5A}",
       "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0.43265197",
+      "DurationMin": "0.21294323",
+      "DurationMax": "1.3155175",
       "SwitchContainers": [
        {
         "SwitchValue": {
@@ -177,6 +267,74 @@
          "Id": "1132214669",
          "GUID": "{79778D44-4CBA-44F5-AF78-04A199474DDB}",
          "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "22777294"
+         },
+         {
+          "Id": "98473269"
+         },
+         {
+          "Id": "169529713"
+         },
+         {
+          "Id": "459570507"
+         },
+         {
+          "Id": "505464025"
+         },
+         {
+          "Id": "613153763"
+         },
+         {
+          "Id": "667286100"
+         },
+         {
+          "Id": "782074833"
+         },
+         {
+          "Id": "967299393"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "63790334",
+         "Id": "2473969246",
+         "GUID": "{2AEA3EE5-4CE6-49FB-903E-9579BC747E3E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "209249309"
+         },
+         {
+          "Id": "363961872"
+         },
+         {
+          "Id": "681726661"
+         },
+         {
+          "Id": "965335148"
+         },
+         {
+          "Id": "1003383924"
+         },
+         {
+          "Id": "1030008878"
+         },
+         {
+          "Id": "1059329625"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "63790334",
+         "Id": "2195636714",
+         "GUID": "{0CD224EE-5460-46F3-86ED-951E89F908A0}"
         },
         "MediaRefs": [
          {
@@ -208,34 +366,6 @@
          },
          {
           "Id": "943118001"
-         }
-        ]
-       },
-       {
-        "SwitchValue": {
-         "GroupType": "Switch",
-         "GroupId": "63790334",
-         "Id": "2195636714",
-         "GUID": "{0CD224EE-5460-46F3-86ED-951E89F908A0}"
-        },
-        "MediaRefs": [
-         {
-          "Id": "106866045"
-         },
-         {
-          "Id": "547365503"
-         },
-         {
-          "Id": "575485553"
-         },
-         {
-          "Id": "635422892"
-         },
-         {
-          "Id": "767699300"
-         },
-         {
-          "Id": "777745857"
          }
         ]
        }
@@ -272,6 +402,6 @@
     ]
    }
   ],
-  "FileHash": "{6F5EBAB4-8181-0FE4-0424-29D1642AA19A}"
+  "FileHash": "{9D482352-DCC4-231F-84F8-1B49EDA457BA}"
  }
 }

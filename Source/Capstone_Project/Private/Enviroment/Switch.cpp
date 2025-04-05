@@ -4,6 +4,7 @@
 #include "Enviroment/Switch.h"
 #include "Components/BoxComponent.h"
 #include "Interface/SwitchActivated.h"
+#include "AkGameplayStatics.h"
 
 // Sets default values
 ASwitch::ASwitch()
@@ -37,6 +38,7 @@ void ASwitch::Interact(APlayerCharacter* PlayerCharacter)
 	ISwitchActivated* Interface = Cast<ISwitchActivated>(Activatee);
 	if (Interface == nullptr) return;
 	Interface->SwitchActivation();
+	UAkGameplayStatics::PostEvent(SwitchActivatedSound, this, int32(0), FOnAkPostEventCallback(), false);
 }
 
 FString ASwitch::InteractionText()

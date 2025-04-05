@@ -10,24 +10,39 @@
     "Type": "Event",
     "GUID": "{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}",
     "Language": "SFX",
-    "Hash": "{55E1084B-DE9C-B1D9-CD77-BFBFCA873105}",
+    "Hash": "{80EE13FE-1EAB-69BA-0D5D-3D57602FC379}",
     "ObjectPath": "Crafting_Opening",
     "ShortName": "Crafting_Opening",
     "Path": "Event/Crafting_Opening.bnk",
+    "Media": [
+     {
+      "Id": "992585646",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "261104-DOORS-WOOD-GATE-OPEN-1.wav",
+      "Path": "Media/992585646.wem",
+      "CachePath": "52/{52BB930C-9F10-3496-0C19-65DFFE20B7FB}.wem"
+     }
+    ],
     "Events": [
      {
       "Id": "3367727870",
       "Name": "Crafting_Opening",
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\CraftingMachine\\Crafting_Opening",
       "GUID": "{B8EFAC54-0820-47A2-9B66-BC46C7DBED03}",
-      "MaxAttenuation": "0",
       "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationMin": "1.2253437",
+      "DurationMax": "1.2253437",
+      "MediaRefs": [
+       {
+        "Id": "992585646"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{DE8B6EF6-DD29-BC3D-21BE-12FFEFF916D8}"
+  "FileHash": "{04C31418-A209-3696-1A9F-E51BBA7DA370}"
  }
 }

@@ -3,6 +3,7 @@
 
 #include "Enviroment/AirlockSwitch.h"
 #include "Enviroment/Airlock.h"
+#include "AkGameplayStatics.h"
 
 void AAirlockSwitch::BeginPlay()
 {
@@ -36,6 +37,8 @@ void AAirlockSwitch::Interact(APlayerCharacter* PlayerCharacter)
 		Airlock->InnerSwitchPress();
 		break;
 	}
+
+	UAkGameplayStatics::PostEvent(SwitchActivatedSound, this, int32(0), FOnAkPostEventCallback(), false);
 }
 
 FString AAirlockSwitch::InteractionText()
