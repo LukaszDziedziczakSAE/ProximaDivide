@@ -45,6 +45,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UPlayerInventoryUserWidget* PlayerInventoryUserWidget;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class ASurvivalScifi_HUD* HUD;
+
 public:
 	UFUNCTION()
 	void Set(UItemDataAsset* ItemData, float NewCellSize, bool Rotated = false, FIntPoint NewPosition = FIntPoint(0,0), int NewSlotNumber = 0);

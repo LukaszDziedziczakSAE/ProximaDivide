@@ -12,6 +12,12 @@ class CAPSTONE_PROJECT_API UInventorySlotUserWidget : public UUserWidget
 	GENERATED_BODY()
 
 protected:
+	virtual void NativeConstruct() override;
+
+	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+
+	virtual void NativeOnMouseLeave(const FPointerEvent& InMouseEvent) override;
+
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* SizeBox;
 
@@ -29,6 +35,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FLinearColor OccupiedColor;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class ASurvivalScifi_HUD* HUD;
 
 	
 public:

@@ -24,7 +24,7 @@ void UInventoryItemUserWidget::Set(UItemDataAsset* ItemData, float NewCellSize, 
 		UE_LOG(LogTemp, Warning, TEXT("%s Missing ItemImage reference"), *GetName());
 		return;
 	}
-	ItemImage->OnMouseButtonDownEvent.BindUFunction(this, FName("OnMouseDown"));
+	//ItemImage->OnMouseButtonDownEvent.BindUFunction(this, FName("OnMouseDown"));
 }
 
 void UInventoryItemUserWidget::Rotate()
@@ -36,8 +36,6 @@ void UInventoryItemUserWidget::Rotate()
 
 void UInventoryItemUserWidget::OnMouseDown()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Clicked %s"), *Item->Name);
-
 	if (PlayerInventoryUserWidget != nullptr) PlayerInventoryUserWidget->
 		SetInHand(Item, CellSize, bRotated, Position, SlotNumber);
 }
@@ -46,21 +44,32 @@ void UInventoryItemUserWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	PlayerInventoryUserWidget = GetOwningPlayerPawn()->GetController<APlayerController>()->GetHUD<ASurvivalScifi_HUD>()->GetInventory();
+	HUD = GetOwningPlayerPawn()->GetController<APlayerController>()->GetHUD<ASurvivalScifi_HUD>();
+	if (HUD != nullptr) PlayerInventoryUserWidget = HUD->GetInventory();
+
+	if (HUD == nullptr) UE_LOG(LogTemp, Error, TEXT("Missing HUD reference"));
 }
 
 void UInventoryItemUserWidget::NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
 	Super::NativeOnMouseEnter(InGeometry, InMouseEvent);
-
-	UE_LOG(LogTemp, Warning, TEXT("Mouse over %s"), *Item->Name);
+	
+	if (HUD != nullptr)
+	{
+		HUD->MouseOverItem = this;
+		UE_LOG(LogTemp, Warning, TEXT("Mouse over %s"), *Item->Name);
+	}
 }
 
 void UInventoryItemUserWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEvent)
 {
 	Super::NativeOnMouseLeave(InMouseEvent);
 
-	UE_LOG(LogTemp, Warning, TEXT("Mouse left %s"), *Item->Name);
+	if (HUD != nullptr)
+	{
+		if (HUD->MouseOverItem == this) HUD->MouseOverItem = nullptr;
+		UE_LOG(LogTemp, Warning, TEXT("Mouse left %s"), *Item->Name);
+	}
 }
 
 void UInventoryItemUserWidget::Orient()

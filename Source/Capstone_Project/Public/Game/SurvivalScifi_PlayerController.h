@@ -120,6 +120,12 @@ protected:
 	void InventorySelect();
 
 	UFUNCTION()
+	void InventorySelectEnd();
+
+	UFUNCTION()
 	void InventoryAuto();
+
+	UFUNCTION()
+	void InventoryAutoEnd();
 
 };

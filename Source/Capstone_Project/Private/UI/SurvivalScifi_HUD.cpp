@@ -5,6 +5,9 @@
 #include "UI/SurvivalScifiUserWidget.h"
 #include "UI/PlayerInventoryUserWidget.h"
 #include "UI/CraftingMenuUserWidget.h"
+#include "UI/InventoryItemUserWidget.h"
+#include "Item/ItemDataAsset.h"
+#include "UI/InventorySlotUserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -89,4 +92,30 @@ void ASurvivalScifi_HUD::UpdateCraftingMenu()
 {
 	if (CraftingMenu != nullptr)
 		CraftingMenu->UpdateCraftingScreen();
+}
+
+void ASurvivalScifi_HUD::SelectDown()
+{
+	if (IsShowingInventory())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Item: %s"), MouseOverItem != nullptr ? *MouseOverItem->GetItem()->Name : TEXT("NULL"));
+		UE_LOG(LogTemp, Warning, TEXT("Position: %s"), MouseOverSlot != nullptr ? *MouseOverSlot->GetPosition().ToString() : TEXT("NULL"));
+
+		if (MouseOverItem != nullptr)
+		{
+			MouseOverItem->OnMouseDown();
+		}
+	}
+}
+
+void ASurvivalScifi_HUD::SelectUp()
+{
+}
+
+void ASurvivalScifi_HUD::SecondaryDown()
+{
+}
+
+void ASurvivalScifi_HUD::SecondaryUp()
+{
 }
