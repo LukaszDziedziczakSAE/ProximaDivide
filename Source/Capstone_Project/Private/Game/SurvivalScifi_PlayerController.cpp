@@ -104,7 +104,11 @@ void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& V
 		if (bUIOnlyMode) SetInputMode(FInputModeUIOnly());
 		else
 		{
-			SetInputMode(FInputModeGameAndUI());
+			//SetInputMode(FInputModeGameAndUI());
+			FInputModeGameAndUI InputModeGameAndUI;
+			InputModeGameAndUI.SetHideCursorDuringCapture(false);
+			InputModeGameAndUI.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+			SetInputMode(InputModeGameAndUI);
 		}
 	}
 
