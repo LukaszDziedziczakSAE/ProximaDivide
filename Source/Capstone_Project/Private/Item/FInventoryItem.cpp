@@ -30,3 +30,8 @@ TArray<FIntPoint> FInventoryItem::OccupiedSlotsRotated()
 
     return OccupiedSlots;
 }
+
+inline bool FInventoryItem::operator==(const FInventoryItem& OtherInventoryItem)
+{
+    return Item == OtherInventoryItem.Item && Position == OtherInventoryItem.Position;
+}

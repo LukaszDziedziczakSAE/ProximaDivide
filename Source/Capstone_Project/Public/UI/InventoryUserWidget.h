@@ -44,4 +44,10 @@ protected:
 public:
 	UFUNCTION(BlueprintCallable)
 	void SetInventory(UInventoryComponent* Inventory);
+
+	UFUNCTION(BlueprintCallable)
+	void RefreshSlots();
+
+	UFUNCTION(BlueprintCallable)
+	void ClearSlots();
 };

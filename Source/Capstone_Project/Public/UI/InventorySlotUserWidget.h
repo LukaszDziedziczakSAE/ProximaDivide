@@ -15,8 +15,21 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* SizeBox;
 
+	UPROPERTY(meta = (BindWidget))
+	class UImage* CellImage;
+
+	UPROPERTY(meta = (BindWidget))
+	class UTextBlock* Cords;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FIntPoint Position;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FLinearColor FreeColor;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FLinearColor OccupiedColor;
+
 	
 public:
 	UFUNCTION(BlueprintPure)
@@ -27,4 +40,7 @@ public:
 
 	UFUNCTION()
 	void SetSize(float Size);
+
+	UFUNCTION()
+	void SetOccupied(bool bIsOccupied);
 };

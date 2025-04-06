@@ -57,6 +57,9 @@ public:
 	UFUNCTION()
 	bool TryAddItem(UItemDataAsset* DataAsset);
 
+	UFUNCTION()
+	bool SlotIsOccupied(FIntPoint SlotCords);
+
 	UPROPERTY(BlueprintAssignable)
 	FOnItemAddedSignature OnItemAdded;
 };

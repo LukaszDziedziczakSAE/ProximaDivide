@@ -22,5 +22,13 @@ public:
 	UTexture2D* Image;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UTexture2D* ImageRotated;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FIntPoint Size{ 1,1 };
+
+	UFUNCTION(BlueprintPure)
+	bool bCanRotate() { return Size.X != Size.Y; }
+
+	inline bool operator==(const UItemDataAsset& ItemDataAsset);
 };

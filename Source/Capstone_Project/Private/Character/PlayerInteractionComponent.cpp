@@ -7,6 +7,8 @@
 #include "Interface/Interaction.h"
 #include "UI/SurvivalScifi_HUD.h"
 #include "Enviroment/CraftingMachine.h"
+#include "Item/SurvivalScifi_Item.h"
+#include "AkGameplayStatics.h"
 
 UPlayerInteractionComponent::UPlayerInteractionComponent()
 {
@@ -92,9 +94,15 @@ FString UPlayerInteractionComponent::GetInteractionText()
 void UPlayerInteractionComponent::Interact()
 {
 	if (InteractionInterface.GetObject() == nullptr) return;
-	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
-	Interaction->Interact(PlayerCharacter);
 
+	ASurvivalScifi_Item* Item = Cast<ASurvivalScifi_Item>(InteractionInterface.GetObject());
+	if (Item != nullptr)
+	{
+		UAkGameplayStatics::PostEvent(PickUpSound, Item, int32(0), FOnAkPostEventCallback(), false);
+	}
+
+	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
+	if (Interaction!=nullptr) Interaction->Interact(PlayerCharacter);
 	HUD->ResetInteraction();
 }
 

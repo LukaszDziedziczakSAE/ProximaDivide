@@ -5,6 +5,7 @@
 
 #include "Item/ItemDataAsset.h"
 
+
 UInventoryComponent::UInventoryComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
@@ -24,9 +25,9 @@ TArray<FIntPoint> UInventoryComponent::Slots()
 {
 	TArray<FIntPoint> Slots;
 
-	for (int x = 1; x <= Size.X; x++)
+	for (int y = 1; y <= Size.Y; y++)
 	{
-		for (int y = 1; y <= Size.Y; y++)
+		for (int x = 1; x <= Size.X; x++)
 		{
 			Slots.Add(FIntPoint{ x,y });
 		}
@@ -112,11 +113,18 @@ bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset)
 		FInventoryItem InventoryItem;
 		InventoryItem.Item = DataAsset;
 		InventoryItem.Position = AvailableSlots[0];
+		InventoryItem.Rotated = false;
 		Items.Add(InventoryItem);
+		UE_LOG(LogTemp, Log, TEXT("%s added to inventory at %s"), *InventoryItem.Item->Name, *InventoryItem.Position.ToString());
 		OnItemAdded.Broadcast(InventoryItem);
 		return true;
 	}
 
 	return false;
+}
+
+bool UInventoryComponent::SlotIsOccupied(FIntPoint SlotCords)
+{
+	return GetOccupiedSlots().Contains(SlotCords);
 }
 

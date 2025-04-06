@@ -37,6 +37,7 @@ void ASurvivalScifi_Item::Interact(APlayerCharacter* PlayerCharacter)
 {
 	if (PlayerCharacter->TryPickUpItem(DataAsset))
 	{
+
 		Destroy();
 	}
 }

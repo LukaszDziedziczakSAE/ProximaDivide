@@ -38,6 +38,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	bool IsInUIMode;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UAkAudioEvent* PickUpSound;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

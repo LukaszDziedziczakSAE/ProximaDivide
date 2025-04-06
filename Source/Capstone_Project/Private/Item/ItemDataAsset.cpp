@@ -3,3 +3,7 @@
 
 #include "Item/ItemDataAsset.h"
 
+inline bool UItemDataAsset::operator==(const UItemDataAsset& ItemDataAsset)
+{
+    return Name.Equals(ItemDataAsset.Name);
+}

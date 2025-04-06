@@ -13,6 +13,7 @@
 
 void UInventoryUserWidget::NativeDestruct()
 {
+	ClearSlots();
 }
 
 void UInventoryUserWidget::SetInventory(UInventoryComponent* Inventory)
@@ -22,18 +23,26 @@ void UInventoryUserWidget::SetInventory(UInventoryComponent* Inventory)
 	SizeBox->SetWidthOverride(InventoryComponent->GetSize().X * CellSize);
 	SizeBox->SetHeightOverride(InventoryComponent->GetSize().Y * CellSize);
 
+	RefreshSlots();
+}
+
+void UInventoryUserWidget::RefreshSlots()
+{
+	ClearSlots();
+
 	if (SlotClass == nullptr) return;
 
-	for (int x = 1; x <= InventoryComponent->GetSize().X; x++)
+	for (int y = 1; y <= InventoryComponent->GetSize().Y; y++)
 	{
-		for (int y = 1; y <= InventoryComponent->GetSize().Y; y++)
+		for (int x = 1; x <= InventoryComponent->GetSize().X; x++)
 		{
 			UInventorySlotUserWidget* InventorySlot = CreateWidget<UInventorySlotUserWidget>(GetWorld(), SlotClass);
 			InventorySlot->SetSize(CellSize);
 			InventorySlot->SetPosition(FIntPoint(x, y));
 			//Grid->AddChildToUniformGrid(InventorySlot, y - 1, x - 1);
 			InventoryOverlay->AddChildToOverlay(InventorySlot);
-			InventorySlot->SetPadding(FMargin{(x-1)*CellSize, (y-1)*CellSize, 0, 0});
+			InventorySlot->SetPadding(FMargin{ (x - 1) * CellSize, (y - 1) * CellSize, 0, 0 });
+			InventorySlot->SetOccupied(InventoryComponent->SlotIsOccupied(FIntPoint(x, y)));
 			Slots.Add(InventorySlot);
 		}
 	}
@@ -43,30 +52,50 @@ void UInventoryUserWidget::SetInventory(UInventoryComponent* Inventory)
 	for (FInventoryItem InventoryItem : InventoryComponent->GetItems())
 	{
 		UInventoryItemUserWidget* InventoryItemWidget = CreateWidget<UInventoryItemUserWidget>(GetWorld(), ItemClass);
-		InventoryOverlay->AddChildToOverlay(InventoryItemWidget);
-		//InventoryItemWidget->SetRenderTransformPivot(FVector2D::ZeroVector);
-
 		InventoryItemWidget->Set(InventoryItem.Item, CellSize, InventoryItem.Rotated);
 
-		if (InventoryItem.Rotated)
+		InventoryOverlay->AddChildToOverlay(InventoryItemWidget);
+		InventoryItemWidget->SetPadding(FMargin{
+				(InventoryItem.Position.X - 1) * CellSize,
+				(InventoryItem.Position.Y - 1) * CellSize,
+				0, 0 });
+		/*if (!InventoryItem.Rotated)
 		{
 			InventoryItemWidget->SetPadding(FMargin{
-				(InventoryItem.Position.X - 1)* CellSize,
-				(InventoryItem.Position.Y - 1)* CellSize,
+				(InventoryItem.Position.Y - 1) * CellSize,
+				(InventoryItem.Position.X - 1) * CellSize,
 				0, 0 });
 		}
 		else
 		{
-			InventoryItemWidget->SetPadding(FMargin{ 
-				(InventoryItem.Position.X - 1) * CellSize, 
-				(InventoryItem.Position.Y - 1) * CellSize, 
+			InventoryItemWidget->SetPadding(FMargin{
+				(InventoryItem.Position.X - 1) * CellSize,
+				(InventoryItem.Position.Y - 1) * CellSize,
 				0, 0 });
-		}
-
-		
-
+		}*/
 		Items.Add(InventoryItemWidget);
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Slots: %d"), Slots.Num());
+	//UE_LOG(LogTemp, Warning, TEXT("Slots: %d"), Slots.Num());
+}
+
+void UInventoryUserWidget::ClearSlots()
+{
+	if (Slots.Num() > 0)
+	{
+		for (UInventorySlotUserWidget* SlotWidget : Slots)
+		{
+			SlotWidget->RemoveFromParent();
+		}
+		Slots.Empty();
+	}
+
+	if (Items.Num() > 0)
+	{
+		for (UInventoryItemUserWidget* ItemWidget : Items)
+		{
+			ItemWidget->RemoveFromParent();
+		}
+		Items.Empty();
+	}
 }

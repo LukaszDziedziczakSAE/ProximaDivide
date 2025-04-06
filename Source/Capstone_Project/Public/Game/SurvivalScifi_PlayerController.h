@@ -14,6 +14,9 @@ class CAPSTONE_PROJECT_API ASurvivalScifi_PlayerController : public APlayerContr
 protected:
 	virtual void OnPossess(APawn* aPawn) override;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	bool bUIOnlyMode;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class APlayerCharacter* PlayerCharacter;
 
@@ -55,6 +58,12 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Jump;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_InventorySelect;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_InventoryAuto;
 
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
@@ -106,5 +115,11 @@ protected:
 
 	UFUNCTION()
 	void Jump();
+
+	UFUNCTION()
+	void InventorySelect();
+
+	UFUNCTION()
+	void InventoryAuto();
 
 };

@@ -7,6 +7,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Character/PlayerCharacter.h"
 #include "UI/SurvivalScifi_HUD.h"
+#include "Framework/Application/SlateApplication.h"
 
 void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 {
@@ -58,6 +59,8 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Use, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::UseItem);
 		Input->BindAction(IA_Use, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::UseItemEnd);
 		Input->BindAction(IA_Jump, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Jump);
+		Input->BindAction(IA_InventorySelect, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::InventorySelect);
+		Input->BindAction(IA_InventoryAuto, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::InventoryAuto);
 	}
 
 	else
@@ -96,7 +99,11 @@ void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& V
 	{
 		GetHUD<ASurvivalScifi_HUD>()->ShowInventory();
 		SetShowMouseCursor(true);
-		SetInputMode(FInputModeGameAndUI());
+		if (bUIOnlyMode) SetInputMode(FInputModeUIOnly());
+		else
+		{
+			SetInputMode(FInputModeGameAndUI());
+		}
 	}
 
 	else
@@ -110,13 +117,13 @@ void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& V
 bool ASurvivalScifi_PlayerController::AllowLook()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
-		|| GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu();
+		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu();
 }
 
 bool ASurvivalScifi_PlayerController::AllowMove()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
-		|| GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu();
+		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu();
 }
 
 void ASurvivalScifi_PlayerController::RunStart()
@@ -181,4 +188,46 @@ void ASurvivalScifi_PlayerController::UseItemEnd()
 void ASurvivalScifi_PlayerController::Jump()
 {
 	if (PlayerCharacter != nullptr) PlayerCharacter->Jump();
+}
+
+void ASurvivalScifi_PlayerController::InventorySelect()
+{
+	if (!GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()) return;
+
+	FVector2D MousePosition;
+	GetMousePosition(MousePosition.X, MousePosition.Y);
+	const FHUDHitBox* HUDHitBox = GetHUD<ASurvivalScifi_HUD>()->GetHitBoxAtCoordinates(MousePosition, false);
+
+	// Get a reference to the singleton instance of the slate application.
+	//FSlateApplication& SlateApp = FSlateApplication::Get();
+
+	// Find a "widget tree path" of all widgets under the mouse cursor.
+	// This path will contain not only the top-level widget, but all widgets underneath.
+	// For example, if the mouse cursor was over a Button with a Text widget inside of it, then the last 
+	// widget in the widget path would be the Text widget, and the next to last widget would be the Button widget.
+	/*FWidgetPath WidgetsUnderCursor =
+		SlateApplication.LocateWindowUnderMouse(SlateApplication.GetCursorPos(), SlateApplication.GetInteractiveTopLevelWindows());
+
+	FString Result = TEXT("");
+	if (WidgetsUnderCursor.IsValid())
+	{
+		Result += TEXT(" Count:") + FString::FromInt(WidgetsUnderCursor.Widgets.Num());
+
+		for (int32 Idx = 0; Idx < WidgetsUnderCursor.Widgets.Num(); ++Idx)
+		{
+			FArrangedWidget& Widget = WidgetsUnderCursor.Widgets[Idx];
+
+			Result += TEXT(" ") + Widget.Widget->ToString();
+		}
+	}
+	else
+		Result += "ERROR";
+
+	// Print out a quick summary of all widgets that were found under the mouse.
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *Result); */
+}
+
+void ASurvivalScifi_PlayerController::InventoryAuto()
+{
+	if (!GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()) return;
 }

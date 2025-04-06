@@ -60,6 +60,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	bool IsShowingInventory() { return Inventory != nullptr; }
 
+	UFUNCTION(BlueprintPure)
+	UPlayerInventoryUserWidget* GetInventory() { return Inventory; }
+
 	UFUNCTION()
 	void ShowInteraction();
 
