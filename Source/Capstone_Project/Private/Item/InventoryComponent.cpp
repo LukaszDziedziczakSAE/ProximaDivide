@@ -4,6 +4,7 @@
 #include "Item/InventoryComponent.h"
 
 #include "Item/ItemDataAsset.h"
+#include "Item/RecipeDataAsset.h"
 
 
 UInventoryComponent::UInventoryComponent()
@@ -77,13 +78,13 @@ bool UInventoryComponent::ItemCanFitInSlot(FIntPoint Slot, UItemDataAsset* Item,
 		return false;
 	}
 
-	for (int x = Slot.X; x < Slot.X + Item->Size.X; x++)
+	for (int y = Slot.Y; y < Slot.Y + Item->Size.Y; y++)
 	{
-		if (x > Size.X) return false;
-
-		for (int y = Slot.Y; y < Slot.Y + Item->Size.Y; y++)
+		if (y > Size.Y) return false;
+	
+		for (int x = Slot.X; x < Slot.X + Item->Size.X; x++)
 		{
-			if (y > Size.Y) return false;
+			if (x > Size.X) return false;
 
 			if (OccupiedSlots.Num() > 0 && OccupiedSlots.Contains(FIntPoint{ x,y })) return false;
 		}
@@ -106,6 +107,8 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset)
 {
+	if (DataAsset == nullptr) return false;
+
 	TArray<FIntPoint> AvailableSlots = GetAvailableSlotsFor(DataAsset);
 
 	if (AvailableSlots.Num() > 0)
@@ -126,5 +129,85 @@ bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset)
 bool UInventoryComponent::SlotIsOccupied(FIntPoint SlotCords)
 {
 	return GetOccupiedSlots().Contains(SlotCords);
+}
+
+bool UInventoryComponent::CanAfford(URecipeDataAsset* Recipe)
+{
+	for (FRecipeItem RecipieItem : Recipe->RecipeItems)
+	{
+		if (!HasItem(RecipieItem.Item, RecipieItem.Amount))
+			return false;
+	}
+		
+
+	return true;
+}
+
+bool UInventoryComponent::HasItem(UItemDataAsset* DataAsset, int Amount)
+{
+	int count = 0;
+
+	for (FInventoryItem InventoryItem : Items)
+		if (InventoryItem.Item == DataAsset) count++;
+
+	UE_LOG(LogTemp, Log, TEXT("Have %d %s, need %d"), count, *DataAsset->Name, Amount);
+	return count >= Amount;
+}
+
+bool UInventoryComponent::TryRemoveItem(UItemDataAsset* DataAsset, int Amount)
+{
+	if (HasItem(DataAsset, Amount))
+	{
+		TArray<FInventoryItem> ItemsToRemove;
+
+		for (FInventoryItem InventoryItem : Items)
+		{
+			if (InventoryItem.Item == DataAsset &&
+				ItemsToRemove.Num() < Amount)
+				ItemsToRemove.Add(InventoryItem);
+		}
+			
+
+		for (FInventoryItem InventoryItem : ItemsToRemove)
+			Items.Remove(InventoryItem);
+
+		return true;
+	}
+
+	return false;
+}
+
+bool UInventoryComponent::TakeItemsForRecipe(URecipeDataAsset* Recipe)
+{
+	for (FRecipeItem RecipieItem : Recipe->RecipeItems)
+	{
+		if (!TryRemoveItem(RecipieItem.Item, RecipieItem.Amount))
+		{
+			UE_LOG(LogTemp, Error, TEXT("Unable to take %d %s from inventory"), RecipieItem.Amount, *RecipieItem.Item->Name);
+			return false;
+		}
+			
+	}
+		
+	return true;
+}
+
+bool UInventoryComponent::AddItemsForRecipe(URecipeDataAsset* Recipe)
+{
+	if (Recipe == nullptr) return false;
+	return TryAddItem(Recipe->Item);
+}
+
+bool UInventoryComponent::CanAddItem(UItemDataAsset* DataAsset)
+{
+	TArray<FIntPoint> OccupiedSlots = GetOccupiedSlots();
+
+	for (FIntPoint Slot : Slots())
+	{
+		if (ItemCanFitInSlot(Slot, DataAsset, OccupiedSlots))
+			return true;
+	}
+
+	return false;
 }
 

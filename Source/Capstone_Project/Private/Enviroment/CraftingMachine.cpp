@@ -9,9 +9,10 @@
 #include "Item/ItemDataAsset.h"
 #include "Item/SurvivalScifi_Item.h"
 #include "AkGameplayStatics.h"
+#include "Item/InventoryComponent.h"
+#include "Character/PlayerCharacter.h"
 
 
-// Sets default values
 ACraftingMachine::ACraftingMachine()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -33,7 +34,6 @@ ACraftingMachine::ACraftingMachine()
 	CraftingLaser->SetupAttachment(Machine);
 }
 
-// Called when the game starts or when spawned
 void ACraftingMachine::BeginPlay()
 {
 	Super::BeginPlay();
@@ -102,7 +102,6 @@ void ACraftingMachine::SetNextTargetLaserPoint()
 	TargetLaserPoint = Target;
 }
 
-// Called every frame
 void ACraftingMachine::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -185,7 +184,6 @@ void ACraftingMachine::CraftingTick(float DeltaTime)
 		CraftingMachineState = ECraftingMachineState::Finishing;
 		Timer = PostCraftingPause;
 		CraftingLaser->Deactivate();
-		CurrentlyCrafting = nullptr;
 		CurrentlyCraftingItem->SetMaterial(CurrentlyCraftingItemMaterial);
 
 		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
@@ -208,7 +206,9 @@ void ACraftingMachine::FinishingTick(float DeltaTime)
 		CraftingMachineState = ECraftingMachineState::Standby;
 
 		CurrentlyCraftingItem->Destroy();
-		// add item to inventory
+		if(!Inventory->AddItemsForRecipe(CurrentlyCrafting))
+			UE_LOG(LogTemp, Error, TEXT("Crafting machine could not add recipe item to inventory"));
+		CurrentlyCrafting = nullptr;
 
 		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
 	}
@@ -216,6 +216,8 @@ void ACraftingMachine::FinishingTick(float DeltaTime)
 
 void ACraftingMachine::Interact(APlayerCharacter* PlayerCharacter)
 {
+	Inventory = PlayerCharacter->GetInventoryComponent();
+
 	// start crafting process
 	if (CraftingMachineState == ECraftingMachineState::Closed)
 	{
@@ -279,8 +281,17 @@ float ACraftingMachine::GetProgress()
 
 void ACraftingMachine::Craft(URecipeDataAsset* Recipe)
 {
+	if (Recipe == nullptr || !Inventory->CanAfford(Recipe) || !Inventory->CanAddItem(Recipe->Item)) return;
+
+
 	CurrentlyCrafting = Recipe;
 	CraftingMachineState = ECraftingMachineState::Crafting;
+	if (!Inventory->TakeItemsForRecipe(CurrentlyCrafting))
+	{
+		UE_LOG(LogTemp, Error, TEXT("Crafting machine could not take recipe items"));
+		return;
+	}
+		
 
 
 	Timer = CurrentlyCrafting->BuiltTime;

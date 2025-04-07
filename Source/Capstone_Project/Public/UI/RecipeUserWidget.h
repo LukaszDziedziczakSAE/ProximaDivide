@@ -13,6 +13,7 @@ class CAPSTONE_PROJECT_API URecipeUserWidget : public USurvivalScifiUserWidget
 	GENERATED_BODY()
 	
 protected:
+
 	UPROPERTY(meta = (BindWidget))
 	class UButton* RecipeButton;
 
@@ -22,9 +23,15 @@ protected:
 	UPROPERTY()
 	class URecipeDataAsset* Recipe;
 
+	UPROPERTY(EditDefaultsOnly)
+	FLinearColor UnselectedColor;
+
+	UPROPERTY(EditDefaultsOnly)
+	FLinearColor UnavailableColor;
+
 public:
 	UFUNCTION()
-	void Set(URecipeDataAsset* NewRecipe);
+	void Set(URecipeDataAsset* NewRecipe, bool IsAvailable);
 
 	UFUNCTION()
 	void OnButtonPress();

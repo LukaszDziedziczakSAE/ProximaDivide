@@ -62,4 +62,22 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnItemAddedSignature OnItemAdded;
+
+	UFUNCTION()
+	bool CanAfford(class URecipeDataAsset* Recipe);
+
+	UFUNCTION()
+	bool HasItem(UItemDataAsset* DataAsset, int Amount = 1);
+
+	UFUNCTION()
+	bool TryRemoveItem(UItemDataAsset* DataAsset, int Amount = 1);
+
+	UFUNCTION()
+	bool TakeItemsForRecipe(URecipeDataAsset* Recipe);
+
+	UFUNCTION()
+	bool AddItemsForRecipe(URecipeDataAsset* Recipe);
+
+	UFUNCTION()
+	bool CanAddItem(UItemDataAsset* DataAsset);
 };

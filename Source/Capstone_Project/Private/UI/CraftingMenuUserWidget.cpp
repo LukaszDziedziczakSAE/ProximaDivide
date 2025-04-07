@@ -10,6 +10,9 @@
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 #include "Styling/SlateBrush.h"
+#include "Item/InventoryComponent.h"
+#include "Item/RecipeDataAsset.h"
+#include "Item/ItemDataAsset.h"
 
 void UCraftingMenuUserWidget::NativeConstruct()
 {
@@ -128,8 +131,9 @@ void UCraftingMenuUserWidget::PopulateRecipeList(ECraftingMenuType CraftingMenuT
 
 	for (URecipeDataAsset* Recipe : CraftingMachine->GetRecipesByType(CraftingMenuType))
 	{
+		UE_LOG(LogTemp, Log, TEXT("Creating URecipeUserWidget for %s"), *Recipe->Item->Name);
 		URecipeUserWidget* RecipeWidget = CreateWidget<URecipeUserWidget>(GetWorld(), RecipeItemPrefab);
-		RecipeWidget->Set(Recipe);
+		RecipeWidget->Set(Recipe, CraftingMachine->GetInventory()->CanAfford(Recipe) && CraftingMachine->GetInventory()->CanAddItem(Recipe->Item));
 		RecipeItems.Add(RecipeWidget);
 		RecipeList->AddChildToVerticalBox(RecipeWidget);
 	}

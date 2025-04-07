@@ -128,6 +128,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio")
 	UAkAudioEvent* FinishedSound;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UInventoryComponent* Inventory;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -156,4 +159,7 @@ public:
 
 	UFUNCTION()
 	FText CraftingStatusText();
+
+	UFUNCTION(BlueprintPure)
+	UInventoryComponent* GetInventory() { return Inventory; }
 };
