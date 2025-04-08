@@ -7,6 +7,7 @@
 #include "Enviroment/Mineral.h"
 #include "Character/PlayerCharacter.h"
 #include "Item/InventoryComponent.h"
+#include "UI/SurvivalScifi_HUD.h"
 
 // Sets default values for this component's properties
 UMineralExtractorComponent::UMineralExtractorComponent()

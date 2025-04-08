@@ -32,6 +32,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class UCraftingMenuUserWidget> CraftingMenuClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UNotificationsUserWidget> NotificationsClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -49,6 +52,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCraftingMenuUserWidget* CraftingMenu;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UNotificationsUserWidget* Notifications;
 
 public:
 	UFUNCTION(BlueprintCallable)
@@ -87,6 +93,12 @@ public:
 	UFUNCTION()
 	void UpdateCraftingMenu();
 
+	UFUNCTION()
+	void DisplayAddedItems(class UItemDataAsset* ItemDataAsset, int Amount = 1);
+
+	UFUNCTION()
+	void DisplayRemovedItems(class UItemDataAsset* ItemDataAsset, int Amount = 1);
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UInventorySlotUserWidget* MouseOverSlot;
 

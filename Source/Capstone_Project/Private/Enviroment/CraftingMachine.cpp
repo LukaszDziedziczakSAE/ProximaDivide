@@ -143,7 +143,7 @@ void ACraftingMachine::OpeningTick(float DeltaTime)
 		Tray->SetRelativeRotation(Rotation);
 		CraftingMachineState = ECraftingMachineState::Standby;
 
-		GetWorld()->GetFirstPlayerController()->GetHUD<ASurvivalScifi_HUD>()->UpdateCraftingMenu();
+		HUD->UpdateCraftingMenu();
 	}
 }
 
@@ -217,6 +217,7 @@ void ACraftingMachine::FinishingTick(float DeltaTime)
 void ACraftingMachine::Interact(APlayerCharacter* PlayerCharacter)
 {
 	Inventory = PlayerCharacter->GetInventoryComponent();
+	HUD = PlayerCharacter->GetHUD();
 
 	// start crafting process
 	if (CraftingMachineState == ECraftingMachineState::Closed)

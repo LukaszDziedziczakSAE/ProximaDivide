@@ -76,3 +76,8 @@ float APlayerCharacter::PlayMontage(UAnimMontage* Montage)
 	return FPS_Arms->GetAnimInstance()->Montage_Play(Montage);
 }
 
+ASurvivalScifi_HUD* APlayerCharacter::GetHUD()
+{
+	return GetController<APlayerController>()->GetHUD<ASurvivalScifi_HUD>();;
+}
+

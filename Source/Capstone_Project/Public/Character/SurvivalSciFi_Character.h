@@ -72,7 +72,7 @@ public:
 	void SetMovementSpeed(bool IsRunning);
 
 	UFUNCTION(BlueprintCallable)
-	bool TryPickUpItem(class UItemDataAsset* Item);
+	bool TryPickUpItem(class UItemDataAsset* Item, bool bShowNotification = true);
 
 	UFUNCTION()
 	void SelectSlot(int SlotNumber);

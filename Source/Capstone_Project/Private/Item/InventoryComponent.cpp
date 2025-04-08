@@ -5,6 +5,8 @@
 
 #include "Item/ItemDataAsset.h"
 #include "Item/RecipeDataAsset.h"
+#include "Character/PlayerCharacter.h"
+#include "UI/SurvivalScifi_HUD.h"
 
 
 UInventoryComponent::UInventoryComponent()
@@ -105,7 +107,7 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 }
 
-bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset)
+bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset, bool bShowNotification)
 {
 	if (DataAsset == nullptr) return false;
 
@@ -119,6 +121,7 @@ bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset)
 		InventoryItem.Rotated = false;
 		Items.Add(InventoryItem);
 		UE_LOG(LogTemp, Log, TEXT("%s added to inventory at %s"), *InventoryItem.Item->Name, *InventoryItem.Position.ToString());
+		if (bShowNotification) GetOwner<APlayerCharacter>()->GetHUD()->DisplayAddedItems(InventoryItem.Item);
 		OnItemAdded.Broadcast(InventoryItem);
 		return true;
 	}
@@ -225,7 +228,10 @@ bool UInventoryComponent::TakeItemsForRecipe(URecipeDataAsset* Recipe)
 			UE_LOG(LogTemp, Error, TEXT("Unable to take %d %s from inventory"), RecipieItem.Amount, *RecipieItem.Item->Name);
 			return false;
 		}
-			
+		else
+		{
+			GetOwner<APlayerCharacter>()->GetHUD()->DisplayRemovedItems(RecipieItem.Item, RecipieItem.Amount);
+		}
 	}
 		
 	return true;
@@ -234,7 +240,12 @@ bool UInventoryComponent::TakeItemsForRecipe(URecipeDataAsset* Recipe)
 bool UInventoryComponent::AddItemsForRecipe(URecipeDataAsset* Recipe)
 {
 	if (Recipe == nullptr) return false;
-	return TryAddItem(Recipe->Item);
+
+	if (TryAddItem(Recipe->Item))
+	{
+		return true;
+	}
+	return false;
 }
 
 bool UInventoryComponent::CanAddItem(UItemDataAsset* DataAsset)

@@ -131,6 +131,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UInventoryComponent* Inventory;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class ASurvivalScifi_HUD* HUD;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

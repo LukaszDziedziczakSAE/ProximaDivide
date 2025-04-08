@@ -48,12 +48,12 @@ void ASurvivalSciFi_Character::SetMovementSpeed(bool IsRunning)
 	GetCharacterMovement()->MaxWalkSpeed = IsRunning ? RunningSpeed : WalkingSpeed;
 }
 
-bool ASurvivalSciFi_Character::TryPickUpItem(UItemDataAsset* Item)
+bool ASurvivalSciFi_Character::TryPickUpItem(UItemDataAsset* Item, bool bShowNotification)
 {
 	UEquipableItemDataAsset* Equipable = Cast<UEquipableItemDataAsset>(Item);
 	if (Equipable != nullptr && PaperdollComponent->TryAddEquipable(Equipable)) return true;
 
-	if (InventoryComponent->TryAddItem(Item)) return true;
+	if (InventoryComponent->TryAddItem(Item, bShowNotification)) return true;
 
 	return false;
 }

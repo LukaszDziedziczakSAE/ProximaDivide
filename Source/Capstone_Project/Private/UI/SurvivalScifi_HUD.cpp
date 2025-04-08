@@ -8,6 +8,7 @@
 #include "UI/InventoryItemUserWidget.h"
 #include "Item/ItemDataAsset.h"
 #include "UI/InventorySlotUserWidget.h"
+#include "UI/NotificationsUserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -21,6 +22,9 @@ void ASurvivalScifi_HUD::BeginPlay()
 
 	if (CrosshairClass != nullptr) Crosshair = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), CrosshairClass);
 	if (Crosshair != nullptr) Crosshair->AddToViewport();
+
+	if (NotificationsClass != nullptr) Notifications = CreateWidget<UNotificationsUserWidget>(GetWorld(), NotificationsClass);
+	if (Notifications != nullptr) Notifications->AddToViewport();
 }
 
 void ASurvivalScifi_HUD::ShowInventory()
@@ -92,4 +96,16 @@ void ASurvivalScifi_HUD::UpdateCraftingMenu()
 {
 	if (CraftingMenu != nullptr)
 		CraftingMenu->UpdateCraftingScreen();
+}
+
+void ASurvivalScifi_HUD::DisplayAddedItems(UItemDataAsset* ItemDataAsset, int Amount)
+{
+	if (Notifications != nullptr) Notifications->AddedItems(ItemDataAsset, Amount);
+	else UE_LOG(LogTemp, Error, TEXT("Missing Notifications reference"));
+}
+
+void ASurvivalScifi_HUD::DisplayRemovedItems(UItemDataAsset* ItemDataAsset, int Amount)
+{
+	if (Notifications != nullptr) Notifications->RemovedItems(ItemDataAsset, Amount);
+	else UE_LOG(LogTemp, Error, TEXT("Missing Notifications reference"));
 }

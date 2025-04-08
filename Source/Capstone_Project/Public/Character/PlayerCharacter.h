@@ -54,5 +54,6 @@ public:
 
 	virtual float PlayMontage(UAnimMontage* Montage) override;
 
-	
+	UFUNCTION()
+	class ASurvivalScifi_HUD* GetHUD();
 };

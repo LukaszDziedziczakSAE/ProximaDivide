@@ -5,6 +5,7 @@
 #include "Item/ItemDataAsset.h"
 #include "Components/BoxComponent.h"
 #include "Character/PlayerCharacter.h"
+#include "UI/SurvivalScifi_HUD.h"
 
 // Sets default values
 ASurvivalScifi_Item::ASurvivalScifi_Item()
@@ -37,7 +38,6 @@ void ASurvivalScifi_Item::Interact(APlayerCharacter* PlayerCharacter)
 {
 	if (PlayerCharacter->TryPickUpItem(DataAsset))
 	{
-
 		Destroy();
 	}
 }

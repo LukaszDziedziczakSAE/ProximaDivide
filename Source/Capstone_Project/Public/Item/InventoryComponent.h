@@ -55,7 +55,7 @@ public:
 	TArray<struct FInventoryItem> GetItems() { return Items; }
 
 	UFUNCTION()
-	bool TryAddItem(UItemDataAsset* DataAsset);
+	bool TryAddItem(UItemDataAsset* DataAsset, bool bShowNotification = true);
 
 	UFUNCTION()
 	bool TryAddItemAt(UItemDataAsset* DataAsset, FIntPoint Position, bool isRotated = false);
