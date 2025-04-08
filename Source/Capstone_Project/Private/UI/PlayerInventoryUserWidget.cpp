@@ -5,38 +5,47 @@
 #include "UI/InventoryUserWidget.h"
 #include "Character/PlayerCharacter.h"
 #include "UI/InventoryItemUserWidget.h"
-#include "UI/SurvivalScifi_HUD.h"
-#include "Components/CanvasPanelSlot.h"
-#include "Components/CanvasPanel.h"
+#include "UI/InventorySlotUserWidget.h"
+#include "UI/DragUserWidget.h"
+#include "Game/SurvivalScifi_DragDropOperation.h"
+#include "Item/InventoryComponent.h"
 
 void UPlayerInventoryUserWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-	//UE_LOG(LogTemp, Warning, TEXT("Constructing Player Inventory Widget"));
 
 	InventoryWidget->SetInventory(PlayerCharacter->GetInventoryComponent());
-
-	if (TestItem != nullptr) SetInHand(TestItem, 100.0f);
 }
 
-void UPlayerInventoryUserWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
+bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
 {
-	Super::NativeTick(MyGeometry, InDeltaTime);
+	bool result = Super::NativeOnDrop(InGeometry, InDragDropEvent, InOperation);
+	//FVector2D Postion = InDragDropEvent.GetScreenSpacePosition();
+	//UE_LOG(LogTemp, Warning, TEXT("NativeOnDrop %s"), *Postion.ToString());
 
-	if (InHand->Visibility == ESlateVisibility::Visible)
+	USurvivalScifi_DragDropOperation* DragDropOperation = Cast<USurvivalScifi_DragDropOperation>(InOperation);
+	if (DragDropOperation != nullptr)
 	{
-		FVector2D MousePosition;
-		PlayerCharacter->GetController<APlayerController>()->GetMousePosition(MousePosition.X, MousePosition.Y);
-		//InHand->SetPositionInViewport(MousePosition);
-		//InHand->SetRenderTranslation(MousePosition);
+		if (DragDropOperation->ToInventory != nullptr && DragDropOperation->ToInventoryPosition != FIntPoint::ZeroValue)
+		{
+			if (!DragDropOperation->ToInventory->TryAddItemAt(DragDropOperation->Item, DragDropOperation->ToInventoryPosition))
+				UE_LOG(LogTemp, Error, TEXT("Unable to add drag item to new inventory"));
+		}
 
+		else if (DragDropOperation->FromInventory != nullptr && DragDropOperation->FromInventoryPosition != FIntPoint::ZeroValue)
+		{
+			if (!DragDropOperation->FromInventory->TryAddItemAt(DragDropOperation->Item, DragDropOperation->FromInventoryPosition))
+				UE_LOG(LogTemp, Error, TEXT("Unable to add drag item to new inventory"));
+		}
 
-		//UE_LOG(LogTemp, Warning, TEXT("Setting InHand position %s"), *InHand->Pan);
+		
+		DragDropOperation->DragUserWidget = nullptr;
 	}
+	RefreshInventories();
+	return result;
 }
 
-void UPlayerInventoryUserWidget::SetInHand(UItemDataAsset* ItemData, float NewCellSize, bool Rotated, FIntPoint NewPosition, int NewSlotNumber)
+void UPlayerInventoryUserWidget::RefreshInventories()
 {
-	InHand->SetVisibility(ESlateVisibility::Visible);
-	InHand->Set(ItemData, NewCellSize, Rotated, NewPosition, NewSlotNumber);
+	InventoryWidget->RefreshSlots();
 }

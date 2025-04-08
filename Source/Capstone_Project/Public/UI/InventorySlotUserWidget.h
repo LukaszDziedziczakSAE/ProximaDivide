@@ -14,9 +14,15 @@ class CAPSTONE_PROJECT_API UInventorySlotUserWidget : public UUserWidget
 protected:
 	virtual void NativeConstruct() override;
 
+	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+
 	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
 	virtual void NativeOnMouseLeave(const FPointerEvent& InMouseEvent) override;
+
+	virtual void NativeOnDragEnter(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
+
+	virtual void NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
 
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* SizeBox;
@@ -39,6 +45,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class ASurvivalScifi_HUD* HUD;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FVector2D PositionInViewport;
+
 	
 public:
 	UFUNCTION(BlueprintPure)
@@ -52,4 +61,10 @@ public:
 
 	UFUNCTION()
 	void SetOccupied(bool bIsOccupied);
+
+	UFUNCTION()
+	FVector2D GetPositionInViewport() { return PositionInViewport; }
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UInventoryComponent* Inventory;
 };

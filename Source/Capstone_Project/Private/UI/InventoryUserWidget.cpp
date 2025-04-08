@@ -39,6 +39,7 @@ void UInventoryUserWidget::RefreshSlots()
 			UInventorySlotUserWidget* InventorySlot = CreateWidget<UInventorySlotUserWidget>(GetWorld(), SlotClass);
 			InventorySlot->SetSize(CellSize);
 			InventorySlot->SetPosition(FIntPoint(x, y));
+			InventorySlot->Inventory = InventoryComponent;
 			//Grid->AddChildToUniformGrid(InventorySlot, y - 1, x - 1);
 			InventoryOverlay->AddChildToOverlay(InventorySlot);
 			InventorySlot->SetPadding(FMargin{ (x - 1) * CellSize, (y - 1) * CellSize, 0, 0 });
@@ -52,7 +53,7 @@ void UInventoryUserWidget::RefreshSlots()
 	for (FInventoryItem InventoryItem : InventoryComponent->GetItems())
 	{
 		UInventoryItemUserWidget* InventoryItemWidget = CreateWidget<UInventoryItemUserWidget>(GetWorld(), ItemClass);
-		InventoryItemWidget->Set(InventoryItem.Item, CellSize, InventoryItem.Rotated);
+		InventoryItemWidget->Set(InventoryComponent, InventoryItem.Item, CellSize, InventoryItem.Position, InventoryItem.Rotated);
 
 		InventoryOverlay->AddChildToOverlay(InventoryItemWidget);
 		InventoryItemWidget->SetPadding(FMargin{

@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/DragDropOperation.h"
-#include "UI/SurvivalScifiUserWidget.h"
 #include "SurvivalScifi_DragDropOperation.generated.h"
 
 UCLASS()
@@ -14,8 +13,29 @@ class CAPSTONE_PROJECT_API USurvivalScifi_DragDropOperation : public UDragDropOp
 	
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USurvivalScifiUserWidget* WidgetReference;
+	class UDragUserWidget* DragUserWidget;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float CellSize;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool Rotated;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FVector2D DragOffset;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FIntPoint ToInventoryPosition;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FIntPoint FromInventoryPosition;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UItemDataAsset* Item;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UInventoryComponent* FromInventory;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UInventoryComponent* ToInventory;
 };

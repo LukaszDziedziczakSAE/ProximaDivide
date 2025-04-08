@@ -11,9 +11,12 @@
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "UI/DragUserWidget.h"
 #include "Game/SurvivalScifi_DragDropOperation.h"
+#include "UI/DragUserWidget.h"
+#include "Item/InventoryComponent.h"
 
-void UInventoryItemUserWidget::Set(UItemDataAsset* ItemData, float NewCellSize, bool Rotated, FIntPoint NewPosition, int NewSlotNumber)
+void UInventoryItemUserWidget::Set(UInventoryComponent* FromInventory, UItemDataAsset* ItemData, float NewCellSize, FIntPoint NewPosition, bool Rotated, int NewSlotNumber)
 {
+	Inventory = FromInventory;
 	Item = ItemData;
 	bRotated = Rotated;
 	CellSize = NewCellSize;
@@ -41,12 +44,6 @@ void UInventoryItemUserWidget::Rotate()
 	UpdateImage();
 }
 
-void UInventoryItemUserWidget::OnMouseDown()
-{
-	if (PlayerInventoryUserWidget != nullptr) PlayerInventoryUserWidget->
-		SetInHand(Item, CellSize, bRotated, Position, SlotNumber);
-}
-
 void UInventoryItemUserWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
@@ -64,7 +61,7 @@ void UInventoryItemUserWidget::NativeOnMouseEnter(const FGeometry& InGeometry, c
 	if (HUD != nullptr)
 	{
 		HUD->MouseOverItem = this;
-		UE_LOG(LogTemp, Warning, TEXT("Mouse over %s"), *Item->Name);
+		//UE_LOG(LogTemp, Warning, TEXT("Mouse over %s"), *Item->Name);
 	}
 }
 
@@ -75,7 +72,7 @@ void UInventoryItemUserWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEv
 	if (HUD != nullptr)
 	{
 		if (HUD->MouseOverItem == this) HUD->MouseOverItem = nullptr;
-		UE_LOG(LogTemp, Warning, TEXT("Mouse left %s"), *Item->Name);
+		//UE_LOG(LogTemp, Warning, TEXT("Mouse left %s"), *Item->Name);
 	}
 }
 
@@ -84,7 +81,7 @@ FReply UInventoryItemUserWidget::NativeOnMouseButtonDown(const FGeometry& InGeom
 	FReply Reply = Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
 
 	FEventReply EventReply = UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
-
+	//SetVisibility(ESlateVisibility::Collapsed);
 	return EventReply.NativeReply;
 }
 
@@ -92,23 +89,36 @@ void UInventoryItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry,
 {
 	Super::NativeOnDragDetected(InGeometry, InMouseEvent, OutOperation);
 
+	UDragUserWidget* DragUserWidget = CreateWidget<UDragUserWidget>(GetWorld(), DragUserWidgetClass);
+	DragUserWidget->Item = Item;
+	DragUserWidget->CellSize = CellSize;
+	DragUserWidget->Rotated = bRotated;
+
 	USurvivalScifi_DragDropOperation* DragDropOperation = Cast<USurvivalScifi_DragDropOperation>(UWidgetBlueprintLibrary::CreateDragDropOperation(USurvivalScifi_DragDropOperation::StaticClass()));
-	//this->SetVisibility(ESlateVisibility::HitTestInvisible);
+	SetVisibility(ESlateVisibility::Collapsed);
 
-	DragDropOperation->WidgetReference = this;
-	DragDropOperation->DragOffset = InGeometry.AbsoluteToLocal(InMouseEvent.GetScreenSpacePosition());
+	DragDropOperation->DragUserWidget = DragUserWidget;
+	DragDropOperation->Item = Item;
+	DragDropOperation->FromInventory = Inventory;
+	DragDropOperation->FromInventoryPosition = Position;
+	DragDropOperation->CellSize = CellSize;
+	DragDropOperation->Rotated = bRotated;
+	//DragDropOperation->DragOffset = InGeometry.AbsoluteToLocal(InMouseEvent.GetScreenSpacePosition());
 
-	DragDropOperation->DefaultDragVisual = this;
+	DragDropOperation->DefaultDragVisual = DragUserWidget;
 	DragDropOperation->Pivot = EDragPivot::MouseDown;
 
 	OutOperation = DragDropOperation;
+	
+	if (Inventory->TryRemoveItemAt(Item, Position))
+		PlayerInventoryUserWidget->RefreshInventories();
 }
 
 void UInventoryItemUserWidget::NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
 {
 	Super::NativeOnDragLeave(InDragDropEvent, InOperation);
-
-	this->SetVisibility(ESlateVisibility::HitTestInvisible);
+	//UE_LOG(LogTemp, Warning, TEXT("NativeOnDragLeave"));
+	//SetVisibility(ESlateVisibility::Visible);
 }
 
 void UInventoryItemUserWidget::Orient()

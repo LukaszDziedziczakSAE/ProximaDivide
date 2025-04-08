@@ -126,6 +126,27 @@ bool UInventoryComponent::TryAddItem(UItemDataAsset* DataAsset)
 	return false;
 }
 
+bool UInventoryComponent::TryAddItemAt(UItemDataAsset* DataAsset, FIntPoint Position, bool isRotated)
+{
+	if (DataAsset == nullptr) return false;
+
+	TArray<FIntPoint> AvailableSlots = GetAvailableSlotsFor(DataAsset);
+
+	if (AvailableSlots.Contains(Position))
+	{
+		FInventoryItem InventoryItem;
+		InventoryItem.Item = DataAsset;
+		InventoryItem.Position = Position;
+		InventoryItem.Rotated = isRotated;
+		Items.Add(InventoryItem);
+		UE_LOG(LogTemp, Log, TEXT("%s added to inventory at %s"), *InventoryItem.Item->Name, *InventoryItem.Position.ToString());
+		OnItemAdded.Broadcast(InventoryItem);
+		return true;
+	}
+
+	return false;
+}
+
 bool UInventoryComponent::SlotIsOccupied(FIntPoint SlotCords)
 {
 	return GetOccupiedSlots().Contains(SlotCords);
@@ -165,7 +186,7 @@ bool UInventoryComponent::TryRemoveItem(UItemDataAsset* DataAsset, int Amount)
 			if (InventoryItem.Item == DataAsset &&
 				ItemsToRemove.Num() < Amount)
 				ItemsToRemove.Add(InventoryItem);
-		}
+	}
 			
 
 		for (FInventoryItem InventoryItem : ItemsToRemove)
@@ -174,6 +195,24 @@ bool UInventoryComponent::TryRemoveItem(UItemDataAsset* DataAsset, int Amount)
 		return true;
 	}
 
+	return false;
+}
+
+bool UInventoryComponent::TryRemoveItemAt(UItemDataAsset* DataAsset, FIntPoint Position)
+{
+	FInventoryItem ItemToRemove;
+	for (FInventoryItem InventoryItem : Items)
+	{
+		if (InventoryItem.Item == DataAsset, InventoryItem.Position == Position)
+		{
+			ItemToRemove = InventoryItem;
+		}
+	}
+	if (ItemToRemove.Item != nullptr)
+	{
+		Items.Remove(ItemToRemove);
+		return true;
+	}
 	return false;
 }
 

@@ -30,6 +30,9 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* SizeBox;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<class UDragUserWidget> DragUserWidgetClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UItemDataAsset* Item;
 
@@ -57,9 +60,12 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class ASurvivalScifi_HUD* HUD;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UInventoryComponent* Inventory;
+
 public:
 	UFUNCTION()
-	void Set(UItemDataAsset* ItemData, float NewCellSize, bool Rotated = false, FIntPoint NewPosition = FIntPoint(0,0), int NewSlotNumber = 0);
+	void Set(UInventoryComponent* FromInventory, UItemDataAsset* ItemData, float NewCellSize, FIntPoint NewPosition = FIntPoint(0, 0), bool Rotated = false, int NewSlotNumber = 0);
 
 	UFUNCTION()
 	void Rotate();
@@ -73,6 +79,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	int GetSlotNumber() { return SlotNumber; }
 
-	UFUNCTION(BlueprintCallable)
-	void OnMouseDown();
+	UFUNCTION(BlueprintPure)
+	float GetCellSize() { return CellSize; }
+
+	UFUNCTION()
+	UInventoryComponent* GetInventory() { return Inventory; }
 };

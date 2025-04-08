@@ -50,4 +50,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ClearSlots();
+
+	UFUNCTION()
+	TArray<UInventorySlotUserWidget*> GetSlots(){ return Slots; }
 };

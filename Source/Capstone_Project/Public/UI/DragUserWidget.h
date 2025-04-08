@@ -20,14 +20,12 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* SizeBox;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class UItemDataAsset* Item;
-
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class UInventoryItemUserWidget* InventoryItemUserWidget;
+	float CellSize;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FVector2D DragOffset;
-	
+	bool Rotated;
+
+	class UItemDataAsset* Item;
 };

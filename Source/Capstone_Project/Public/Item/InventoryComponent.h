@@ -58,6 +58,9 @@ public:
 	bool TryAddItem(UItemDataAsset* DataAsset);
 
 	UFUNCTION()
+	bool TryAddItemAt(UItemDataAsset* DataAsset, FIntPoint Position, bool isRotated = false);
+
+	UFUNCTION()
 	bool SlotIsOccupied(FIntPoint SlotCords);
 
 	UPROPERTY(BlueprintAssignable)
@@ -71,6 +74,9 @@ public:
 
 	UFUNCTION()
 	bool TryRemoveItem(UItemDataAsset* DataAsset, int Amount = 1);
+
+	UFUNCTION()
+	bool TryRemoveItemAt(UItemDataAsset* DataAsset, FIntPoint Position);
 
 	UFUNCTION()
 	bool TakeItemsForRecipe(URecipeDataAsset* Recipe);

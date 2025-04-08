@@ -92,16 +92,4 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UInventoryItemUserWidget* MouseOverItem;
-
-	UFUNCTION()
-	void SelectDown();
-
-	UFUNCTION()
-	void SelectUp();
-
-	UFUNCTION()
-	void SecondaryDown();
-
-	UFUNCTION()
-	void SecondaryUp();
 };
