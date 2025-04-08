@@ -7,6 +7,10 @@
 #include "Components/Image.h"
 #include "UI/SurvivalScifi_HUD.h"
 #include "UI/PlayerInventoryUserWidget.h"
+#include "Components/SizeBox.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
+#include "UI/DragUserWidget.h"
+#include "Game/SurvivalScifi_DragDropOperation.h"
 
 void UInventoryItemUserWidget::Set(UItemDataAsset* ItemData, float NewCellSize, bool Rotated, FIntPoint NewPosition, int NewSlotNumber)
 {
@@ -15,6 +19,9 @@ void UInventoryItemUserWidget::Set(UItemDataAsset* ItemData, float NewCellSize, 
 	CellSize = NewCellSize;
 	Position = NewPosition;
 	SlotNumber = NewSlotNumber;
+
+	SizeBox->SetHeightOverride(Item->Size.Y * CellSize);
+	SizeBox->SetWidthOverride(Item->Size.X * CellSize);
 
 	Orient();
 	UpdateImage();
@@ -70,6 +77,38 @@ void UInventoryItemUserWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEv
 		if (HUD->MouseOverItem == this) HUD->MouseOverItem = nullptr;
 		UE_LOG(LogTemp, Warning, TEXT("Mouse left %s"), *Item->Name);
 	}
+}
+
+FReply UInventoryItemUserWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+{
+	FReply Reply = Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
+
+	FEventReply EventReply = UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
+
+	return EventReply.NativeReply;
+}
+
+void UInventoryItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation)
+{
+	Super::NativeOnDragDetected(InGeometry, InMouseEvent, OutOperation);
+
+	USurvivalScifi_DragDropOperation* DragDropOperation = Cast<USurvivalScifi_DragDropOperation>(UWidgetBlueprintLibrary::CreateDragDropOperation(USurvivalScifi_DragDropOperation::StaticClass()));
+	//this->SetVisibility(ESlateVisibility::HitTestInvisible);
+
+	DragDropOperation->WidgetReference = this;
+	DragDropOperation->DragOffset = InGeometry.AbsoluteToLocal(InMouseEvent.GetScreenSpacePosition());
+
+	DragDropOperation->DefaultDragVisual = this;
+	DragDropOperation->Pivot = EDragPivot::MouseDown;
+
+	OutOperation = DragDropOperation;
+}
+
+void UInventoryItemUserWidget::NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
+{
+	Super::NativeOnDragLeave(InDragDropEvent, InOperation);
+
+	this->SetVisibility(ESlateVisibility::HitTestInvisible);
 }
 
 void UInventoryItemUserWidget::Orient()

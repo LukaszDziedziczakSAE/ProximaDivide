@@ -59,10 +59,10 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Use, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::UseItem);
 		Input->BindAction(IA_Use, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::UseItemEnd);
 		Input->BindAction(IA_Jump, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Jump);
-		Input->BindAction(IA_InventorySelect, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::InventorySelect);
+		/*Input->BindAction(IA_InventorySelect, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::InventorySelect);
 		Input->BindAction(IA_InventorySelect, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::InventorySelectEnd);
 		Input->BindAction(IA_InventoryAuto, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::InventoryAuto);
-		Input->BindAction(IA_InventoryAuto, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::InventoryAutoEnd);
+		Input->BindAction(IA_InventoryAuto, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::InventoryAutoEnd);*/
 	}
 
 	else
