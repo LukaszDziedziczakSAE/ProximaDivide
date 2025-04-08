@@ -41,9 +41,12 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TArray<UInventoryItemUserWidget*> Items;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UPlayerInventoryUserWidget* PlayerInventoryUserWidget;
+
 public:
 	UFUNCTION(BlueprintCallable)
-	void SetInventory(UInventoryComponent* Inventory);
+	void SetInventory(UInventoryComponent* Inventory, UPlayerInventoryUserWidget* Widget);
 
 	UFUNCTION(BlueprintCallable)
 	void RefreshSlots();
@@ -53,4 +56,13 @@ public:
 
 	UFUNCTION()
 	TArray<UInventorySlotUserWidget*> GetSlots(){ return Slots; }
+
+	UFUNCTION()
+	void ResetSlotsToOccupancy();
+
+	UFUNCTION()
+	void ShowAvailability(class UItemDataAsset* Item, FIntPoint Position);
+
+	UFUNCTION()
+	UInventoryComponent* GetInventory() { return InventoryComponent; }
 };

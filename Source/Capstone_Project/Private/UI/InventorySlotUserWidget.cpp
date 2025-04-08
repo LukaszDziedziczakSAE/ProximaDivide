@@ -9,6 +9,8 @@
 #include "Blueprint/WidgetLayoutLibrary.h"
 #include "UI/DragUserWidget.h"
 #include "Game/SurvivalScifi_DragDropOperation.h"
+#include "UI/PlayerInventoryUserWidget.h"
+#include "Item/ItemDataAsset.h"
 
 void UInventorySlotUserWidget::NativeConstruct()
 {
@@ -53,7 +55,8 @@ void UInventorySlotUserWidget::NativeOnDragEnter(const FGeometry& InGeometry, co
 	{
 		DragDropOperation->ToInventoryPosition = Position;
 		DragDropOperation->ToInventory = Inventory;
-		//UE_LOG(LogTemp, Warning, TEXT("Mouse over %s"), *Position.ToString());
+
+		PlayerInventoryUserWidget->ShowCanDrop(Inventory, DragDropOperation->Item, Position);
 	}
 }
 
@@ -66,7 +69,8 @@ void UInventorySlotUserWidget::NativeOnDragLeave(const FDragDropEvent& InDragDro
 		{
 			DragDropOperation->ToInventoryPosition = FIntPoint::ZeroValue;
 			DragDropOperation->ToInventory = nullptr;
-			//UE_LOG(LogTemp, Warning, TEXT("Mouse left %s"), *Position.ToString());
+
+			PlayerInventoryUserWidget->RemoveCanDrop(Inventory);
 		}
 	}
 }
@@ -86,5 +90,16 @@ void UInventorySlotUserWidget::SetSize(float Size)
 
 void UInventorySlotUserWidget::SetOccupied(bool bIsOccupied)
 {
-	CellImage->SetColorAndOpacity(bIsOccupied ? OccupiedColor : FreeColor);
+	isOccupied = bIsOccupied;
+	ResetToOccupied();
+}
+
+void UInventorySlotUserWidget::ResetToOccupied()
+{
+	CellImage->SetColorAndOpacity(isOccupied ? OccupiedColor : FreeColor);
+}
+
+void UInventorySlotUserWidget::ShowCanDropTo()
+{
+	CellImage->SetColorAndOpacity(isOccupied ? CannotDropColor : CanDropColor);
 }

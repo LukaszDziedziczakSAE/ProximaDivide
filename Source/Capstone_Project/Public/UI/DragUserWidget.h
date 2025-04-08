@@ -27,5 +27,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool Rotated;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UItemDataAsset* Item;
+
+	UFUNCTION()
+	USizeBox* GetSizeBox() { return SizeBox; }
 };

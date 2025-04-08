@@ -44,4 +44,9 @@ public:
 
 	UFUNCTION()
 	void RefreshInventories();
+
+	UFUNCTION()
+	void ShowCanDrop(class UInventoryComponent* InventoryComponent, class UItemDataAsset* Item, FIntPoint Position);
+
+	void RemoveCanDrop(class UInventoryComponent* InventoryComponent);
 };

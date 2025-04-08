@@ -16,8 +16,9 @@ void UInventoryUserWidget::NativeDestruct()
 	ClearSlots();
 }
 
-void UInventoryUserWidget::SetInventory(UInventoryComponent* Inventory)
+void UInventoryUserWidget::SetInventory(UInventoryComponent* Inventory, UPlayerInventoryUserWidget* Widget)
 {
+	PlayerInventoryUserWidget = Widget;
 	InventoryComponent = Inventory;
 
 	SizeBox->SetWidthOverride(InventoryComponent->GetSize().X * CellSize);
@@ -40,6 +41,7 @@ void UInventoryUserWidget::RefreshSlots()
 			InventorySlot->SetSize(CellSize);
 			InventorySlot->SetPosition(FIntPoint(x, y));
 			InventorySlot->Inventory = InventoryComponent;
+			InventorySlot->PlayerInventoryUserWidget = PlayerInventoryUserWidget;
 			//Grid->AddChildToUniformGrid(InventorySlot, y - 1, x - 1);
 			InventoryOverlay->AddChildToOverlay(InventorySlot);
 			InventorySlot->SetPadding(FMargin{ (x - 1) * CellSize, (y - 1) * CellSize, 0, 0 });
@@ -60,20 +62,6 @@ void UInventoryUserWidget::RefreshSlots()
 				(InventoryItem.Position.X - 1) * CellSize,
 				(InventoryItem.Position.Y - 1) * CellSize,
 				0, 0 });
-		/*if (!InventoryItem.Rotated)
-		{
-			InventoryItemWidget->SetPadding(FMargin{
-				(InventoryItem.Position.Y - 1) * CellSize,
-				(InventoryItem.Position.X - 1) * CellSize,
-				0, 0 });
-		}
-		else
-		{
-			InventoryItemWidget->SetPadding(FMargin{
-				(InventoryItem.Position.X - 1) * CellSize,
-				(InventoryItem.Position.Y - 1) * CellSize,
-				0, 0 });
-		}*/
 		Items.Add(InventoryItemWidget);
 	}
 
@@ -98,5 +86,38 @@ void UInventoryUserWidget::ClearSlots()
 			ItemWidget->RemoveFromParent();
 		}
 		Items.Empty();
+	}
+}
+
+void UInventoryUserWidget::ResetSlotsToOccupancy()
+{
+	for (UInventorySlotUserWidget* SlotWidget : Slots)
+		SlotWidget->ResetToOccupied();
+}
+
+void UInventoryUserWidget::ShowAvailability(UItemDataAsset* Item, FIntPoint Position)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Showing availiability for %s"), *Item->Name);
+	ResetSlotsToOccupancy();
+
+	TArray<FIntPoint> Footprint;
+
+	for (int y = 0; y < Item->Size.Y; y++)
+	{
+		for (int x = 0; x < Item->Size.X; x++)
+		{
+			FIntPoint SlotCord = Position;
+			SlotCord.X += x;
+			SlotCord.Y += y;
+			Footprint.Add(SlotCord);
+		}
+	}
+
+	for (UInventorySlotUserWidget* SlotWidget : Slots)
+	{
+		if (Footprint.Contains(SlotWidget->GetPosition()))
+		{
+			SlotWidget->ShowCanDropTo();
+		}
 	}
 }

@@ -42,11 +42,20 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FLinearColor OccupiedColor;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FLinearColor CanDropColor;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FLinearColor CannotDropColor;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class ASurvivalScifi_HUD* HUD;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FVector2D PositionInViewport;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool isOccupied;
 
 	
 public:
@@ -63,8 +72,17 @@ public:
 	void SetOccupied(bool bIsOccupied);
 
 	UFUNCTION()
+	void ResetToOccupied();
+
+	UFUNCTION()
+	void ShowCanDropTo();
+
+	UFUNCTION()
 	FVector2D GetPositionInViewport() { return PositionInViewport; }
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UInventoryComponent* Inventory;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UPlayerInventoryUserWidget* PlayerInventoryUserWidget;
 };

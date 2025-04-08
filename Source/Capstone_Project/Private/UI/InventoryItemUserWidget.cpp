@@ -13,6 +13,7 @@
 #include "Game/SurvivalScifi_DragDropOperation.h"
 #include "UI/DragUserWidget.h"
 #include "Item/InventoryComponent.h"
+#include "Components/CanvasPanelSlot.h"
 
 void UInventoryItemUserWidget::Set(UInventoryComponent* FromInventory, UItemDataAsset* ItemData, float NewCellSize, FIntPoint NewPosition, bool Rotated, int NewSlotNumber)
 {
@@ -105,8 +106,15 @@ void UInventoryItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry,
 	DragDropOperation->Rotated = bRotated;
 	//DragDropOperation->DragOffset = InGeometry.AbsoluteToLocal(InMouseEvent.GetScreenSpacePosition());
 
-	DragDropOperation->DefaultDragVisual = DragUserWidget;
+	UCanvasPanelSlot* CanvasPanelSlot = Cast<UCanvasPanelSlot>(DragUserWidget->GetSizeBox()->Slot);
+	FVector2D SlotPosition = InGeometry.AbsoluteToLocal(InMouseEvent.GetScreenSpacePosition());
+	SlotPosition.X -= CellSize / 2;
+	SlotPosition.Y -= CellSize / 2;
+	CanvasPanelSlot->SetPosition(SlotPosition);
+
 	DragDropOperation->Pivot = EDragPivot::MouseDown;
+	//DragDropOperation->Offset = FVector2D(0.5f, 0.5f);
+	DragDropOperation->DefaultDragVisual = DragUserWidget;
 
 	OutOperation = DragDropOperation;
 	

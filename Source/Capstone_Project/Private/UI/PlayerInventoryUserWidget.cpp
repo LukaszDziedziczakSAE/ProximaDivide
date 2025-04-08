@@ -14,14 +14,12 @@ void UPlayerInventoryUserWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	InventoryWidget->SetInventory(PlayerCharacter->GetInventoryComponent());
+	InventoryWidget->SetInventory(PlayerCharacter->GetInventoryComponent(), this);
 }
 
 bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
 {
 	bool result = Super::NativeOnDrop(InGeometry, InDragDropEvent, InOperation);
-	//FVector2D Postion = InDragDropEvent.GetScreenSpacePosition();
-	//UE_LOG(LogTemp, Warning, TEXT("NativeOnDrop %s"), *Postion.ToString());
 
 	USurvivalScifi_DragDropOperation* DragDropOperation = Cast<USurvivalScifi_DragDropOperation>(InOperation);
 	if (DragDropOperation != nullptr)
@@ -48,4 +46,20 @@ bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const
 void UPlayerInventoryUserWidget::RefreshInventories()
 {
 	InventoryWidget->RefreshSlots();
+}
+
+void UPlayerInventoryUserWidget::ShowCanDrop(UInventoryComponent* InventoryComponent, UItemDataAsset* Item, FIntPoint Position)
+{
+	if (InventoryComponent == InventoryWidget->GetInventory())
+	{
+		InventoryWidget->ShowAvailability(Item, Position);
+	}
+}
+
+void UPlayerInventoryUserWidget::RemoveCanDrop(UInventoryComponent* InventoryComponent)
+{
+	if (InventoryComponent == InventoryWidget->GetInventory())
+	{
+		InventoryWidget->ResetSlotsToOccupancy();
+	}
 }
