@@ -93,7 +93,7 @@ void ASurvivalScifi_PlayerController::Look(const FInputActionValue& Value)
 
 void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& Value)
 {
-	if (!GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory())
+	if (AllowOpenMenu())
 	{
 		GetHUD<ASurvivalScifi_HUD>()->ShowInventory();
 		SetShowMouseCursor(true);
@@ -108,7 +108,7 @@ void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& V
 		}
 	}
 
-	else
+	else if (GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory())
 	{
 		GetHUD<ASurvivalScifi_HUD>()->HideInventory();
 		SetShowMouseCursor(false);
@@ -123,6 +123,17 @@ bool ASurvivalScifi_PlayerController::AllowLook()
 }
 
 bool ASurvivalScifi_PlayerController::AllowMove()
+{
+	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
+		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu();
+}
+
+bool ASurvivalScifi_PlayerController::AllowInteraction()
+{
+	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory();
+}
+
+bool ASurvivalScifi_PlayerController::AllowOpenMenu()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
 		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu();
@@ -146,7 +157,7 @@ void ASurvivalScifi_PlayerController::RunEnd()
 
 void ASurvivalScifi_PlayerController::Interact()
 {
-	if (PlayerCharacter != nullptr)
+	if (PlayerCharacter != nullptr && AllowInteraction())
 	{
 		PlayerCharacter->Interact();
 	}

@@ -50,6 +50,7 @@ void UInventorySlotUserWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEv
 
 void UInventorySlotUserWidget::NativeOnDragEnter(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
 {
+	Super::NativeOnDragEnter(InGeometry, InDragDropEvent, InOperation);
 	USurvivalScifi_DragDropOperation* DragDropOperation = Cast<USurvivalScifi_DragDropOperation>(InOperation);
 	if (DragDropOperation != nullptr)
 	{
@@ -62,6 +63,7 @@ void UInventorySlotUserWidget::NativeOnDragEnter(const FGeometry& InGeometry, co
 
 void UInventorySlotUserWidget::NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
 {
+	Super::NativeOnDragLeave(InDragDropEvent, InOperation);
 	USurvivalScifi_DragDropOperation* DragDropOperation = Cast<USurvivalScifi_DragDropOperation>(InOperation);
 	if (DragDropOperation != nullptr)
 	{

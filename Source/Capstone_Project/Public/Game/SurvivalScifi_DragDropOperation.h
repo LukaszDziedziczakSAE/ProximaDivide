@@ -38,4 +38,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UInventoryComponent* ToInventory;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int ToSlot;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int FromSlot;
 };

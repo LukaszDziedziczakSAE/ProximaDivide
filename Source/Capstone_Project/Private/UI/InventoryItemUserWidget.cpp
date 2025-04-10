@@ -7,11 +7,9 @@
 #include "Components/Image.h"
 #include "UI/SurvivalScifi_HUD.h"
 #include "UI/PlayerInventoryUserWidget.h"
-#include "Components/SizeBox.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "UI/DragUserWidget.h"
 #include "Game/SurvivalScifi_DragDropOperation.h"
-#include "UI/DragUserWidget.h"
 #include "Item/InventoryComponent.h"
 #include "Components/CanvasPanelSlot.h"
 
@@ -79,10 +77,8 @@ void UInventoryItemUserWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEv
 
 FReply UInventoryItemUserWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
-	FReply Reply = Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
-
+	Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
 	FEventReply EventReply = UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
-	//SetVisibility(ESlateVisibility::Collapsed);
 	return EventReply.NativeReply;
 }
 
@@ -96,15 +92,12 @@ void UInventoryItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry,
 	DragUserWidget->Rotated = bRotated;
 
 	USurvivalScifi_DragDropOperation* DragDropOperation = Cast<USurvivalScifi_DragDropOperation>(UWidgetBlueprintLibrary::CreateDragDropOperation(USurvivalScifi_DragDropOperation::StaticClass()));
-	SetVisibility(ESlateVisibility::Collapsed);
-
 	DragDropOperation->DragUserWidget = DragUserWidget;
 	DragDropOperation->Item = Item;
 	DragDropOperation->FromInventory = Inventory;
 	DragDropOperation->FromInventoryPosition = Position;
 	DragDropOperation->CellSize = CellSize;
 	DragDropOperation->Rotated = bRotated;
-	//DragDropOperation->DragOffset = InGeometry.AbsoluteToLocal(InMouseEvent.GetScreenSpacePosition());
 
 	UCanvasPanelSlot* CanvasPanelSlot = Cast<UCanvasPanelSlot>(DragUserWidget->GetSizeBox()->Slot);
 	FVector2D SlotPosition = InGeometry.AbsoluteToLocal(InMouseEvent.GetScreenSpacePosition());
@@ -113,11 +106,9 @@ void UInventoryItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry,
 	CanvasPanelSlot->SetPosition(SlotPosition);
 
 	DragDropOperation->Pivot = EDragPivot::MouseDown;
-	//DragDropOperation->Offset = FVector2D(0.5f, 0.5f);
 	DragDropOperation->DefaultDragVisual = DragUserWidget;
 
 	OutOperation = DragDropOperation;
-	
 	if (Inventory->TryRemoveItemAt(Item, Position))
 		PlayerInventoryUserWidget->RefreshInventories();
 }

@@ -14,6 +14,11 @@ void ASurvivalScifi_HUD::BeginPlay()
 {
 	Super::BeginPlay();
 
+	ShowGameHUD();
+}
+
+void ASurvivalScifi_HUD::ShowGameHUD()
+{
 	if (PlayerStatsClass != nullptr) PlayerStats = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), PlayerStatsClass);
 	if (PlayerStats != nullptr) PlayerStats->AddToViewport();
 
@@ -27,8 +32,36 @@ void ASurvivalScifi_HUD::BeginPlay()
 	if (Notifications != nullptr) Notifications->AddToViewport();
 }
 
+void ASurvivalScifi_HUD::HideGameHUD()
+{
+	if (PlayerStats != nullptr)
+	{
+		PlayerStats->RemoveFromParent();
+		PlayerStats = nullptr;
+	}
+
+	if (ActionBar != nullptr)
+	{
+		ActionBar->RemoveFromParent();
+		ActionBar = nullptr;
+	}
+
+	if (Crosshair != nullptr)
+	{
+		Crosshair->AddToViewport();
+		Crosshair = nullptr;
+	}
+
+	if (Notifications != nullptr)
+	{
+		Notifications->AddToViewport();
+		Notifications = nullptr;
+	}
+}
+
 void ASurvivalScifi_HUD::ShowInventory()
 {
+	HideGameHUD();
 	if (InventoryClass != nullptr) Inventory = CreateWidget<UPlayerInventoryUserWidget>(GetWorld(), InventoryClass);
 	if (Inventory != nullptr) Inventory->AddToViewport();
 }
@@ -37,6 +70,7 @@ void ASurvivalScifi_HUD::HideInventory()
 {
 	if (Inventory != nullptr) Inventory->RemoveFromParent();
 	Inventory = nullptr;
+	ShowGameHUD();
 }
 
 void ASurvivalScifi_HUD::ShowInteraction()
@@ -70,6 +104,8 @@ void ASurvivalScifi_HUD::ResetInteraction()
 
 void ASurvivalScifi_HUD::ShowCraftingMenu()
 {
+
+	HideGameHUD();
 	if (CraftingMenu == nullptr && CraftingMenuClass != nullptr)
 		CraftingMenu = CreateWidget<UCraftingMenuUserWidget>(GetWorld(), CraftingMenuClass);
 
@@ -90,6 +126,7 @@ void ASurvivalScifi_HUD::HideCraftingMenu()
 
 	GetOwningPlayerController()->SetShowMouseCursor(false);
 	GetOwningPlayerController()->SetInputMode(FInputModeGameOnly());
+	ShowGameHUD();
 }
 
 void ASurvivalScifi_HUD::UpdateCraftingMenu()

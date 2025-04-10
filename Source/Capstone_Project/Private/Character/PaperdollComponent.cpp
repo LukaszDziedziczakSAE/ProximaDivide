@@ -19,8 +19,6 @@ UPaperdollComponent::UPaperdollComponent()
 void UPaperdollComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
 	
 }
 
@@ -30,7 +28,6 @@ void UPaperdollComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
 }
 
 bool UPaperdollComponent::TryAddEquipable(UEquipableItemDataAsset* Equipable)
@@ -71,6 +68,74 @@ bool UPaperdollComponent::TryAddEquipable(UEquipableItemDataAsset* Equipable)
 	}
 
 	return false;
+}
+
+bool UPaperdollComponent::TryAddEquipableToSlot(UEquipableItemDataAsset* Equipable, int SlotNumber)
+{
+	switch (SlotNumber)
+	{
+	case 1:
+		Slot1.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 2:
+		Slot2.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 3:
+		Slot3.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 4:
+		Slot4.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 5:
+		Slot5.Item = Equipable;
+		OnSlotChange.Broadcast();
+		return true;
+
+	default:
+		return false;
+	}
+}
+
+bool UPaperdollComponent::TryRemoveItemFromSlot(int SlotNumber)
+{
+	switch (SlotNumber)
+	{
+	case 1:
+		Slot1.Item = nullptr;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 2:
+		Slot2.Item = nullptr;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 3:
+		Slot3.Item = nullptr;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 4:
+		Slot4.Item = nullptr;
+		OnSlotChange.Broadcast();
+		return true;
+
+	case 5:
+		Slot5.Item = nullptr;
+		OnSlotChange.Broadcast();
+		return true;
+
+	default:
+		return false;
+	}
 }
 
 FSlotItem UPaperdollComponent::GetSlot(int SlotNumber)

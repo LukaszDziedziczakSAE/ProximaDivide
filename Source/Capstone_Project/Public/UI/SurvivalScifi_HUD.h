@@ -57,6 +57,12 @@ protected:
 	UNotificationsUserWidget* Notifications;
 
 public:
+	UFUNCTION()
+	void ShowGameHUD();
+
+	UFUNCTION()
+	void HideGameHUD();
+
 	UFUNCTION(BlueprintCallable)
 	void ShowInventory();
 

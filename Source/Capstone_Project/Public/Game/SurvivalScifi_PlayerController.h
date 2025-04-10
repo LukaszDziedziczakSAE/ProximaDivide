@@ -84,6 +84,12 @@ protected:
 	bool AllowMove();
 
 	UFUNCTION()
+	bool AllowInteraction();
+
+	UFUNCTION()
+	bool AllowOpenMenu();
+
+	UFUNCTION()
 	void RunStart();
 
 	UFUNCTION()

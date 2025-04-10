@@ -1,0 +1,130 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1568977742",
+    "Type": "Event",
+    "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
+    "Language": "SFX",
+    "Hash": "{0711F7C9-BE7C-C93A-2A20-D49086DB8040}",
+    "ObjectPath": "StartGameMusic",
+    "ShortName": "StartGameMusic",
+    "Path": "Event/StartGameMusic.bnk",
+    "Media": [
+     {
+      "Id": "381046349",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "18-Dark Fantasy Studio- Productor.wav",
+      "Path": "Media/381046349.wem",
+      "CachePath": "71/{71AEC03B-BB23-7B3E-DFBF-73E471E2D395}.wem"
+     },
+     {
+      "Id": "868120818",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "3-Dark Fantasy Studio- Dead files.wav",
+      "Path": "Media/868120818.wem",
+      "CachePath": "55/{555F49A0-7339-32FE-8D0C-1ED51C78B8C5}.wem"
+     },
+     {
+      "Id": "963218434",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "9-Dark Fantasy Studio- Forever and a day.wav",
+      "Path": "Media/963218434.wem",
+      "CachePath": "72/{72D510C0-4A71-381B-F67B-A7EE44B9719F}.wem"
+     },
+     {
+      "Id": "1041049495",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "7-Dark Fantasy Studio- Monochromatic stain.wav",
+      "Path": "Media/1041049495.wem",
+      "CachePath": "65/{650E76A2-A1DB-A643-DF37-52FA1454E544}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1568977742",
+      "Name": "StartGameMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\StartGameMusic",
+      "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "3553349781",
+         "GUID": "{F53BDEA3-FA41-4209-A807-6C9225C147F8}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "381046349"
+         },
+         {
+          "Id": "868120818"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "438105790",
+         "GUID": "{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "963218434"
+         },
+         {
+          "Id": "1041049495"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "3909959462",
+      "Name": "Enviroment",
+      "ObjectPath": "\\States\\Default Work Unit\\Enviroment",
+      "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
+      "States": [
+       {
+        "Id": "438105790",
+        "Name": "Outside",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Outside",
+        "GUID": "{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\None",
+        "GUID": "{2BFE9924-4A9E-4F29-AD9B-560230966B40}"
+       },
+       {
+        "Id": "3553349781",
+        "Name": "Inside",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Inside",
+        "GUID": "{F53BDEA3-FA41-4209-A807-6C9225C147F8}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{A57DDD22-9BAF-E7AC-C342-2A6E0D7A6D7F}"
+ }
+}

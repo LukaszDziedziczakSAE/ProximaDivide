@@ -60,6 +60,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool TryAddEquipable(UEquipableItemDataAsset* Equipable);
 
+	UFUNCTION(BlueprintCallable)
+	bool TryAddEquipableToSlot(UEquipableItemDataAsset* Equipable, int SlotNumber);
+
+	UFUNCTION(BlueprintCallable)
+	bool TryRemoveItemFromSlot(int SlotNumber);
+
 	UFUNCTION(BlueprintPure)
 	int GetCurrentSlotNumber() { return Index; }
 
