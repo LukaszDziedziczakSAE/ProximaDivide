@@ -104,6 +104,7 @@ void UCraftingMenuUserWidget::UpdateCraftingScreen()
 {
 	if (CraftingMachine->GetCraftingMachineState() == ECraftingMachineState::Crafting)
 	{
+		CraftingStatusText->SetVisibility(ESlateVisibility::Visible);
 		CraftingIndicator->SetVisibility(ESlateVisibility::Visible);
 		MainMenu->SetVisibility(ESlateVisibility::Collapsed);
 		RecipeList->SetVisibility(ESlateVisibility::Collapsed);
@@ -111,6 +112,7 @@ void UCraftingMenuUserWidget::UpdateCraftingScreen()
 
 	else if (CraftingMachine->GetCraftingMachineState() == ECraftingMachineState::Standby)
 	{
+		CraftingStatusText->SetVisibility(ESlateVisibility::Collapsed);
 		CraftingIndicator->SetVisibility(ESlateVisibility::Collapsed);
 		MainMenu->SetVisibility(ESlateVisibility::Visible);
 		RecipeList->SetVisibility(ESlateVisibility::Visible);
@@ -119,6 +121,7 @@ void UCraftingMenuUserWidget::UpdateCraftingScreen()
 
 	else
 	{
+		CraftingStatusText->SetVisibility(ESlateVisibility::Collapsed);
 		CraftingIndicator->SetVisibility(ESlateVisibility::Collapsed);
 		MainMenu->SetVisibility(ESlateVisibility::Collapsed);
 		RecipeList->SetVisibility(ESlateVisibility::Collapsed);
