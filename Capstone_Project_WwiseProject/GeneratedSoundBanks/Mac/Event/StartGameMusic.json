@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
     "Language": "SFX",
-    "Hash": "{0711F7C9-BE7C-C93A-2A20-D49086DB8040}",
+    "Hash": "{829C4B65-567A-51CB-2473-4E73D9090B26}",
     "ObjectPath": "StartGameMusic",
     "ShortName": "StartGameMusic",
     "Path": "Event/StartGameMusic.bnk",
@@ -25,6 +25,15 @@
       "CachePath": "71/{71AEC03B-BB23-7B3E-DFBF-73E471E2D395}.wem"
      },
      {
+      "Id": "430694212",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "9-Dark_Fantasy_Studio-Forever_and_a_day.wav",
+      "Path": "Media/430694212.wem",
+      "CachePath": "72/{72D510C0-4A71-381B-F67B-A7EE44B9719F}.wem"
+     },
+     {
       "Id": "868120818",
       "Language": "SFX",
       "Streaming": "false",
@@ -32,15 +41,6 @@
       "ShortName": "3-Dark Fantasy Studio- Dead files.wav",
       "Path": "Media/868120818.wem",
       "CachePath": "55/{555F49A0-7339-32FE-8D0C-1ED51C78B8C5}.wem"
-     },
-     {
-      "Id": "963218434",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Loose",
-      "ShortName": "9-Dark Fantasy Studio- Forever and a day.wav",
-      "Path": "Media/963218434.wem",
-      "CachePath": "72/{72D510C0-4A71-381B-F67B-A7EE44B9719F}.wem"
      },
      {
       "Id": "1041049495",
@@ -85,7 +85,7 @@
         },
         "MediaRefs": [
          {
-          "Id": "963218434"
+          "Id": "430694212"
          },
          {
           "Id": "1041049495"
@@ -125,6 +125,6 @@
     ]
    }
   ],
-  "FileHash": "{A57DDD22-9BAF-E7AC-C342-2A6E0D7A6D7F}"
+  "FileHash": "{041577D7-D6E9-0E2B-AADA-F21A013380FA}"
  }
 }

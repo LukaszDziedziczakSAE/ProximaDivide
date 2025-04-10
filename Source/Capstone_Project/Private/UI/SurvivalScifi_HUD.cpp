@@ -14,6 +14,9 @@ void ASurvivalScifi_HUD::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (NotificationsClass != nullptr) Notifications = CreateWidget<UNotificationsUserWidget>(GetWorld(), NotificationsClass);
+	if (Notifications != nullptr) Notifications->AddToViewport();
+
 	ShowGameHUD();
 }
 
@@ -27,9 +30,6 @@ void ASurvivalScifi_HUD::ShowGameHUD()
 
 	if (CrosshairClass != nullptr) Crosshair = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), CrosshairClass);
 	if (Crosshair != nullptr) Crosshair->AddToViewport();
-
-	if (NotificationsClass != nullptr) Notifications = CreateWidget<UNotificationsUserWidget>(GetWorld(), NotificationsClass);
-	if (Notifications != nullptr) Notifications->AddToViewport();
 }
 
 void ASurvivalScifi_HUD::HideGameHUD()
@@ -52,11 +52,11 @@ void ASurvivalScifi_HUD::HideGameHUD()
 		Crosshair = nullptr;
 	}
 
-	if (Notifications != nullptr)
+	/*if (Notifications != nullptr)
 	{
 		Notifications->AddToViewport();
 		Notifications = nullptr;
-	}
+	}*/
 }
 
 void ASurvivalScifi_HUD::ShowInventory()

@@ -507,14 +507,14 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="9-Dark Fantasy Studio- Forever and a day" ID="{A059FFC7-7622-459E-9141-EEF9786EFFD1}" ShortID="564018404">
+										<MusicTrack Name="9-Dark_Fantasy_Studio-Forever_and_a_day" ID="{01EA9CC9-FD70-4394-BEFF-31CBBA3123BA}" ShortID="606658537">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
 												</Reference>
 												<Reference Name="TransitionRoot">
 													<Custom>
-														<MusicTransition Name="Root" ID="{8B0F92F7-A6C0-4552-B59B-FD1A1A587925}">
+														<MusicTransition Name="Root" ID="{D0C738CF-5D9D-4044-8E8A-594077FD9719}">
 															<PropertyList>
 																<Property Name="IsFolder" Type="bool" Value="True"/>
 															</PropertyList>
@@ -524,11 +524,11 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="9-Dark Fantasy Studio- Forever and a day" ID="{182FF527-766F-42B3-B312-6EB2CD0F7E6E}">
+												<AudioFileSource Name="9-Dark_Fantasy_Studio-Forever_and_a_day" ID="{F7472A15-F7FE-40BF-A622-49163B83A5B3}">
 													<Language>SFX</Language>
-													<AudioFile>9-Dark Fantasy Studio- Forever and a day.wav</AudioFile>
+													<AudioFile>9-Dark_Fantasy_Studio-Forever_and_a_day.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="963218434"/>
+														<MediaID ID="430694212"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -536,18 +536,18 @@
 												<ObjectList Name="Sequences">
 													<Reference>
 														<Local>
-															<MusicTrackSequence Name="" ID="{701649FE-5A0E-4428-A191-0E9163EAAAD5}">
+															<MusicTrackSequence Name="" ID="{982DDE97-1E0A-4389-8812-E0575548AC67}">
 																<ObjectLists>
 																	<ObjectList Name="Clips">
 																		<Reference>
 																			<Local>
-																				<MusicClip Name="9-Dark Fantasy Studio- Forever and a day" ID="{979A947B-966F-43FD-AC0C-EBACB2A063C1}">
+																				<MusicClip Name="9-Dark_Fantasy_Studio-Forever_and_a_day" ID="{C56B6033-EB93-41C9-875E-B115E518CBFF}">
 																					<PropertyList>
 																						<Property Name="EndTrimOffset" Type="Real64" Value="563433.333333333"/>
 																						<Property Name="FadeInMode" Type="int16" Value="0"/>
 																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																					</PropertyList>
-																					<AudioSourceRef Name="9-Dark Fantasy Studio- Forever and a day" ID="{182FF527-766F-42B3-B312-6EB2CD0F7E6E}"/>
+																					<AudioSourceRef Name="9-Dark_Fantasy_Studio-Forever_and_a_day" ID="{F7472A15-F7FE-40BF-A622-49163B83A5B3}"/>
 																				</MusicClip>
 																			</Local>
 																		</Reference>
