@@ -38,7 +38,10 @@ protected:
 	float JumpForce{ 100.0f };
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class AEquipableItem* RightHandItem;
+	class ASurvivalScifi_Item* RightHandItem;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	ASurvivalScifi_Item* LeftHandItem;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool UseItemDown;
@@ -78,10 +81,10 @@ public:
 	void SelectSlot(int SlotNumber);
 
 	UFUNCTION()
-	virtual void SpawnRightHand();
+	virtual void SpawnHandItems();
 
 	UFUNCTION()
-	void DespawnRightHand();
+	void DespawnHandItems();
 
 	UFUNCTION()
 	void UseItem();
@@ -91,6 +94,9 @@ public:
 
 	UFUNCTION()
 	void UseItemEnd();
+
+	UFUNCTION()
+	void SingleUseItemEnd();
 
 	UFUNCTION()
 	virtual float PlayMontage(UAnimMontage* Montage);

@@ -13,12 +13,12 @@ ASurvivalScifi_Item::ASurvivalScifi_Item()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	SetRootComponent(Mesh);
-	//Mesh->SetupAttachment(GetRootComponent());
-
 	Collider = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collider"));
-	Collider->SetupAttachment(Mesh);
+	Collider->SetupAttachment(GetRootComponent());
+
+	Collider->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
+
+	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
 }
 
 // Called when the game starts or when spawned
@@ -45,16 +45,6 @@ void ASurvivalScifi_Item::Interact(APlayerCharacter* PlayerCharacter)
 FString ASurvivalScifi_Item::InteractionText()
 {
 	return TEXT("Pick Up ") + DataAsset->Name;
-}
-
-void ASurvivalScifi_Item::SetMaterial(UMaterialInterface* Material)
-{
-	Mesh->SetMaterial(0, Material);
-}
-
-void ASurvivalScifi_Item::SetOverlayMaterial(UMaterialInterface* Material)
-{
-	Mesh->SetOverlayMaterial(Material);
 }
 
 FVector ASurvivalScifi_Item::GetBoxExtent()

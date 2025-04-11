@@ -7,51 +7,17 @@
 #include "AkComponent.h"
 #include "AkAudioEvent.h"
 
-
 AEquipableItem::AEquipableItem()
 {
-	AkComponent = CreateDefaultSubobject<UAkComponent>(TEXT("AkComponent"));
+	Mesh->SetEnableGravity(false);
+	Mesh->SetSimulatePhysics(false);
 }
 
 void AEquipableItem::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//EquipSoundID = PlayWiseEvent(EquipSound, true);
-
-	//FOnAkPostEventCallback nullCallback;
-	//UAkGameplayStatics::PostEvent(EquipSound, this, 0, nullCallback);
-
-	//EquipSound->
-	//AkComponent->PostAkEvent(EquipSound);
-	// 
-	//if (EquipSound != nullptr)
-	//{
-	//	if (!EquipSound->IsLoaded()) EquipSound->LoadData();
-	//	//EquipSound->PostOnActor(this, FOnAkPostEventCallback(), 0, true);
-	//	FOnAkPostEventCallback nullCallback;
-	//	EquipSoundID = UAkGameplayStatics::PostEvent(EquipSound, this, 0, nullCallback);
-	//	UE_LOG(LogTemp, Log, TEXT("Wwise Event Playing %d"), EquipSoundID);
-	//}
-	
-}
-
-int32 AEquipableItem::PlayWiseEvent(UAkAudioEvent* Event, bool bStopWhenAttachedToDestoryed)
-{
-	int PlayingID = AK_INVALID_PLAYING_ID;
-
-	if (Event)
-	{
-		FOnAkPostEventCallback nullCalback;
-		PlayingID = UAkGameplayStatics::PostEvent(Event, this, int32(0), nullCalback, bStopWhenAttachedToDestoryed);
-		UE_LOG(LogTemp, Log, TEXT("Wwise Event: %s Playing"), *Event->GetName());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Wwise Event reference on EquipableItem is invalid"));
-	}
-
-	return PlayingID;
+	PlayEquipSound();
 }
 
 void AEquipableItem::UpdateRelatives()
@@ -83,4 +49,28 @@ void AEquipableItem::UseFinish()
 	if (GetOwner<ASurvivalSciFi_Character>()->GetUseItemDown()) Use();
 
 	OnEndUsing.Broadcast();
+}
+
+void AEquipableItem::PlayEquipSound()
+{
+	if (EquipSound != nullptr)
+	{
+		AudioComponent->PostAkEvent(EquipSound, int32(0), FOnAkPostEventCallback());
+	}
+}
+
+void AEquipableItem::PlayUnequipSound()
+{
+	if (UnequipSound != nullptr)
+	{
+		AudioComponent->PostAkEvent(UnequipSound, int32(0), FOnAkPostEventCallback());
+	}
+}
+
+void AEquipableItem::PlayUseSound()
+{
+	if (UseSound != nullptr)
+	{
+		AudioComponent->PostAkEvent(UseSound, int32(0), FOnAkPostEventCallback());
+	}
 }

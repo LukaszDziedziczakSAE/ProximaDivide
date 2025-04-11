@@ -24,10 +24,10 @@ protected:
 	class UBoxComponent* Collider;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	UStaticMeshComponent* Mesh;
+	class UItemDataAsset* DataAsset;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	class UItemDataAsset* DataAsset;
+	class UAkComponent* AudioComponent;
 
 public:	
 	// Called every frame
@@ -38,20 +38,23 @@ public:
 	virtual FString InteractionText() override;
 
 	UFUNCTION()
+	virtual UMaterialInterface* GetMaterial() { return nullptr; }
+
+	UFUNCTION()
+	virtual void SetMaterial(UMaterialInterface* Material) { }
+
+	UFUNCTION()
+	virtual void SetOverlayMaterial(UMaterialInterface* Material) { }
+
+	UFUNCTION(BlueprintPure)
+	virtual UMeshComponent* GetMesh() { return nullptr; }
+
+	UFUNCTION()
 	UBoxComponent* GetCollider() { return Collider; }
-
-	UFUNCTION()
-	UMaterialInterface* GetMaterial() { return Mesh->GetMaterial(0); }
-
-	UFUNCTION()
-	void SetMaterial(UMaterialInterface* Material);
-
-	UFUNCTION()
-	void SetOverlayMaterial(UMaterialInterface* Material);
 
 	UFUNCTION()
 	FVector GetBoxExtent();
 
-	UFUNCTION(BlueprintPure)
-	UStaticMeshComponent* GetMesh() { return Mesh; }
+	UFUNCTION()
+	virtual void UpdateRelatives() {}
 };

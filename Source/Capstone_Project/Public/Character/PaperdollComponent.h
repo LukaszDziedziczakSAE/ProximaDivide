@@ -101,4 +101,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool IsCurrentSlotHaveItem();
+
+	UFUNCTION()
+	void CurrentSlotSingleUseItem();
 };

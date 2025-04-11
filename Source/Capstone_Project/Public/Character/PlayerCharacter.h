@@ -47,7 +47,7 @@ public:
 	UFUNCTION()
 	void Interact();
 
-	virtual void SpawnRightHand() override;
+	virtual void SpawnHandItems() override;
 
 	UFUNCTION(BlueprintPure)
 	USkeletalMeshComponent* GetFPS_Arms() { return FPS_Arms; }

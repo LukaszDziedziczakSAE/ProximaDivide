@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Item/SurvivalScifi_Item.h"
+#include "Item/StaticMesh_Item.h"
 #include "EquipableItem.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartUsingSignature);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEndUsingSignature);
 
 UCLASS()
-class CAPSTONE_PROJECT_API AEquipableItem : public ASurvivalScifi_Item
+class CAPSTONE_PROJECT_API AEquipableItem : public AStaticMesh_Item
 {
 	GENERATED_BODY()
 
@@ -19,9 +19,6 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
-	UPROPERTY(EditDefaultsOnly)
-	class UAkComponent* AkComponent;
 
 	UPROPERTY(EditDefaultsOnly)
 	FVector RelativeLocation;
@@ -41,25 +38,20 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	bool Busy;
 
-	UFUNCTION()
-	int32 PlayWiseEvent(UAkAudioEvent* Event, bool bStopWhenAttachedToDestoryed);
-
-public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UAkAudioEvent* EquipSound;
-	int32 EquipSoundID;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UAkAudioEvent* UnequipSound;
-	int32 UnequipSoundID;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UAkAudioEvent* UseSound;
-	int32 UseSoundID;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	UAkAudioEvent* StrikeSound;
-	int32 StrikeSoundID;
+	UAkAudioEvent* HitSound;
+
+public:
+	
 
 	UPROPERTY(BlueprintAssignable)
 	FOnStartUsingSignature OnStartUsing;
@@ -67,9 +59,7 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnEndUsingSignature OnEndUsing;
 
-
-	UFUNCTION()
-	void UpdateRelatives();
+	virtual void UpdateRelatives() override;
 	
 	UFUNCTION()
 	virtual void Use();
@@ -80,4 +70,12 @@ public:
 	UFUNCTION()
 	UAnimMontage* GetUseMontage() { return UseMontage; }
 
+	UFUNCTION()
+	void PlayEquipSound();
+
+	UFUNCTION()
+	void PlayUnequipSound();
+
+	UFUNCTION()
+	void PlayUseSound();
 };

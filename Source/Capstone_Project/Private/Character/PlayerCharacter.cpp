@@ -56,18 +56,26 @@ void APlayerCharacter::Interact()
 	PlayerInteractionComponent->Interact();
 }
 
-void APlayerCharacter::SpawnRightHand()
+void APlayerCharacter::SpawnHandItems()
 {
-	DespawnRightHand();
+	if (!PaperdollComponent->IsCurrentSlotHaveItem()) return;
 
-	if (PaperdollComponent->IsCurrentSlotHaveItem())
+	DespawnHandItems();
+
+	if (PaperdollComponent->GetCurrentSlot().Item->RightHand != nullptr)
 	{
-		RightHandItem = GetWorld()->SpawnActor<AEquipableItem>(PaperdollComponent->GetCurrentSlot().Item->RightHand);
+		RightHandItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(PaperdollComponent->GetCurrentSlot().Item->RightHand);
 		RightHandItem->AttachToComponent(FPS_Arms, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("RightHand"));
-		RightHandItem->UpdateRelatives();
 		RightHandItem->SetOwner(this);
+		RightHandItem->UpdateRelatives();
+	}
 
-		RightHandItem->EquipSoundID = UAkGameplayStatics::PostEvent(RightHandItem->EquipSound, this, int32(0), FOnAkPostEventCallback(), true);
+	if (PaperdollComponent->GetCurrentSlot().Item->LeftHand != nullptr)
+	{
+		LeftHandItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(PaperdollComponent->GetCurrentSlot().Item->LeftHand);
+		LeftHandItem->AttachToComponent(FPS_Arms, FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("LeftHand"));
+		LeftHandItem->SetOwner(this);
+		LeftHandItem->UpdateRelatives();
 	}
 }
 

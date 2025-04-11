@@ -63,28 +63,54 @@ void ASurvivalSciFi_Character::SelectSlot(int SlotNumber)
 	if (!PaperdollComponent->DoesSlotHaveItem(SlotNumber)) return;
 
 	PaperdollComponent->SelectSlot(SlotNumber);
-	SpawnRightHand();
-}
+	SpawnHandItems();
 
-void ASurvivalSciFi_Character::SpawnRightHand()
-{
-	DespawnRightHand();
-
-	if (PaperdollComponent->IsCurrentSlotHaveItem())
+	if (PaperdollComponent->IsCurrentSlotHaveItem() 
+		&& PaperdollComponent->GetCurrentSlot().Item->UseageMontage != nullptr)
 	{
-		RightHandItem = GetWorld()->SpawnActor<AEquipableItem>(PaperdollComponent->GetCurrentSlot().Item->RightHand);
-		RightHandItem->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("RightHand"));
-		RightHandItem->UpdateRelatives();
-		RightHandItem->SetOwner(this);
+		//PlayMontage(PaperdollComponent->GetCurrentSlot().Item->UseageMontage);
+		float t = PlayMontage(PaperdollComponent->GetCurrentSlot().Item->UseageMontage);
+
+		FTimerHandle  UseTimer;
+		GetWorld()->GetTimerManager().SetTimer(UseTimer, this, &ASurvivalSciFi_Character::SingleUseItemEnd, t, false);
 	}
 }
 
-void ASurvivalSciFi_Character::DespawnRightHand()
+void ASurvivalSciFi_Character::SpawnHandItems()
+{
+	if (!PaperdollComponent->IsCurrentSlotHaveItem()) return;
+
+	DespawnHandItems();
+
+	if (PaperdollComponent->GetCurrentSlot().Item->RightHand != nullptr)
+	{
+		RightHandItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(PaperdollComponent->GetCurrentSlot().Item->RightHand);
+		RightHandItem->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("RightHand"));
+		RightHandItem->SetOwner(this);
+		RightHandItem->UpdateRelatives();
+	}
+
+	if (PaperdollComponent->GetCurrentSlot().Item->LeftHand != nullptr)
+	{
+		LeftHandItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(PaperdollComponent->GetCurrentSlot().Item->LeftHand);
+		LeftHandItem->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("LeftHand"));
+		LeftHandItem->SetOwner(this);
+		LeftHandItem->UpdateRelatives();
+	}
+}
+
+void ASurvivalSciFi_Character::DespawnHandItems()
 {
 	if (RightHandItem != nullptr)
 	{
 		RightHandItem->Destroy();
 		RightHandItem = nullptr;
+	}
+
+	if (LeftHandItem != nullptr)
+	{
+		LeftHandItem->Destroy();
+		LeftHandItem = nullptr;
 	}
 }
 
@@ -99,11 +125,21 @@ void ASurvivalSciFi_Character::UseItemEnd()
 	UseItemDown = false;
 }
 
+void ASurvivalSciFi_Character::SingleUseItemEnd()
+{
+	PaperdollComponent->CurrentSlotSingleUseItem();
+	DespawnHandItems();
+}
+
 void ASurvivalSciFi_Character::UseItem()
 {
 	if (RightHandItem == nullptr) return;
 
-	RightHandItem->Use();
+	AEquipableItem* EquipableItem = Cast<AEquipableItem>(RightHandItem);
+	if (EquipableItem)
+	{
+		EquipableItem->Use();
+	}
 }
 
 float ASurvivalSciFi_Character::PlayMontage(UAnimMontage* Montage)

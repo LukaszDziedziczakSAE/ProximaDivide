@@ -194,3 +194,13 @@ bool UPaperdollComponent::IsCurrentSlotHaveItem()
 	return Index >= 0 && Index <= 5 && GetCurrentSlot().Item != nullptr;
 }
 
+void UPaperdollComponent::CurrentSlotSingleUseItem()
+{
+	if (Index >= 0 && Index <= 5 && GetCurrentSlot().Item != nullptr)
+	{
+		int oldSlot = Index;
+		Index = 0;
+		TryRemoveItemFromSlot(oldSlot);
+	}
+}
+

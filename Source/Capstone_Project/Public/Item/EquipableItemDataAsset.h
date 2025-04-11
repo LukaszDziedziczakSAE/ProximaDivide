@@ -18,4 +18,13 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<class ASurvivalScifi_Item> RightHand;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class ASurvivalScifi_Item> LeftHand;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UAnimMontage* UseageMontage;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	bool bSingleUse;
 };
