@@ -44,6 +44,7 @@ void ASurvivalScifi_Item::Interact(APlayerCharacter* PlayerCharacter)
 
 FString ASurvivalScifi_Item::InteractionText()
 {
+	if (DataAsset == nullptr) return TEXT("");
 	return TEXT("Pick Up ") + DataAsset->Name;
 }
 

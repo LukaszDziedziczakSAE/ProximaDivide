@@ -68,6 +68,9 @@ protected:
 	UPROPERTY()
 	float Timer;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UParticleSystemComponent* VentingVFX;
+
 	UFUNCTION()
 	bool DoorsClosed();
 

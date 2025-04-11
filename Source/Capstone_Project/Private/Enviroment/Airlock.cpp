@@ -7,6 +7,7 @@
 #include "Components/BoxComponent.h"
 #include "AkGameplayStatics.h"
 #include "AkComponent.h"
+#include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
 AAirlock::AAirlock()
@@ -25,6 +26,9 @@ AAirlock::AAirlock()
 
 	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
 	AudioComponent->SetupAttachment(Root);
+
+	VentingVFX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Venting VFX"));
+	VentingVFX->SetupAttachment(Root);
 }
 
 bool AAirlock::DoorsClosed()
@@ -70,6 +74,7 @@ void AAirlock::BeginCycling()
 	Timer = CycleTime;
 	Light->SetLightColor(CyclingColor);
 	bHasPlayedCycleSound = false;
+	VentingVFX->Activate();
 }
 
 // Called when the game starts or when spawned
@@ -128,6 +133,7 @@ void AAirlock::Tick(float DeltaTime)
 
 			SetDoorModes();
 			Light->SetLightColor(StandbyColor);
+			VentingVFX->Deactivate();
 		}
 	}
 }

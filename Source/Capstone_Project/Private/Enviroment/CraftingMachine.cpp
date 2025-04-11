@@ -283,7 +283,16 @@ float ACraftingMachine::GetProgress()
 void ACraftingMachine::Craft(URecipeDataAsset* Recipe)
 {
 	if (Recipe == nullptr || !Inventory->CanAfford(Recipe) || !Inventory->CanAddItem(Recipe->Item)) return;
-
+	if (Recipe->Item == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Recipe item refence missing"));
+		return;
+	}
+	if (Recipe->Item->ItemClass == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Recipe Item ItemClass refence missing"));
+		return;
+	}
 
 	CurrentlyCrafting = Recipe;
 	CraftingMachineState = ECraftingMachineState::Crafting;
@@ -298,7 +307,11 @@ void ACraftingMachine::Craft(URecipeDataAsset* Recipe)
 	Timer = CurrentlyCrafting->BuiltTime;
 
 	CurrentlyCraftingItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(CurrentlyCrafting->Item->ItemClass, CraftingItemPosition->GetComponentLocation(), CraftingItemPosition->GetComponentRotation());
-	CurrentlyCraftingItem->GetMesh()->SetSimulatePhysics(false);
+	USkeletalMeshComponent* SkeletalMeshComponent = Cast<USkeletalMeshComponent>(CurrentlyCraftingItem->GetMesh());
+	UStaticMeshComponent* StaticMeshComponent = Cast<UStaticMeshComponent>(CurrentlyCraftingItem->GetMesh());
+
+	if (SkeletalMeshComponent != nullptr) SkeletalMeshComponent->SetSimulatePhysics(false);
+	if (StaticMeshComponent != nullptr) StaticMeshComponent->SetSimulatePhysics(false);
 
 	CraftingMaterial = UMaterialInstanceDynamic::Create(CraftingMaterialPrefab, this);
 	CurrentlyCraftingItemMaterial = CurrentlyCraftingItem->GetMaterial();
