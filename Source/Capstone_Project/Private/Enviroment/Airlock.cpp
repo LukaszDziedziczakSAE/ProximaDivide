@@ -4,6 +4,9 @@
 #include "Enviroment/Airlock.h"
 #include "Enviroment/Door.h"
 #include "Components/PointLightComponent.h"
+#include "Components/BoxComponent.h"
+#include "AkGameplayStatics.h"
+#include "AkComponent.h"
 
 // Sets default values
 AAirlock::AAirlock()
@@ -16,12 +19,57 @@ AAirlock::AAirlock()
 
 	Light = CreateDefaultSubobject<UPointLightComponent >(TEXT("Light"));
 	Light->SetupAttachment(GetRootComponent());
+
+	Collider = CreateDefaultSubobject<UBoxComponent>(TEXT("Collider"));
+	Collider->SetupAttachment(Root);
+
+	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
+	AudioComponent->SetupAttachment(Root);
 }
 
 bool AAirlock::DoorsClosed()
 {
 	return InnerDoor->GetDoorState() == EDoorState::Closed 
 		&& OuterDoor->GetDoorState() == EDoorState::Closed;
+}
+
+void AAirlock::SetDoorModes()
+{
+	switch (AirlockState)
+	{
+	case EAirlockState::OpenIn:
+		InnerDoor->SetDoorMode(EDoorMode::Automatic);
+		OuterDoor->SetDoorMode(EDoorMode::ManualOpen);
+		break;
+
+	case EAirlockState::OpenOut:
+		InnerDoor->SetDoorMode(EDoorMode::ManualOpen);
+		OuterDoor->SetDoorMode(EDoorMode::Automatic);
+		break;
+	}
+}
+
+void AAirlock::OnColliderBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	BeginCycling();
+}
+
+void AAirlock::OnColliderEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+
+}
+
+void AAirlock::BeginCycling()
+{
+	if (AirlockState == EAirlockState::OpenIn) AirlockState = EAirlockState::CyclingOut;
+	else if (AirlockState == EAirlockState::OpenOut) AirlockState = EAirlockState::CyclingIn;
+	else return;
+
+	OuterDoor->Close();
+	InnerDoor->Close();
+	Timer = CycleTime;
+	Light->SetLightColor(CyclingColor);
+	bHasPlayedCycleSound = false;
 }
 
 // Called when the game starts or when spawned
@@ -41,6 +89,10 @@ void AAirlock::BeginPlay()
 		else if (ChildActor->ActorHasTag(TEXT("Outer")))
 			OuterDoor = Cast<ADoor>(ChildActor);
 	}
+
+	SetDoorModes();
+	Collider->OnComponentBeginOverlap.AddDynamic(this, &AAirlock::OnColliderBeginOverlap);
+	Collider->OnComponentEndOverlap.AddDynamic(this, &AAirlock::OnColliderEndOverlap);
 }
 
 // Called every frame
@@ -51,6 +103,13 @@ void AAirlock::Tick(float DeltaTime)
 	if ((AirlockState == EAirlockState::CyclingIn || AirlockState == EAirlockState::CyclingOut)
 		&& DoorsClosed())
 	{
+		if (!bHasPlayedCycleSound)
+		{
+			AudioComponent->PostAkEvent(AirlockCycleSound, int32(0), FOnAkPostEventCallback());
+			bHasPlayedCycleSound = true;
+		}
+		
+
 		Timer -= DeltaTime;
 
 		if (Timer <= 0)
@@ -67,6 +126,7 @@ void AAirlock::Tick(float DeltaTime)
 				OuterDoor->Open();
 			}
 
+			SetDoorModes();
 			Light->SetLightColor(StandbyColor);
 		}
 	}
@@ -83,17 +143,13 @@ void AAirlock::OuterSwitchPress()
 
 	else if (AirlockState == EAirlockState::OpenIn)
 	{
-		OuterDoor->Close();
-		InnerDoor->Close();
-		Timer = CycleTime;
-		AirlockState = EAirlockState::CyclingOut;
-		Light->SetLightColor(CyclingColor);
+		BeginCycling();
 	}
 }
 
 void AAirlock::InnerSwitchPress()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Inner Switch Press"));
+	//UE_LOG(LogTemp, Warning, TEXT("Inner Switch Press"));
 
 	if (AirlockState == EAirlockState::OpenIn)
 	{
@@ -102,17 +158,13 @@ void AAirlock::InnerSwitchPress()
 
 	else if (AirlockState == EAirlockState::OpenOut)
 	{
-		OuterDoor->Close();
-		InnerDoor->Close();
-		Timer = CycleTime;
-		AirlockState = EAirlockState::CyclingIn;
-		Light->SetLightColor(CyclingColor);
+		BeginCycling();
 	}
 }
 
 void AAirlock::InsideInnerSwitchPress()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Inside Inner Switch Press"));
+	//UE_LOG(LogTemp, Warning, TEXT("Inside Inner Switch Press"));
 
 	if (AirlockState == EAirlockState::OpenIn)
 	{
@@ -121,17 +173,13 @@ void AAirlock::InsideInnerSwitchPress()
 
 	else if (AirlockState == EAirlockState::OpenOut)
 	{
-		OuterDoor->Close();
-		InnerDoor->Close();
-		Timer = CycleTime;
-		AirlockState = EAirlockState::CyclingIn;
-		Light->SetLightColor(CyclingColor);
+		BeginCycling();
 	}
 }
 
 void AAirlock::InsideOuterSwitchPress()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Inside Outer Switch Press"));
+	//UE_LOG(LogTemp, Warning, TEXT("Inside Outer Switch Press"));
 
 	if (AirlockState == EAirlockState::OpenOut)
 	{
@@ -140,10 +188,6 @@ void AAirlock::InsideOuterSwitchPress()
 
 	else if (AirlockState == EAirlockState::OpenIn)
 	{
-		OuterDoor->Close();
-		InnerDoor->Close();
-		Timer = CycleTime;
-		AirlockState = EAirlockState::CyclingOut;
-		Light->SetLightColor(CyclingColor);
+		BeginCycling();
 	}
 }

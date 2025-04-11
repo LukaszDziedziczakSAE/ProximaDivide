@@ -130,6 +130,21 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Folder Name="Airlock" ID="{ABFE3754-432E-4166-8E01-B846933042BF}" ShortID="174002631">
+							<ChildrenList>
+								<Event Name="Play_Airlock_Cycle" ID="{1986CD0C-BB1B-4EED-8B94-8A81A68224B4}">
+									<ChildrenList>
+										<Action Name="" ID="{03C2CA5A-6B5F-4FF7-B9A2-EC73737E7FF4}" ShortID="253206826">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Airlock_Cycle" ID="{A49FFE2F-A5AA-4DAD-8B37-8BBC7099AB79}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Equipment" ID="{5BD4DAF4-A83A-4BCA-B121-6756844BBC1E}" ShortID="220977130">

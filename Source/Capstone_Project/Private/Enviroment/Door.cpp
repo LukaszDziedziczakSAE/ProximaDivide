@@ -5,6 +5,7 @@
 #include "Components/BoxComponent.h"
 #include "Character/SurvivalSciFi_Character.h"
 #include "AkGameplayStatics.h"
+#include "AkComponent.h"
 
 // Sets default values
 ADoor::ADoor()
@@ -21,6 +22,8 @@ ADoor::ADoor()
 	Collider = CreateDefaultSubobject<UBoxComponent>(TEXT("Collider"));
 	Collider->SetupAttachment(Root);
 
+	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
+	AudioComponent->SetupAttachment(Root);
 }
 
 // Called when the game starts or when spawned
@@ -107,7 +110,8 @@ void ADoor::Open()
 	if (DoorState == EDoorState::Closed)
 	{
 		DoorState = EDoorState::Opening;
-		UAkGameplayStatics::PostEvent(DoorOpenEvent, this, int32(0), FOnAkPostEventCallback(), true);
+		//UAkGameplayStatics::PostEvent(DoorOpenEvent, this, int32(0), FOnAkPostEventCallback(), true);
+		AudioComponent->PostAkEvent(DoorOpenEvent, int32(0), FOnAkPostEventCallback());
 	}
 }
 
@@ -116,7 +120,8 @@ void ADoor::Close()
 	if (DoorState == EDoorState::Open)
 	{
 		DoorState = EDoorState::Closing;
-		UAkGameplayStatics::PostEvent(DoorCloseEvent, this, int32(0), FOnAkPostEventCallback(), true);
+		//UAkGameplayStatics::PostEvent(DoorCloseEvent, this, int32(0), FOnAkPostEventCallback(), true);
+		AudioComponent->PostAkEvent(DoorCloseEvent, int32(0), FOnAkPostEventCallback());
 	}
 }
 
@@ -156,5 +161,10 @@ FString ADoor::InteractionText()
 		return TEXT("Close Door");
 
 	return TEXT("");
+}
+
+void ADoor::SetDoorMode(EDoorMode NewDoorMode)
+{
+	DoorMode = NewDoorMode;
 }
 

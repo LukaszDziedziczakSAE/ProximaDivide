@@ -25,6 +25,10 @@ public:
 	// Sets default values for this actor's properties
 	AAirlock();
 
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 	UPROPERTY(EditAnywhere)
 	USceneComponent* Root;
 
@@ -38,6 +42,9 @@ public:
 	float CycleTime{ 2.0f };
 
 	UPROPERTY(EditAnywhere)
+	class UBoxComponent* Collider;
+
+	UPROPERTY(EditAnywhere)
 	class UPointLightComponent* Light;
 
 	UPROPERTY(EditAnywhere)
@@ -49,15 +56,32 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	FLinearColor StandbyColor;
 
+	UPROPERTY(EditAnywhere)
+	class UAkComponent* AudioComponent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UAkAudioEvent* AirlockCycleSound;
+
+	UPROPERTY(VisibleAnywhere)
+	bool bHasPlayedCycleSound;
+
 	UPROPERTY()
 	float Timer;
 
 	UFUNCTION()
 	bool DoorsClosed();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UFUNCTION()
+	void SetDoorModes();
+
+	UFUNCTION()
+	void OnColliderBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void OnColliderEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	UFUNCTION()
+	void BeginCycling();
 
 public:	
 	// Called every frame

@@ -65,6 +65,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 	class UBoxComponent* Collider;
 
+	UPROPERTY(EditAnywhere)
+	class UAkComponent* AudioComponent;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UAkAudioEvent* DoorOpenEvent;
 
@@ -114,4 +117,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	EDoorState GetDoorState() { return DoorState; }
+
+	UFUNCTION()
+	void SetDoorMode(EDoorMode NewDoorMode);
 };

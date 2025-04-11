@@ -86,12 +86,6 @@
 								<Sound Name="Door_Open" ID="{5179A685-BE60-459F-A5D1-98D9058CAA05}" ShortID="177065689">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="CenterPercentage" Type="int32">
-											<ValueList>
-												<Value>100</Value>
-											</ValueList>
-										</Property>
-										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -108,6 +102,9 @@
 										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
 										</Reference>
@@ -131,13 +128,12 @@
 								<Sound Name="Door_Close" ID="{50CF75AF-BAD0-449B-B146-80ED63EEB567}" ShortID="953112928">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="CenterPercentage" Type="int32">
+										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
 											<ValueList>
-												<Value>100</Value>
+												<Value>28</Value>
 											</ValueList>
 										</Property>
-										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
-										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -151,8 +147,16 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
 										</Reference>
@@ -168,9 +172,22 @@
 												<MediaID ID="809409738"/>
 											</MediaIDList>
 										</AudioFileSource>
+										<AudioFileSource Name="188135-door-SpaceShip-medium-24" ID="{214F7F1F-BF8C-4C15-82DB-D1126FD311E8}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0179181812223324"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.213027265643285"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.282211354251736"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>188135-door-SpaceShip-medium-24.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="272091868"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="doorOpen" ID="{45EEBAE4-C7E4-4C47-B557-E353A933E20C}" Platform="Linked"/>
+										<ActiveSource Name="188135-door-SpaceShip-medium-24" ID="{214F7F1F-BF8C-4C15-82DB-D1126FD311E8}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -340,12 +357,62 @@
 								<ActiveSource Name="212725-hifi-button-007" ID="{0AF28C67-EFBC-4D0C-AB13-EDC4ADB00770}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Folder Name="Airlock" ID="{5149ECF3-2E98-4837-89C6-97CFE643E833}" ShortID="1045585402">
+							<ChildrenList>
+								<Sound Name="Airlock_Cycle" ID="{A49FFE2F-A5AA-4DAD-8B37-8BBC7099AB79}" ShortID="86571362">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="CenterPercentage" Type="int32">
+											<ValueList>
+												<Value>30</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{1DDC58FF-19AE-4879-9712-2CEA8150F3BC}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="258632-KAIB-DOOR-CU-Air_Pressure_Build_Up_And_Release_Submarine_Door-000396" ID="{1DDC6D61-0CD3-4BD3-8A93-EE1E5B91B085}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.500811013702519"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.412171896233046"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="7.9952483957464"/>
+												<Property Name="TrimEnd" Type="Real64" Value="10.5391911866474"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>258632-KAIB-DOOR-CU-Air_Pressure_Build_Up_And_Release_Submarine_Door-000396.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="420282682"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="258632-KAIB-DOOR-CU-Air_Pressure_Build_Up_And_Release_Submarine_Door-000396" ID="{1DDC6D61-0CD3-4BD3-8A93-EE1E5B91B085}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Footsteps" ID="{EF8FF890-FE88-43B6-8865-2AFD3B73E544}" ShortID="582586881">
 					<ChildrenList>
 						<SwitchContainer Name="Footstep" ID="{361A1929-3831-416A-BF54-F75BF16C27D7}" ShortID="666541814">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
 								</Reference>

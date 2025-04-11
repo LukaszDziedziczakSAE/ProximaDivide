@@ -10,19 +10,19 @@
     "Type": "Event",
     "GUID": "{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}",
     "Language": "SFX",
-    "Hash": "{024370A0-F79C-3639-0EB3-1F0EBE6FF91B}",
+    "Hash": "{A56A3047-CF66-6825-1F64-E1B656755EFC}",
     "ObjectPath": "Door_Close",
     "ShortName": "Door_Close",
     "Path": "Event/Door_Close.bnk",
     "Media": [
      {
-      "Id": "809409738",
+      "Id": "272091868",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "doorOpen.wav",
-      "Path": "Media/809409738.wem",
-      "CachePath": "1B/{1BEE7471-9E6D-74D9-5332-DFC41C162237}.wem"
+      "ShortName": "188135-door-SpaceShip-medium-24.wav",
+      "Path": "Media/272091868.wem",
+      "CachePath": "E7/{E7F42BC1-6FCF-AAE8-E068-122835EAA52D}.wem"
      }
     ],
     "Events": [
@@ -31,18 +31,19 @@
       "Name": "Door_Close",
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\Doors\\Door_Close",
       "GUID": "{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}",
+      "MaxAttenuation": "5000",
       "DurationType": "OneShot",
-      "DurationMin": "0.79824775",
-      "DurationMax": "1.2310665",
+      "DurationMin": "0.732021",
+      "DurationMax": "1.1289308",
       "MediaRefs": [
        {
-        "Id": "809409738"
+        "Id": "272091868"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{D010BF8A-58C4-4890-6BAF-0D81897A75E6}"
+  "FileHash": "{CC4CE935-4C03-83A8-94B5-38DF9FE122B1}"
  }
 }

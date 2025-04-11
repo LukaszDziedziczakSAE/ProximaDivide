@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{CB9907E8-10D8-40F0-9517-6611F0858A5A}",
     "Language": "SFX",
-    "Hash": "{F6BE3D75-F585-B9CD-F8A8-EF3563397639}",
+    "Hash": "{46F15892-0092-A887-1990-07416ACF3840}",
     "ObjectPath": "Footstep",
     "ShortName": "Footstep",
     "Path": "Event/Footstep.bnk",
@@ -256,6 +256,7 @@
       "Name": "Footstep",
       "ObjectPath": "\\Events\\Default Work Unit\\Player\\Footstep",
       "GUID": "{CB9907E8-10D8-40F0-9517-6611F0858A5A}",
+      "MaxAttenuation": "5000",
       "DurationType": "OneShot",
       "DurationMin": "0.21294323",
       "DurationMax": "1.3155175",
@@ -402,6 +403,6 @@
     ]
    }
   ],
-  "FileHash": "{66469AD5-6B27-809C-3F3D-65DD9FBEC724}"
+  "FileHash": "{C138ECD3-4A5E-95BF-5EC4-002EE298F4A6}"
  }
 }

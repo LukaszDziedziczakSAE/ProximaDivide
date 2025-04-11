@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}",
     "Language": "SFX",
-    "Hash": "{051EA366-EB36-8DC2-74EE-826E67A2DD79}",
+    "Hash": "{F9C85C39-D7DA-8B98-BBF5-5140DE3CBA78}",
     "ObjectPath": "Door_Open",
     "ShortName": "Door_Open",
     "Path": "Event/Door_Open.bnk",
@@ -31,6 +31,7 @@
       "Name": "Door_Open",
       "ObjectPath": "\\Events\\Default Work Unit\\Interactions\\Doors\\Door_Open",
       "GUID": "{A0AD3834-DDD0-4FB2-B182-A39DFDA84FEA}",
+      "MaxAttenuation": "5000",
       "DurationType": "OneShot",
       "DurationMin": "0.79824775",
       "DurationMax": "1.2310665",
@@ -43,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{AA364B16-A9C7-7CB0-C416-2B217A946C3F}"
+  "FileHash": "{7DF9B316-5903-1B82-C9C4-7552E637287C}"
  }
 }
