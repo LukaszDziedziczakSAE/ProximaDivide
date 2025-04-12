@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{1986CD0C-BB1B-4EED-8B94-8A81A68224B4}",
     "Language": "SFX",
-    "Hash": "{4BC15201-149F-51E0-6AA7-D3843D79E00C}",
+    "Hash": "{4E902EB7-8536-FFF5-8E30-29FAA34FB477}",
     "ObjectPath": "Play_Airlock_Cycle",
     "ShortName": "Play_Airlock_Cycle",
     "Path": "Event/Play_Airlock_Cycle.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "258632-KAIB-DOOR-CU-Air_Pressure_Build_Up_And_Release_Submarine_Door-000396.wav",
       "Path": "Media/420282682.wem",
-      "CachePath": "41/{41CFCA98-3715-13C1-C673-E45F6FC1F091}.wem"
+      "CachePath": "64/{64B703F2-7C72-FE41-098D-B7FE6FA3CB9E}.wem"
      }
     ],
     "Events": [
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{6CC212E1-85BB-510C-4504-098FC63EC60D}"
+  "FileHash": "{AB6924A8-ADB3-B17F-8684-7576C0F07075}"
  }
 }

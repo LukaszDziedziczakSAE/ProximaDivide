@@ -3,15 +3,18 @@
 
 #include "Item/StaticMesh_Item.h"
 #include "Components/BoxComponent.h"
+#include "AkComponent.h"
 
 AStaticMesh_Item::AStaticMesh_Item()
 {
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	SetRootComponent(Mesh);
 	Collider->SetupAttachment(Mesh);
+	AudioComponent->SetupAttachment(Mesh);
 
 	Mesh->SetEnableGravity(true);
 	Mesh->SetSimulatePhysics(true);
+
 }
 
 void AStaticMesh_Item::SetMaterial(UMaterialInterface* Material)

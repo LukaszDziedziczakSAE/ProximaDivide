@@ -70,12 +70,18 @@ public:
 	UFUNCTION()
 	UAnimMontage* GetUseMontage() { return UseMontage; }
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void PlayEquipSound();
 
-	UFUNCTION()
-	void PlayUnequipSound();
+	UFUNCTION(BlueprintCallable)
+	void PlayUseSound();
+
+	UFUNCTION(BlueprintPure)
+	UAkAudioEvent* GetHitSound() { return HitSound; }
 
 	UFUNCTION()
-	void PlayUseSound();
+	void TurnOnColliderOverlap();
+
+	UFUNCTION()
+	void TurnOffColliderOverlap();
 };

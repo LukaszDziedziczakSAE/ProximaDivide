@@ -53,12 +53,12 @@ protected:
 public:
 	virtual void UpdateRelatives() override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void PlayEquipSound();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void PlayUnequipSound();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void PlayUseSound();
 };

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{68C9CF7E-184D-4694-B5C3-DE87495A5DF3}",
     "Language": "SFX",
-    "Hash": "{A56A3047-CF66-6825-1F64-E1B656755EFC}",
+    "Hash": "{6AE746DE-CE32-F024-BE5C-D1A72EA4A6EB}",
     "ObjectPath": "Door_Close",
     "ShortName": "Door_Close",
     "Path": "Event/Door_Close.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "188135-door-SpaceShip-medium-24.wav",
       "Path": "Media/272091868.wem",
-      "CachePath": "E7/{E7F42BC1-6FCF-AAE8-E068-122835EAA52D}.wem"
+      "CachePath": "54/{54E364D0-D052-8E55-BE34-C6F7F7681494}.wem"
      }
     ],
     "Events": [
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{DDB77189-4CA6-0870-75FE-41DDAE1DA03A}"
+  "FileHash": "{5058DE6B-5BB0-8CDD-370B-2CC0FFC17950}"
  }
 }

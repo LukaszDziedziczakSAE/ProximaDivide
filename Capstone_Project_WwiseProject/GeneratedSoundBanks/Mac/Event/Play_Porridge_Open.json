@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3989638349",
+    "Type": "Event",
+    "GUID": "{4BEB696E-7579-47D2-B7BD-BD860F33BBF5}",
+    "Language": "SFX",
+    "Hash": "{29CD7BEF-E8EC-8286-EDDF-7C9120A8F6BD}",
+    "ObjectPath": "Play_Porridge_Open",
+    "ShortName": "Play_Porridge_Open",
+    "Path": "Event/Play_Porridge_Open.bnk",
+    "Media": [
+     {
+      "Id": "505497093",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "517304-Container-Plastic-Yogurt-Lid-On-Off-Series-1-Stereo.wav",
+      "Path": "Media/505497093.wem",
+      "CachePath": "16/{16FA3798-10EB-DCF1-014C-6B9A1B00AA86}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3989638349",
+      "Name": "Play_Porridge_Open",
+      "ObjectPath": "\\Events\\Default Work Unit\\Equipment\\SingleUse\\Porridge\\Play_Porridge_Open",
+      "GUID": "{4BEB696E-7579-47D2-B7BD-BD860F33BBF5}",
+      "MaxAttenuation": "5000",
+      "DurationType": "OneShot",
+      "DurationMin": "0.34254095",
+      "DurationMax": "0.34254095",
+      "MediaRefs": [
+       {
+        "Id": "505497093"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{EAC4E78A-5BFF-C781-D78B-D3C50543ECE1}"
+ }
+}

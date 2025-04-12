@@ -8,6 +8,9 @@
 #include "Character/PlayerCharacter.h"
 #include "Item/InventoryComponent.h"
 #include "UI/SurvivalScifi_HUD.h"
+#include "AkAudioEvent.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 
 // Sets default values for this component's properties
 UMineralExtractorComponent::UMineralExtractorComponent()
@@ -25,39 +28,58 @@ void UMineralExtractorComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	AEquipableItem* EquipableItem = GetOwner<AEquipableItem>();
+	EquipableItem = GetOwner<AEquipableItem>();
 
 	Collider = EquipableItem->GetCollider();
 	Collider->OnComponentBeginOverlap.AddDynamic(this, &UMineralExtractorComponent::OnColliderBeginOverlap);
 
-	EquipableItem->OnStartUsing.AddDynamic(this, &UMineralExtractorComponent::ActivateExtraction);
-	EquipableItem->OnEndUsing.AddDynamic(this, &UMineralExtractorComponent::DeactivateExtraction);
+	EquipableItem->OnStartUsing.AddDynamic(this, &UMineralExtractorComponent::ResetHits);
+	//EquipableItem->OnEndUsing.AddDynamic(this, &UMineralExtractorComponent::DeactivateExtraction);
 
 	Inventory = Cast<APlayerCharacter>(GetWorld()->GetFirstPlayerController()->GetCharacter())->GetInventoryComponent();
 
 	if (Inventory == nullptr) UE_LOG(LogTemp, Error, TEXT("Missing inventory ref"));
+
+	ResetHits();
 }
 
 void UMineralExtractorComponent::OnColliderBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (!Active || Inventory == nullptr) return;
+	if (Inventory == nullptr || OtherActor == nullptr) return;
+
+	if (HitActors.Contains(OtherActor)) return;
+	HitActors.Add(OtherActor);
+
+	//UE_LOG(LogTemp, Warning, TEXT("Hit %s at %s"), *OtherActor->GetName(), *SweepResult.ImpactPoint.ToString());
 
 	AMineral* Mineral = Cast<AMineral>(OtherActor);
-	if (Mineral != nullptr && Mineral->GetDataAsset() != nullptr && Mineral->IsSucessfulHit())
+	if (Mineral != nullptr && Mineral->GetDataAsset() != nullptr)
 	{
-		Inventory->TryAddItem(Mineral->GetDataAsset());
+		if (Mineral->IsSucessfulHit())
+			Inventory->TryAddItem(Mineral->GetDataAsset());
+
+
 	}
-	DeactivateExtraction();
+
+	if (EquipableItem->GetHitSound() != nullptr)
+		EquipableItem->GetHitSound()->PostAtLocation(
+			EquipableItem->GetActorLocation(),
+			EquipableItem->GetActorRotation(),
+			FOnAkPostEventCallback(),
+			int32(0),
+			GetWorld()
+		);
+
+	if (Impact != nullptr)
+	{
+		UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), Impact, EquipableItem->GetActorLocation(), EquipableItem->GetOwner()->GetActorRotation());
+	}
 }
 
-void UMineralExtractorComponent::ActivateExtraction()
+void UMineralExtractorComponent::ResetHits()
 {
-	Active = true;
-}
-
-void UMineralExtractorComponent::DeactivateExtraction()
-{
-	Active = false;
+	HitActors.Empty();
+	HitActors.Add(EquipableItem->GetOwner());
 }
 
 

@@ -63,7 +63,7 @@ void ASurvivalSciFi_Character::SelectSlot(int SlotNumber)
 	if (!PaperdollComponent->DoesSlotHaveItem(SlotNumber)) return;
 
 	PaperdollComponent->SelectSlot(SlotNumber);
-	SpawnHandItems();
+	//SpawnHandItems();
 
 	if (PaperdollComponent->IsCurrentSlotHaveItem() 
 		&& PaperdollComponent->GetCurrentSlot().Item->UseageMontage != nullptr)

@@ -14,5 +14,5 @@ void ASurvivalScifi_START_HUD::BeginPlay()
 	
 	APlayerController* PlayerControllerRef = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	PlayerControllerRef->SetShowMouseCursor(true);
-	PlayerControllerRef->SetInputMode(FInputModeGameOnly());;
+	PlayerControllerRef->SetInputMode(FInputModeUIOnly());
 }

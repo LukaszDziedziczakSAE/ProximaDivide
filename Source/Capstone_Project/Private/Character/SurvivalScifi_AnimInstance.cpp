@@ -5,6 +5,8 @@
 #include "Character/SurvivalSciFi_Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Character/PaperdollComponent.h"
+#include "Item/EquipableItem.h"
+#include "Item/EquipableSkItem.h"
 
 void USurvivalScifi_AnimInstance::NativeBeginPlay()
 {
@@ -29,4 +31,16 @@ void USurvivalScifi_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 void USurvivalScifi_AnimInstance::UpdateHandsType()
 {
 	AnimHandsType = Character->GetPaperdollComponent()->GetCurrentAnimHandsType();
+}
+
+void USurvivalScifi_AnimInstance::SpawnHandItems()
+{
+}
+
+void USurvivalScifi_AnimInstance::DespawnHandItems()
+{
+	if (Character != nullptr)
+	{
+		Character->DespawnHandItems();
+	}
 }

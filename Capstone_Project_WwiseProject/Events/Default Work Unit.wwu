@@ -163,8 +163,79 @@
 									</ChildrenList>
 								</Event>
 								<Event Name="Pickaxe_Unequip" ID="{37F3A2A2-AADA-493A-A350-F7F2BB53A5D2}"/>
-								<Event Name="Pickaxe_Strike" ID="{58BD67DC-7844-4000-888D-2587FDB03F76}"/>
-								<Event Name="Pickaxe_Use" ID="{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}"/>
+								<Event Name="Pickaxe_Strike" ID="{58BD67DC-7844-4000-888D-2587FDB03F76}">
+									<ChildrenList>
+										<Action Name="" ID="{4D3E5960-1371-4B9D-9B08-B285652B92D0}" ShortID="518238672">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pickaxe_Hit" ID="{3CE9E486-0DD5-44B8-8FA8-DC5438923788}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Pickaxe_Use" ID="{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}">
+									<ChildrenList>
+										<Action Name="" ID="{BB2C863E-6B47-430B-A26D-2590470932C4}" ShortID="695811032">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pickaxe_Use" ID="{71573571-43EE-4AAD-A623-8CE94ABD48E1}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="SingleUse" ID="{C80A9204-12C8-478D-9C53-1738EE114A98}" ShortID="553453496">
+							<ChildrenList>
+								<Folder Name="Porridge" ID="{2277BE18-BDC1-4AE6-BE26-DA91973B27D0}" ShortID="110883073">
+									<ChildrenList>
+										<Event Name="Play_Porridge_Equip" ID="{4527AD16-09EA-4642-8AA6-34889072DD85}">
+											<ChildrenList>
+												<Action Name="" ID="{BAB16C6F-99E3-4B03-937C-2C6E0340FC17}" ShortID="1007976445">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Porridge_Equip" ID="{D602B3DD-C621-4716-AF18-B407E55DA2B6}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Play_Porridge_Open" ID="{4BEB696E-7579-47D2-B7BD-BD860F33BBF5}">
+											<ChildrenList>
+												<Action Name="" ID="{E10452B0-B7FA-49C5-8663-11FC60A4E4CC}" ShortID="770522211">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Porridge_Open" ID="{7DC6C34B-127F-4E1E-9626-9190D0F64179}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Play_Porridge_Eat" ID="{79E66881-8DEB-48E4-BBE4-3B7D3210581E}">
+											<ChildrenList>
+												<Action Name="" ID="{F7E26C69-347B-4143-9F8D-6DE92305F54F}" ShortID="711078649">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Porridge_Eat" ID="{2C67F19C-0494-4DC7-ADB1-B340DA7D296E}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+												<Action Name="" ID="{36FD1787-379B-4B02-9ED0-BBB3742A03D3}" ShortID="364126490">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Porridge_Eat" ID="{2C67F19C-0494-4DC7-ADB1-B340DA7D296E}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

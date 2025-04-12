@@ -107,4 +107,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Footstep();
 
+	UFUNCTION(BlueprintPure)
+	ASurvivalScifi_Item* GetRightHandItem() { return RightHandItem; }
+
+	UFUNCTION(BlueprintPure)
+	ASurvivalScifi_Item* GetLeftHandItem() { return LeftHandItem; }
 };

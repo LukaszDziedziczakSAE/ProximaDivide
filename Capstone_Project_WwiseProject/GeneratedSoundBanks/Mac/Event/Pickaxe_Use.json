@@ -10,24 +10,88 @@
     "Type": "Event",
     "GUID": "{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}",
     "Language": "SFX",
-    "Hash": "{F0F2104C-C37D-81F2-C42E-802E063D614C}",
+    "Hash": "{FBFE99AA-C4A3-032A-16BD-52121D3CD914}",
     "ObjectPath": "Pickaxe_Use",
     "ShortName": "Pickaxe_Use",
     "Path": "Event/Pickaxe_Use.bnk",
+    "Media": [
+     {
+      "Id": "121533850",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "5. WeaponSwingMedium.WAV",
+      "Path": "Media/121533850.wem",
+      "CachePath": "D2/{D23085F4-B349-9EB7-AF6A-C861CA0560F9}.wem"
+     },
+     {
+      "Id": "254016802",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "5. WeaponSwingMedium.WAV",
+      "Path": "Media/254016802.wem",
+      "CachePath": "F6/{F6BB49EC-FACC-EF68-A381-37C909C7913A}.wem"
+     },
+     {
+      "Id": "593245132",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "5. WeaponSwingMedium.WAV",
+      "Path": "Media/593245132.wem",
+      "CachePath": "A7/{A76B6B5F-DD5E-D18D-BFBB-88E1F66D723B}.wem"
+     },
+     {
+      "Id": "643271072",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "5. WeaponSwingMedium.WAV",
+      "Path": "Media/643271072.wem",
+      "CachePath": "67/{677313FF-50BF-DA49-1CEE-FDF7C3FAC379}.wem"
+     },
+     {
+      "Id": "746507824",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "5. WeaponSwingMedium.WAV",
+      "Path": "Media/746507824.wem",
+      "CachePath": "47/{4703F416-D75D-160D-0B5B-312C24EB90D6}.wem"
+     }
+    ],
     "Events": [
      {
       "Id": "248136778",
       "Name": "Pickaxe_Use",
       "ObjectPath": "\\Events\\Default Work Unit\\Equipment\\Pickaxe\\Pickaxe_Use",
       "GUID": "{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}",
-      "MaxAttenuation": "0",
+      "MaxAttenuation": "5000",
       "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationMin": "0.1301947",
+      "DurationMax": "0.38912976",
+      "MediaRefs": [
+       {
+        "Id": "121533850"
+       },
+       {
+        "Id": "254016802"
+       },
+       {
+        "Id": "593245132"
+       },
+       {
+        "Id": "643271072"
+       },
+       {
+        "Id": "746507824"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{6CA01D96-F7F4-98ED-ACC9-6A9ADBE5893E}"
+  "FileHash": "{FAC7713B-2B04-70A3-02FA-52083588E12D}"
  }
 }

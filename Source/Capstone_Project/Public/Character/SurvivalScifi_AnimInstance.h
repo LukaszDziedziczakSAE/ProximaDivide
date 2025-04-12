@@ -29,6 +29,12 @@ protected:
 	UFUNCTION()
 	void UpdateHandsType();
 
+	UFUNCTION(BlueprintCallable)
+	void SpawnHandItems();
+
+	UFUNCTION(BlueprintCallable)
+	void DespawnHandItems();
+
 public:
 	virtual void NativeBeginPlay() override;
 

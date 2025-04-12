@@ -39,6 +39,533 @@
 										<ActiveSource Name="88940-Hatchet_pick_up_scrape_rocks_axe-BLASTWAVEFX-26542" ID="{C5ECF620-6F55-41C8-BAE2-55D57B1A410C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<RandomSequenceContainer Name="Pickaxe_Use" ID="{71573571-43EE-4AAD-A623-8CE94ABD48E1}" ShortID="689213749">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{14BB7E3C-4583-41EC-A6C7-22B79C95824D}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="400"/>
+															<Property Name="Min" Type="Real64" Value="-350"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="5_ WeaponSwingMedium" ID="{F4879C7C-C988-4DDE-A4B7-399325B9CB3F}" ShortID="321139939">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="5_ WeaponSwingMedium" ID="{045E2849-224D-449B-978C-4967A9A51C59}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0351245347724376"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0273190826007843"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="3.30504718591795"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.46908222781116"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>5. WeaponSwingMedium.WAV</AudioFile>
+													<MediaIDList>
+														<MediaID ID="643271072"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="5_ WeaponSwingMedium" ID="{045E2849-224D-449B-978C-4967A9A51C59}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="5_ WeaponSwingMedium_01" ID="{DA9AF99B-DED7-40F9-A8E5-43E87E58C594}" ShortID="840348987">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="5_ WeaponSwingMedium" ID="{E906140A-E06E-4CF6-BC36-436C1AE1405A}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="4.70996790089883"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.9693095552849"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>5. WeaponSwingMedium.WAV</AudioFile>
+													<MediaIDList>
+														<MediaID ID="254016802"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="5_ WeaponSwingMedium" ID="{E906140A-E06E-4CF6-BC36-436C1AE1405A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="5_ WeaponSwingMedium_02" ID="{141D8477-7682-42E1-950F-D1909664AE24}" ShortID="277315168">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="5_ WeaponSwingMedium" ID="{F0C9B17C-1C14-4946-9379-FECA228F2845}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="6.30784333441868"/>
+														<Property Name="TrimEnd" Type="Real64" Value="6.52535578897439"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>5. WeaponSwingMedium.WAV</AudioFile>
+													<MediaIDList>
+														<MediaID ID="746507824"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="5_ WeaponSwingMedium" ID="{F0C9B17C-1C14-4946-9379-FECA228F2845}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="5_ WeaponSwingMedium_03" ID="{035F149C-5C38-4E30-873F-2BC128AB0B1C}" ShortID="388362912">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="5_ WeaponSwingMedium" ID="{35A2DFD4-882A-4D37-9B68-FA523D5A0E82}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="7.89735292797246"/>
+														<Property Name="TrimEnd" Type="Real64" Value="8.13996290242639"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>5. WeaponSwingMedium.WAV</AudioFile>
+													<MediaIDList>
+														<MediaID ID="121533850"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="5_ WeaponSwingMedium" ID="{35A2DFD4-882A-4D37-9B68-FA523D5A0E82}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="5_ WeaponSwingMedium_04" ID="{91463BD4-1807-4832-90C3-0BEB50792481}" ShortID="1065093645">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="5_ WeaponSwingMedium" ID="{5359DBB8-894A-4EF2-A41E-C3D7A449BC21}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="11.1683963547068"/>
+														<Property Name="TrimEnd" Type="Real64" Value="11.4862988888554"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>5. WeaponSwingMedium.WAV</AudioFile>
+													<MediaIDList>
+														<MediaID ID="593245132"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="5_ WeaponSwingMedium" ID="{5359DBB8-894A-4EF2-A41E-C3D7A449BC21}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Pickaxe_Hit" ID="{3CE9E486-0DD5-44B8-8FA8-DC5438923788}" ShortID="269332248">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{709EF94B-BCF4-4FAB-8B40-57BC86DFD263}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="350"/>
+															<Property Name="Min" Type="Real64" Value="-400"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="1153266_audio-Tool_Hand_Hitting_Rock_With_Pickaxe_Varied_01" ID="{336C0E61-3C52-4AEF-9E3D-634AE241B3D0}" ShortID="514247240">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="1153266_audio-Tool_Hand_Hitting_Rock_With_Pickaxe_Varied_01" ID="{7ED9F51D-E274-42AE-965F-896D5DBB61FC}">
+													<Language>SFX</Language>
+													<AudioFile>1153266.audio-Tool_Hand_Hitting_Rock_With_Pickaxe_Varied_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="436545365"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="1153266_audio-Tool_Hand_Hitting_Rock_With_Pickaxe_Varied_01" ID="{7ED9F51D-E274-42AE-965F-896D5DBB61FC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="SingleUse" ID="{EC76AC0C-AF22-4623-88CA-AC0A81615A3F}" ShortID="151912132">
+							<ChildrenList>
+								<Folder Name="Porridge" ID="{CF0734F8-45F7-41A3-843A-294A2EA70854}" ShortID="589071456">
+									<ChildrenList>
+										<Sound Name="Porridge_Equip" ID="{D602B3DD-C621-4716-AF18-B407E55DA2B6}" ShortID="512158638">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="Highpass" Type="int16">
+													<ValueList>
+														<Value>49</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>33</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{9DF68ED9-ED66-48C8-A021-ECF99E1223E1}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="400"/>
+																	<Property Name="Min" Type="Real64" Value="-350"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="542660-zapsplat-food-chocolate-packet-maltesers-large-pick-up-001-67199" ID="{73B69F1C-E184-4F06-A68B-662B0B882B16}">
+													<Language>SFX</Language>
+													<AudioFile>542660-zapsplat-food-chocolate-packet-maltesers-large-pick-up-001-67199.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="585066076"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="542660-zapsplat-food-chocolate-packet-maltesers-large-pick-up-001-67199" ID="{73B69F1C-E184-4F06-A68B-662B0B882B16}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Porridge_Open" ID="{7DC6C34B-127F-4E1E-9626-9190D0F64179}" ShortID="420702296">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="517304-Container-Plastic-Yogurt-Lid-On-Off-Series-1-Stereo" ID="{FF24FA58-0330-4D2F-9B1E-7A66B4F4DBFD}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0617696978829132"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0673851249631774"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="5.85969815825628"/>
+														<Property Name="TrimEnd" Type="Real64" Value="6.20223910969873"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>517304-Container-Plastic-Yogurt-Lid-On-Off-Series-1-Stereo.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="505497093"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="517304-Container-Plastic-Yogurt-Lid-On-Off-Series-1-Stereo" ID="{FF24FA58-0330-4D2F-9B1E-7A66B4F4DBFD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="Porridge_Eat" ID="{2C67F19C-0494-4DC7-ADB1-B340DA7D296E}" ShortID="303517119">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{2BC2E475-5DBA-4D38-99ED-ACDE23DAA2E6}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="eatRice1" ID="{3B73FEFD-9B1C-44D8-BA11-6E9C4998DB69}" ShortID="540983505">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="eatRice1" ID="{D724255C-6AC1-419B-BB85-6E3135009A19}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0111954200366312"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0239901857927811"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.471007314398269"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.65813076993979"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>eatRice1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="339262127"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="eatRice1" ID="{D724255C-6AC1-419B-BB85-6E3135009A19}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="eatRice2" ID="{12C32C47-BA8A-4B0D-A148-C405FC49EF0D}" ShortID="83480405">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="eatRice2" ID="{1A1256EE-BB15-4843-9A86-B393F4DBD8C5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0345454541119662"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0322424238378352"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.165242422168905"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.692636372428952"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>eatRice2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="359079766"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="eatRice2" ID="{1A1256EE-BB15-4843-9A86-B393F4DBD8C5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="eatRice3" ID="{584C164F-9497-429A-A681-D384B1386401}" ShortID="939319167">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="eatRice3" ID="{DB86C0B3-9317-4C47-A9D0-1322732379E5}">
+															<Language>SFX</Language>
+															<AudioFile>eatRice3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="88910009"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="eatRice3" ID="{DB86C0B3-9317-4C47-A9D0-1322732379E5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="eatRice4" ID="{44D18626-96DE-4C1C-A16A-A4CB114D1C91}" ShortID="987674385">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="eatRice4" ID="{E87932CD-21E4-4F31-A2B1-43CB8BD8D4F1}">
+															<Language>SFX</Language>
+															<AudioFile>eatRice4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="329428398"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="eatRice4" ID="{E87932CD-21E4-4F31-A2B1-43CB8BD8D4F1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="eatRice5" ID="{132BA558-F50A-4F4B-9CFC-61CCF6331726}" ShortID="97055947">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="eatRice5" ID="{64AD6E61-D3DD-4AE9-82E7-9FCAA2AEFDA2}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0161209717269771"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0246292623606594"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.245844818836401"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.78276269442976"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>eatRice5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="412786476"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="eatRice5" ID="{64AD6E61-D3DD-4AE9-82E7-9FCAA2AEFDA2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="eatRice6" ID="{65AECF7E-9127-4C1F-8ABF-A2343487217D}" ShortID="654753425">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="eatRice6" ID="{0AF00152-6681-455B-9AD9-B42AD64ACB3B}">
+															<Language>SFX</Language>
+															<AudioFile>eatRice6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="930135914"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="eatRice6" ID="{0AF00152-6681-455B-9AD9-B42AD64ACB3B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="eatRice7" ID="{BD130934-9E9A-46A3-B959-A2581BB1A7C7}" ShortID="832268121">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="eatRice7" ID="{BE7ACE20-5487-438B-A6C6-3625C881F5CE}">
+															<Language>SFX</Language>
+															<AudioFile>eatRice7.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="705201808"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="eatRice7" ID="{BE7ACE20-5487-438B-A6C6-3625C881F5CE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

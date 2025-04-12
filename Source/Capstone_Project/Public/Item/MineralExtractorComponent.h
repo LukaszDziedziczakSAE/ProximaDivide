@@ -20,7 +20,10 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class AEquipableItem* EquipableItem;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UBoxComponent* Collider;
 
 	UFUNCTION()
@@ -29,14 +32,17 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	bool Active;
 
-	UFUNCTION()
-	void ActivateExtraction();
+	UPROPERTY(VisibleAnywhere)
+	TArray<AActor*> HitActors;
 
 	UFUNCTION()
-	void DeactivateExtraction();
+	void ResetHits();
 
 	UPROPERTY(VisibleAnywhere)
 	class UInventoryComponent* Inventory;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UNiagaraSystem* Impact;
 
 public:	
 	// Called every frame
