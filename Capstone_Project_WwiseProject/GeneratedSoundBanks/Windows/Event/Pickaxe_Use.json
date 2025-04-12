@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{8439B9B2-2CAA-4D8A-AE8F-378C64D12581}",
     "Language": "SFX",
-    "Hash": "{FBFE99AA-C4A3-032A-16BD-52121D3CD914}",
+    "Hash": "{AF2D631A-3F24-2E46-8C13-6B6AADD558BC}",
     "ObjectPath": "Pickaxe_Use",
     "ShortName": "Pickaxe_Use",
     "Path": "Event/Pickaxe_Use.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "5. WeaponSwingMedium.WAV",
       "Path": "Media/121533850.wem",
-      "CachePath": "D2/{D23085F4-B349-9EB7-AF6A-C861CA0560F9}.wem"
+      "CachePath": "30/{303696B4-79E4-D0EE-84AA-3083C507CF0E}.wem"
      },
      {
       "Id": "254016802",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "5. WeaponSwingMedium.WAV",
       "Path": "Media/254016802.wem",
-      "CachePath": "F6/{F6BB49EC-FACC-EF68-A381-37C909C7913A}.wem"
+      "CachePath": "1E/{1E3AA67B-0920-42D9-1107-E59A2CB5EC93}.wem"
      },
      {
       "Id": "593245132",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "5. WeaponSwingMedium.WAV",
       "Path": "Media/593245132.wem",
-      "CachePath": "A7/{A76B6B5F-DD5E-D18D-BFBB-88E1F66D723B}.wem"
+      "CachePath": "A4/{A4EF46CA-B7D5-25E5-4A02-9A0743CFA82E}.wem"
      },
      {
       "Id": "643271072",
@@ -49,7 +49,7 @@
       "Location": "Loose",
       "ShortName": "5. WeaponSwingMedium.WAV",
       "Path": "Media/643271072.wem",
-      "CachePath": "67/{677313FF-50BF-DA49-1CEE-FDF7C3FAC379}.wem"
+      "CachePath": "70/{703C16D7-449A-5278-26EC-FA3D742AD219}.wem"
      },
      {
       "Id": "746507824",
@@ -58,7 +58,7 @@
       "Location": "Loose",
       "ShortName": "5. WeaponSwingMedium.WAV",
       "Path": "Media/746507824.wem",
-      "CachePath": "47/{4703F416-D75D-160D-0B5B-312C24EB90D6}.wem"
+      "CachePath": "88/{88AB56FF-380E-F9FA-B8E0-FE5616011CD9}.wem"
      }
     ],
     "Events": [
@@ -92,6 +92,6 @@
     ]
    }
   ],
-  "FileHash": "{CCF09859-9753-D0F3-0E92-475BC1913B43}"
+  "FileHash": "{4C92A55F-866E-056D-6680-CFEA364D734F}"
  }
 }

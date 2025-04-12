@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{4BEB696E-7579-47D2-B7BD-BD860F33BBF5}",
     "Language": "SFX",
-    "Hash": "{29CD7BEF-E8EC-8286-EDDF-7C9120A8F6BD}",
+    "Hash": "{2F28A260-AC19-483E-580F-06A9634685D0}",
     "ObjectPath": "Play_Porridge_Open",
     "ShortName": "Play_Porridge_Open",
     "Path": "Event/Play_Porridge_Open.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "517304-Container-Plastic-Yogurt-Lid-On-Off-Series-1-Stereo.wav",
       "Path": "Media/505497093.wem",
-      "CachePath": "16/{16FA3798-10EB-DCF1-014C-6B9A1B00AA86}.wem"
+      "CachePath": "4F/{4F3E2D4C-E043-C85D-742B-554B4419F75C}.wem"
      }
     ],
     "Events": [
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{F8EC3BAB-831D-95BC-12C5-9B274C88314F}"
+  "FileHash": "{E0A2C34B-DD9F-4E87-AC0E-E90BAB0CEEC2}"
  }
 }

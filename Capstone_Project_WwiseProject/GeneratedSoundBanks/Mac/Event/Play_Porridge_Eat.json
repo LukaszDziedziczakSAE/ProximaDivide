@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{79E66881-8DEB-48E4-BBE4-3B7D3210581E}",
     "Language": "SFX",
-    "Hash": "{6E19DBB0-F47E-B5DC-D329-3C0978001380}",
+    "Hash": "{0970C608-6622-D2D7-5389-64DBE5BC390E}",
     "ObjectPath": "Play_Porridge_Eat",
     "ShortName": "Play_Porridge_Eat",
     "Path": "Event/Play_Porridge_Eat.bnk",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "eatRice1.wav",
       "Path": "Media/339262127.wem",
-      "CachePath": "20/{203A9CA3-3004-E0F2-8FDD-3E5139653AA3}.wem"
+      "CachePath": "6D/{6DDDEAC2-3319-A3DC-2132-172D5312DD95}.wem"
      },
      {
       "Id": "359079766",
@@ -49,7 +49,7 @@
       "Location": "Loose",
       "ShortName": "eatRice2.wav",
       "Path": "Media/359079766.wem",
-      "CachePath": "B4/{B48E17EE-138C-33DB-8AC1-4275168FCAD9}.wem"
+      "CachePath": "4B/{4BE38F70-9EC7-2843-0E51-4A7A0B3F1924}.wem"
      },
      {
       "Id": "412786476",
@@ -58,7 +58,7 @@
       "Location": "Loose",
       "ShortName": "eatRice5.wav",
       "Path": "Media/412786476.wem",
-      "CachePath": "6D/{6DD1D6D5-8E8B-A047-53C7-BDA8A439C5FD}.wem"
+      "CachePath": "2B/{2B68E8CC-EF5D-87D2-853B-E192A108F548}.wem"
      },
      {
       "Id": "705201808",
@@ -116,6 +116,6 @@
     ]
    }
   ],
-  "FileHash": "{0B97D4A9-2256-25E9-3934-97E6588AA7CA}"
+  "FileHash": "{41CEDE29-4F35-9B65-D524-DD9CFFFEE642}"
  }
 }

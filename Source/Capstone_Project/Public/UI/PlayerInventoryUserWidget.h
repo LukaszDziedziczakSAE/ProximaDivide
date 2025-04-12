@@ -25,6 +25,9 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UImage* Background;
 
+	UPROPERTY(meta = (BindWidget))
+	class UInventoryUserWidget* ContainerInventoryWidget;
+
 	/*UPROPERTY(meta = (BindWidget))
 	class UPaperdollSlotUserWidget* PaperdollSlot1;
 	

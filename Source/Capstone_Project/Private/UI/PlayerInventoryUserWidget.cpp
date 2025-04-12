@@ -11,12 +11,25 @@
 #include "Item/InventoryComponent.h"
 #include "Character/PaperdollComponent.h"
 #include "Item/EquipableItemDataAsset.h"
+#include "Character/PlayerInteractionComponent.h"
+#include "Enviroment/Container.h"
 
 void UPlayerInventoryUserWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
 	InventoryWidget->SetInventory(PlayerCharacter->GetInventoryComponent(), this);
+
+	if (PlayerCharacter->GetPlayerInteractionComponent()->GetContainer() != nullptr)
+	{
+		ContainerInventoryWidget->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
+		ContainerInventoryWidget->SetInventory(PlayerCharacter->GetPlayerInteractionComponent()->GetContainer()->GetInventoryComponent(), this);
+	}
+	else
+	{
+		ContainerInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
+
 }
 
 bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
@@ -62,6 +75,9 @@ bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const
 void UPlayerInventoryUserWidget::RefreshInventories()
 {
 	InventoryWidget->RefreshSlots();
+
+	if (ContainerInventoryWidget->Visibility != ESlateVisibility::Collapsed)
+		ContainerInventoryWidget->RefreshSlots();
 }
 
 void UPlayerInventoryUserWidget::ShowCanDrop(UInventoryComponent* InventoryComponent, UItemDataAsset* Item, FIntPoint Position)
@@ -70,6 +86,11 @@ void UPlayerInventoryUserWidget::ShowCanDrop(UInventoryComponent* InventoryCompo
 	{
 		InventoryWidget->ShowAvailability(Item, Position);
 	}
+
+	else if (InventoryComponent == ContainerInventoryWidget->GetInventory())
+	{
+		ContainerInventoryWidget->ShowAvailability(Item, Position);
+	}
 }
 
 void UPlayerInventoryUserWidget::RemoveCanDrop(UInventoryComponent* InventoryComponent)
@@ -77,5 +98,10 @@ void UPlayerInventoryUserWidget::RemoveCanDrop(UInventoryComponent* InventoryCom
 	if (InventoryComponent == InventoryWidget->GetInventory())
 	{
 		InventoryWidget->ResetSlotsToOccupancy();
+	}
+
+	else if (InventoryComponent == ContainerInventoryWidget->GetInventory())
+	{
+		ContainerInventoryWidget->ResetSlotsToOccupancy();
 	}
 }

@@ -56,4 +56,7 @@ public:
 
 	UFUNCTION()
 	class ACraftingMachine* GetCraftingMachine();
+
+	UFUNCTION()
+	class AContainer* GetContainer();
 };

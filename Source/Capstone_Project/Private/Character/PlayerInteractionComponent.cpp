@@ -9,6 +9,7 @@
 #include "Enviroment/CraftingMachine.h"
 #include "Item/SurvivalScifi_Item.h"
 #include "AkGameplayStatics.h"
+#include "Enviroment/Container.h"
 
 UPlayerInteractionComponent::UPlayerInteractionComponent()
 {
@@ -119,5 +120,11 @@ ACraftingMachine* UPlayerInteractionComponent::GetCraftingMachine()
 {
 	if (InteractionInterface.GetObject() == nullptr) return nullptr;
 	return Cast<ACraftingMachine>(InteractionInterface.GetObject());
+}
+
+AContainer* UPlayerInteractionComponent::GetContainer()
+{
+	if (InteractionInterface.GetObject() == nullptr) return nullptr;
+	return Cast<AContainer>(InteractionInterface.GetObject());
 }
 

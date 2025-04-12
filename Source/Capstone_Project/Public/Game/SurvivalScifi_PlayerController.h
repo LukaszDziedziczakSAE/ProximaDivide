@@ -73,9 +73,6 @@ protected:
 
 	UFUNCTION()
 	void Look(const FInputActionValue& Value);
-	
-	UFUNCTION()
-	void ToggleInventory(const FInputActionValue& Value);
 
 	UFUNCTION()
 	bool AllowLook();
@@ -121,4 +118,8 @@ protected:
 
 	UFUNCTION()
 	void Jump();
+	
+public:
+	UFUNCTION()
+	void ToggleInventory(const FInputActionValue& Value);
 };
