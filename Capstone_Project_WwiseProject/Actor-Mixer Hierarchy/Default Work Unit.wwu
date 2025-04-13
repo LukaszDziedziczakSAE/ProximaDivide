@@ -566,6 +566,387 @@
 										</RandomSequenceContainer>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Sprats" ID="{0503C2CD-7A54-4423-A060-B1369CD3ECFD}" ShortID="759674484"/>
+								<Folder Name="ProteinBar" ID="{5A221D18-BB10-4CEB-8ADC-B93C7CC105C3}" ShortID="362823525"/>
+								<Folder Name="Sardines" ID="{60753BF8-EA95-4F38-95EE-9B2DB9800230}" ShortID="108859127"/>
+								<Folder Name="HealthBooster" ID="{8B54E6C6-6136-49C9-B0B9-4865448D2E37}" ShortID="894033132"/>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Pistol" ID="{889F3475-71CE-4A54-B2D6-BB57083B3DCA}" ShortID="12470772">
+							<ChildrenList>
+								<Sound Name="Pistol_Equip" ID="{8D2075F5-0FD8-4D67-8951-3D0843486A5A}" ShortID="443997233">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{FA430568-8CE3-46B3-950F-744842F539E7}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="1163664_audio-P38_Semi_Automatic_Pistol_-Handling_-Clearing_-1m_-Above_Right_-MKH8060" ID="{2D871185-6CA3-48D7-8888-B79893D5E8FA}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0480531393617823"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.180613523808078"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0745652162510416"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.54515460900984"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>1163664.audio-P38_Semi_Automatic_Pistol_-Handling_-Clearing_-1m_-Above_Right_-MKH8060.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="647495195"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="1163664_audio-P38_Semi_Automatic_Pistol_-Handling_-Clearing_-1m_-Above_Right_-MKH8060" ID="{2D871185-6CA3-48D7-8888-B79893D5E8FA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<RandomSequenceContainer Name="Pistol_Use" ID="{9D894221-CFB2-436F-B20A-B8BFEA6DEE1A}" ShortID="971650652">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A45B53FB-2D9C-4D30-B7DB-D7CF923D50C2}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="350"/>
+															<Property Name="Min" Type="Real64" Value="-400"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="pistolShot1" ID="{DFDD047B-B858-4E5D-8101-9B054860288C}" ShortID="658022392">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="pistolShot1" ID="{FFEB2704-394E-4545-B2C5-33154414FB98}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0476143563139266"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0086571556934412"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.311441181793593"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>pistolShot1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="403757935"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="pistolShot1" ID="{FFEB2704-394E-4545-B2C5-33154414FB98}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="pistolShot2" ID="{FE4244B0-02AC-4FEF-AF07-F769CF81068A}" ShortID="628312304">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="pistolShot2" ID="{B87FF349-9351-48E3-9E6A-F0FADDBE14E0}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0597344864483761"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.00847297680118809"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.309263667151116"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>pistolShot2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="308655094"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="pistolShot2" ID="{B87FF349-9351-48E3-9E6A-F0FADDBE14E0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="pistolShot3" ID="{5BF4DDE0-1FC1-4796-A573-A5F975A21F00}" ShortID="94146072">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="pistolShot3" ID="{DE4346D2-8743-4A97-8D4A-E5D95F9F15FB}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0573005728099657"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.00905854643686958"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.291348140067812"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>pistolShot3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="334634566"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="pistolShot3" ID="{DE4346D2-8743-4A97-8D4A-E5D95F9F15FB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Pistol_Hit" ID="{9304C5C4-3146-4194-B323-84050733EE16}" ShortID="901495798">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{1A038DCC-93A6-4B97-B849-5BE7DA804946}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="400"/>
+															<Property Name="Min" Type="Real64" Value="-350"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{24749E60-4E07-4046-A936-EF192C6DD8C1}" ShortID="188328756">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{A030C04D-0A75-4D93-8EC0-7F478156C96B}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{0AD0632E-FC33-4733-A832-D7460FA0ACA3}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.428352407787157"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="7.99733945338622"/>
+														<Property Name="TrimEnd" Type="Real64" Value="9.26954577390699"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>209029-EFX_SD_Bullet_Impact_Car_09.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="203031165"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{0AD0632E-FC33-4733-A832-D7460FA0ACA3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="209029-EFX_SD_Bullet_Impact_Car_01" ID="{28B91C16-C7A4-4A7D-93FF-B14881D8A5FA}" ShortID="279158124">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{2E8EB265-36E6-4B25-9D2B-E30F5E6AF023}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{0390426F-6809-400B-8477-AB1D2B03E2E2}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.753900237705396"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.132789246414019"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.69627520423004"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>209029-EFX_SD_Bullet_Impact_Car_09.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="228124080"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{0390426F-6809-400B-8477-AB1D2B03E2E2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="209029-EFX_SD_Bullet_Impact_Car_02" ID="{D3F60B85-95CE-4363-9D7F-6592A8032466}" ShortID="488258500">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{BD750E8F-2545-4097-830F-83B3D422DB16}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{51A21AAC-58D9-44BE-8245-9FB12B85FCE8}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.556858130123304"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="1.97470459989879"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.62814456335013"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>209029-EFX_SD_Bullet_Impact_Car_09.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="594527928"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{51A21AAC-58D9-44BE-8245-9FB12B85FCE8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="209029-EFX_SD_Bullet_Impact_Car_03" ID="{81DEEE2B-AC6C-4F2B-AB17-AC580D1866D6}" ShortID="393322500">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CBF18699-83F5-4F4D-8759-F035312035BD}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{A9265A23-3E23-47EE-AF87-BE6E9E95FDC2}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.475471172643744"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="3.9922444405763"/>
+														<Property Name="TrimEnd" Type="Real64" Value="5.66710202441699"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>209029-EFX_SD_Bullet_Impact_Car_09.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="291626455"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{A9265A23-3E23-47EE-AF87-BE6E9E95FDC2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="209029-EFX_SD_Bullet_Impact_Car_04" ID="{EBD83BEB-6361-4FC4-A75F-F069D223135A}" ShortID="38979549">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B0559EE3-D719-443D-A1E5-3B44172D982F}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{BB8EE4CB-902B-4532-AD3E-48E6295F9EA4}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.633961563524993"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="6.00121723309807"/>
+														<Property Name="TrimEnd" Type="Real64" Value="7.51330090197964"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>209029-EFX_SD_Bullet_Impact_Car_09.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1006219609"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="209029-EFX_SD_Bullet_Impact_Car_09" ID="{BB8EE4CB-902B-4532-AD3E-48E6295F9EA4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

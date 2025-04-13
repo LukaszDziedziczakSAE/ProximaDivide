@@ -24,7 +24,4 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UAnimMontage* UseageMontage;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	bool bSingleUse;
 };

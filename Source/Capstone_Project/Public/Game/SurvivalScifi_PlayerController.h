@@ -65,6 +65,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_InventoryAuto;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Pause;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
@@ -118,8 +121,11 @@ protected:
 
 	UFUNCTION()
 	void Jump();
-	
+
 public:
 	UFUNCTION()
 	void ToggleInventory(const FInputActionValue& Value);
+	
+	UFUNCTION()
+	void PauseToggle();
 };

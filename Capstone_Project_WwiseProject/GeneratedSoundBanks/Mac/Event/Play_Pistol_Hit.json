@@ -1,0 +1,97 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1880352949",
+    "Type": "Event",
+    "GUID": "{F46700D6-6068-4DF8-AC5C-AA698C510A7A}",
+    "Language": "SFX",
+    "Hash": "{59B0A440-5FA7-2975-08B3-A9943236C274}",
+    "ObjectPath": "Play_Pistol_Hit",
+    "ShortName": "Play_Pistol_Hit",
+    "Path": "Event/Play_Pistol_Hit.bnk",
+    "Media": [
+     {
+      "Id": "203031165",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
+      "Path": "Media/203031165.wem",
+      "CachePath": "01/{01C95C7C-66EA-1F8F-1B56-FA533F0E1BF7}.wem"
+     },
+     {
+      "Id": "228124080",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
+      "Path": "Media/228124080.wem",
+      "CachePath": "90/{908738F2-86E8-8E74-B583-11BB987C4476}.wem"
+     },
+     {
+      "Id": "291626455",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
+      "Path": "Media/291626455.wem",
+      "CachePath": "EB/{EB225008-7140-706A-A4C7-57B1AC692CD4}.wem"
+     },
+     {
+      "Id": "594527928",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
+      "Path": "Media/594527928.wem",
+      "CachePath": "1D/{1D9F253B-55D6-5CDD-8FB2-639A57255D2A}.wem"
+     },
+     {
+      "Id": "1006219609",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
+      "Path": "Media/1006219609.wem",
+      "CachePath": "67/{67355E3B-0C77-661D-5F1C-08C7116F2D06}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1880352949",
+      "Name": "Play_Pistol_Hit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Equipment\\Pistol\\Play_Pistol_Hit",
+      "GUID": "{F46700D6-6068-4DF8-AC5C-AA698C510A7A}",
+      "MaxAttenuation": "5000",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0097508",
+      "DurationMax": "2.0501156",
+      "MediaRefs": [
+       {
+        "Id": "203031165"
+       },
+       {
+        "Id": "228124080"
+       },
+       {
+        "Id": "291626455"
+       },
+       {
+        "Id": "594527928"
+       },
+       {
+        "Id": "1006219609"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{B6BE8E4B-AD1A-C4D1-42C2-81B1AFA4B126}"
+ }
+}

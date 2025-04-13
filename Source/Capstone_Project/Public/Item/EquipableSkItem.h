@@ -6,9 +6,9 @@
 #include "Item/SkeletalMesh_Item.h"
 #include "EquipableSkItem.generated.h"
 
-/**
- * 
- */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartUsingItemSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEndUsingItemSignature);
+
 UCLASS()
 class CAPSTONE_PROJECT_API AEquipableSkItem : public ASkeletalMesh_Item
 {
@@ -49,9 +49,25 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UAkAudioEvent* HitSound;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UNiagaraComponent* UseVFX;
 	
 public:
+	UPROPERTY(BlueprintAssignable)
+	FOnStartUsingItemSignature OnStartUsing;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnEndUsingItemSignature OnEndUsing;
+
 	virtual void UpdateRelatives() override;
+
+	UFUNCTION()
+	virtual void Use();
+
+	UFUNCTION()
+	virtual void UseFinish();
+
 
 	UFUNCTION(BlueprintCallable)
 	void PlayEquipSound();

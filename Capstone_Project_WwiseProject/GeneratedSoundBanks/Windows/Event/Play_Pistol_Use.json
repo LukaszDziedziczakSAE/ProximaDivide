@@ -1,0 +1,73 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1447533395",
+    "Type": "Event",
+    "GUID": "{4E4023F7-49DF-46B9-A38F-CF41FB0D44CB}",
+    "Language": "SFX",
+    "Hash": "{3671BF54-708A-D65D-A96C-8618E7B3E933}",
+    "ObjectPath": "Play_Pistol_Use",
+    "ShortName": "Play_Pistol_Use",
+    "Path": "Event/Play_Pistol_Use.bnk",
+    "Media": [
+     {
+      "Id": "308655094",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "pistolShot2.wav",
+      "Path": "Media/308655094.wem",
+      "CachePath": "8A/{8AE31F20-61A3-49E4-ABCD-3807856DC3C6}.wem"
+     },
+     {
+      "Id": "334634566",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "pistolShot3.wav",
+      "Path": "Media/334634566.wem",
+      "CachePath": "BF/{BF54B7F4-3498-C468-EE6D-B1A920F3EB83}.wem"
+     },
+     {
+      "Id": "403757935",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "pistolShot1.wav",
+      "Path": "Media/403757935.wem",
+      "CachePath": "0A/{0AC12AFE-532E-3568-632C-43007884EE22}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1447533395",
+      "Name": "Play_Pistol_Use",
+      "ObjectPath": "\\Events\\Default Work Unit\\Equipment\\Pistol\\Play_Pistol_Use",
+      "GUID": "{4E4023F7-49DF-46B9-A38F-CF41FB0D44CB}",
+      "MaxAttenuation": "5000",
+      "DurationType": "OneShot",
+      "DurationMin": "0.23061869",
+      "DurationMax": "0.38148397",
+      "MediaRefs": [
+       {
+        "Id": "308655094"
+       },
+       {
+        "Id": "334634566"
+       },
+       {
+        "Id": "403757935"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{687008B7-F1E0-34F7-8D6D-C093F840200D}"
+ }
+}

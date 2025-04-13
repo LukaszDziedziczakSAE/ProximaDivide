@@ -10,6 +10,7 @@
 #include "Item/EquipableItemDataAsset.h"
 #include "AkGameplayStatics.h"
 #include "Kismet/GameplayStatics.h"
+#include "Item/EquipableSkItem.h"
 
 // Sets default values
 ASurvivalSciFi_Character::ASurvivalSciFi_Character()
@@ -136,9 +137,15 @@ void ASurvivalSciFi_Character::UseItem()
 	if (RightHandItem == nullptr) return;
 
 	AEquipableItem* EquipableItem = Cast<AEquipableItem>(RightHandItem);
-	if (EquipableItem)
+	if (EquipableItem != nullptr)
 	{
 		EquipableItem->Use();
+	}
+
+	AEquipableSkItem* EquipableSkItem = Cast<AEquipableSkItem>(RightHandItem);
+	if (EquipableSkItem != nullptr)
+	{
+		EquipableSkItem->Use();
 	}
 }
 

@@ -35,6 +35,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class UNotificationsUserWidget> NotificationsClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UPauseMenu_UserWidget> PauseMenuClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -55,6 +58,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UNotificationsUserWidget* Notifications;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPauseMenu_UserWidget* PauseMenu;
 
 public:
 	UFUNCTION()
@@ -110,4 +116,13 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UInventoryItemUserWidget* MouseOverItem;
+
+	UFUNCTION()
+	void ShowPauseMenu();
+
+	UFUNCTION()
+	void HidePauseMenu();
+
+	UFUNCTION(BlueprintPure)
+	bool IsShowingPauseMenu() { return PauseMenu != nullptr; }
 };

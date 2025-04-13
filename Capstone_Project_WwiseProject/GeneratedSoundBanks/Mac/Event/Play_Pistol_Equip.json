@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2302107810",
+    "Type": "Event",
+    "GUID": "{0DBD07F0-1948-40EA-B622-B45920588DD4}",
+    "Language": "SFX",
+    "Hash": "{4BCC134F-B3B7-291F-1AE5-7B3121C6D557}",
+    "ObjectPath": "Play_Pistol_Equip",
+    "ShortName": "Play_Pistol_Equip",
+    "Path": "Event/Play_Pistol_Equip.bnk",
+    "Media": [
+     {
+      "Id": "647495195",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "1163664.audio-P38_Semi_Automatic_Pistol_-Handling_-Clearing_-1m_-Above_Right_-MKH8060.wav",
+      "Path": "Media/647495195.wem",
+      "CachePath": "E9/{E99E143D-B3DB-5D05-A8EA-4CF57FE61F86}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2302107810",
+      "Name": "Play_Pistol_Equip",
+      "ObjectPath": "\\Events\\Default Work Unit\\Equipment\\Pistol\\Play_Pistol_Equip",
+      "GUID": "{0DBD07F0-1948-40EA-B622-B45920588DD4}",
+      "MaxAttenuation": "5000",
+      "DurationType": "OneShot",
+      "DurationMin": "0.4705894",
+      "DurationMax": "0.4705894",
+      "MediaRefs": [
+       {
+        "Id": "647495195"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CF27D507-A533-FC78-30B8-7A93DBF99F65}"
+ }
+}

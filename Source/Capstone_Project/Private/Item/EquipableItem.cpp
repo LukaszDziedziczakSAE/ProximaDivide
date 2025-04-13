@@ -53,7 +53,7 @@ void AEquipableItem::Use()
 void AEquipableItem::UseFinish()
 {
 	Busy = false;
-	if (GetOwner<ASurvivalSciFi_Character>()->GetUseItemDown()) Use();
+	if (Repeating && GetOwner<ASurvivalSciFi_Character>()->GetUseItemDown()) Use();
 
 	OnEndUsing.Broadcast();
 }

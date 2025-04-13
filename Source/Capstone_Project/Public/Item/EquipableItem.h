@@ -51,8 +51,6 @@ protected:
 	UAkAudioEvent* HitSound;
 
 public:
-	
-
 	UPROPERTY(BlueprintAssignable)
 	FOnStartUsingSignature OnStartUsing;
 

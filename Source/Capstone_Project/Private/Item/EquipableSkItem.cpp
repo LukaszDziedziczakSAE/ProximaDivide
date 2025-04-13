@@ -5,6 +5,8 @@
 #include "AkComponent.h"
 #include "AkAudioEvent.h"
 #include "Components/BoxComponent.h"
+#include "Character/SurvivalSciFi_Character.h"
+#include "NiagaraComponent.h"
 
 AEquipableSkItem::AEquipableSkItem()
 {
@@ -13,6 +15,9 @@ AEquipableSkItem::AEquipableSkItem()
 	Mesh->SetCollisionProfileName(TEXT("NoCollision"));
 	Collider->SetBoxExtent(FVector(0, 0, 0));
 	Collider->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
+	UseVFX = CreateDefaultSubobject<UNiagaraComponent>(TEXT("Use VFX"));
+	UseVFX->SetupAttachment(Mesh);
+	UseVFX->bAutoActivate = false;
 }
 
 void AEquipableSkItem::BeginPlay()
@@ -28,6 +33,31 @@ void AEquipableSkItem::UpdateRelatives()
 	PlayEquipSound();
 }
 
+void AEquipableSkItem::Use()
+{
+	if (Busy) return;
+
+	if (UseMontage != nullptr)
+	{
+		float t = GetOwner<ASurvivalSciFi_Character>()->PlayMontage(UseMontage);
+		Busy = true;
+		FTimerHandle  UseTimer;
+		GetWorld()->GetTimerManager().SetTimer(UseTimer, this, &AEquipableSkItem::UseFinish, t * PercentageBusy, false);
+
+		if (UseVFX->GetAsset() != nullptr) UseVFX->ActivateSystem();
+
+		OnStartUsing.Broadcast();
+	}
+}
+
+void AEquipableSkItem::UseFinish()
+{
+	Busy = false;
+	if (Repeating && GetOwner<ASurvivalSciFi_Character>()->GetUseItemDown()) Use();
+
+	OnEndUsing.Broadcast();
+}
+
 void AEquipableSkItem::PlayEquipSound()
 {
 	if (AudioComponent == nullptr)
@@ -40,8 +70,6 @@ void AEquipableSkItem::PlayEquipSound()
 		UE_LOG(LogTemp, Warning, TEXT("Missing EquipSound reference"));
 		return;
 	}
-
-	//AudioComponent->PostAkEvent(EquipSound, int32(0), FOnAkPostEventCallback());
 	EquipSound->PostAtLocation(GetActorLocation(), GetActorRotation(), FOnAkPostEventCallback(), int32(0), GetWorld());
 }
 
@@ -57,7 +85,6 @@ void AEquipableSkItem::PlayUnequipSound()
 		UE_LOG(LogTemp, Warning, TEXT("Missing UnequipSound reference"));
 		return;
 	}
-
 	AudioComponent->PostAkEvent(UnequipSound, int32(0), FOnAkPostEventCallback());
 }
 
@@ -73,8 +100,5 @@ void AEquipableSkItem::PlayUseSound()
 		UE_LOG(LogTemp, Warning, TEXT("Missing UseSound reference"));
 		return;
 	}
-
-	UE_LOG(LogTemp, Log, TEXT("Playing Use Sound"));
-	//AudioComponent->PostAkEvent(UseSound, int32(0), FOnAkPostEventCallback());
 	UseSound->PostAtLocation(GetActorLocation(), GetActorRotation(), FOnAkPostEventCallback(), int32(0), GetWorld());
 }

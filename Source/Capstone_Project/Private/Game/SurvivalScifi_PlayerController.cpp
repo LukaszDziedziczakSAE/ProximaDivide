@@ -59,6 +59,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Use, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::UseItem);
 		Input->BindAction(IA_Use, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::UseItemEnd);
 		Input->BindAction(IA_Jump, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Jump);
+		Input->BindAction(IA_Pause, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::PauseToggle);
 	}
 
 	else
@@ -201,4 +202,32 @@ void ASurvivalScifi_PlayerController::UseItemEnd()
 void ASurvivalScifi_PlayerController::Jump()
 {
 	if (PlayerCharacter != nullptr) PlayerCharacter->Jump();
+}
+
+void ASurvivalScifi_PlayerController::PauseToggle()
+{
+	if (GetHUD<ASurvivalScifi_HUD>()->IsShowingPauseMenu())
+	{
+		GetHUD<ASurvivalScifi_HUD>()->HidePauseMenu();
+		SetPause(false);
+
+		if (GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu())
+			SetInputMode(FInputModeGameAndUI());
+		else if (!GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory())
+			SetInputMode(FInputModeGameOnly());
+
+		SetShowMouseCursor(!AllowOpenMenu());
+	}
+	else
+	{
+		GetHUD<ASurvivalScifi_HUD>()->ShowPauseMenu();
+		SetPause(true);
+
+		FInputModeGameAndUI InputModeGameAndUI;
+		InputModeGameAndUI.SetHideCursorDuringCapture(false);
+		InputModeGameAndUI.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+		SetInputMode(InputModeGameAndUI);
+		SetShowMouseCursor(true);
+	}
+	
 }

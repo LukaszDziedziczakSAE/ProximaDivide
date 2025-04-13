@@ -9,5 +9,6 @@ UENUM(BlueprintType)
 enum class EAnimHandsType : uint8
 {
     None UMETA(DisplayName = "None"),
-    TwoItems UMETA(DisplayName = "Two Items")
+    TwoItems UMETA(DisplayName = "Two Items"),
+    Pistol UMETA(DisplayName = "Pistol")
 };

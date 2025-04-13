@@ -5,6 +5,13 @@
 			<ChildrenList>
 				<Event Name="StartScreenMusic" ID="{B70AE9EC-3F0E-45ED-ADE8-15523F3F0B7F}">
 					<ChildrenList>
+						<Action Name="" ID="{445CFED5-DD98-4AB8-8A45-BAD6183F88B4}" ShortID="127962569">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameMusic" ID="{094F01DF-4C73-4432-A7B8-56CFB4932C6F}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{9EDA13DC-E08F-4A5C-BD8A-4B1107149A96}" ShortID="41408938">
 							<ReferenceList>
 								<Reference Name="Target">
@@ -236,6 +243,47 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Sprats" ID="{6B8C2ABD-6BEB-4BE8-81F7-DCB5A493DB04}" ShortID="298529092"/>
+								<Folder Name="Sardines" ID="{C4A5F462-E4F3-4E98-A0AA-6A6EE67AD4BB}" ShortID="579586222"/>
+								<Folder Name="ProtienBar" ID="{A380F007-4533-4457-BFEA-CF77FABA724C}" ShortID="592691994"/>
+								<Folder Name="HealthBooster" ID="{FF621411-62AE-470B-9D8A-678B5200CF2B}" ShortID="36631852"/>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Pistol" ID="{E5C99A6D-0492-4295-B7D8-DD31D6E70F50}" ShortID="254391498">
+							<ChildrenList>
+								<Event Name="Play_Pistol_Equip" ID="{0DBD07F0-1948-40EA-B622-B45920588DD4}">
+									<ChildrenList>
+										<Action Name="" ID="{29F49906-24EC-4F3E-86B4-8C0F4DBF46D2}" ShortID="419038277">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pistol_Equip" ID="{8D2075F5-0FD8-4D67-8951-3D0843486A5A}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Pistol_Use" ID="{4E4023F7-49DF-46B9-A38F-CF41FB0D44CB}">
+									<ChildrenList>
+										<Action Name="" ID="{2B0A977A-0C73-4EEA-89FF-F041305178C1}" ShortID="609448852">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pistol_Use" ID="{9D894221-CFB2-436F-B20A-B8BFEA6DEE1A}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Pistol_Hit" ID="{F46700D6-6068-4DF8-AC5C-AA698C510A7A}">
+									<ChildrenList>
+										<Action Name="" ID="{C44C4C34-8DAA-4DC4-9432-8D2992F1E2E3}" ShortID="218011833">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pistol_Hit" ID="{9304C5C4-3146-4194-B323-84050733EE16}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
@@ -286,6 +334,16 @@
 				</Folder>
 				<Event Name="StartGameMusic" ID="{F8949438-CCCF-4176-9828-60F978BC455D}">
 					<ChildrenList>
+						<Action Name="" ID="{5756DCBE-F14F-4AAA-8AFD-94203FC2BB3D}" ShortID="204715346">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="StartScreenMusic" ID="{89287293-CC70-4422-8A08-11F7E90E9BF1}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{905452B0-6316-4205-B511-58F272E7F8DD}" ShortID="92905168">
 							<ReferenceList>
 								<Reference Name="Target">

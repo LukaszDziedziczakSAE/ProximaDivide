@@ -9,6 +9,7 @@
 #include "Item/ItemDataAsset.h"
 #include "UI/InventorySlotUserWidget.h"
 #include "UI/NotificationsUserWidget.h"
+#include "UI/PauseMenu_UserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -145,4 +146,20 @@ void ASurvivalScifi_HUD::DisplayRemovedItems(UItemDataAsset* ItemDataAsset, int 
 {
 	if (Notifications != nullptr) Notifications->RemovedItems(ItemDataAsset, Amount);
 	else UE_LOG(LogTemp, Error, TEXT("Missing Notifications reference"));
+}
+
+void ASurvivalScifi_HUD::ShowPauseMenu()
+{
+	if (PauseMenuClass != nullptr)
+		PauseMenu = CreateWidget<UPauseMenu_UserWidget>(GetWorld(), PauseMenuClass);
+	if (PauseMenu != nullptr) PauseMenu->AddToViewport();
+}
+
+void ASurvivalScifi_HUD::HidePauseMenu()
+{
+	if (PauseMenu != nullptr)
+	{
+		PauseMenu->RemoveFromParent();
+		PauseMenu = nullptr;
+	}
 }
