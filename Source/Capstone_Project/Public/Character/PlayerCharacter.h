@@ -26,6 +26,12 @@ protected:
 	class UOxygenComponent* OxygenComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UExhaustionComponent* ExhaustionComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class USustenanceComponent* SustenanceComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UPlayerInteractionComponent* PlayerInteractionComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

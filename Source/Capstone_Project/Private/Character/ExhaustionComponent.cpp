@@ -1,6 +1,5 @@
 // Written and owned by Lukasz Dziedziczak. Copywrite 2025
 
 
-#include "Character/HealthComponent.h"
-
+#include "Character/ExhaustionComponent.h"
 

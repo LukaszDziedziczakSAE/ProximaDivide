@@ -4,6 +4,8 @@
 #include "Character/PlayerCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Character/OxygenComponent.h"
+#include "Character/ExhaustionComponent.h"
+#include "Character/SustenanceComponent.h"
 #include "Character/PlayerInteractionComponent.h"
 #include "Item/InventoryComponent.h"
 #include "Character/PaperdollComponent.h"
@@ -22,7 +24,11 @@ APlayerCharacter::APlayerCharacter()
 	CameraComponent->SetupAttachment(GetRootComponent());
 	CameraComponent->bUsePawnControlRotation = true;
 
-	OxygenComponent = CreateDefaultSubobject< UOxygenComponent>(TEXT("Oxygen"));
+	OxygenComponent = CreateDefaultSubobject<UOxygenComponent>(TEXT("Oxygen"));
+
+	ExhaustionComponent = CreateDefaultSubobject<UExhaustionComponent>(TEXT("Exhaustion"));
+
+	SustenanceComponent = CreateDefaultSubobject<USustenanceComponent>(TEXT("Sustenance"));
 
 	PlayerInteractionComponent = CreateDefaultSubobject<UPlayerInteractionComponent>(TEXT("Player Interaction Component"));
 
