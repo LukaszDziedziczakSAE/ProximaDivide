@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{0DBD07F0-1948-40EA-B622-B45920588DD4}",
     "Language": "SFX",
-    "Hash": "{4BCC134F-B3B7-291F-1AE5-7B3121C6D557}",
+    "Hash": "{9CDB8B82-26C8-4EF4-6E64-84263452556E}",
     "ObjectPath": "Play_Pistol_Equip",
     "ShortName": "Play_Pistol_Equip",
     "Path": "Event/Play_Pistol_Equip.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "1163664.audio-P38_Semi_Automatic_Pistol_-Handling_-Clearing_-1m_-Above_Right_-MKH8060.wav",
       "Path": "Media/647495195.wem",
-      "CachePath": "E9/{E99E143D-B3DB-5D05-A8EA-4CF57FE61F86}.wem"
+      "CachePath": "2B/{2B5BDD97-68B8-6369-CA7A-ACC9E3315326}.wem"
      }
     ],
     "Events": [
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{2B8EBB48-F193-621A-1D99-F65FD314D752}"
+  "FileHash": "{D8C532C6-318C-79C5-A759-9BF78D6F1B90}"
  }
 }

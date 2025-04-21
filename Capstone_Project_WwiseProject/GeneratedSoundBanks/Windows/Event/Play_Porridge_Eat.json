@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{79E66881-8DEB-48E4-BBE4-3B7D3210581E}",
     "Language": "SFX",
-    "Hash": "{0970C608-6622-D2D7-5389-64DBE5BC390E}",
+    "Hash": "{1CB52053-5EFA-6A79-8394-28836B53BDC3}",
     "ObjectPath": "Play_Porridge_Eat",
     "ShortName": "Play_Porridge_Eat",
     "Path": "Event/Play_Porridge_Eat.bnk",
@@ -116,6 +116,6 @@
     ]
    }
   ],
-  "FileHash": "{BF759DDC-098B-3458-8562-72E45C3A29C0}"
+  "FileHash": "{3BC905C4-66A6-C825-4103-BEBF258B6F13}"
  }
 }

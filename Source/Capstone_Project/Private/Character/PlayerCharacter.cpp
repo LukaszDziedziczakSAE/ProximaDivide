@@ -3,6 +3,7 @@
 
 #include "Character/PlayerCharacter.h"
 #include "Camera/CameraComponent.h"
+#include "Character/HealthComponent.h"
 #include "Character/OxygenComponent.h"
 #include "Character/ExhaustionComponent.h"
 #include "Character/SustenanceComponent.h"
@@ -93,5 +94,27 @@ float APlayerCharacter::PlayMontage(UAnimMontage* Montage)
 ASurvivalScifi_HUD* APlayerCharacter::GetHUD()
 {
 	return GetController<APlayerController>()->GetHUD<ASurvivalScifi_HUD>();;
+}
+
+void APlayerCharacter::ChangeStat(EStat StatType, float Amount)
+{
+	switch(StatType)
+	{
+	case EStat::Oxygen:
+		OxygenComponent->ModifyValue(Amount);
+		break;
+
+	case EStat::Health:
+		HealthComponent->ModifyValue(Amount);
+		break;
+
+	case EStat::Sustenance:
+		SustenanceComponent->ModifyValue(Amount);
+		break;
+
+	case EStat::Exhaustion:
+		ExhaustionComponent->ModifyValue(Amount);
+		break;
+	}
 }
 

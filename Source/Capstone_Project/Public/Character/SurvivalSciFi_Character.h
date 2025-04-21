@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Character/EStat.h"
 #include "SurvivalSciFi_Character.generated.h"
 
 UCLASS()
@@ -69,6 +70,9 @@ public:
 	UInventoryComponent* GetInventoryComponent() { return InventoryComponent; }
 
 	UFUNCTION(BlueprintPure)
+	UHealthComponent* GetHealthComponent() { return HealthComponent; }
+
+	UFUNCTION(BlueprintPure)
 	UPaperdollComponent* GetPaperdollComponent() { return PaperdollComponent; }
 
 	UFUNCTION(BlueprintCallable)
@@ -112,4 +116,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	ASurvivalScifi_Item* GetLeftHandItem() { return LeftHandItem; }
+
+	UFUNCTION()
+	virtual void ChangeStat(EStat StatType, float Amount);
 };

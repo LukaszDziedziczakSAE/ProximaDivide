@@ -12,31 +12,15 @@ class CAPSTONE_PROJECT_API UOxygenComponent : public UStatComponent
 {
 	GENERATED_BODY()
 
-//public:	
-//	// Sets default values for this component's properties
-//	UOxygenComponent();
-//
-//protected:
-//	// Called when the game starts
-//	virtual void BeginPlay() override;
-//
-//	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-//	float CurrentOxygen;
-//
-//	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-//	float MaxOxygen = 100.0f;
-//
-//public:	
-//	// Called every frame
-//	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-//
-//	UFUNCTION(BlueprintPure)
-//	float GetCurrentOxygen() { return CurrentOxygen; }
-//
-//	UFUNCTION(BlueprintPure)
-//	float GetMaxOxygen() { return MaxOxygen; }
-//
-//	UFUNCTION(BlueprintPure)
-//	float GetOxygenPercentage() { return CurrentOxygen / MaxOxygen; }
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float OutsideModifyPerSecond;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float InsideModifyPerSecond;
+
+public:
+	virtual FString GetLabel() override { return TEXT("O2"); }
+
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 };

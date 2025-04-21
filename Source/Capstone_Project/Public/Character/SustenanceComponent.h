@@ -13,5 +13,8 @@ UCLASS()
 class CAPSTONE_PROJECT_API USustenanceComponent : public UStatComponent
 {
 	GENERATED_BODY()
+
+public:
+	virtual FString GetLabel() override { return TEXT("Su"); }
 	
 };

@@ -76,7 +76,7 @@ void UPlayerInventoryUserWidget::RefreshInventories()
 {
 	InventoryWidget->RefreshSlots();
 
-	if (ContainerInventoryWidget->Visibility != ESlateVisibility::Collapsed)
+	if (ContainerInventoryWidget->GetVisibility() != ESlateVisibility::Collapsed)
 		ContainerInventoryWidget->RefreshSlots();
 }
 

@@ -19,7 +19,7 @@ void UStatComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	PlayerCharacter = GetOwner<APlayerCharacter>();
 	
 }
 
@@ -29,6 +29,11 @@ void UStatComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	CurrentValue = FMath::Clamp(CurrentValue + (ModifyPerSecond * DeltaTime), 0, MaxValue);
+}
+
+void UStatComponent::ModifyValue(float ModifyAmount)
+{
+	CurrentValue = FMath::Clamp(CurrentValue + ModifyAmount, 0, MaxValue);
 }
 

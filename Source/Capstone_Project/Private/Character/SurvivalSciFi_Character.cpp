@@ -187,3 +187,9 @@ void ASurvivalSciFi_Character::Footstep()
 
 	UAkGameplayStatics::PostEvent(FootstepEvent, this, int32(0), FOnAkPostEventCallback(), true);
 }
+
+void ASurvivalSciFi_Character::ChangeStat(EStat StatType, float Amount)
+{
+	if (StatType == EStat::Health)
+		HealthComponent->ModifyValue(Amount);
+}

@@ -71,6 +71,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UParticleSystemComponent* VentingVFX;
 
+	UPROPERTY(VisibleAnywhere)
+	class APlayerCharacter* PlayerCharacter;
+
 	UFUNCTION()
 	bool DoorsClosed();
 

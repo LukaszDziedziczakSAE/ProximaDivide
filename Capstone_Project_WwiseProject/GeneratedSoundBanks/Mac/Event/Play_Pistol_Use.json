@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{4E4023F7-49DF-46B9-A38F-CF41FB0D44CB}",
     "Language": "SFX",
-    "Hash": "{3671BF54-708A-D65D-A96C-8618E7B3E933}",
+    "Hash": "{C7D5DA39-AD9F-0072-1E36-0F455E5921B9}",
     "ObjectPath": "Play_Pistol_Use",
     "ShortName": "Play_Pistol_Use",
     "Path": "Event/Play_Pistol_Use.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "pistolShot2.wav",
       "Path": "Media/308655094.wem",
-      "CachePath": "8A/{8AE31F20-61A3-49E4-ABCD-3807856DC3C6}.wem"
+      "CachePath": "60/{6055E343-4CD3-576B-3044-70A3D69D9F6B}.wem"
      },
      {
       "Id": "334634566",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "pistolShot3.wav",
       "Path": "Media/334634566.wem",
-      "CachePath": "BF/{BF54B7F4-3498-C468-EE6D-B1A920F3EB83}.wem"
+      "CachePath": "A4/{A4B069FE-BF8E-0AFE-FD2A-D26C13C889D3}.wem"
      },
      {
       "Id": "403757935",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "pistolShot1.wav",
       "Path": "Media/403757935.wem",
-      "CachePath": "0A/{0AC12AFE-532E-3568-632C-43007884EE22}.wem"
+      "CachePath": "C7/{C79776A2-F6FC-C560-170B-0647A7F8BF49}.wem"
      }
     ],
     "Events": [
@@ -68,6 +68,6 @@
     ]
    }
   ],
-  "FileHash": "{AB6742B7-A676-1454-EFE6-F18F1D2D9728}"
+  "FileHash": "{5D7A5723-B7FA-C98C-FDF5-D71D0EFD4257}"
  }
 }

@@ -16,11 +16,17 @@ void UAnimNotify_LeftHandItemUse::Notify(USkeletalMeshComponent* MeshComp, UAnim
 	{
 		AEquipableItem* EquipableItem = Cast<AEquipableItem>(Character->GetLeftHandItem());
 		if (EquipableItem != nullptr)
+		{
+			Character->ChangeStat(EquipableItem->GetChangeStatType(), EquipableItem->GetChangeStatAmount());
 			EquipableItem->PlayUseSound();
+		}
 
 		AEquipableSkItem* EquipableSkItem = Cast<AEquipableSkItem>(Character->GetLeftHandItem());
 		if (EquipableSkItem != nullptr)
+		{
+			Character->ChangeStat(EquipableSkItem->GetChangeStatType(), EquipableSkItem->GetChangeStatAmount());
 			EquipableSkItem->PlayUseSound();
+		}
 
 		if (EquipableItem == nullptr && EquipableSkItem == nullptr)
 			UE_LOG(LogTemp, Error, TEXT("Unable to cast left hand item into Equipable Item"));

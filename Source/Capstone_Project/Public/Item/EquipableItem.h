@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Item/StaticMesh_Item.h"
+#include "Character/EStat.h"
 #include "EquipableItem.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartUsingSignature);
@@ -50,6 +51,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UAkAudioEvent* HitSound;
 
+	UPROPERTY(EditDefaultsOnly)
+	EStat ChangeStat;
+
+	UPROPERTY(EditDefaultsOnly)
+	float ChangeAmount;
+
 public:
 	UPROPERTY(BlueprintAssignable)
 	FOnStartUsingSignature OnStartUsing;
@@ -82,4 +89,10 @@ public:
 
 	UFUNCTION()
 	void TurnOffColliderOverlap();
+
+	UFUNCTION(BlueprintPure)
+	EStat GetChangeStatType() { return ChangeStat; }
+
+	UFUNCTION(BlueprintPure)
+	float GetChangeStatAmount() { return ChangeAmount; }
 };

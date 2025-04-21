@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Item/SkeletalMesh_Item.h"
+#include "Character/EStat.h"
 #include "EquipableSkItem.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartUsingItemSignature);
@@ -52,6 +53,12 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	class UNiagaraComponent* UseVFX;
+
+	UPROPERTY(EditDefaultsOnly)
+	EStat ChangeStat;
+
+	UPROPERTY(EditDefaultsOnly)
+	float ChangeAmount;
 	
 public:
 	UPROPERTY(BlueprintAssignable)
@@ -77,4 +84,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void PlayUseSound();
+
+	UFUNCTION(BlueprintPure)
+	EStat GetChangeStatType() { return ChangeStat; }
+
+	UFUNCTION(BlueprintPure)
+	float GetChangeStatAmount() { return ChangeAmount; }
 };

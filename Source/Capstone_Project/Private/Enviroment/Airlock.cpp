@@ -8,6 +8,7 @@
 #include "AkGameplayStatics.h"
 #include "AkComponent.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "Character/PlayerCharacter.h"
 
 // Sets default values
 AAirlock::AAirlock()
@@ -56,6 +57,7 @@ void AAirlock::SetDoorModes()
 void AAirlock::OnColliderBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	BeginCycling();
+	PlayerCharacter = Cast<APlayerCharacter>(OtherActor);
 }
 
 void AAirlock::OnColliderEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
@@ -134,6 +136,8 @@ void AAirlock::Tick(float DeltaTime)
 			SetDoorModes();
 			Light->SetLightColor(StandbyColor);
 			VentingVFX->Deactivate();
+
+			PlayerCharacter->bIsInside = AirlockState == EAirlockState::OpenIn;
 		}
 	}
 }

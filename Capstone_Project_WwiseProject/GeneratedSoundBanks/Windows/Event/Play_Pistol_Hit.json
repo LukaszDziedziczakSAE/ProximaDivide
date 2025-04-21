@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{F46700D6-6068-4DF8-AC5C-AA698C510A7A}",
     "Language": "SFX",
-    "Hash": "{59B0A440-5FA7-2975-08B3-A9943236C274}",
+    "Hash": "{AA167E7D-79DF-A7D2-3AA0-B55FC63F9C10}",
     "ObjectPath": "Play_Pistol_Hit",
     "ShortName": "Play_Pistol_Hit",
     "Path": "Event/Play_Pistol_Hit.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
       "Path": "Media/203031165.wem",
-      "CachePath": "01/{01C95C7C-66EA-1F8F-1B56-FA533F0E1BF7}.wem"
+      "CachePath": "94/{947B1929-F84E-C884-FF43-2A068BD7EC67}.wem"
      },
      {
       "Id": "228124080",
@@ -31,7 +31,7 @@
       "Location": "Loose",
       "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
       "Path": "Media/228124080.wem",
-      "CachePath": "90/{908738F2-86E8-8E74-B583-11BB987C4476}.wem"
+      "CachePath": "30/{302CC786-8F4E-337E-AF94-5CB24D9435C0}.wem"
      },
      {
       "Id": "291626455",
@@ -40,7 +40,7 @@
       "Location": "Loose",
       "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
       "Path": "Media/291626455.wem",
-      "CachePath": "EB/{EB225008-7140-706A-A4C7-57B1AC692CD4}.wem"
+      "CachePath": "B9/{B94CAB37-283C-51A1-F831-45C8C86A4B91}.wem"
      },
      {
       "Id": "594527928",
@@ -49,7 +49,7 @@
       "Location": "Loose",
       "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
       "Path": "Media/594527928.wem",
-      "CachePath": "1D/{1D9F253B-55D6-5CDD-8FB2-639A57255D2A}.wem"
+      "CachePath": "FF/{FFE7C050-24E5-0776-E004-AFE05C3538B6}.wem"
      },
      {
       "Id": "1006219609",
@@ -58,7 +58,7 @@
       "Location": "Loose",
       "ShortName": "209029-EFX_SD_Bullet_Impact_Car_09.wav",
       "Path": "Media/1006219609.wem",
-      "CachePath": "67/{67355E3B-0C77-661D-5F1C-08C7116F2D06}.wem"
+      "CachePath": "76/{76C21917-9E54-70A6-AB7F-C6B7C2EAEE8A}.wem"
      }
     ],
     "Events": [
@@ -92,6 +92,6 @@
     ]
    }
   ],
-  "FileHash": "{35472691-6F87-C72C-2CD8-17392E177E17}"
+  "FileHash": "{9653505C-7A93-4453-05F8-0451720CBD0D}"
  }
 }

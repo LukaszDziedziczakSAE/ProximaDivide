@@ -10,5 +10,4 @@ void USurvivalScifiUserWidget::NativePreConstruct()
 	Super::NativePreConstruct();
 
 	PlayerCharacter = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-	if (PlayerCharacter == nullptr) UE_LOG(LogTemp, Error, TEXT("Missing Player ref in UserWidget"));
 }

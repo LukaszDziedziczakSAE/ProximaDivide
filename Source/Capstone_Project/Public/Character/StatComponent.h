@@ -6,7 +6,6 @@
 #include "Components/ActorComponent.h"
 #include "StatComponent.generated.h"
 
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class CAPSTONE_PROJECT_API UStatComponent : public UActorComponent
 {
@@ -20,11 +19,17 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float CurrentValue = 100.f;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float MaxValue = 100.0f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float ModifyPerSecond;
+
+	UPROPERTY(VisibleAnywhere)
+	class APlayerCharacter* PlayerCharacter;
 
 public:	
 	// Called every frame
@@ -38,4 +43,10 @@ public:
 	
 	UFUNCTION(BlueprintPure)
 	float GetPercentage() { return CurrentValue / MaxValue; }
+
+	UFUNCTION(BlueprintCallable)
+	void ModifyValue(float ModifyAmount);
+
+	UFUNCTION(BlueprintCallable)
+	virtual FString GetLabel() { return TEXT("xx"); }
 };

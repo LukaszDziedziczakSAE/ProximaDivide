@@ -48,6 +48,15 @@ public:
 	UCameraComponent* GetCameraComponent() { return CameraComponent; }
 
 	UFUNCTION(BlueprintPure)
+	UOxygenComponent* GetOxygenComponent() { return OxygenComponent; }
+
+	UFUNCTION(BlueprintPure)
+	UExhaustionComponent* GetExhaustionComponent() { return ExhaustionComponent; }
+
+	UFUNCTION(BlueprintPure)
+	USustenanceComponent* GetSustenanceComponent() { return SustenanceComponent; }
+
+	UFUNCTION(BlueprintPure)
 	UPlayerInteractionComponent* GetPlayerInteractionComponent() { return PlayerInteractionComponent; }
 
 	UFUNCTION()
@@ -62,4 +71,9 @@ public:
 
 	UFUNCTION()
 	class ASurvivalScifi_HUD* GetHUD();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	bool bIsInside = true;
+
+	virtual void ChangeStat(EStat StatType, float Amount) override;
 };
