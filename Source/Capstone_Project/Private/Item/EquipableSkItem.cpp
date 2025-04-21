@@ -60,11 +60,6 @@ void AEquipableSkItem::UseFinish()
 
 void AEquipableSkItem::PlayEquipSound()
 {
-	if (AudioComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Missing AudioComponent reference"));
-		return;
-	}
 	if (EquipSound == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Missing EquipSound reference"));
@@ -75,26 +70,16 @@ void AEquipableSkItem::PlayEquipSound()
 
 void AEquipableSkItem::PlayUnequipSound()
 {
-	if (AudioComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Missing AudioComponent reference"));
-		return;
-	}
 	if (UnequipSound == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Missing UnequipSound reference"));
 		return;
 	}
-	AudioComponent->PostAkEvent(UnequipSound, int32(0), FOnAkPostEventCallback());
+	UnequipSound->PostAtLocation(GetActorLocation(), GetActorRotation(), FOnAkPostEventCallback(), int32(0), GetWorld());
 }
 
 void AEquipableSkItem::PlayUseSound()
 {
-	if (AudioComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Missing AudioComponent reference"));
-		return;
-	}
 	if (UseSound == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Missing UseSound reference"));

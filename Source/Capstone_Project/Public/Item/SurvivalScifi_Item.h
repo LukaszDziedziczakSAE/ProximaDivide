@@ -26,9 +26,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UItemDataAsset* DataAsset;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	class UAkComponent* AudioComponent;
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

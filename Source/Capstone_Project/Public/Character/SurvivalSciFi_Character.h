@@ -59,6 +59,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Footsteps")
 	UAkSwitchValue* MetalValue;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FVector DropSpawnOffset;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float DeathTimer = 10.0f;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -119,4 +125,13 @@ public:
 
 	UFUNCTION()
 	virtual void ChangeStat(EStat StatType, float Amount);
+
+	UFUNCTION()
+	virtual void DropFromInventory(UItemDataAsset* DataAsset, FIntPoint Position);
+
+	UFUNCTION()
+	virtual void DropFromPaperdoll(UItemDataAsset* DataAsset, int SlotNumber);
+
+	UFUNCTION(BlueprintPure)
+	bool IsAlive();
 };

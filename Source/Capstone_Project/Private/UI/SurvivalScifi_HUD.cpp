@@ -10,6 +10,7 @@
 #include "UI/InventorySlotUserWidget.h"
 #include "UI/NotificationsUserWidget.h"
 #include "UI/PauseMenu_UserWidget.h"
+#include "UI/DeathScreenUserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -18,11 +19,13 @@ void ASurvivalScifi_HUD::BeginPlay()
 	if (NotificationsClass != nullptr) Notifications = CreateWidget<UNotificationsUserWidget>(GetWorld(), NotificationsClass);
 	if (Notifications != nullptr) Notifications->AddToViewport();
 
-	ShowGameHUD();
+	//ShowGameHUD();
 }
 
 void ASurvivalScifi_HUD::ShowGameHUD()
 {
+	HideGameHUD();
+
 	if (PlayerStatsClass != nullptr) PlayerStats = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), PlayerStatsClass);
 	if (PlayerStats != nullptr) PlayerStats->AddToViewport();
 
@@ -52,12 +55,6 @@ void ASurvivalScifi_HUD::HideGameHUD()
 		Crosshair->AddToViewport();
 		Crosshair = nullptr;
 	}
-
-	/*if (Notifications != nullptr)
-	{
-		Notifications->AddToViewport();
-		Notifications = nullptr;
-	}*/
 }
 
 void ASurvivalScifi_HUD::ShowInventory()
@@ -82,7 +79,6 @@ void ASurvivalScifi_HUD::ShowInteraction()
 	if (Interaction != nullptr && !Interaction->IsInViewport())
 	{
 		Interaction->AddToViewport();
-		//UE_LOG(LogTemp, Warning, TEXT("Showing interaction text"));
 	}
 }
 
@@ -92,7 +88,6 @@ void ASurvivalScifi_HUD::HideInteraction()
 	{
 		Interaction->RemoveFromParent();
 		Interaction = nullptr;
-		//UE_LOG(LogTemp, Warning, TEXT("Hiding interaction text"));
 	}
 	
 }
@@ -119,15 +114,20 @@ void ASurvivalScifi_HUD::ShowCraftingMenu()
 
 void ASurvivalScifi_HUD::HideCraftingMenu()
 {
+	HideCraftingMenuOnly();
+
+	GetOwningPlayerController()->SetShowMouseCursor(false);
+	GetOwningPlayerController()->SetInputMode(FInputModeGameOnly());
+	ShowGameHUD();
+}
+
+void ASurvivalScifi_HUD::HideCraftingMenuOnly()
+{
 	if (CraftingMenu != nullptr)
 	{
 		CraftingMenu->RemoveFromParent();
 		CraftingMenu = nullptr;
 	}
-
-	GetOwningPlayerController()->SetShowMouseCursor(false);
-	GetOwningPlayerController()->SetInputMode(FInputModeGameOnly());
-	ShowGameHUD();
 }
 
 void ASurvivalScifi_HUD::UpdateCraftingMenu()
@@ -161,5 +161,21 @@ void ASurvivalScifi_HUD::HidePauseMenu()
 	{
 		PauseMenu->RemoveFromParent();
 		PauseMenu = nullptr;
+	}
+}
+
+void ASurvivalScifi_HUD::ShowDeathScreen()
+{
+	if (DeathScreenClass != nullptr)
+		DeathScreen = CreateWidget<UDeathScreenUserWidget>(GetWorld(), DeathScreenClass);
+	if (DeathScreen != nullptr) DeathScreen->AddToViewport();
+}
+
+void ASurvivalScifi_HUD::HideDeathScreen()
+{
+	if (DeathScreen != nullptr)
+	{
+		DeathScreen->RemoveFromParent();
+		DeathScreen = nullptr;
 	}
 }

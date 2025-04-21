@@ -10,7 +10,6 @@ ASkeletalMesh_Item::ASkeletalMesh_Item()
 	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	SetRootComponent(Mesh);
 	Collider->SetupAttachment(Mesh);
-	AudioComponent->SetupAttachment(Mesh);
 
 	Mesh->SetCollisionProfileName(TEXT("BlockAllDynamic"));
 	Mesh->SetEnableGravity(true);

@@ -55,6 +55,16 @@ bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const
 
 		else if (EquipableItem != nullptr && DragDropOperation->FromInventory == nullptr && DragDropOperation->FromSlot > 0 && DragDropOperation->FromSlot <= 5)
 		{
+			PlayerCharacter->DropFromPaperdoll(DragDropOperation->Item, DragDropOperation->FromSlot);
+		}
+
+		else if (DragDropOperation->FromInventory != nullptr && DragDropOperation->FromInventoryPosition != FIntPoint::ZeroValue)
+		{
+			PlayerCharacter->DropFromInventory(DragDropOperation->Item, DragDropOperation->FromInventoryPosition);
+		}
+
+		/*else if (EquipableItem != nullptr && DragDropOperation->FromInventory == nullptr && DragDropOperation->FromSlot > 0 && DragDropOperation->FromSlot <= 5)
+		{
 			if (!PlayerCharacter->GetPaperdollComponent()->TryAddEquipableToSlot(EquipableItem, DragDropOperation->FromSlot))
 				UE_LOG(LogTemp, Error, TEXT("Unable to add drag item to old paperdoll slot"));
 		}
@@ -63,9 +73,8 @@ bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const
 		{
 			if (!DragDropOperation->FromInventory->TryAddItemAt(DragDropOperation->Item, DragDropOperation->FromInventoryPosition))
 				UE_LOG(LogTemp, Error, TEXT("Unable to add drag item to old inventory"));
-		}
+		}*/
 
-		
 		DragDropOperation->DragUserWidget = nullptr;
 	}
 	RefreshInventories();

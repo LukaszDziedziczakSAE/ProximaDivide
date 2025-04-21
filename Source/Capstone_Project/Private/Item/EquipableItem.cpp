@@ -60,11 +60,6 @@ void AEquipableItem::UseFinish()
 
 void AEquipableItem::PlayEquipSound()
 {
-	if (AudioComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Missing AudioComponent reference"));
-		return;
-	}
 	if (EquipSound == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Missing EquipSound reference"));
@@ -76,11 +71,6 @@ void AEquipableItem::PlayEquipSound()
 
 void AEquipableItem::PlayUseSound()
 {
-	if (AudioComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Missing AudioComponent reference"));
-		return;
-	}
 	if (UseSound == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Missing UseSound reference"));

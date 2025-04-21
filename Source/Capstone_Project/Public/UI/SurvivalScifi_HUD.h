@@ -38,6 +38,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class UPauseMenu_UserWidget> PauseMenuClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UDeathScreenUserWidget> DeathScreenClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -61,6 +64,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UPauseMenu_UserWidget* PauseMenu;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UDeathScreenUserWidget* DeathScreen;
 
 public:
 	UFUNCTION()
@@ -99,6 +105,9 @@ public:
 	UFUNCTION()
 	void HideCraftingMenu();
 
+	UFUNCTION()
+	void HideCraftingMenuOnly();
+
 	UFUNCTION(BlueprintPure)
 	bool IsShowingCraftingMenu() { return CraftingMenu != nullptr; }
 
@@ -125,4 +134,12 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool IsShowingPauseMenu() { return PauseMenu != nullptr; }
+
+	UFUNCTION()
+	void ShowDeathScreen();
+
+	UFUNCTION()
+	void HideDeathScreen();
+
+	bool IsShowingDeathScreen() { return DeathScreen != nullptr; }
 };

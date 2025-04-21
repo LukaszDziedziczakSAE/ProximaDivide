@@ -35,6 +35,13 @@ void ASurvivalSciFi_Character::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (!IsAlive())
+	{
+		DeathTimer -= DeltaTime;
+
+		if (DeathTimer <= 0)
+			Destroy();
+	}
 }
 
 // Called to bind functionality to input
@@ -192,4 +199,27 @@ void ASurvivalSciFi_Character::ChangeStat(EStat StatType, float Amount)
 {
 	if (StatType == EStat::Health)
 		HealthComponent->ModifyValue(Amount);
+}
+
+void ASurvivalSciFi_Character::DropFromInventory(UItemDataAsset* DataAsset, FIntPoint Position)
+{
+	if (InventoryComponent->TryRemoveItemAt(DataAsset, Position))
+	{
+		AActor* Item = GetWorld()->SpawnActor(DataAsset->ItemClass);
+		Item->SetActorLocation(GetActorLocation() + DropSpawnOffset);
+	}
+}
+
+void ASurvivalSciFi_Character::DropFromPaperdoll(UItemDataAsset* DataAsset, int SlotNumber)
+{
+	if (PaperdollComponent->TryRemoveItemFromSlot(SlotNumber))
+	{
+		AActor* Item = GetWorld()->SpawnActor(DataAsset->ItemClass);
+		Item->SetActorLocation(GetActorLocation() + DropSpawnOffset);
+	}
+}
+
+bool ASurvivalSciFi_Character::IsAlive()
+{
+	return HealthComponent->GetCurrentValue() > 0;
 }

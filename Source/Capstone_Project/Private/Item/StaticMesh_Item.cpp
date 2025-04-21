@@ -10,7 +10,6 @@ AStaticMesh_Item::AStaticMesh_Item()
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	SetRootComponent(Mesh);
 	Collider->SetupAttachment(Mesh);
-	AudioComponent->SetupAttachment(Mesh);
 
 	Mesh->SetEnableGravity(true);
 	Mesh->SetSimulatePhysics(true);

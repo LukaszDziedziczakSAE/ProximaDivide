@@ -76,4 +76,8 @@ public:
 	bool bIsInside = true;
 
 	virtual void ChangeStat(EStat StatType, float Amount) override;
+
+	virtual void DropFromInventory(UItemDataAsset* DataAsset, FIntPoint Position) override;
+
+	virtual void DropFromPaperdoll(UItemDataAsset* DataAsset, int SlotNumber) override;
 };

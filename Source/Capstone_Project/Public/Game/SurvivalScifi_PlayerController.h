@@ -122,6 +122,12 @@ protected:
 	UFUNCTION()
 	void Jump();
 
+	UFUNCTION()
+	bool CharacterAlive();
+
+	UFUNCTION()
+	void OnPlayerDeath(AActor* DestroyedActor);
+
 public:
 	UFUNCTION()
 	void ToggleInventory(const FInputActionValue& Value);

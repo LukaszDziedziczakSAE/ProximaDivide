@@ -13,6 +13,7 @@
 #include "Item/EquipableItem.h"
 #include "Item/EquipableItemDataAsset.h"
 #include "AkGameplayStatics.h"
+#include "UI/SurvivalScifi_HUD.h"
 
 
 // Sets default values
@@ -49,6 +50,14 @@ void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (!IsAlive() && GetController<APlayerController>() != nullptr && GetHUD() != nullptr && !GetHUD()->IsShowingDeathScreen())
+	{
+		GetHUD()->HideInventory();
+		GetHUD()->HideCraftingMenuOnly();
+		GetHUD()->HideGameHUD();
+		GetHUD()->HideInteraction();
+		GetHUD()->ShowDeathScreen();
+	}
 }
 
 // Called to bind functionality to input
@@ -115,6 +124,24 @@ void APlayerCharacter::ChangeStat(EStat StatType, float Amount)
 	case EStat::Exhaustion:
 		ExhaustionComponent->ModifyValue(Amount);
 		break;
+	}
+}
+
+void APlayerCharacter::DropFromInventory(UItemDataAsset* DataAsset, FIntPoint Position)
+{
+	if (InventoryComponent->TryRemoveItemAt(DataAsset, Position))
+	{
+		AActor* Item = GetWorld()->SpawnActor(DataAsset->ItemClass);
+		Item->SetActorLocation(CameraComponent->GetComponentLocation() + (CameraComponent->GetForwardVector() * 50));
+	}
+}
+
+void APlayerCharacter::DropFromPaperdoll(UItemDataAsset* DataAsset, int SlotNumber)
+{
+	if (PaperdollComponent->TryRemoveItemFromSlot(SlotNumber))
+	{
+		AActor* Item = GetWorld()->SpawnActor(DataAsset->ItemClass);
+		Item->SetActorLocation(CameraComponent->GetComponentLocation() + (CameraComponent->GetForwardVector() * 50));
 	}
 }
 

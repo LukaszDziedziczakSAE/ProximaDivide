@@ -17,8 +17,6 @@ ASurvivalScifi_Item::ASurvivalScifi_Item()
 	Collider->SetupAttachment(GetRootComponent());
 
 	Collider->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
-
-	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
 }
 
 // Called when the game starts or when spawned

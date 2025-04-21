@@ -8,6 +8,7 @@
 #include "Character/PlayerCharacter.h"
 #include "UI/SurvivalScifi_HUD.h"
 #include "Framework/Application/SlateApplication.h"
+#include "Game/SurvivalScifiGameMode.h"
 
 void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 {
@@ -17,6 +18,11 @@ void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 
 	SetShowMouseCursor(false);
 	SetInputMode(FInputModeGameOnly());
+
+	PlayerCharacter->OnDestroyed.AddDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
+
+	GetHUD<ASurvivalScifi_HUD>()->HideDeathScreen();
+	GetHUD<ASurvivalScifi_HUD>()->ShowGameHUD();
 }
 
 void ASurvivalScifi_PlayerController::SetupInputComponent()
@@ -70,7 +76,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 
 void ASurvivalScifi_PlayerController::Move(const FInputActionValue& Value)
 {
-	if (PlayerCharacter != nullptr && AllowMove())
+	if (CharacterAlive() && AllowMove())
 	{
 		FRotator CharacterRotation = PlayerCharacter->GetControlRotation();
 
@@ -142,7 +148,7 @@ bool ASurvivalScifi_PlayerController::AllowOpenMenu()
 
 void ASurvivalScifi_PlayerController::RunStart()
 {
-	if (PlayerCharacter != nullptr)
+	if (CharacterAlive())
 	{
 		PlayerCharacter->SetMovementSpeed(true);
 	}
@@ -150,7 +156,7 @@ void ASurvivalScifi_PlayerController::RunStart()
 
 void ASurvivalScifi_PlayerController::RunEnd()
 {
-	if (PlayerCharacter != nullptr)
+	if (CharacterAlive())
 	{
 		PlayerCharacter->SetMovementSpeed(false);
 	}
@@ -158,7 +164,7 @@ void ASurvivalScifi_PlayerController::RunEnd()
 
 void ASurvivalScifi_PlayerController::Interact()
 {
-	if (PlayerCharacter != nullptr && AllowInteraction())
+	if (CharacterAlive() && AllowInteraction())
 	{
 		PlayerCharacter->Interact();
 	}
@@ -166,42 +172,58 @@ void ASurvivalScifi_PlayerController::Interact()
 
 void ASurvivalScifi_PlayerController::Slot1()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(1);
+	if (CharacterAlive()) PlayerCharacter->SelectSlot(1);
 }
 
 void ASurvivalScifi_PlayerController::Slot2()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(2);
+	if (CharacterAlive()) PlayerCharacter->SelectSlot(2);
 }
 
 void ASurvivalScifi_PlayerController::Slot3()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(3);
+	if (CharacterAlive()) PlayerCharacter->SelectSlot(3);
 }
 
 void ASurvivalScifi_PlayerController::Slot4()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(4);
+	if (CharacterAlive()) PlayerCharacter->SelectSlot(4);
 }
 
 void ASurvivalScifi_PlayerController::Slot5()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->SelectSlot(5);
+	if (CharacterAlive()) PlayerCharacter->SelectSlot(5);
 }
 
 void ASurvivalScifi_PlayerController::UseItem()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->UseItemRepeating();
+	if (CharacterAlive()) PlayerCharacter->UseItemRepeating();
 }
 
 void ASurvivalScifi_PlayerController::UseItemEnd()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->UseItemEnd();
+	if (CharacterAlive()) PlayerCharacter->UseItemEnd();
 }
 
 void ASurvivalScifi_PlayerController::Jump()
 {
-	if (PlayerCharacter != nullptr) PlayerCharacter->Jump();
+	if (CharacterAlive()) PlayerCharacter->Jump();
+}
+
+bool ASurvivalScifi_PlayerController::CharacterAlive()
+{
+	return PlayerCharacter != nullptr && PlayerCharacter->IsAlive();
+}
+
+void ASurvivalScifi_PlayerController::OnPlayerDeath(AActor* DestroyedActor)
+{
+	if (PlayerCharacter != nullptr)
+	{
+		PlayerCharacter->OnDestroyed.RemoveDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
+	}
+
+	ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
+	if (GameMode != nullptr) GameMode->RestartPlayer(this);
 }
 
 void ASurvivalScifi_PlayerController::PauseToggle()
