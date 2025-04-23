@@ -8,6 +8,7 @@
 #include "Character/ExhaustionComponent.h"
 #include "Character/SustenanceComponent.h"
 #include "Character/PlayerInteractionComponent.h"
+#include "Character/PlayerTutorialComponent.h"
 #include "Item/InventoryComponent.h"
 #include "Character/PaperdollComponent.h"
 #include "Item/EquipableItem.h"
@@ -33,6 +34,8 @@ APlayerCharacter::APlayerCharacter()
 	SustenanceComponent = CreateDefaultSubobject<USustenanceComponent>(TEXT("Sustenance"));
 
 	PlayerInteractionComponent = CreateDefaultSubobject<UPlayerInteractionComponent>(TEXT("Player Interaction Component"));
+
+	TutorialComponent = CreateDefaultSubobject<UPlayerTutorialComponent>(TEXT("Tutorial Component"));
 
 	FPS_Arms = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Arms"));
 	FPS_Arms->SetupAttachment(CameraComponent);
@@ -143,5 +146,23 @@ void APlayerCharacter::DropFromPaperdoll(UItemDataAsset* DataAsset, int SlotNumb
 		AActor* Item = GetWorld()->SpawnActor(DataAsset->ItemClass);
 		Item->SetActorLocation(CameraComponent->GetComponentLocation() + (CameraComponent->GetForwardVector() * 50));
 	}
+}
+
+bool APlayerCharacter::TryPickUpItem(UItemDataAsset* Item, bool bShowNotification)
+{
+	UEquipableItemDataAsset* Equipable = Cast<UEquipableItemDataAsset>(Item);
+	if (Equipable != nullptr && PaperdollComponent->TryAddEquipable(Equipable))
+	{
+		TutorialComponent->ItemAddedToSlot();
+		return true;
+	}
+
+	if (InventoryComponent->TryAddItem(Item, bShowNotification))
+	{
+		TutorialComponent->ItemPickedUp();
+		return true;
+	}
+
+	return false;
 }
 

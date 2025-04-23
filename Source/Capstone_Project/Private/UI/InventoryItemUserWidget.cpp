@@ -12,6 +12,8 @@
 #include "Game/SurvivalScifi_DragDropOperation.h"
 #include "Item/InventoryComponent.h"
 #include "Components/CanvasPanelSlot.h"
+#include "Character/PlayerCharacter.h"
+#include "Character/PlayerTutorialComponent.h"
 
 void UInventoryItemUserWidget::Set(UInventoryComponent* FromInventory, UItemDataAsset* ItemData, float NewCellSize, FIntPoint NewPosition, bool Rotated, int NewSlotNumber)
 {
@@ -109,6 +111,7 @@ void UInventoryItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry,
 	DragDropOperation->DefaultDragVisual = DragUserWidget;
 
 	OutOperation = DragDropOperation;
+	PlayerCharacter->GetTutorialComponent()->InventoryPickUp();
 	if (Inventory->TryRemoveItemAt(Item, Position))
 		PlayerInventoryUserWidget->RefreshInventories();
 }

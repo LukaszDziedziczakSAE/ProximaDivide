@@ -41,6 +41,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class UDeathScreenUserWidget> DeathScreenClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UTutorialUserWidget> TutorialClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -67,6 +70,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UDeathScreenUserWidget* DeathScreen;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UTutorialUserWidget* Tutorial;
 
 public:
 	UFUNCTION()
@@ -141,5 +147,9 @@ public:
 	UFUNCTION()
 	void HideDeathScreen();
 
+	UFUNCTION(BlueprintPure)
 	bool IsShowingDeathScreen() { return DeathScreen != nullptr; }
+
+	UFUNCTION()
+	void UpdateTutorialInfo();
 };

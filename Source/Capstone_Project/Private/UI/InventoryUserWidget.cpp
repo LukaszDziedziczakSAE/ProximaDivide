@@ -97,7 +97,7 @@ void UInventoryUserWidget::ResetSlotsToOccupancy()
 
 void UInventoryUserWidget::ShowAvailability(UItemDataAsset* Item, FIntPoint Position)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Showing availiability for %s"), *Item->Name);
+	//UE_LOG(LogTemp, Warning, TEXT("Showing availiability for %s"), *Item->Name);
 	ResetSlotsToOccupancy();
 
 	TArray<FIntPoint> Footprint;

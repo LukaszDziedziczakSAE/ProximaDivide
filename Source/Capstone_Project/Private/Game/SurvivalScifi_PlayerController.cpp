@@ -9,6 +9,7 @@
 #include "UI/SurvivalScifi_HUD.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Game/SurvivalScifiGameMode.h"
+#include "Character/PlayerTutorialComponent.h"
 
 void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 {
@@ -87,20 +88,26 @@ void ASurvivalScifi_PlayerController::Move(const FInputActionValue& Value)
 		PlayerCharacter->AddMovementInput(
 			UKismetMathLibrary::GetRightVector(FRotator{ 0.0f, CharacterRotation.Yaw, CharacterRotation.Roll }),
 			Value.Get<FVector2D>().X);
+
+		if (Value.Get<FVector2D>().Size() > 0)
+			PlayerCharacter->GetTutorialComponent()->HasMovement(Value.Get<FVector2D>().Size());
 	}
 }
 
 void ASurvivalScifi_PlayerController::Look(const FInputActionValue& Value)
 {
-	if (!AllowLook()) return;
+	if (CharacterAlive() && !AllowLook()) return;
 
 	AddYawInput(Value.Get<FVector2D>().X);
 	AddPitchInput(-1 * Value.Get<FVector2D>().Y);
+
+	if (Value.Get<FVector2D>().Size() > 0)
+		PlayerCharacter->GetTutorialComponent()->HasLooked(Value.Get<FVector2D>().Size());
 }
 
 void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& Value)
 {
-	if (AllowOpenMenu())
+	if (CharacterAlive() && AllowOpenMenu())
 	{
 		GetHUD<ASurvivalScifi_HUD>()->ShowInventory();
 		SetShowMouseCursor(true);
@@ -113,6 +120,7 @@ void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& V
 			InputModeGameAndUI.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 			SetInputMode(InputModeGameAndUI);
 		}
+		PlayerCharacter->GetTutorialComponent()->HasOpenedInventory();
 	}
 
 	else if (GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory())
@@ -172,27 +180,47 @@ void ASurvivalScifi_PlayerController::Interact()
 
 void ASurvivalScifi_PlayerController::Slot1()
 {
-	if (CharacterAlive()) PlayerCharacter->SelectSlot(1);
+	if (CharacterAlive())
+	{
+		PlayerCharacter->SelectSlot(1);
+		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
+	}
 }
 
 void ASurvivalScifi_PlayerController::Slot2()
 {
-	if (CharacterAlive()) PlayerCharacter->SelectSlot(2);
+	if (CharacterAlive())
+	{
+		PlayerCharacter->SelectSlot(2);
+		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
+	}
 }
 
 void ASurvivalScifi_PlayerController::Slot3()
 {
-	if (CharacterAlive()) PlayerCharacter->SelectSlot(3);
+	if (CharacterAlive())
+	{
+		PlayerCharacter->SelectSlot(3);
+		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
+	}
 }
 
 void ASurvivalScifi_PlayerController::Slot4()
 {
-	if (CharacterAlive()) PlayerCharacter->SelectSlot(4);
+	if (CharacterAlive())
+	{
+		PlayerCharacter->SelectSlot(4);
+		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
+	}
 }
 
 void ASurvivalScifi_PlayerController::Slot5()
 {
-	if (CharacterAlive()) PlayerCharacter->SelectSlot(5);
+	if (CharacterAlive())
+	{
+		PlayerCharacter->SelectSlot(5);
+		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
+	}
 }
 
 void ASurvivalScifi_PlayerController::UseItem()
@@ -207,7 +235,11 @@ void ASurvivalScifi_PlayerController::UseItemEnd()
 
 void ASurvivalScifi_PlayerController::Jump()
 {
-	if (CharacterAlive()) PlayerCharacter->Jump();
+	if (CharacterAlive())
+	{
+		PlayerCharacter->Jump();
+		PlayerCharacter->GetTutorialComponent()->HasJumped();
+	}
 }
 
 bool ASurvivalScifi_PlayerController::CharacterAlive()

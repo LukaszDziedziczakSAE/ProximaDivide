@@ -35,6 +35,9 @@ protected:
 	class UPlayerInteractionComponent* PlayerInteractionComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UPlayerTutorialComponent* TutorialComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPS_Arms;
 
 public:	
@@ -58,6 +61,9 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	UPlayerInteractionComponent* GetPlayerInteractionComponent() { return PlayerInteractionComponent; }
+	
+	UFUNCTION(BlueprintPure)
+	UPlayerTutorialComponent* GetTutorialComponent() { return TutorialComponent; }
 
 	UFUNCTION()
 	void Interact();
@@ -80,4 +86,6 @@ public:
 	virtual void DropFromInventory(UItemDataAsset* DataAsset, FIntPoint Position) override;
 
 	virtual void DropFromPaperdoll(UItemDataAsset* DataAsset, int SlotNumber) override;
+
+	virtual bool TryPickUpItem(class UItemDataAsset* Item, bool bShowNotification = true) override;
 };

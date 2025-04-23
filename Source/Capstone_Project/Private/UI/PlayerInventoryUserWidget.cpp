@@ -13,6 +13,8 @@
 #include "Item/EquipableItemDataAsset.h"
 #include "Character/PlayerInteractionComponent.h"
 #include "Enviroment/Container.h"
+#include "Components/SizeBox.h"
+#include "Character/PlayerTutorialComponent.h"
 
 void UPlayerInventoryUserWidget::NativeConstruct()
 {
@@ -29,7 +31,7 @@ void UPlayerInventoryUserWidget::NativeConstruct()
 	{
 		ContainerInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
-
+	UpdateTutorialInfo();
 }
 
 bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
@@ -76,6 +78,8 @@ bool UPlayerInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const
 		}*/
 
 		DragDropOperation->DragUserWidget = nullptr;
+
+		PlayerCharacter->GetTutorialComponent()->InventoryDrop();
 	}
 	RefreshInventories();
 	return result;
@@ -113,4 +117,17 @@ void UPlayerInventoryUserWidget::RemoveCanDrop(UInventoryComponent* InventoryCom
 	{
 		ContainerInventoryWidget->ResetSlotsToOccupancy();
 	}
+}
+
+void UPlayerInventoryUserWidget::UpdateTutorialInfo()
+{
+	DragItemInfo->SetVisibility(
+		PlayerCharacter->GetTutorialComponent()->ShowInventoryPickup
+		? ESlateVisibility::HitTestInvisible
+		: ESlateVisibility::Collapsed);
+
+	DropItemInfo->SetVisibility(
+		PlayerCharacter->GetTutorialComponent()->ShowInventoryDrop
+		? ESlateVisibility::HitTestInvisible
+		: ESlateVisibility::Collapsed);
 }

@@ -43,6 +43,12 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UPaperdollSlotUserWidget* PaperdollSlot5;*/
 
+	UPROPERTY(meta = (BindWidget))
+	class USizeBox* DragItemInfo;
+
+	UPROPERTY(meta = (BindWidget))
+	class USizeBox* DropItemInfo;
+
 public:
 
 	UFUNCTION()
@@ -52,4 +58,7 @@ public:
 	void ShowCanDrop(class UInventoryComponent* InventoryComponent, class UItemDataAsset* Item, FIntPoint Position);
 
 	void RemoveCanDrop(class UInventoryComponent* InventoryComponent);
+
+	UFUNCTION()
+	void UpdateTutorialInfo();
 };

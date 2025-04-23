@@ -11,6 +11,7 @@
 #include "UI/NotificationsUserWidget.h"
 #include "UI/PauseMenu_UserWidget.h"
 #include "UI/DeathScreenUserWidget.h"
+#include "UI/TutorialUserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -34,6 +35,9 @@ void ASurvivalScifi_HUD::ShowGameHUD()
 
 	if (CrosshairClass != nullptr) Crosshair = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), CrosshairClass);
 	if (Crosshair != nullptr) Crosshair->AddToViewport();
+
+	if (TutorialClass != nullptr) Tutorial = CreateWidget<UTutorialUserWidget>(GetWorld(), TutorialClass);
+	if (Tutorial != nullptr) Tutorial->AddToViewport();
 }
 
 void ASurvivalScifi_HUD::HideGameHUD()
@@ -52,8 +56,14 @@ void ASurvivalScifi_HUD::HideGameHUD()
 
 	if (Crosshair != nullptr)
 	{
-		Crosshair->AddToViewport();
+		Crosshair->RemoveFromParent();
 		Crosshair = nullptr;
+	}
+
+	if (Tutorial != nullptr)
+	{
+		Tutorial->RemoveFromParent();
+		Tutorial = nullptr;
 	}
 }
 
@@ -178,4 +188,13 @@ void ASurvivalScifi_HUD::HideDeathScreen()
 		DeathScreen->RemoveFromParent();
 		DeathScreen = nullptr;
 	}
+}
+
+void ASurvivalScifi_HUD::UpdateTutorialInfo()
+{
+	if (Tutorial != nullptr)
+		Tutorial->UpdateTutorialInfo();
+
+	if (Inventory != nullptr)
+		Inventory->UpdateTutorialInfo();
 }
