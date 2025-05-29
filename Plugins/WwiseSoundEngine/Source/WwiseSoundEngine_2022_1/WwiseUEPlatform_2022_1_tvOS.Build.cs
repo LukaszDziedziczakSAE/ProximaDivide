@@ -37,7 +37,7 @@ public class WwiseUEPlatform_2022_1_TVOS : WwiseUEPlatform
 
 	public override string AkPlatformLibDir { get { return "tvOS_Xcode1400"; } }
 
-	public override string DynamicLibExtension { get { return string.Empty; } }
+	public override string DynamicLibExtension { get { return "framework"; } }
 
 	public override List<string> GetPublicLibraryPaths()
 	{
@@ -84,5 +84,30 @@ public class WwiseUEPlatform_2022_1_TVOS : WwiseUEPlatform
 			"AudioToolbox",
 			"CoreAudio"
 		};
+	}
+
+	public override string WwiseDspDir
+	{
+		get { return Path.Combine(WwiseConfigurationDir + "-appletvos"); }
+	}
+
+	public override IDictionary<string, string> GetAdditionalFrameworks()
+	{
+		IDictionary<string, string> Result = new Dictionary<string, string>();
+		var frameworkRootPath = Path.Combine(ThirdPartyFolder, AkPlatformLibDir, WwiseDspDir, "bin");
+		if (!Directory.Exists(frameworkRootPath))
+		{
+			return Result;
+		}
+
+		// .framework are folders, not files
+		var ResultPaths = Directory.GetDirectories(frameworkRootPath, "*" + DynamicLibExtension);
+
+		foreach (var ResultPath in ResultPaths)
+		{
+			string ResultName = Path.GetFileNameWithoutExtension(ResultPath);
+			Result.Add(ResultName, ResultPath);
+		}
+		return Result;
 	}
 }

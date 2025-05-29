@@ -154,6 +154,11 @@ public struct WwiseSoundEngine_2022_1
 
             SE.PublicFrameworks.AddRange(WwiseUEPlatformInstance.GetPublicFrameworks());
 
+            foreach (var Framework in WwiseUEPlatformInstance.GetAdditionalFrameworks())
+            {
+                SE.PublicAdditionalFrameworks.Add(new ModuleRules.Framework(Framework.Key, Framework.Value, ModuleRules.Framework.FrameworkMode.Copy));
+            }
+
             SE.PublicDelayLoadDLLs.AddRange(WwiseUEPlatformInstance.GetPublicDelayLoadDLLs());
             foreach (var RuntimeDependency in WwiseUEPlatformInstance.GetRuntimeDependencies())
             {
