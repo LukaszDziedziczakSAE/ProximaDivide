@@ -3,24 +3,6 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{5E88A243-62FF-42BA-BA8C-CCB4C64E61C6}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="StartScreenMusic" ID="{B70AE9EC-3F0E-45ED-ADE8-15523F3F0B7F}">
-					<ChildrenList>
-						<Action Name="" ID="{445CFED5-DD98-4AB8-8A45-BAD6183F88B4}" ShortID="127962569">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="GameMusic" ID="{094F01DF-4C73-4432-A7B8-56CFB4932C6F}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{9EDA13DC-E08F-4A5C-BD8A-4B1107149A96}" ShortID="41408938">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="StartScreenMusic" ID="{89287293-CC70-4422-8A08-11F7E90E9BF1}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Folder Name="Interactions" ID="{7C52DA0E-DB75-4F31-9637-D32232E1B00B}" ShortID="99114424">
 					<ChildrenList>
 						<Folder Name="Doors" ID="{CB128DBC-CF2D-4F39-B173-25D523BEB095}" ShortID="804695194">
@@ -332,27 +314,98 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
-				<Event Name="StartGameMusic" ID="{F8949438-CCCF-4176-9828-60F978BC455D}">
+				<Folder Name="Music" ID="{B11BFFAF-D977-4C9E-934D-3F765FA5A828}" ShortID="1068502609">
 					<ChildrenList>
-						<Action Name="" ID="{5756DCBE-F14F-4AAA-8AFD-94203FC2BB3D}" ShortID="204715346">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="StartScreenMusic" ID="{89287293-CC70-4422-8A08-11F7E90E9BF1}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{905452B0-6316-4205-B511-58F272E7F8DD}" ShortID="92905168">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="GameMusic" ID="{094F01DF-4C73-4432-A7B8-56CFB4932C6F}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="StartScreenMusic" ID="{B70AE9EC-3F0E-45ED-ADE8-15523F3F0B7F}">
+							<ChildrenList>
+								<Action Name="" ID="{445CFED5-DD98-4AB8-8A45-BAD6183F88B4}" ShortID="127962569">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GameMusic" ID="{094F01DF-4C73-4432-A7B8-56CFB4932C6F}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{9EDA13DC-E08F-4A5C-BD8A-4B1107149A96}" ShortID="41408938">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="StartScreenMusic" ID="{89287293-CC70-4422-8A08-11F7E90E9BF1}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="StartGameMusic" ID="{F8949438-CCCF-4176-9828-60F978BC455D}">
+							<ChildrenList>
+								<Action Name="" ID="{5756DCBE-F14F-4AAA-8AFD-94203FC2BB3D}" ShortID="204715346">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="StartScreenMusic" ID="{89287293-CC70-4422-8A08-11F7E90E9BF1}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{905452B0-6316-4205-B511-58F272E7F8DD}" ShortID="92905168">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GameMusic" ID="{094F01DF-4C73-4432-A7B8-56CFB4932C6F}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_DecentCinematicMusic" ID="{0CC54E00-70B7-4643-B9F4-4C71C282A395}">
+							<ChildrenList>
+								<Action Name="" ID="{90FFB1C3-E5D9-4DD6-806A-914FFAFFCFCB}" ShortID="718751994">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GameMusic" ID="{094F01DF-4C73-4432-A7B8-56CFB4932C6F}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7CEB3E87-C30C-485A-99FC-C5B182BE9D04}" ShortID="1068441067">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="DecentCinematicMusic" ID="{0D5F2090-5753-4CF9-B039-DB998512E86B}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_DecentCinematicMusic" ID="{E4FCE5C4-DD77-4083-8C9F-5D54B44A5752}">
+							<ChildrenList>
+								<Action Name="" ID="{A0092F16-C203-4B78-8CEA-7B202D535BDF}" ShortID="940800511">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="DecentCinematicMusic" ID="{0D5F2090-5753-4CF9-B039-DB998512E86B}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="StopGameMusic" ID="{1E450E85-B096-419C-B1F2-287DBE6F730F}">
+							<ChildrenList>
+								<Action Name="" ID="{4286BD9E-7C27-490B-8730-B459B0C44EBB}" ShortID="458328352">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GameMusic" ID="{094F01DF-4C73-4432-A7B8-56CFB4932C6F}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

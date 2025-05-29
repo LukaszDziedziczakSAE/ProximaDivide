@@ -2111,6 +2111,31 @@
 										<ActiveSource Name="125232-Room_tone_with_air_conditioning_steady_and_ambient" ID="{8092772F-56E4-44DF-A626-8206C8E47684}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="Ship" ID="{64B3FADA-9B46-4DEC-8BA5-0A683CCC68F4}" ShortID="521277630">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="462150-AMBIENCE_Aircraft_Inside_Cockpit_In_Flight_2-LOOP" ID="{9761F48D-68D0-4901-8564-F95007DE3B36}">
+											<Language>SFX</Language>
+											<AudioFile>462150-AMBIENCE_Aircraft_Inside_Cockpit_In_Flight_2-LOOP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="69997422"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="462150-AMBIENCE_Aircraft_Inside_Cockpit_In_Flight_2-LOOP" ID="{9761F48D-68D0-4901-8564-F95007DE3B36}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 							<GroupingInfo>
 								<GroupingBehaviorList>
@@ -2120,8 +2145,17 @@
 									<GroupingBehavior>
 										<ItemRef Name="Interior" ID="{8A6D6C93-8CD3-4D8F-B37E-A260E84AD03D}"/>
 									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="Ship" ID="{64B3FADA-9B46-4DEC-8BA5-0A683CCC68F4}"/>
+									</GroupingBehavior>
 								</GroupingBehaviorList>
 								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Ship" ID="{0BDF154F-9853-456C-B05E-1376B5D4A092}"/>
+										<ItemList>
+											<ItemRef Name="Ship" ID="{64B3FADA-9B46-4DEC-8BA5-0A683CCC68F4}"/>
+										</ItemList>
+									</Grouping>
 									<Grouping>
 										<SwitchRef Name="Outside" ID="{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"/>
 										<ItemList>
