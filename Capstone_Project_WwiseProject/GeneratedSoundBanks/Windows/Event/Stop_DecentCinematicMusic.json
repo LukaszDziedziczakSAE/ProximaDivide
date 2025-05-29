@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "815670231",
+    "Type": "Event",
+    "GUID": "{E4FCE5C4-DD77-4083-8C9F-5D54B44A5752}",
+    "Language": "SFX",
+    "Hash": "{CFA33137-8728-3CE5-E17B-83D5C247B724}",
+    "ObjectPath": "Stop_DecentCinematicMusic",
+    "ShortName": "Stop_DecentCinematicMusic",
+    "Path": "Event/Stop_DecentCinematicMusic.bnk",
+    "Events": [
+     {
+      "Id": "815670231",
+      "Name": "Stop_DecentCinematicMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Music\\Stop_DecentCinematicMusic",
+      "GUID": "{E4FCE5C4-DD77-4083-8C9F-5D54B44A5752}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{67A610E6-B904-D4DA-87EA-19DD8CB1651B}"
+ }
+}

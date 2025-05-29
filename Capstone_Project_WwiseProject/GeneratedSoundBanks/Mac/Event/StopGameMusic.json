@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2221504388",
+    "Type": "Event",
+    "GUID": "{1E450E85-B096-419C-B1F2-287DBE6F730F}",
+    "Language": "SFX",
+    "Hash": "{90DE0F3E-B92D-01D9-7D30-1BF1670AC538}",
+    "ObjectPath": "StopGameMusic",
+    "ShortName": "StopGameMusic",
+    "Path": "Event/StopGameMusic.bnk",
+    "Events": [
+     {
+      "Id": "2221504388",
+      "Name": "StopGameMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Music\\StopGameMusic",
+      "GUID": "{1E450E85-B096-419C-B1F2-287DBE6F730F}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3006E567-BAAC-A54E-D2BB-F8EC37FF9A46}"
+ }
+}

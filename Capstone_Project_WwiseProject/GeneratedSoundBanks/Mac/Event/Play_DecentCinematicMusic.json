@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "230679717",
+    "Type": "Event",
+    "GUID": "{0CC54E00-70B7-4643-B9F4-4C71C282A395}",
+    "Language": "SFX",
+    "Hash": "{643C4A97-4537-EE69-7D2B-808C2CAB48C6}",
+    "ObjectPath": "Play_DecentCinematicMusic",
+    "ShortName": "Play_DecentCinematicMusic",
+    "Path": "Event/Play_DecentCinematicMusic.bnk",
+    "Media": [
+     {
+      "Id": "298393960",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "11-Dark Fantasy Studio- Time.wav",
+      "Path": "Media/298393960.wem",
+      "CachePath": "A0/{A00E613F-DAA0-A207-D616-5CED4A441DF6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "230679717",
+      "Name": "Play_DecentCinematicMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Music\\Play_DecentCinematicMusic",
+      "GUID": "{0CC54E00-70B7-4643-B9F4-4C71C282A395}",
+      "DurationType": "OneShot",
+      "DurationMin": "137.63333",
+      "DurationMax": "137.63333",
+      "MediaRefs": [
+       {
+        "Id": "298393960"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CB2F23CE-B75D-1837-5E3E-C1D9D71AE4A4}"
+ }
+}
