@@ -35,6 +35,7 @@ void ADoor::BeginPlay()
 	Collider->OnComponentEndOverlap.AddDynamic(this, &ADoor::OnColliderEndOverlap);
 
 	ClosedLocation = DoorMesh->GetRelativeLocation();
+	ClosedAngle = DoorMesh->GetRelativeRotation().Euler();
 }
 
 // Called every frame
@@ -73,35 +74,75 @@ void ADoor::OnColliderEndOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 
 void ADoor::OpeningTick(float DeltaTime)
 {
-	FVector Step = (OpenLocation - ClosedLocation);
-	Step.Normalize();
-	Step *= DeltaTime * Speed;
+	if (IsTranslation())
+	{
+		FVector Step = (OpenLocation - ClosedLocation);
+		Step.Normalize();
+		Step *= DeltaTime * Speed;
 
-	if (FVector::Distance(DoorMesh->GetRelativeLocation(), OpenLocation) > Step.Length())
-	{
-		DoorMesh->SetRelativeLocation(DoorMesh->GetRelativeLocation() + Step);
+		if (FVector::Distance(DoorMesh->GetRelativeLocation(), OpenLocation) > Step.Length())
+		{
+			DoorMesh->SetRelativeLocation(DoorMesh->GetRelativeLocation() + Step);
+		}
+		else
+		{
+			DoorMesh->SetRelativeLocation(OpenLocation);
+			DoorState = EDoorState::Open;
+		}
 	}
-	else
+
+	if (IsRotation())
 	{
-		DoorMesh->SetRelativeLocation(OpenLocation);
-		DoorState = EDoorState::Open;
+		FVector Step = (OpenAngle - ClosedAngle);
+		Step.Normalize();
+		Step *= DeltaTime * Speed;
+
+		if (FVector::Distance(DoorMesh->GetRelativeRotation().Euler(), OpenLocation) > Step.Length())
+		{
+			DoorMesh->SetRelativeRotation(FRotator::MakeFromEuler(DoorMesh->GetRelativeRotation().Euler() + Step));
+		}
+		else
+		{
+			DoorMesh->SetRelativeRotation(FRotator::MakeFromEuler(OpenLocation));
+			DoorState = EDoorState::Open;
+		}
 	}
 }
 
 void ADoor::ClosingTick(float DeltaTime)
 {
-	FVector Step = (ClosedLocation - OpenLocation);
-	Step.Normalize();
-	Step *= DeltaTime * Speed;
+	if (IsTranslation())
+	{
+		FVector Step = (ClosedLocation - OpenLocation);
+		Step.Normalize();
+		Step *= DeltaTime * Speed;
 
-	if (FVector::Distance(DoorMesh->GetRelativeLocation(), ClosedLocation) > Step.Length())
-	{
-		DoorMesh->SetRelativeLocation(DoorMesh->GetRelativeLocation() + Step);
+		if (FVector::Distance(DoorMesh->GetRelativeLocation(), ClosedLocation) > Step.Length())
+		{
+			DoorMesh->SetRelativeLocation(DoorMesh->GetRelativeLocation() + Step);
+		}
+		else
+		{
+			DoorMesh->SetRelativeLocation(ClosedLocation);
+			DoorState = EDoorState::Closed;
+		}
 	}
-	else
+
+	if (IsRotation())
 	{
-		DoorMesh->SetRelativeLocation(ClosedLocation);
-		DoorState = EDoorState::Closed;
+		FVector Step = (ClosedAngle - OpenAngle);
+		Step.Normalize();
+		Step *= DeltaTime * Speed;
+
+		if (FVector::Distance(DoorMesh->GetRelativeRotation().Euler(), ClosedAngle) > Step.Length())
+		{
+			DoorMesh->SetRelativeRotation(FRotator::MakeFromEuler(DoorMesh->GetRelativeRotation().Euler() + Step));
+		}
+		else
+		{
+			DoorMesh->SetRelativeRotation(FRotator::MakeFromEuler(ClosedAngle));
+			DoorState = EDoorState::Open;
+		}
 	}
 }
 

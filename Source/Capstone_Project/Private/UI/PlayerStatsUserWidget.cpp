@@ -5,6 +5,10 @@
 #include "UI/StatUserWidget.h"
 #include "Character/PlayerCharacter.h"
 #include "Character/StatComponent.h"
+#include "Character/OxygenComponent.h"
+#include "Character/HealthComponent.h"
+#include "Character/SustenanceComponent.h"
+#include "Character/ExhaustionComponent.h"
 
 void UPlayerStatsUserWidget::NativeConstruct()
 {

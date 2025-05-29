@@ -20,7 +20,7 @@ void ASurvivalScifiGameMode::BeginPlay()
 
 	TArray<AActor*> SunActors;
 	UGameplayStatics::GetAllActorsWithTag(GetWorld(), TEXT("Sun"), SunActors);
-	Sun = SunActors[0];
+	if (SunActors.Num() > 0) Sun = SunActors[0];
 
 	
 }

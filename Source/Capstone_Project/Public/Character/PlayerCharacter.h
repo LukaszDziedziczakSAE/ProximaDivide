@@ -88,4 +88,7 @@ public:
 	virtual void DropFromPaperdoll(UItemDataAsset* DataAsset, int SlotNumber) override;
 
 	virtual bool TryPickUpItem(class UItemDataAsset* Item, bool bShowNotification = true) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsControlable = true;
 };

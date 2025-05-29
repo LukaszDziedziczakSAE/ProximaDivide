@@ -60,6 +60,12 @@ protected:
 	FVector ClosedLocation;
 
 	UPROPERTY(EditAnywhere)
+	FVector OpenAngle;
+
+	UPROPERTY(EditAnywhere)
+	FVector ClosedAngle;
+
+	UPROPERTY(EditAnywhere)
 	float Speed{ 250.0f };
 
 	UPROPERTY(EditAnywhere)
@@ -88,6 +94,12 @@ protected:
 
 	UFUNCTION()
 	void ClosingTick(float DeltaTime);
+
+	UFUNCTION()
+	bool IsTranslation() { return OpenLocation != ClosedLocation; }
+
+	UFUNCTION()
+	bool IsRotation() { return OpenAngle != ClosedAngle; }
 
 public:	
 	// Called every frame
