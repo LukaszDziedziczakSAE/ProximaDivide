@@ -52,6 +52,7 @@ void FWwiseSwitchContainerLeafCookedData::SerializeBulkData(FArchive& Ar, const 
 	// Switch Container Leaves are optional
 	auto Options(InOptions);
 	Options.bOptional = true;
+	Options.ExtraLog += ", Switch Container";
 	
 	for (auto& SoundBank : SoundBanks)
 	{

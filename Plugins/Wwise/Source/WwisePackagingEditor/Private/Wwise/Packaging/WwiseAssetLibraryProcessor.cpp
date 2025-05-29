@@ -17,6 +17,8 @@ Copyright (c) 2025 Audiokinetic Inc.
 
 #include "Wwise/Packaging/WwiseAssetLibraryProcessor.h"
 
+#include "AssetDefinition.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 #include "Async/ParallelFor.h"
 #include "Wwise/Packaging/WwiseAssetLibraryFilter.h"
 #include "Wwise/Packaging/WwiseAssetLibraryInfo.h"
@@ -24,6 +26,7 @@ Copyright (c) 2025 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataLanguage.h"
 #include "Wwise/WwiseAllowShrinking.h"
 #include "Wwise/WwiseGuidConverter.h"
+#include "Wwise/Stats/Packaging.h"
 
 FCriticalSection FWwiseAssetLibraryProcessor::IsFilteringCrit;
 
@@ -49,7 +52,7 @@ void FWwiseAssetLibraryProcessor::RetrieveMediaMap(FWwiseAssetLibraryFilteringSh
 
 	for (const auto& Item : Media)
 	{
-		WwiseDBPair<const WwiseDatabaseMediaIdKey, WwiseRefMedia> Pair(Item);
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefMedia> Pair(Item);
 		if (!FilterMedia(Pair.GetSecond()))
 		{
 			continue;
@@ -112,7 +115,92 @@ bool FWwiseAssetLibraryProcessor::FilterSoundBank(const WwiseRefSoundBank& Sound
 	return true;
 }
 
-void FWwiseAssetLibraryProcessor::FilterLibraryAssets(FWwiseAssetLibraryFilteringSharedData& Shared, FWwiseAssetLibraryInfo& Library, bool bUpdateRemaining, bool bPackageAssets, bool bUpdateFilteredAssets)
+void FWwiseAssetLibraryProcessor::GetRelevantAssets(const FString& PackagePath, TArray<FAssetData>& RelevantAssets)
+{
+	RelevantAssets.Empty();
+	FString Package = PackagePath.RightChop(1);
+	auto Index = Package.Find("/");
+	Package = "/" + Package.Left(Index);
+	auto AssetRegistryModule = &FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+	TArray<FAssetData> AssetsData;
+	FARFilter Filter;
+	Filter.bRecursivePaths = true;
+	Filter.PackagePaths.Add(FName(Package));
+	Filter.TagsAndValues.Add("WwiseGuid");
+	AssetRegistryModule->Get().GetAssets(Filter, RelevantAssets);
+}
+
+bool FWwiseAssetLibraryProcessor::ShouldBeFiltered(FWwiseAssetLibraryFilteringSharedData& Shared, const WwiseAnyRef& SourceRef)
+{
+	if (!Shared.bConsiderAssetsData)
+	{
+		return true;
+	}
+	if(SourceRef.GetType() == WwiseRefType::SoundBank && SourceRef.GetSoundBank()->IsInitBank())
+	{
+		return true;
+	}
+	auto GlobalMedias = Shared.Db.GetMediaFiles();
+	bool bShouldBeFiltered = false;
+	for (auto& AssetData : Shared.AssetsData)
+	{
+		if (bShouldBeFiltered)
+		{
+			break;
+		}
+		auto GuidTag = AssetData.TagsAndValues.FindTag(GET_MEMBER_NAME_CHECKED(FWwiseObjectInfo, WwiseGuid));
+		auto ShortIdTag = AssetData.TagsAndValues.FindTag(GET_MEMBER_NAME_CHECKED(FWwiseObjectInfo, WwiseShortId));
+		if (GuidTag.IsSet() && ShortIdTag.IsSet())
+		{
+			FGuid Guid(GuidTag.AsString());
+			int32 ShortId = FCString::Atoi(*ShortIdTag.GetValue());
+			auto Events = Shared.Db.GetAllLanguageEvents(FWwiseEventInfo(Guid, ShortId, AssetData.AssetName.ToString()));
+
+			auto Bus = Shared.Db.GetBus(FWwiseEventInfo(Guid, ShortId, AssetData.AssetName.ToString()));
+			if(SourceRef.GetType() == WwiseRefType::SoundBank)
+			{
+				for (auto& Event : SourceRef.GetSoundBank()->Events)
+				{
+					if (Event.GUID != WwiseDBGuid(Guid) && Event.Id == ShortId)
+					{
+						UE_LOG(LogWwisePackaging, Error, TEXT("Asset %s has mismatching GUID and ShortId. Make sure to reconcile it"), *AssetData.AssetName.ToString());
+						return false;
+					}
+					if (Event.GUID == WwiseDBGuid(Guid) && Event.Id == ShortId)
+					{
+						return true;
+					}
+				}
+			}
+			if(SourceRef.GetType() == WwiseRefType::Media)
+			{
+				if (Bus.IsValid())
+				{
+					auto Medias = Bus.GetSoundBankMedia(GlobalMedias);
+					for (auto& Media : Medias)
+					{
+						if (Media.Value.MediaId() == SourceRef.GetId())
+						{
+							return true;
+						}
+					}
+				}
+
+				for (auto& Event : Events)
+				{
+					auto Medias = Event.GetAllMedia(Shared.Db.GetMediaFiles());
+					if (Medias.Contains(SourceRef.GetId()))
+					{
+						return true;
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+void FWwiseAssetLibraryProcessor::FilterLibraryAssets(FWwiseAssetLibraryFilteringSharedData& Shared, FWwiseAssetLibraryInfo& Library, bool bUpdateRemaining, bool bUpdateFilteredAssets)
 {
 	FScopeLock Lock(&IsFilteringCrit);
 	
@@ -135,7 +223,9 @@ void FWwiseAssetLibraryProcessor::FilterLibraryAssets(FWwiseAssetLibraryFilterin
 	ParallelFor(Num, [this, &Shared, &Library, &FilteredAssetsNum, &FilteredPosArray](int32 Iter)
 	{
 		const WwiseAnyRef& SourceRef{ Shared.Sources[Shared.Remaining[Iter]] };
-		if (FilterAsset(Shared, Library, SourceRef))
+
+		
+		if (ShouldBeFiltered(Shared, SourceRef) && FilterAsset(Shared, Library, SourceRef))
 		{
 			const auto IdToAdd = FilteredAssetsNum++;
 			FilteredPosArray[IdToAdd] = Iter;
@@ -245,9 +335,8 @@ bool FWwiseAssetLibraryProcessor::CreateAssetLibraryRef(FWwiseAssetLibraryRef& N
 		break;
 	default: {}
 	}
-	{
-		NewRef.Guid = FWwiseGuidConverter::ToFGuid(SourceRef.GetGuid());
-	}
+
+	NewRef.Guid = FWwiseGuidConverter::ToFGuid(SourceRef.GetGuid());
 	NewRef.Id = SourceRef.GetId();
 	NewRef.Name = FName(*SourceRef.GetName());
 	return true;

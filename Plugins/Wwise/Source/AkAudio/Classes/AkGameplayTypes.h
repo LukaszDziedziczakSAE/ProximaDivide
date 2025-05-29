@@ -493,7 +493,7 @@ public:
 	UAkAudioDeviceShareSet* AudioDeviceShareSet = nullptr;
 
 	UPROPERTY(EditAnywhere, Category = "Output Settings", BlueprintReadWrite)
-	int32 IdDevice = 0;
+	int64 IdDevice = 0;
 
 	UPROPERTY(EditAnywhere, Category = "Output Settings", BlueprintReadWrite, meta=(DisplayName="PanningRule"))
 	PanningRule PanRule = PanningRule::PanningRule_Speakers;

@@ -66,6 +66,7 @@ public:
 
 	/// Operation queue containing operations waiting to be unclogged (such as a load time)
 	FLaterOpQueue LaterOpQueue;
+	std::atomic<bool> bIsUnwindingLaterOpQueue{ false };
 
 	/// Number of instances opened. Slightly equivalent to LoadCount, but set synchronously and updated at extremities.
 	std::atomic<int> OpenedInstances{ 0 };

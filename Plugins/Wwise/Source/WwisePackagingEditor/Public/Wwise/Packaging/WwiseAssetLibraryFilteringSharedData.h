@@ -48,4 +48,11 @@ struct WWISEPACKAGINGEDITOR_API FWwiseAssetLibraryFilteringSharedData
 	 */
 	TArray<FWwiseAssetLibraryRef> FilteredAssets;
 
+	/**
+	 * Assets considered to be filtered
+	 */
+	TArray<FAssetData> AssetsData;
+
+	bool bConsiderAssetsData = true;
+
 };

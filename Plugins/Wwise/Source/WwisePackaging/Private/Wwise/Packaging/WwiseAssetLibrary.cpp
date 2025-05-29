@@ -77,7 +77,7 @@ void UWwiseAssetLibrary::Serialize(FArchive& Ar)
 			}
 			if (auto* ResourceCooker = IWwiseResourceCooker::GetForArchive(Ar))
 			{
-				ResourceCooker->PrepareAssetLibrary(this, PlatformCookedData);
+				ResourceCooker->PrepareAssetLibrary(this, PlatformCookedData, bPackageAssets);
 			}
 			else
 			{
@@ -208,7 +208,7 @@ void UWwiseAssetLibrary::PreSave(FObjectPreSaveContext SaveContext)
 	}
 
 	FWwiseAssetLibraryCookedData CookedDataToArchive;
-	ResourceCooker->PrepareAssetLibrary(this, CookedDataToArchive);
+	ResourceCooker->PrepareAssetLibrary(this, CookedDataToArchive, bPackageAssets);
 
 	FCbWriter Writer;
 	Writer.BeginObject();

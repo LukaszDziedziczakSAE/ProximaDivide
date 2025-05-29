@@ -44,6 +44,16 @@ struct WWISEFILEHANDLER_API FWwiseMediaCookedData
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
 	FWwisePackagedFile PackagedFile;
 
+#if WITH_EDITORONLY_DATA
+	/**
+	 * @brief True if it is a Reference Language item, or is a media shared by multiple languages.
+	 *
+	 * Used during packaging for logging purposes.
+	 */
+	UPROPERTY(Transient)
+	bool bUsingReferenceLanguage{ false };
+#endif
+
 	FWwiseMediaCookedData();
 
 	void Serialize(FArchive& Ar);

@@ -17,6 +17,7 @@ Copyright (c) 2025 Audiokinetic Inc.
 
 #pragma once
 #include "Wwise/WwisePackagingEditorModule.h"
+#include "AssetRegistry/AssetData.h"
 
 class WwiseRefMedia;
 class WwiseRefSoundBank;
@@ -49,11 +50,13 @@ public:
 	virtual bool FilterMedia(const WwiseRefMedia& Media);
 	virtual bool FilterSoundBank(const WwiseRefSoundBank& SoundBank);
 	
-	virtual void FilterLibraryAssets(FWwiseAssetLibraryFilteringSharedData& Shared, FWwiseAssetLibraryInfo& Library, bool bUpdateRemaining = true, bool bPackageAssets = true, bool bUpdateFilteredAssets = true);
+	virtual void FilterLibraryAssets(FWwiseAssetLibraryFilteringSharedData& Shared, FWwiseAssetLibraryInfo& Library, bool bUpdateRemaining = true, bool bUpdateFilteredAssets = true);
 	virtual bool FilterAsset(const FWwiseAssetLibraryFilteringSharedData& Shared, const FWwiseAssetLibraryInfo& Library, const WwiseAnyRef& Item);
 
 	virtual bool CreateAssetLibraryRef(FWwiseAssetLibraryRef&, const WwiseAnyRef& SourceRef);
 
+	static void GetRelevantAssets(const FString& PackagePath, TArray<FAssetData>& RelevantAssets);
 protected:
+	bool ShouldBeFiltered(FWwiseAssetLibraryFilteringSharedData& Shared, const WwiseAnyRef& SourceRef);
 	static FCriticalSection IsFilteringCrit;
 };

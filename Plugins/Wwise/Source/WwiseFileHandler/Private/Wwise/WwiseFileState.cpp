@@ -152,7 +152,7 @@ void FWwiseFileState::DecrementCountAsyncDone(FWwiseAsyncCycleCounter&& InOpCycl
 
 bool FWwiseFileState::CanDelete() const
 {
-	return OpenedInstances.load() == 0 && State == EState::Closed && LoadCount == 0;
+	return OpenedInstances.load() == 0 && State == EState::Closed && LoadCount == 0 && LaterOpQueue.IsEmpty();
 }
 
 FWwiseFileState::FWwiseFileState():
@@ -883,6 +883,13 @@ void FWwiseFileState::ProcessLaterOpQueue()
 {
 	check(!FileStateExecutionQueue || FileStateExecutionQueue->IsRunningInThisThread());
 
+	if (UNLIKELY(bIsUnwindingLaterOpQueue))
+	{
+		UE_LOG(LogWwiseFileHandler, Verbose, TEXT("FWwiseFileState::ProcessLaterOpQueue: Skipping %s %" PRIu32 ": Already executing. Skipping."),
+			GetManagingTypeName(), GetShortId())
+		return;
+	}
+	bIsUnwindingLaterOpQueue = true;
 	int Count = 0;
 	for (FOpQueueItem* Op; (Op = LaterOpQueue.Peek()) != nullptr; LaterOpQueue.Pop())
 	{
@@ -894,6 +901,7 @@ void FWwiseFileState::ProcessLaterOpQueue()
 #endif
 	}
 	UE_CLOG(Count > 0, LogWwiseFileHandler, VeryVerbose, TEXT("FWwiseFileState::ProcessLaterOpQueue %s %" PRIu32 ": Added back %d operations to be executed."),  GetManagingTypeName(), GetShortId(), Count);
+	bIsUnwindingLaterOpQueue = false;
 }
 
 void FWwiseFileState::RegisterRecurringCallback()

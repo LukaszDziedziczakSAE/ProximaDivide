@@ -947,9 +947,7 @@ void FAkAudioDevice::UpdateRoomsForPortals()
 			{
 				if (Portal.IsValid())
 				{
-					const bool RoomsChanged = Portal->UpdateConnectedRooms();
-					if (RoomsChanged)
-						SetSpatialAudioPortal(Portal.Get());
+					Portal->PortalRoomsNeedUpdate();
 				}
 			}
 		}

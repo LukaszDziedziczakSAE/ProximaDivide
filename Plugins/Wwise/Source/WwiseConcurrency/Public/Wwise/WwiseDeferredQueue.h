@@ -102,10 +102,18 @@ protected:
 	FOps AsyncOpQueue;
 	FSyncOps SyncOpQueue;
 	FOps GameOpQueue;
-	TAtomic<int> GameThreadExecuting {0};
+	std::atomic<int> GameThreadExecuting {0};
 	bool bSyncThreadDone = false;
 	bool bClosing = false;
 	AK::IAkGlobalPluginContext* Context { nullptr };
+
+	enum class WWISECONCURRENCY_API EWwiseDeferredAsyncState
+	{
+		Idle,
+		Running,
+		Done
+	};
+	std::atomic<EWwiseDeferredAsyncState> AsyncState { EWwiseDeferredAsyncState::Idle };
 
 private:
 	void AsyncExec();
