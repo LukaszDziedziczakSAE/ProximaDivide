@@ -3,7 +3,7 @@
   "Project": {
    "Name": "Capstone_Project_WwiseProject",
    "GUID": "{4B5744FD-B3B6-4CB4-AAB5-1820CE6A5B67}",
-   "Generator": "2024.1.3.8749"
+   "Generator": "2024.1.5.8803"
   },
   "CacheRoot": "../.cache",
   "Platforms": [
@@ -31,6 +31,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{4BDE5EE9-E438-0991-0ED9-01E7167B5562}"
+  "FileHash": "{C73EF916-641B-613F-F920-4FDAA27EBE03}"
  }
 }

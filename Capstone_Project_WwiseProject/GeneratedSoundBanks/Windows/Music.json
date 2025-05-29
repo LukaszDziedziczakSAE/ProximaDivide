@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{FE2C163D-388F-4DF2-94E4-25F807FE7889}",
     "Language": "SFX",
-    "Hash": "{B709D3D2-EF59-EE74-B442-835CAB24200E}",
+    "Hash": "{CACC6F6E-5BF2-F331-6A48-0A7AD6F40D5E}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -48,6 +48,14 @@
       "CachePath": "55/{555F49A0-7339-32FE-8D0C-1ED51C78B8C5}.wem"
      },
      {
+      "Id": "926149274",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "11-Dark Fantasy Studio- Forensic.wav",
+      "CachePath": "38/{38307690-45CF-B599-8E61-E23866971EE4}.wem"
+     },
+     {
       "Id": "1041049495",
       "Language": "SFX",
       "Streaming": "false",
@@ -60,7 +68,7 @@
      {
       "Id": "2495197720",
       "Name": "StartScreenMusic",
-      "ObjectPath": "\\Events\\Default Work Unit\\StartScreenMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Music\\StartScreenMusic",
       "GUID": "{B70AE9EC-3F0E-45ED-ADE8-15523F3F0B7F}",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -100,6 +108,19 @@
           "Id": "1041049495"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "284967655",
+         "GUID": "{0BDF154F-9853-456C-B05E-1376B5D4A092}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "926149274"
+         }
+        ]
        }
       ]
      }
@@ -111,6 +132,12 @@
       "ObjectPath": "\\States\\Default Work Unit\\Enviroment",
       "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
       "States": [
+       {
+        "Id": "284967655",
+        "Name": "Ship",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Ship",
+        "GUID": "{0BDF154F-9853-456C-B05E-1376B5D4A092}"
+       },
        {
         "Id": "438105790",
         "Name": "Outside",
@@ -134,6 +161,6 @@
     ]
    }
   ],
-  "FileHash": "{D577CFBD-4298-C72C-2838-F69FB7D82BCB}"
+  "FileHash": "{9FA67472-2695-0676-6DF7-164ECDACA722}"
  }
 }

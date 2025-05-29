@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
     "Language": "SFX",
-    "Hash": "{359054D2-F212-188A-A60D-C06A323A644E}",
+    "Hash": "{9F76464E-FB5E-79C3-3E6D-65F4BF2BC166}",
     "ObjectPath": "StartGameMusic",
     "ShortName": "StartGameMusic",
     "Path": "Event/StartGameMusic.bnk",
@@ -43,6 +43,15 @@
       "CachePath": "55/{555F49A0-7339-32FE-8D0C-1ED51C78B8C5}.wem"
      },
      {
+      "Id": "926149274",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "11-Dark Fantasy Studio- Forensic.wav",
+      "Path": "Media/926149274.wem",
+      "CachePath": "38/{38307690-45CF-B599-8E61-E23866971EE4}.wem"
+     },
+     {
       "Id": "1041049495",
       "Language": "SFX",
       "Streaming": "false",
@@ -56,7 +65,7 @@
      {
       "Id": "1568977742",
       "Name": "StartGameMusic",
-      "ObjectPath": "\\Events\\Default Work Unit\\StartGameMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Music\\StartGameMusic",
       "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
       "DurationType": "Infinite",
       "SwitchContainers": [
@@ -91,6 +100,19 @@
           "Id": "1041049495"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "284967655",
+         "GUID": "{0BDF154F-9853-456C-B05E-1376B5D4A092}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "926149274"
+         }
+        ]
        }
       ]
      }
@@ -102,6 +124,12 @@
       "ObjectPath": "\\States\\Default Work Unit\\Enviroment",
       "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
       "States": [
+       {
+        "Id": "284967655",
+        "Name": "Ship",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Ship",
+        "GUID": "{0BDF154F-9853-456C-B05E-1376B5D4A092}"
+       },
        {
         "Id": "438105790",
         "Name": "Outside",
@@ -125,6 +153,6 @@
     ]
    }
   ],
-  "FileHash": "{99A19C1C-859A-3F9D-8120-D311DDCB5312}"
+  "FileHash": "{B86B31FE-F7DA-F307-FAC4-512597A05375}"
  }
 }

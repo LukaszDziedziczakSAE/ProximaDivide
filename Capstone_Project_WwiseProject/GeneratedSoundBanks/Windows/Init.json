@@ -80,6 +80,12 @@
       "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
       "States": [
        {
+        "Id": "284967655",
+        "Name": "Ship",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Ship",
+        "GUID": "{0BDF154F-9853-456C-B05E-1376B5D4A092}"
+       },
+       {
         "Id": "438105790",
         "Name": "Outside",
         "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Outside",
@@ -130,6 +136,6 @@
     ]
    }
   ],
-  "FileHash": "{781BD0B9-1680-99F8-2BC1-8EA0A61172B9}"
+  "FileHash": "{10211C67-556C-DD82-20A0-BD46EC886076}"
  }
 }

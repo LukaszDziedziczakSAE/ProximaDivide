@@ -10,11 +10,20 @@
     "Type": "Event",
     "GUID": "{BCC4B4F6-5E14-4BDB-B92D-3BF16A834C67}",
     "Language": "SFX",
-    "Hash": "{C7FE563A-B724-8EEB-0669-391C1C7BDEE4}",
+    "Hash": "{16FA0524-751D-02CC-9F50-2F92E90C8AE5}",
     "ObjectPath": "AmbientAtmosphere",
     "ShortName": "AmbientAtmosphere",
     "Path": "Event/AmbientAtmosphere.bnk",
     "Media": [
+     {
+      "Id": "69997422",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "462150-AMBIENCE_Aircraft_Inside_Cockpit_In_Flight_2-LOOP.wav",
+      "Path": "Media/69997422.wem",
+      "CachePath": "02/{02056B11-626F-9A1A-27F0-2DE75D570DFA}.wem"
+     },
      {
       "Id": "112375236",
       "Language": "SFX",
@@ -42,6 +51,19 @@
       "GUID": "{BCC4B4F6-5E14-4BDB-B92D-3BF16A834C67}",
       "DurationType": "Infinite",
       "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "284967655",
+         "GUID": "{0BDF154F-9853-456C-B05E-1376B5D4A092}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "69997422"
+         }
+        ]
+       },
        {
         "SwitchValue": {
          "GroupType": "State",
@@ -80,6 +102,12 @@
       "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
       "States": [
        {
+        "Id": "284967655",
+        "Name": "Ship",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Ship",
+        "GUID": "{0BDF154F-9853-456C-B05E-1376B5D4A092}"
+       },
+       {
         "Id": "438105790",
         "Name": "Outside",
         "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Outside",
@@ -102,6 +130,6 @@
     ]
    }
   ],
-  "FileHash": "{13523323-A333-2020-A56F-D31B8173408B}"
+  "FileHash": "{F88D65ED-C20D-78EC-86DA-6AE76C42B3CD}"
  }
 }

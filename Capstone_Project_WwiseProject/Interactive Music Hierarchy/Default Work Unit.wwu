@@ -668,6 +668,153 @@
 								</MusicSegment>
 							</ChildrenList>
 						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Ship Music" ID="{52492FCB-4227-486C-9CE4-29681C88852A}" ShortID="6875516">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{C4182CA7-0EB4-451C-A37B-4D161C1623AB}" ShortID="877419028">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7A289864-4E4F-4D7D-AD7B-D1D430693285}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{006C7F05-71A4-4A42-B56E-3A0DB7273996}" ShortID="408567800">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="11-Dark Fantasy Studio- Forensic" ID="{D778A3B7-F716-4FAF-9829-1FE332326ED1}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{34FDB3F1-D8A4-4341-8127-F6C421CE7713}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{32C8FA9A-E385-4B83-946C-3DA4B3F78627}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="11-Dark Fantasy Studio- Forensic" ID="{D778A3B7-F716-4FAF-9829-1FE332326ED1}" ShortID="612060589">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="88700"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="11-Dark Fantasy Studio- Forensic" ID="{3073D218-5E52-4797-A28B-2B2118B2D1FD}" ShortID="84775662">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{E5FBCA72-D1BE-4BBC-9D3E-BAA772DD9B39}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="11-Dark Fantasy Studio- Forensic" ID="{CAAC8F35-78B3-4BB0-B411-B9ED1C627EA6}">
+													<Language>SFX</Language>
+													<AudioFile>11-Dark Fantasy Studio- Forensic.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="926149274"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{BB476698-B3FA-4DAB-98C5-2C40E8700C34}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="11-Dark Fantasy Studio- Forensic" ID="{FC73464E-6556-4F28-81B4-65F9D4A9FD76}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="88700"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="11-Dark Fantasy Studio- Forensic" ID="{CAAC8F35-78B3-4BB0-B411-B9ED1C627EA6}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{40855575-A957-4E72-A210-E8EA2BED7879}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{D798E8A9-DCDC-424B-A0AF-43B09D62648E}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="88700"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+						</MusicPlaylistContainer>
 					</ChildrenList>
 					<StateInfo>
 						<StateGroupList>
@@ -683,6 +830,10 @@
 							<CustomState>
 								<StateRef Name="Outside" ID="{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"/>
 								<CustomState Name="" ID="{AF92E28E-6FB4-4A9D-B07A-FB22D3AFF9D8}" ShortID="725682663"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Ship" ID="{0BDF154F-9853-456C-B05E-1376B5D4A092}"/>
+								<CustomState Name="" ID="{23A2D2B4-B65F-439D-8BF5-17CE5E46D7AC}" ShortID="392000568"/>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
@@ -729,9 +880,118 @@
 									</MultiSwitchEntry>
 								</Local>
 							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{87AE992F-014E-4CFF-9876-B112EF289D08}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Ship Music" ID="{52492FCB-4227-486C-9CE4-29681C88852A}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Ship" ID="{0BDF154F-9853-456C-B05E-1376B5D4A092}" WorkUnitID="{00399EE1-F1EE-4553-91E8-F56FBF6992A0}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
 						</ObjectList>
 					</ObjectLists>
 				</MusicSwitchContainer>
+				<MusicSegment Name="DecentCinematicMusic" ID="{0D5F2090-5753-4CF9-B039-DB998512E86B}" ShortID="974657759">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="137633.333333333"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-3</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{EAD7FF9F-D980-4EBB-A430-3B46A98CC925}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicTrack Name="11-Dark Fantasy Studio- Time" ID="{6A36CDFF-BA99-4555-B378-559325160214}" ShortID="743840989">
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{29822376-36B6-4DFB-B81A-D3E3CE80C2D7}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="11-Dark Fantasy Studio- Time" ID="{1D868C8D-7085-43F1-A994-64B467466008}">
+									<Language>SFX</Language>
+									<AudioFile>11-Dark Fantasy Studio- Time.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="298393960"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Sequences">
+									<Reference>
+										<Local>
+											<MusicTrackSequence Name="" ID="{92C35C63-CD91-42F8-AA6C-F79151A2A6A7}">
+												<ObjectLists>
+													<ObjectList Name="Clips">
+														<Reference>
+															<Local>
+																<MusicClip Name="11-Dark Fantasy Studio- Time" ID="{0BBD5211-37BE-4F47-9906-69CE0524E331}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="137633.333333333"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="11-Dark Fantasy Studio- Time" ID="{1D868C8D-7085-43F1-A994-64B467466008}"/>
+																</MusicClip>
+															</Local>
+														</Reference>
+													</ObjectList>
+												</ObjectLists>
+											</MusicTrackSequence>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicTrack>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Cues">
+							<Reference>
+								<Local>
+									<MusicCue Name="Entry Cue" ID="{293B357F-A67C-4F98-BF6A-FAE40CE94680}"/>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="Exit Cue" ID="{E51B736D-53AA-4E32-95AB-2E77D259D78D}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="1"/>
+											<Property Name="TimeMs" Type="Real64" Value="1000"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</MusicSegment>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>

@@ -8,6 +8,7 @@
 						<State Name="None" ID="{2BFE9924-4A9E-4F29-AD9B-560230966B40}"/>
 						<State Name="Inside" ID="{F53BDEA3-FA41-4209-A807-6C9225C147F8}"/>
 						<State Name="Outside" ID="{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"/>
+						<State Name="Ship" ID="{0BDF154F-9853-456C-B05E-1376B5D4A092}"/>
 					</ChildrenList>
 				</StateGroup>
 			</ChildrenList>

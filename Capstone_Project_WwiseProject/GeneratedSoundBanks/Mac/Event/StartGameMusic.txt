@@ -1,10 +1,11 @@
 Event	ID	Name			Wwise Object Path	Notes
-	1568977742	StartGameMusic			\Default Work Unit\StartGameMusic	
+	1568977742	StartGameMusic			\Default Work Unit\Music\StartGameMusic	
 
 State Group	ID	Name			Wwise Object Path	Notes
 	3909959462	Enviroment			\Default Work Unit\Enviroment	
 
 State	ID	Name	State Group			Notes
+	284967655	Ship	Enviroment			
 	438105790	Outside	Enviroment			
 	748895195	None	Enviroment			
 	3553349781	Inside	Enviroment			
