@@ -65,6 +65,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float DeathTimer = 10.0f;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UAkComponent* VoiceComponent;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -134,4 +137,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool IsAlive();
+
+	UFUNCTION()
+	UAkComponent* GetVoiceComponent() { return VoiceComponent; }
 };

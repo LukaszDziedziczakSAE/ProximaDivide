@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1377214289",
+    "Type": "Event",
+    "GUID": "{960F776C-D972-40F5-B5AB-D5F639A2CBE0}",
+    "Language": "English(US)",
+    "Hash": "{8A4312A9-58AC-30E6-27D4-21425B5DAC80}",
+    "ObjectPath": "Play_TutorialDialog1",
+    "ShortName": "Play_TutorialDialog1",
+    "Path": "Event/English(US)/Play_TutorialDialog1.bnk",
+    "Media": [
+     {
+      "Id": "228786904",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "TutorialDialog1.wav",
+      "Path": "Media/English(US)/228786904.wem",
+      "CachePath": "76/{76B5B14B-382F-A109-BF27-B78751176435}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1377214289",
+      "Name": "Play_TutorialDialog1",
+      "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog1",
+      "GUID": "{960F776C-D972-40F5-B5AB-D5F639A2CBE0}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.875",
+      "DurationMax": "3.875",
+      "MediaRefs": [
+       {
+        "Id": "228786904"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{72350D45-2512-EC64-ABA0-E0E7E5AFE446}"
+ }
+}

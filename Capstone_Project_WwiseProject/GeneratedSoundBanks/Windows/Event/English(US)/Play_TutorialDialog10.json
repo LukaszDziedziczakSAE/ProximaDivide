@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2325531827",
+    "Type": "Event",
+    "GUID": "{8CCC3352-BC06-4CBF-82D6-E70C52746C14}",
+    "Language": "English(US)",
+    "Hash": "{FF4B9E3E-F5A0-4760-34D5-DB33CD0C3F85}",
+    "ObjectPath": "Play_TutorialDialog10",
+    "ShortName": "Play_TutorialDialog10",
+    "Path": "Event/English(US)/Play_TutorialDialog10.bnk",
+    "Media": [
+     {
+      "Id": "517673636",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "TutorialDialog10.wav",
+      "Path": "Media/English(US)/517673636.wem",
+      "CachePath": "D8/{D8BBB2F1-D776-D9F6-0A26-F48B3A31C704}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2325531827",
+      "Name": "Play_TutorialDialog10",
+      "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog10",
+      "GUID": "{8CCC3352-BC06-4CBF-82D6-E70C52746C14}",
+      "DurationType": "OneShot",
+      "DurationMin": "4.25",
+      "DurationMax": "4.25",
+      "MediaRefs": [
+       {
+        "Id": "517673636"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{A7231094-DFA8-F1FE-7E13-BA21CD6E9318}"
+ }
+}

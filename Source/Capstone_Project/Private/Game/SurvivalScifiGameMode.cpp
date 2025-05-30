@@ -22,7 +22,7 @@ void ASurvivalScifiGameMode::BeginPlay()
 	UGameplayStatics::GetAllActorsWithTag(GetWorld(), TEXT("Sun"), SunActors);
 	if (SunActors.Num() > 0) Sun = SunActors[0];
 
-	
+	if (Sun != nullptr) SunLight = Sun->GetComponentByClass<UDirectionalLightComponent>();
 }
 
 void ASurvivalScifiGameMode::Tick(float DeltaSeconds)
@@ -42,7 +42,6 @@ void ASurvivalScifiGameMode::Tick(float DeltaSeconds)
 			Day++;
 		}
 
-		UDirectionalLightComponent* SunLight = Sun->GetComponentByClass<UDirectionalLightComponent>();
 		if (SunLight != nullptr)
 		{
 			if (Hour >= 6 && Hour < 20)

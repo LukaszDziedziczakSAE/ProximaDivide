@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{0CC54E00-70B7-4643-B9F4-4C71C282A395}",
     "Language": "SFX",
-    "Hash": "{643C4A97-4537-EE69-7D2B-808C2CAB48C6}",
+    "Hash": "{F9C818DA-C1A5-B68F-3AE4-A0D925C6B1BC}",
     "ObjectPath": "Play_DecentCinematicMusic",
     "ShortName": "Play_DecentCinematicMusic",
     "Path": "Event/Play_DecentCinematicMusic.bnk",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{164CA0EA-0DAA-D8F7-5FCB-871555CB356D}"
+  "FileHash": "{7B4F0BB8-F93C-6665-A2DA-538870D2F2EB}"
  }
 }

@@ -406,6 +406,146 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="Dialog" ID="{258F6487-BD1D-4D21-89E0-98F70E31EF2B}" ShortID="548257746">
+					<ChildrenList>
+						<Folder Name="Tutorial" ID="{D2A97A73-700B-402B-AE27-9682CBE41E2F}" ShortID="810165001">
+							<ChildrenList>
+								<Event Name="Play_TutorialDialog1" ID="{960F776C-D972-40F5-B5AB-D5F639A2CBE0}">
+									<ChildrenList>
+										<Action Name="" ID="{FAC75802-14A8-4AEF-A191-DDC336A0510F}" ShortID="509876493">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog1" ID="{BC3D77C9-08A8-468F-A30D-8661B66B165E}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog2" ID="{7A81C6AE-5A0B-497F-8EA4-C51B2E492C81}">
+									<ChildrenList>
+										<Action Name="" ID="{93EB13A1-2917-461A-99E2-AD267AAE8B8C}" ShortID="243432663">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog2" ID="{4F4FBB6E-7DD9-4AE3-94F1-4B72573F8D89}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog3" ID="{83689906-1936-4ACE-859B-0F341AFCF89A}">
+									<ChildrenList>
+										<Action Name="" ID="{835BEDFA-ADF2-4358-9A7C-F91371196120}" ShortID="190753846">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog3" ID="{7C16A1D6-8643-4AD8-8D2F-F1D23889F4FD}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog4" ID="{6DA424B2-6CA9-4952-9147-0F6C9A5B833F}">
+									<ChildrenList>
+										<Action Name="" ID="{94BA8213-F184-4A77-BDD1-CE799AFB59E2}" ShortID="837124912">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog4" ID="{D582AE96-8611-414A-A65E-F5CF83D8DFB4}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog5" ID="{B08A6AEE-7047-4A5F-AD04-6F3A439ABD1F}">
+									<ChildrenList>
+										<Action Name="" ID="{9F932A65-3353-451B-B9A2-E10E758DB7D6}" ShortID="99861292">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog5" ID="{12A519AD-FD97-49AB-8384-0FFFEDA3CCD5}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog6" ID="{6EC63016-735A-414C-A2AF-EFF5EA1992F0}">
+									<ChildrenList>
+										<Action Name="" ID="{0C4105E0-4F25-436A-8AEB-74F11A57A9DD}" ShortID="414054915">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog6" ID="{B9B7B762-4BB5-4875-AE13-284157DF2F53}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog7" ID="{B5BE4367-415A-47E5-B04D-C3B7FF9CA2E2}">
+									<ChildrenList>
+										<Action Name="" ID="{71DAB337-71AC-4336-B16A-0789A9C4BA3D}" ShortID="857652999">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog7" ID="{D1575141-A7C9-4535-B132-27A332F71D74}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog8" ID="{CBDB56EE-C303-4315-BE3E-628B21BC713A}">
+									<ChildrenList>
+										<Action Name="" ID="{17D86513-D042-439E-89FB-D570CD568D38}" ShortID="68447596">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog8" ID="{AC2F7540-333E-480A-BDB4-2CDC98C73A60}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog9" ID="{C7040C5E-8EA3-48E6-96DC-072A03B8F1BE}">
+									<ChildrenList>
+										<Action Name="" ID="{4FCBB7AB-3D50-432F-B83B-88915A0812F3}" ShortID="842453290">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog9" ID="{857ED4D6-EE49-43DA-BEFD-ADD500C3EACA}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog10" ID="{8CCC3352-BC06-4CBF-82D6-E70C52746C14}">
+									<ChildrenList>
+										<Action Name="" ID="{0A6590C2-8FAC-49BB-B8C6-2ED227D7AFBA}" ShortID="1008391256">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog10" ID="{AC00FB61-4931-4C3C-828D-29D973CD35B2}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog11" ID="{3C0ED797-6391-43E8-A6D1-A552212305FB}">
+									<ChildrenList>
+										<Action Name="" ID="{3996DDCE-42B0-43BE-A5EC-203F2295DC8F}" ShortID="578170617">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog11" ID="{BDB72A07-74AB-4163-8A31-D405D6392C41}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TutorialDialog12" ID="{AD2496BF-1D07-4623-8D6C-858A62B32249}">
+									<ChildrenList>
+										<Action Name="" ID="{3A9F574E-2C3C-4995-8D07-ED2011B6C175}" ShortID="679373693">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog12" ID="{B9BF4633-C85C-427D-8783-ED3A16A75C13}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

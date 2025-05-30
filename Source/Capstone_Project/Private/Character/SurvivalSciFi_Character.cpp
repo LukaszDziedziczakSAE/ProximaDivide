@@ -21,6 +21,8 @@ ASurvivalSciFi_Character::ASurvivalSciFi_Character()
 	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory"));
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
 	PaperdollComponent = CreateDefaultSubobject<UPaperdollComponent>(TEXT("Paperdoll"));
+
+	VoiceComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Voice Component"));
 }
 
 // Called when the game starts or when spawned

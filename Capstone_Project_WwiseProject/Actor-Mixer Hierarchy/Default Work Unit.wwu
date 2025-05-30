@@ -2173,6 +2173,314 @@
 						</SwitchContainer>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="Dialog" ID="{73990B12-E40C-4095-AF9B-D13897B8D24D}" ShortID="545446976">
+					<ChildrenList>
+						<Folder Name="Tutorial" ID="{6D225C7D-C9AC-48CB-BCF9-112E38327EBB}" ShortID="163615440">
+							<ChildrenList>
+								<Sound Name="TutorialDialog1" ID="{BC3D77C9-08A8-468F-A30D-8661B66B165E}" ShortID="100435700">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog1" ID="{4CB562A4-46AE-4E73-9CB8-D4A48AA870FB}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="228786904"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog1" ID="{4CB562A4-46AE-4E73-9CB8-D4A48AA870FB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog2" ID="{4F4FBB6E-7DD9-4AE3-94F1-4B72573F8D89}" ShortID="191024086">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog2" ID="{5C98CA26-F5A0-458C-AED1-FB6C44F5AF77}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="734642707"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog2" ID="{5C98CA26-F5A0-458C-AED1-FB6C44F5AF77}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog3" ID="{7C16A1D6-8643-4AD8-8D2F-F1D23889F4FD}" ShortID="959501824">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog3" ID="{566EC9DF-AB7D-4828-91A4-59D19635AF11}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="204227315"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog3" ID="{566EC9DF-AB7D-4828-91A4-59D19635AF11}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog4" ID="{D582AE96-8611-414A-A65E-F5CF83D8DFB4}" ShortID="89353444">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog4" ID="{AB60178D-866D-414D-A5D7-DFE00C652575}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="762122158"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog4" ID="{AB60178D-866D-414D-A5D7-DFE00C652575}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog5" ID="{12A519AD-FD97-49AB-8384-0FFFEDA3CCD5}" ShortID="757722540">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog5" ID="{A54E2159-F959-45D1-82A1-9B217207C90F}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog5.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="201858855"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog5" ID="{A54E2159-F959-45D1-82A1-9B217207C90F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog6" ID="{B9B7B762-4BB5-4875-AE13-284157DF2F53}" ShortID="491820930">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog6" ID="{5469EF68-6798-4936-BAD6-828C9493506B}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog6.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="841237930"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog6" ID="{5469EF68-6798-4936-BAD6-828C9493506B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog7" ID="{D1575141-A7C9-4535-B132-27A332F71D74}" ShortID="88924662">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog7" ID="{26A46D59-7A6B-4048-9551-064841376998}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog7.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="471003155"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog7" ID="{26A46D59-7A6B-4048-9551-064841376998}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog8" ID="{AC2F7540-333E-480A-BDB4-2CDC98C73A60}" ShortID="516212069">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog8" ID="{BF08CC42-7C1A-4894-B29F-0360EBB6BFDE}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog8.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="57800096"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog8" ID="{BF08CC42-7C1A-4894-B29F-0360EBB6BFDE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog9" ID="{857ED4D6-EE49-43DA-BEFD-ADD500C3EACA}" ShortID="228464770">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog9" ID="{C233D20C-B741-4DE4-A3D3-AF1A7FBC6937}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog9.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="634522177"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog9" ID="{C233D20C-B741-4DE4-A3D3-AF1A7FBC6937}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog10" ID="{AC00FB61-4931-4C3C-828D-29D973CD35B2}" ShortID="337537013">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog10" ID="{E83D2338-0251-4B2F-8B4F-35E2B0D37E73}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog10.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="517673636"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog10" ID="{E83D2338-0251-4B2F-8B4F-35E2B0D37E73}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog11" ID="{BDB72A07-74AB-4163-8A31-D405D6392C41}" ShortID="1057824459">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog11" ID="{05091673-CBE8-4A61-A9ED-F22C7120D3DF}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog11.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="910684491"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog11" ID="{05091673-CBE8-4A61-A9ED-F22C7120D3DF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog12" ID="{B9BF4633-C85C-427D-8783-ED3A16A75C13}" ShortID="371127556">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog12" ID="{AAFFAE88-326C-4DAD-950C-7F621206AEC6}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog12.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="481943279"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog12" ID="{AAFFAE88-326C-4DAD-950C-7F621206AEC6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

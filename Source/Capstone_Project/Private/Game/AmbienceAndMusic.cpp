@@ -21,7 +21,6 @@ void AAmbienceAndMusic::BeginPlay()
 	{
 		UAkGameplayStatics::SetState(AmbienceState);
 		UAkGameplayStatics::PostEvent(Ambience, nullptr, int32(0), FOnAkPostEventCallback(), true);
-		UE_LOG(LogTemp, Warning, TEXT("Playing ambience"));
 	}
 	if (Music != nullptr) UAkGameplayStatics::PostEvent(Music, nullptr, int32(0), FOnAkPostEventCallback(), true);
 }

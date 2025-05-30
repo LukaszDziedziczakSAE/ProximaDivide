@@ -33,6 +33,9 @@ protected:
 	UPROPERTY()
 	class AActor* Sun;
 
+	UPROPERTY()
+	class UDirectionalLightComponent* SunLight;
+
 public:
 	virtual void BeginPlay() override;
 

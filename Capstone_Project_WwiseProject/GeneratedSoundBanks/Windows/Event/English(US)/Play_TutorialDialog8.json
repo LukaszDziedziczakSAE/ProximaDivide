@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1377214296",
+    "Type": "Event",
+    "GUID": "{CBDB56EE-C303-4315-BE3E-628B21BC713A}",
+    "Language": "English(US)",
+    "Hash": "{DE599CE8-955E-2E67-23F4-ADA2354E31ED}",
+    "ObjectPath": "Play_TutorialDialog8",
+    "ShortName": "Play_TutorialDialog8",
+    "Path": "Event/English(US)/Play_TutorialDialog8.bnk",
+    "Media": [
+     {
+      "Id": "57800096",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "TutorialDialog8.wav",
+      "Path": "Media/English(US)/57800096.wem",
+      "CachePath": "28/{28BE66DD-D029-90FD-36A7-19189046D398}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1377214296",
+      "Name": "Play_TutorialDialog8",
+      "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog8",
+      "GUID": "{CBDB56EE-C303-4315-BE3E-628B21BC713A}",
+      "DurationType": "OneShot",
+      "DurationMin": "6.25",
+      "DurationMax": "6.25",
+      "MediaRefs": [
+       {
+        "Id": "57800096"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{6737BFC9-48A4-0237-55F1-166A89C75EAB}"
+ }
+}
