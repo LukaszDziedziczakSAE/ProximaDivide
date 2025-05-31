@@ -68,6 +68,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Pause;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_SkipTutorial;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
@@ -127,6 +130,9 @@ protected:
 
 	UFUNCTION()
 	void OnPlayerDeath(AActor* DestroyedActor);
+
+	UFUNCTION()
+	void SkipTutorial();
 
 public:
 	UFUNCTION()

@@ -36,6 +36,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
 	bool ShowMovementInfo;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool ShowInventoryInfo;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool ShowSlotInfo;
 };
 
 
@@ -52,8 +58,14 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	int Index = -1;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int AudioIndex = -1;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool ObjectivePrecomplete;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FTutorialPart> TutorialParts;
@@ -70,11 +82,20 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class AWaypoint* EndWaypoint;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	AActor* FlightDeckChair;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class USurvivalScifi_AnimInstance* AnimInstance;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UAnimMontage* SitDownMontage;
+
 	UFUNCTION()
 	void OnPartStart();
+
+	UFUNCTION()
+	void OnSitComplete();
 
 public:	
 	// Called every frame
@@ -94,6 +115,9 @@ public:
 	UFUNCTION()
 	void BeginTutorial();
 
+	UFUNCTION()
+	void CompleteTutorial();
+
 	UFUNCTION(BlueprintPure)
 	bool IsInProgress() { return Index >= 0 && Index < TutorialParts.Num(); }
 
@@ -102,6 +126,9 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	AWaypoint* GetEndWaypoint() { return EndWaypoint; }
+
+	UFUNCTION(BlueprintPure)
+	AActor* GetFlightDeckChair() { return FlightDeckChair; }
 	
 	UPROPERTY(VisibleAnywhere)
 	bool HasCompleted;
@@ -109,4 +136,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class AAstronaut_AIController* AI;
 
+	UFUNCTION()
+	void PlaySitDownAnimation();
+
+	UFUNCTION()
+	bool ReadyToSitDown() { return SitDownMontage != nullptr; }
 };

@@ -53,7 +53,9 @@ void UTutorialGiverComponent::OnPartStart()
 		//UE_LOG(LogTemp, Warning, TEXT("Playing %s"), *TutorialParts[Index].TutorialAudio->GetWwiseName().ToString());
 		TutorialParts[Index].TutorialAudio->PostOnComponent(CharacterVoice, PostEventCallback, int32(AkCallbackType::AK_EndOfEvent), true);
 		if (AnimInstance != nullptr) AnimInstance->StartTalking();
+		AudioIndex = Index;
 	}
+	ObjectivePrecomplete = false;
 
 	if (Player == nullptr) return;
 
@@ -69,7 +71,22 @@ void UTutorialGiverComponent::OnPartStart()
 		Player->GetHUD()->UpdateTutorialInfo();
 	}
 
+	if (GetCurrentPart().ShowInventoryInfo)
+	{
+		Player->GetTutorialComponent()->ShowInventoryInfo = true;
+		Player->GetHUD()->UpdateTutorialInfo();
+	}
 
+	if (GetCurrentPart().ShowSlotInfo)
+	{
+		Player->GetTutorialComponent()->ShowSlotInfo = true;
+		Player->GetHUD()->UpdateTutorialInfo();
+	}
+}
+
+void UTutorialGiverComponent::OnSitComplete()
+{
+	GetOwner()->Destroy();
 }
 
 // Called every frame
@@ -82,9 +99,11 @@ void UTutorialGiverComponent::TickComponent(float DeltaTime, ELevelTick TickType
 
 void UTutorialGiverComponent::PlaybackComplete(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo)
 {
+	if (AudioIndex == Index) AudioIndex = -1;
+
 	if (AnimInstance != nullptr) AnimInstance->StopTalking();
 
-	if (GetCurrentPart().TutorialCondition == OnAudioFinish)
+	if (GetCurrentPart().TutorialCondition == OnAudioFinish || ObjectivePrecomplete)
 	{
 		GoToNextPart();
 	}
@@ -94,15 +113,20 @@ void UTutorialGiverComponent::PlaybackComplete(EAkCallbackType CallbackType, UAk
 
 void UTutorialGiverComponent::GoToNextPart()
 {
+	if (AudioIndex != -1)
+	{
+		ObjectivePrecomplete = true;
+		UE_LOG(LogTemp, Log, TEXT("Objective precomplete"));
+		return;
+	}
+
+	UE_LOG(LogTemp, Log, TEXT("Starting next tutorial part"));
 	if (Index < 0) Index = 0;
 	else Index++;
 
 	if (Index >= TutorialParts.Num())
 	{
-		Index = -1;
-		HasCompleted = true;
-		if (AI != nullptr) AI->UpdateBB();
-		UE_LOG(LogTemp, Warning, TEXT("Tutorial Complete"));
+		CompleteTutorial();
 		return;
 	}
 
@@ -122,12 +146,33 @@ FTutorialPart UTutorialGiverComponent::GetCurrentPart()
 
 void UTutorialGiverComponent::BeginTutorial()
 {
-	if (HasCompleted) return;
 	if (TutorialParts.Num() > 0)
 	{
 		GoToNextPart();
+		if (AI != nullptr) AI->UpdateBB();
+		UE_LOG(LogTemp, Log, TEXT("Tutorial Starting..."));
 	}
+}
 
+void UTutorialGiverComponent::CompleteTutorial()
+{
+	Index = -1;
+	HasCompleted = true;
 	if (AI != nullptr) AI->UpdateBB();
+	UE_LOG(LogTemp, Warning, TEXT("Tutorial Complete"));
+}
+
+void UTutorialGiverComponent::PlaySitDownAnimation()
+{
+	if (SitDownMontage == nullptr) return;
+
+	ASurvivalSciFi_Character* Character = GetOwner<ASurvivalSciFi_Character>();
+
+	float t = Character->PlayMontage(SitDownMontage);
+
+	FTimerHandle  UseTimer;
+	GetWorld()->GetTimerManager().SetTimer(UseTimer, this, &UTutorialGiverComponent::OnSitComplete, t, false);
+
+	SitDownMontage = nullptr;
 }
 

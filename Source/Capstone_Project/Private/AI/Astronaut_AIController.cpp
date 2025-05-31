@@ -51,8 +51,21 @@ void AAstronaut_AIController::UpdateBB()
 
 void AAstronaut_AIController::BeginTutorial()
 {
-	if (TutorialGiver != nullptr && !TutorialGiver->IsInProgress())
+	if (TutorialGiver != nullptr && !TutorialGiver->HasCompleted && !TutorialGiver->IsInProgress())
 	{
 		TutorialGiver->BeginTutorial();
+	}
+}
+
+void AAstronaut_AIController::PlaySitDownAnimation()
+{
+	if (TutorialGiver != nullptr && TutorialGiver->ReadyToSitDown())
+	{
+		TutorialGiver->PlaySitDownAnimation();
+
+		if (TutorialGiver->GetFlightDeckChair() != nullptr)
+		{
+			GetBlackboardComponent()->SetValueAsVector(TEXT("Waypoint"), TutorialGiver->GetFlightDeckChair()->GetActorLocation());
+		}
 	}
 }

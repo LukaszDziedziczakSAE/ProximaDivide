@@ -346,6 +346,16 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{ED1D82B1-D61B-4E87-893A-FF0F520D0D60}" ShortID="984013989">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="DecentCinematicMusic" ID="{0D5F2090-5753-4CF9-B039-DB998512E86B}" WorkUnitID="{3B553318-5C5E-4BF1-AE9F-A0D5EF9CD35C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{905452B0-6316-4205-B511-58F272E7F8DD}" ShortID="92905168">
 									<ReferenceList>
 										<Reference Name="Target">

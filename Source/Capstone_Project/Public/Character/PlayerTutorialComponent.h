@@ -107,4 +107,7 @@ public:
 	void InventoryPickUp();
 
 	void InventoryDrop();
+
+	UFUNCTION()
+	void SkipTutorial();
 };

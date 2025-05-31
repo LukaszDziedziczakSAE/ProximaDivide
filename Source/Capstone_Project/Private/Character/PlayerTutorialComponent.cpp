@@ -100,16 +100,16 @@ void UPlayerTutorialComponent::ItemPickedUp()
 
 void UPlayerTutorialComponent::HasOpenedInventory()
 {
-	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
-		TutorialGiver->GetCurrentPart().TutorialCondition == OpenInventory)
-	{
-		TutorialGiver->GoToNextPart();
-	}
-
 	if (ShowInventoryInfo)
 	{
 		ShowInventoryInfo = false;
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
+	}
+
+	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
+		TutorialGiver->GetCurrentPart().TutorialCondition == OpenInventory)
+	{
+		TutorialGiver->GoToNextPart();
 	}
 }
 
@@ -142,18 +142,17 @@ void UPlayerTutorialComponent::ItemAddedToSlot()
 
 void UPlayerTutorialComponent::HasUsedSlot()
 {
+	if (ShowSlotInfo)
+	{
+		ShowSlotInfo = false;
+		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
+	}
+
 	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
 		TutorialGiver->GetCurrentPart().TutorialCondition == ConsumeItem)
 	{
 		TutorialGiver->GoToNextPart();
 	}
-
-	/*return;
-	if (ShowSlotInfo)
-	{
-		ShowSlotInfo = false;
-		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
-	}*/
 }
 
 void UPlayerTutorialComponent::InventoryPickUp()
@@ -177,3 +176,10 @@ void UPlayerTutorialComponent::InventoryDrop()
 	}
 }
 
+void UPlayerTutorialComponent::SkipTutorial()
+{
+	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress())
+	{
+		TutorialGiver->CompleteTutorial();
+	}
+}

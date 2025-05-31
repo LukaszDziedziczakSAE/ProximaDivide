@@ -25,4 +25,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void BeginTutorial();
+
+	UFUNCTION(BlueprintCallable)
+	void PlaySitDownAnimation();
 };

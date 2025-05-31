@@ -67,6 +67,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Use, ETriggerEvent::Completed, this, &ASurvivalScifi_PlayerController::UseItemEnd);
 		Input->BindAction(IA_Jump, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Jump);
 		Input->BindAction(IA_Pause, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::PauseToggle);
+		Input->BindAction(IA_SkipTutorial, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::SkipTutorial);
 	}
 
 	else
@@ -261,6 +262,14 @@ void ASurvivalScifi_PlayerController::OnPlayerDeath(AActor* DestroyedActor)
 
 	ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
 	if (GameMode != nullptr) GameMode->RestartPlayer(this);
+}
+
+void ASurvivalScifi_PlayerController::SkipTutorial()
+{
+	if (PlayerCharacter != nullptr)
+	{
+		PlayerCharacter->GetTutorialComponent()->SkipTutorial();
+	}
 }
 
 void ASurvivalScifi_PlayerController::PauseToggle()
