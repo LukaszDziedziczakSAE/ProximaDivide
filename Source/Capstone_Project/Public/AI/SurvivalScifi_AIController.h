@@ -25,8 +25,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UBehaviorTree* BehaviorTree;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class ASurvivalSciFi_Character* PossesedCharacter;
+
 public:
-	
+	UFUNCTION()
+	virtual void UpdateBB();
 
 private:
 	

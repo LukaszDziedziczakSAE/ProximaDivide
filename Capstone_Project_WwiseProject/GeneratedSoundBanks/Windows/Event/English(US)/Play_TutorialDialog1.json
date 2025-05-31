@@ -10,19 +10,19 @@
     "Type": "Event",
     "GUID": "{960F776C-D972-40F5-B5AB-D5F639A2CBE0}",
     "Language": "English(US)",
-    "Hash": "{8A4312A9-58AC-30E6-27D4-21425B5DAC80}",
+    "Hash": "{2C2DC7EF-C071-D24D-BAE0-0965EB480B0B}",
     "ObjectPath": "Play_TutorialDialog1",
     "ShortName": "Play_TutorialDialog1",
     "Path": "Event/English(US)/Play_TutorialDialog1.bnk",
     "Media": [
      {
-      "Id": "228786904",
+      "Id": "478002880",
       "Language": "English(US)",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "TutorialDialog1.wav",
-      "Path": "Media/English(US)/228786904.wem",
-      "CachePath": "76/{76B5B14B-382F-A109-BF27-B78751176435}.wem"
+      "ShortName": "TutorialDialog01.wav",
+      "Path": "Media/English(US)/478002880.wem",
+      "CachePath": "35/{3587601A-6ACA-D0EC-16E8-03A5B0F2C1B6}.wem"
      }
     ],
     "Events": [
@@ -36,13 +36,13 @@
       "DurationMax": "3.875",
       "MediaRefs": [
        {
-        "Id": "228786904"
+        "Id": "478002880"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{2990AF45-8E92-8693-E12A-BE4D9A4904FC}"
+  "FileHash": "{D0A926B8-53EA-DE2A-9425-08595025AF9B}"
  }
 }

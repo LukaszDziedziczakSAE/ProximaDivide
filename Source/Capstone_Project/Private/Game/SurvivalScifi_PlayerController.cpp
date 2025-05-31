@@ -128,6 +128,7 @@ void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& V
 		GetHUD<ASurvivalScifi_HUD>()->HideInventory();
 		SetShowMouseCursor(false);
 		SetInputMode(FInputModeGameOnly());
+		PlayerCharacter->GetTutorialComponent()->HasClosedInventory();
 	}
 }
 

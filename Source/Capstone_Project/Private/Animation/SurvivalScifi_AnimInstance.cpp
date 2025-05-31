@@ -44,3 +44,15 @@ void USurvivalScifi_AnimInstance::DespawnHandItems()
 		Character->DespawnHandItems();
 	}
 }
+
+void USurvivalScifi_AnimInstance::StartTalking()
+{
+	IsTalking = true;
+	//UE_LOG(LogTemp, Log, TEXT("Character started talking animation"));
+}
+
+void USurvivalScifi_AnimInstance::StopTalking()
+{
+	IsTalking = false;
+	//UE_LOG(LogTemp, Log, TEXT("Character stopped talking animation"));
+}

@@ -35,7 +35,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY()
-	bool ShowMouseMoveInfo = true;
+	bool ShowMouseMoveInfo;
 
 	UPROPERTY()
 	bool ShowMovementInfo;
@@ -67,6 +67,9 @@ public:
 	UPROPERTY()
 	bool ShowInventoryDrop;
 
+	UPROPERTY()
+	class UTutorialGiverComponent* TutorialGiver;
+
 	UFUNCTION()
 	bool ShowingAnyInfo() {
 		return ShowMouseMoveInfo
@@ -90,6 +93,9 @@ public:
 
 	UFUNCTION()
 	void HasOpenedInventory();
+
+	UFUNCTION()
+	void HasClosedInventory();
 
 	UFUNCTION()
 	void ItemAddedToSlot();

@@ -6,6 +6,7 @@
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Character/SurvivalSciFi_Character.h"
 
 ASurvivalScifi_AIController::ASurvivalScifi_AIController()
 {
@@ -20,6 +21,10 @@ void ASurvivalScifi_AIController::BeginPlay()
 void ASurvivalScifi_AIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-
+	PossesedCharacter = Cast<ASurvivalSciFi_Character>(InPawn);
 	RunBehaviorTree(BehaviorTree);
+}
+
+void ASurvivalScifi_AIController::UpdateBB()
+{
 }

@@ -10,19 +10,19 @@
     "Type": "Event",
     "GUID": "{CBDB56EE-C303-4315-BE3E-628B21BC713A}",
     "Language": "English(US)",
-    "Hash": "{DE599CE8-955E-2E67-23F4-ADA2354E31ED}",
+    "Hash": "{E2E0E0B4-3590-6E3B-C8D0-1B40EFC84405}",
     "ObjectPath": "Play_TutorialDialog8",
     "ShortName": "Play_TutorialDialog8",
     "Path": "Event/English(US)/Play_TutorialDialog8.bnk",
     "Media": [
      {
-      "Id": "57800096",
+      "Id": "644942152",
       "Language": "English(US)",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "TutorialDialog8.wav",
-      "Path": "Media/English(US)/57800096.wem",
-      "CachePath": "28/{28BE66DD-D029-90FD-36A7-19189046D398}.wem"
+      "ShortName": "TutorialDialog08.wav",
+      "Path": "Media/English(US)/644942152.wem",
+      "CachePath": "AB/{AB6443DC-7CD4-CA9E-EFBC-D107775A80C3}.wem"
      }
     ],
     "Events": [
@@ -32,17 +32,17 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog8",
       "GUID": "{CBDB56EE-C303-4315-BE3E-628B21BC713A}",
       "DurationType": "OneShot",
-      "DurationMin": "6.25",
-      "DurationMax": "6.25",
+      "DurationMin": "3.125",
+      "DurationMax": "3.125",
       "MediaRefs": [
        {
-        "Id": "57800096"
+        "Id": "644942152"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{6737BFC9-48A4-0237-55F1-166A89C75EAB}"
+  "FileHash": "{2D167733-E250-3EB5-4F63-A65B35CD6FE4}"
  }
 }

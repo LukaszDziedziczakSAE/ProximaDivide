@@ -19,6 +19,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	float Speed;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool IsTalking;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class ASurvivalSciFi_Character* Character;
@@ -39,4 +42,10 @@ public:
 	virtual void NativeBeginPlay() override;
 
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+
+	UFUNCTION()
+	void StartTalking();
+
+	UFUNCTION()
+	void StopTalking();
 };

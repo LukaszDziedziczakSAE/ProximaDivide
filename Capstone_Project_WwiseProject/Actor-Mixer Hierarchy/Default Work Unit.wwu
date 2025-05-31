@@ -2190,16 +2190,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog1" ID="{4CB562A4-46AE-4E73-9CB8-D4A48AA870FB}">
+										<AudioFileSource Name="TutorialDialog01" ID="{7F665750-E628-409A-844C-398FB03D8A7F}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog1.wav</AudioFile>
+											<AudioFile>TutorialDialog01.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="228786904"/>
+												<MediaID ID="478002880"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog1" ID="{4CB562A4-46AE-4E73-9CB8-D4A48AA870FB}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog01" ID="{7F665750-E628-409A-844C-398FB03D8A7F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog2" ID="{4F4FBB6E-7DD9-4AE3-94F1-4B72573F8D89}" ShortID="191024086">
@@ -2215,16 +2215,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog2" ID="{5C98CA26-F5A0-458C-AED1-FB6C44F5AF77}">
+										<AudioFileSource Name="TutorialDialog02" ID="{663C3A4F-C2C1-4007-85DE-7DF602C85872}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog2.wav</AudioFile>
+											<AudioFile>TutorialDialog02.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="734642707"/>
+												<MediaID ID="247319278"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog2" ID="{5C98CA26-F5A0-458C-AED1-FB6C44F5AF77}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog02" ID="{663C3A4F-C2C1-4007-85DE-7DF602C85872}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog3" ID="{7C16A1D6-8643-4AD8-8D2F-F1D23889F4FD}" ShortID="959501824">
@@ -2240,16 +2240,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog3" ID="{566EC9DF-AB7D-4828-91A4-59D19635AF11}">
+										<AudioFileSource Name="TutorialDialog03" ID="{50D43616-8177-4BCB-9F9B-38159ED6D223}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog3.wav</AudioFile>
+											<AudioFile>TutorialDialog03.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="204227315"/>
+												<MediaID ID="1024274161"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog3" ID="{566EC9DF-AB7D-4828-91A4-59D19635AF11}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog03" ID="{50D43616-8177-4BCB-9F9B-38159ED6D223}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog4" ID="{D582AE96-8611-414A-A65E-F5CF83D8DFB4}" ShortID="89353444">
@@ -2265,16 +2265,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog4" ID="{AB60178D-866D-414D-A5D7-DFE00C652575}">
+										<AudioFileSource Name="TutorialDialog04" ID="{CE3F9F6B-F8B6-4875-A774-D33E2385A948}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog4.wav</AudioFile>
+											<AudioFile>TutorialDialog04.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="762122158"/>
+												<MediaID ID="504792906"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog4" ID="{AB60178D-866D-414D-A5D7-DFE00C652575}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog04" ID="{CE3F9F6B-F8B6-4875-A774-D33E2385A948}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog5" ID="{12A519AD-FD97-49AB-8384-0FFFEDA3CCD5}" ShortID="757722540">
@@ -2290,16 +2290,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog5" ID="{A54E2159-F959-45D1-82A1-9B217207C90F}">
+										<AudioFileSource Name="TutorialDialog05" ID="{5BC0AB7A-EE59-47DA-B59F-30F4B5C145A3}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog5.wav</AudioFile>
+											<AudioFile>TutorialDialog05.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="201858855"/>
+												<MediaID ID="25185074"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog5" ID="{A54E2159-F959-45D1-82A1-9B217207C90F}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog05" ID="{5BC0AB7A-EE59-47DA-B59F-30F4B5C145A3}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog6" ID="{B9B7B762-4BB5-4875-AE13-284157DF2F53}" ShortID="491820930">
@@ -2315,16 +2315,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog6" ID="{5469EF68-6798-4936-BAD6-828C9493506B}">
+										<AudioFileSource Name="TutorialDialog06" ID="{4B983E00-026F-4F26-8AB6-2D2155FDF0BF}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog6.wav</AudioFile>
+											<AudioFile>TutorialDialog06.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="841237930"/>
+												<MediaID ID="243577385"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog6" ID="{5469EF68-6798-4936-BAD6-828C9493506B}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog06" ID="{4B983E00-026F-4F26-8AB6-2D2155FDF0BF}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog7" ID="{D1575141-A7C9-4535-B132-27A332F71D74}" ShortID="88924662">
@@ -2340,16 +2340,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog7" ID="{26A46D59-7A6B-4048-9551-064841376998}">
+										<AudioFileSource Name="TutorialDialog07" ID="{CFDA8F23-2DEF-4531-8E63-F288FC045546}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog7.wav</AudioFile>
+											<AudioFile>TutorialDialog07.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="471003155"/>
+												<MediaID ID="1056438569"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog7" ID="{26A46D59-7A6B-4048-9551-064841376998}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog07" ID="{CFDA8F23-2DEF-4531-8E63-F288FC045546}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog8" ID="{AC2F7540-333E-480A-BDB4-2CDC98C73A60}" ShortID="516212069">
@@ -2365,16 +2365,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog8" ID="{BF08CC42-7C1A-4894-B29F-0360EBB6BFDE}">
+										<AudioFileSource Name="TutorialDialog08" ID="{202CAB30-CB63-4DB8-A2A7-D0460377679E}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog8.wav</AudioFile>
+											<AudioFile>TutorialDialog08.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="57800096"/>
+												<MediaID ID="644942152"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog8" ID="{BF08CC42-7C1A-4894-B29F-0360EBB6BFDE}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog08" ID="{202CAB30-CB63-4DB8-A2A7-D0460377679E}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog9" ID="{857ED4D6-EE49-43DA-BEFD-ADD500C3EACA}" ShortID="228464770">
@@ -2390,16 +2390,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog9" ID="{C233D20C-B741-4DE4-A3D3-AF1A7FBC6937}">
+										<AudioFileSource Name="TutorialDialog09" ID="{8BDA9FC3-5FAE-409C-8BE1-199AA5651F67}">
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog9.wav</AudioFile>
+											<AudioFile>TutorialDialog09.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="634522177"/>
+												<MediaID ID="815388418"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog9" ID="{C233D20C-B741-4DE4-A3D3-AF1A7FBC6937}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog09" ID="{8BDA9FC3-5FAE-409C-8BE1-199AA5651F67}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog10" ID="{AC00FB61-4931-4C3C-828D-29D973CD35B2}" ShortID="337537013">
@@ -2415,7 +2415,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog10" ID="{E83D2338-0251-4B2F-8B4F-35E2B0D37E73}">
+										<AudioFileSource Name="TutorialDialog10" ID="{00A40EBF-E7A2-4DC1-86CD-436C2A947C9A}">
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog10.wav</AudioFile>
 											<MediaIDList>
@@ -2424,7 +2424,7 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog10" ID="{E83D2338-0251-4B2F-8B4F-35E2B0D37E73}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog10" ID="{00A40EBF-E7A2-4DC1-86CD-436C2A947C9A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog11" ID="{BDB72A07-74AB-4163-8A31-D405D6392C41}" ShortID="1057824459">
@@ -2440,7 +2440,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog11" ID="{05091673-CBE8-4A61-A9ED-F22C7120D3DF}">
+										<AudioFileSource Name="TutorialDialog11" ID="{697FE426-03A0-4F52-AC44-61F6B79466B1}">
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog11.wav</AudioFile>
 											<MediaIDList>
@@ -2449,7 +2449,7 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog11" ID="{05091673-CBE8-4A61-A9ED-F22C7120D3DF}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog11" ID="{697FE426-03A0-4F52-AC44-61F6B79466B1}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog12" ID="{B9BF4633-C85C-427D-8783-ED3A16A75C13}" ShortID="371127556">
@@ -2465,7 +2465,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog12" ID="{AAFFAE88-326C-4DAD-950C-7F621206AEC6}">
+										<AudioFileSource Name="TutorialDialog12" ID="{2775AFAE-2599-41A7-993D-4288C474708C}">
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog12.wav</AudioFile>
 											<MediaIDList>
@@ -2474,7 +2474,32 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog12" ID="{AAFFAE88-326C-4DAD-950C-7F621206AEC6}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog12" ID="{2775AFAE-2599-41A7-993D-4288C474708C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog13" ID="{16ED2756-5BE7-4387-9E0D-18C0E4D96371}" ShortID="66640619">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog13" ID="{DC02D4AF-46B5-4B3C-9ACE-D86D01B8DAA4}">
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog13.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="24325325"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog13" ID="{DC02D4AF-46B5-4B3C-9ACE-D86D01B8DAA4}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

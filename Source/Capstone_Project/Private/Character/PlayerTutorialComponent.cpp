@@ -4,6 +4,7 @@
 #include "Character/PlayerTutorialComponent.h"
 #include "Character/PlayerCharacter.h"
 #include "UI/SurvivalScifi_HUD.h"
+#include "Character/TutorialGiverComponent.h"
 
 // Sets default values for this component's properties
 UPlayerTutorialComponent::UPlayerTutorialComponent()
@@ -44,9 +45,15 @@ void UPlayerTutorialComponent::HasLooked(float LookAmount)
 		{
 			CurrentThreshhold = 0;
 			ShowMouseMoveInfo = false;
-			ShowMovementInfo = true;
+			//ShowMovementInfo = true;
 
 			GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
+
+			if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
+				TutorialGiver->GetCurrentPart().TutorialCondition == OnLookAround)
+			{
+				TutorialGiver->GoToNextPart();
+			}
 		}
 	}
 }
@@ -59,8 +66,14 @@ void UPlayerTutorialComponent::HasMovement(float MoveAmount)
 		if (CurrentThreshhold >= LookThreshhold)
 		{
 			ShowMovementInfo = false;
-			ShowJumpInfo = true;
+			//ShowJumpInfo = true;
 			GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
+
+			if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
+				TutorialGiver->GetCurrentPart().TutorialCondition == OnMoveAround)
+			{
+				TutorialGiver->GoToNextPart();
+			}
 		}
 	}
 }
@@ -87,6 +100,12 @@ void UPlayerTutorialComponent::ItemPickedUp()
 
 void UPlayerTutorialComponent::HasOpenedInventory()
 {
+	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
+		TutorialGiver->GetCurrentPart().TutorialCondition == OpenInventory)
+	{
+		TutorialGiver->GoToNextPart();
+	}
+
 	if (ShowInventoryInfo)
 	{
 		ShowInventoryInfo = false;
@@ -94,23 +113,47 @@ void UPlayerTutorialComponent::HasOpenedInventory()
 	}
 }
 
+void UPlayerTutorialComponent::HasClosedInventory()
+{
+	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
+		TutorialGiver->GetCurrentPart().TutorialCondition == ClosedInventory)
+	{
+		TutorialGiver->GoToNextPart();
+	}
+}
+
 void UPlayerTutorialComponent::ItemAddedToSlot()
 {
+	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
+		TutorialGiver->GetCurrentPart().TutorialCondition == PickupItem)
+	{
+		TutorialGiver->GoToNextPart();
+	}
+
+
+	/*return;
 	if (!SeenSlotInfo && !ShowingAnyInfo())
 	{
 		SeenSlotInfo = true;
 		ShowSlotInfo = true;
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
-	}
+	}*/
 }
 
 void UPlayerTutorialComponent::HasUsedSlot()
 {
+	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress() &&
+		TutorialGiver->GetCurrentPart().TutorialCondition == ConsumeItem)
+	{
+		TutorialGiver->GoToNextPart();
+	}
+
+	/*return;
 	if (ShowSlotInfo)
 	{
 		ShowSlotInfo = false;
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
-	}
+	}*/
 }
 
 void UPlayerTutorialComponent::InventoryPickUp()

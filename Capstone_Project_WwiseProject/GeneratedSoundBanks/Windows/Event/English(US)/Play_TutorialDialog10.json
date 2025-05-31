@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{8CCC3352-BC06-4CBF-82D6-E70C52746C14}",
     "Language": "English(US)",
-    "Hash": "{FF4B9E3E-F5A0-4760-34D5-DB33CD0C3F85}",
+    "Hash": "{FD1522AB-F2E0-4E2B-E9BA-06BED26E1BC6}",
     "ObjectPath": "Play_TutorialDialog10",
     "ShortName": "Play_TutorialDialog10",
     "Path": "Event/English(US)/Play_TutorialDialog10.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "TutorialDialog10.wav",
       "Path": "Media/English(US)/517673636.wem",
-      "CachePath": "D8/{D8BBB2F1-D776-D9F6-0A26-F48B3A31C704}.wem"
+      "CachePath": "12/{1282FB12-1B77-4EB6-7E19-6448832DD6FA}.wem"
      }
     ],
     "Events": [
@@ -32,8 +32,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog10",
       "GUID": "{8CCC3352-BC06-4CBF-82D6-E70C52746C14}",
       "DurationType": "OneShot",
-      "DurationMin": "4.25",
-      "DurationMax": "4.25",
+      "DurationMin": "4.125",
+      "DurationMax": "4.125",
       "MediaRefs": [
        {
         "Id": "517673636"
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{A7231094-DFA8-F1FE-7E13-BA21CD6E9318}"
+  "FileHash": "{8F9B5BC4-7050-52A4-B6E4-F56D344AAAF8}"
  }
 }

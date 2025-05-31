@@ -542,6 +542,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="Play_TutorialDialog13" ID="{B2B5AE92-8E78-4E64-BEA5-5CFF10461D41}">
+									<ChildrenList>
+										<Action Name="" ID="{B12FE3BB-3641-49B9-8CC4-7B68AC3604A1}" ShortID="924992456">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TutorialDialog13" ID="{16ED2756-5BE7-4387-9E0D-18C0E4D96371}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
