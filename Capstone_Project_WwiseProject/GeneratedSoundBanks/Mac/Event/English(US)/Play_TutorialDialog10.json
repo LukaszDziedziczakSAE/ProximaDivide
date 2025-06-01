@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{8CCC3352-BC06-4CBF-82D6-E70C52746C14}",
     "Language": "English(US)",
-    "Hash": "{CF379DAD-9CD7-0D9E-B8BF-7963F882EC68}",
+    "Hash": "{DDF448DF-08D5-22B2-8E32-A525DCA5BD25}",
     "ObjectPath": "Play_TutorialDialog10",
     "ShortName": "Play_TutorialDialog10",
     "Path": "Event/English(US)/Play_TutorialDialog10.bnk",
@@ -31,7 +31,7 @@
       "Name": "Play_TutorialDialog10",
       "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog10",
       "GUID": "{8CCC3352-BC06-4CBF-82D6-E70C52746C14}",
-      "MaxAttenuation": "5000",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "4.125",
       "DurationMax": "4.125",
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{47CEA7BB-55A7-A765-E66B-9F7D2DA0D757}"
+  "FileHash": "{168750C0-8688-1F87-3D68-214EAA02480A}"
  }
 }

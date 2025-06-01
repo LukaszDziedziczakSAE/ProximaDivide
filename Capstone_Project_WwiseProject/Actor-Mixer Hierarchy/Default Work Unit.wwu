@@ -2179,12 +2179,12 @@
 							<ChildrenList>
 								<Sound Name="TutorialDialog1" ID="{BC3D77C9-08A8-468F-A30D-8661B66B165E}" ShortID="100435700">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2215,12 +2215,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog2" ID="{4F4FBB6E-7DD9-4AE3-94F1-4B72573F8D89}" ShortID="191024086">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2244,12 +2244,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog3" ID="{7C16A1D6-8643-4AD8-8D2F-F1D23889F4FD}" ShortID="959501824">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2273,12 +2273,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog4" ID="{D582AE96-8611-414A-A65E-F5CF83D8DFB4}" ShortID="89353444">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2302,12 +2302,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog5" ID="{12A519AD-FD97-49AB-8384-0FFFEDA3CCD5}" ShortID="757722540">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2331,12 +2331,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog6" ID="{B9B7B762-4BB5-4875-AE13-284157DF2F53}" ShortID="491820930">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2360,12 +2360,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog7" ID="{D1575141-A7C9-4535-B132-27A332F71D74}" ShortID="88924662">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2389,12 +2389,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog8" ID="{AC2F7540-333E-480A-BDB4-2CDC98C73A60}" ShortID="516212069">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2418,12 +2418,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog9" ID="{857ED4D6-EE49-43DA-BEFD-ADD500C3EACA}" ShortID="228464770">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2447,12 +2447,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog10" ID="{AC00FB61-4931-4C3C-828D-29D973CD35B2}" ShortID="337537013">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2476,12 +2476,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog11" ID="{BDB72A07-74AB-4163-8A31-D405D6392C41}" ShortID="1057824459">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2505,12 +2505,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog12" ID="{B9BF4633-C85C-427D-8783-ED3A16A75C13}" ShortID="371127556">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
@@ -2534,12 +2534,12 @@
 								</Sound>
 								<Sound Name="TutorialDialog13" ID="{16ED2756-5BE7-4387-9E0D-18C0E4D96371}" ShortID="66640619">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsVoice" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
