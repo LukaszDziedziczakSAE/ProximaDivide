@@ -165,13 +165,13 @@ float ASurvivalSciFi_Character::PlayMontage(UAnimMontage* Montage)
 
 void ASurvivalSciFi_Character::Footstep()
 {
-	
 	FHitResult Hit;
 	FVector Start = GetActorLocation();
 	FVector End = Start + FVector(0,0,-150.0f);
 	FCollisionQueryParams CollisionQueryParams;
 	CollisionQueryParams.bReturnPhysicalMaterial = true;
 	GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECollisionChannel::ECC_Visibility, CollisionQueryParams);
+	
 	if (Hit.bBlockingHit && Hit.GetActor() != nullptr)
 	{
 		switch (UGameplayStatics::GetSurfaceType(Hit))

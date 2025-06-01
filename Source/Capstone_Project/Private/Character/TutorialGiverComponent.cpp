@@ -10,6 +10,7 @@
 #include "UI/SurvivalScifi_HUD.h"
 #include "AI/Astronaut_AIController.h"
 #include "Animation/SurvivalScifi_AnimInstance.h"
+#include "AkGameplayStatics.h"
 
 UTutorialGiverComponent::UTutorialGiverComponent()
 {
@@ -50,9 +51,14 @@ void UTutorialGiverComponent::OnPartStart()
 
 	if (TutorialParts[Index].TutorialAudio != nullptr)
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("Playing %s"), *TutorialParts[Index].TutorialAudio->GetWwiseName().ToString());
-		TutorialParts[Index].TutorialAudio->PostOnComponent(CharacterVoice, PostEventCallback, int32(AkCallbackType::AK_EndOfEvent), true);
+		if (UseVoiceComponent) CharacterVoice->PostAkEvent(TutorialParts[Index].TutorialAudio, int32(AkCallbackType::AK_EndOfEvent), PostEventCallback);
+
+		else if (UseEvent) TutorialParts[Index].TutorialAudio->PostOnComponent(CharacterVoice, PostEventCallback, int32(AkCallbackType::AK_EndOfEvent), true);
+
+		else UAkGameplayStatics::PostEvent(TutorialParts[Index].TutorialAudio, Player, int32(AkCallbackType::AK_EndOfEvent), PostEventCallback, true);
+
 		if (AnimInstance != nullptr) AnimInstance->StartTalking();
+
 		AudioIndex = Index;
 	}
 	ObjectivePrecomplete = false;
@@ -108,7 +114,7 @@ void UTutorialGiverComponent::PlaybackComplete(EAkCallbackType CallbackType, UAk
 		GoToNextPart();
 	}
 
-	//UE_LOG(LogTemp, Warning, TEXT("Tutorial Audio Complete"));
+	UE_LOG(LogTemp, Warning, TEXT("Tutorial Audio Complete"));
 }
 
 void UTutorialGiverComponent::GoToNextPart()

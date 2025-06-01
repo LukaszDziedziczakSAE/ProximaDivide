@@ -97,6 +97,12 @@ protected:
 	UFUNCTION()
 	void OnSitComplete();
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio Override")
+	bool UseVoiceComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio Override")
+	bool UseEvent;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
