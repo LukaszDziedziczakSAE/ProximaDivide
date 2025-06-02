@@ -42,6 +42,15 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
 	bool ShowSlotInfo;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool ShowActionBar;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool ShowPlayerStats;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool ShowDayTime;
 };
 
 

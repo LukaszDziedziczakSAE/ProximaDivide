@@ -2194,23 +2194,21 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog01" ID="{7F665750-E628-409A-844C-398FB03D8A7F}">
+										<AudioFileSource Name="TutorialDialog-KubaTake01-PSA1_01" ID="{9B109F33-3203-4CA3-876F-F05A6C94231C}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.512907608695652"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.575747282608696"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog01.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake01-PSA1_01.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="478002880"/>
-											</MediaIDList>
-										</AudioFileSource>
-										<AudioFileSource Name="KubaTest" ID="{0763DC86-2363-4D9D-BBCE-E885F04DD781}">
-											<Language>English(US)</Language>
-											<AudioFile>KubaTest.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="739959098"/>
+												<MediaID ID="946733735"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="KubaTest" ID="{0763DC86-2363-4D9D-BBCE-E885F04DD781}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake01-PSA1_01" ID="{9B109F33-3203-4CA3-876F-F05A6C94231C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog2" ID="{4F4FBB6E-7DD9-4AE3-94F1-4B72573F8D89}" ShortID="191024086">
@@ -2230,16 +2228,21 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog02" ID="{663C3A4F-C2C1-4007-85DE-7DF602C85872}">
+										<AudioFileSource Name="TutorialDialog-KubaTake02-PSA1_02" ID="{0A79EEAA-33E7-430B-9259-0BED51E083D9}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.842221467391304"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.635360054347826"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog02.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake02-PSA1_02.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="247319278"/>
+												<MediaID ID="402914802"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog02" ID="{663C3A4F-C2C1-4007-85DE-7DF602C85872}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake02-PSA1_02" ID="{0A79EEAA-33E7-430B-9259-0BED51E083D9}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog3" ID="{7C16A1D6-8643-4AD8-8D2F-F1D23889F4FD}" ShortID="959501824">
@@ -2259,16 +2262,21 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog03" ID="{50D43616-8177-4BCB-9F9B-38159ED6D223}">
+										<AudioFileSource Name="TutorialDialog-KubaTake03-PSA1_03" ID="{579C392D-C99B-48DD-ACAF-895AB35D81AC}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.739639945652174"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.90523097826087"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog03.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake03-PSA1_03.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="1024274161"/>
+												<MediaID ID="159114607"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog03" ID="{50D43616-8177-4BCB-9F9B-38159ED6D223}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake03-PSA1_03" ID="{579C392D-C99B-48DD-ACAF-895AB35D81AC}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog4" ID="{D582AE96-8611-414A-A65E-F5CF83D8DFB4}" ShortID="89353444">
@@ -2288,16 +2296,22 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog04" ID="{CE3F9F6B-F8B6-4875-A774-D33E2385A948}">
+										<AudioFileSource Name="TutorialDialog-KubaTake04-PSA1_04" ID="{96BA2B08-1CCB-4661-9BB2-E624FFABFD25}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.352355072463768"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.371376811594203"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.407608695652174"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog04.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake04-PSA1_04.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="504792906"/>
+												<MediaID ID="612166737"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog04" ID="{CE3F9F6B-F8B6-4875-A774-D33E2385A948}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake04-PSA1_04" ID="{96BA2B08-1CCB-4661-9BB2-E624FFABFD25}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog5" ID="{12A519AD-FD97-49AB-8384-0FFFEDA3CCD5}" ShortID="757722540">
@@ -2317,16 +2331,22 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog05" ID="{5BC0AB7A-EE59-47DA-B59F-30F4B5C145A3}">
+										<AudioFileSource Name="TutorialDialog-KubaTake05-PSA1_05" ID="{FE514B5A-F9FD-4BC0-9FE1-603C1C7176D9}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.225203804347826"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.413609601449275"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.74513134057971"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog05.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake05-PSA1_05.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="25185074"/>
+												<MediaID ID="375830393"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog05" ID="{5BC0AB7A-EE59-47DA-B59F-30F4B5C145A3}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake05-PSA1_05" ID="{FE514B5A-F9FD-4BC0-9FE1-603C1C7176D9}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog6" ID="{B9B7B762-4BB5-4875-AE13-284157DF2F53}" ShortID="491820930">
@@ -2346,16 +2366,21 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog06" ID="{4B983E00-026F-4F26-8AB6-2D2155FDF0BF}">
+										<AudioFileSource Name="TutorialDialog-KubaTake06-PSA1_06" ID="{F87DFCC5-5426-4BC6-A5A6-7464E877DD28}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.332597373188406"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.172950634057971"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog06.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake06-PSA1_06.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="243577385"/>
+												<MediaID ID="826701754"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog06" ID="{4B983E00-026F-4F26-8AB6-2D2155FDF0BF}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake06-PSA1_06" ID="{F87DFCC5-5426-4BC6-A5A6-7464E877DD28}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog7" ID="{D1575141-A7C9-4535-B132-27A332F71D74}" ShortID="88924662">
@@ -2375,16 +2400,21 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog07" ID="{CFDA8F23-2DEF-4531-8E63-F288FC045546}">
+										<AudioFileSource Name="TutorialDialog-KubaTake07-PSA1_07" ID="{48C8651F-E162-44D2-9BD5-A00F73CBB605}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.400249094202898"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.701426630434782"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog07.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake07-PSA1_07.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="1056438569"/>
+												<MediaID ID="920934272"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog07" ID="{CFDA8F23-2DEF-4531-8E63-F288FC045546}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake07-PSA1_07" ID="{48C8651F-E162-44D2-9BD5-A00F73CBB605}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog8" ID="{AC2F7540-333E-480A-BDB4-2CDC98C73A60}" ShortID="516212069">
@@ -2404,16 +2434,23 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog08" ID="{202CAB30-CB63-4DB8-A2A7-D0460377679E}">
+										<AudioFileSource Name="TutorialDialog-KubaTake08-PSA1_08" ID="{8EC7692B-09A4-4E77-A222-7F949396FD7F}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.505378170289855"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.675328351449275"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.286231884057971"/>
+												<Property Name="TrimEnd" Type="Real64" Value="9.67374320652174"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog08.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake08-PSA1_08.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="644942152"/>
+												<MediaID ID="227441304"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog08" ID="{202CAB30-CB63-4DB8-A2A7-D0460377679E}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake08-PSA1_08" ID="{8EC7692B-09A4-4E77-A222-7F949396FD7F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog9" ID="{857ED4D6-EE49-43DA-BEFD-ADD500C3EACA}" ShortID="228464770">
@@ -2433,16 +2470,23 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog09" ID="{8BDA9FC3-5FAE-409C-8BE1-199AA5651F67}">
+										<AudioFileSource Name="TutorialDialog-KubaTake09-PSA1_09" ID="{A3B37BC9-F88D-4CEE-BAC6-D153929E8D5D}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.235507246376812"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.19927536231884"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.608695652173913"/>
+												<Property Name="TrimEnd" Type="Real64" Value="3.45471014492754"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog09.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake09-PSA1_09.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="815388418"/>
+												<MediaID ID="843606425"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog09" ID="{8BDA9FC3-5FAE-409C-8BE1-199AA5651F67}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake09-PSA1_09" ID="{A3B37BC9-F88D-4CEE-BAC6-D153929E8D5D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog10" ID="{AC00FB61-4931-4C3C-828D-29D973CD35B2}" ShortID="337537013">
@@ -2462,16 +2506,23 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog10" ID="{00A40EBF-E7A2-4DC1-86CD-436C2A947C9A}">
+										<AudioFileSource Name="TutorialDialog-KubaTake10-PSA1_10" ID="{9701B690-89CA-41B3-A849-3E890E45D9A4}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.222146739130435"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.28125"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.293478260869565"/>
+												<Property Name="TrimEnd" Type="Real64" Value="4.10461956521739"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog10.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake10-PSA1_10.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="517673636"/>
+												<MediaID ID="735409966"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog10" ID="{00A40EBF-E7A2-4DC1-86CD-436C2A947C9A}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake10-PSA1_10" ID="{9701B690-89CA-41B3-A849-3E890E45D9A4}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog11" ID="{BDB72A07-74AB-4163-8A31-D405D6392C41}" ShortID="1057824459">
@@ -2491,16 +2542,23 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog11" ID="{697FE426-03A0-4F52-AC44-61F6B79466B1}">
+										<AudioFileSource Name="TutorialDialog-KubaTake11-PSA1_11" ID="{0AFDF03C-6814-404C-99FF-7639F8B95CD8}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.281363224637681"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.210031702898551"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.592447916666667"/>
+												<Property Name="TrimEnd" Type="Real64" Value="4.10354393115942"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog11.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake11-PSA1_11.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="910684491"/>
+												<MediaID ID="630438114"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog11" ID="{697FE426-03A0-4F52-AC44-61F6B79466B1}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake11-PSA1_11" ID="{0AFDF03C-6814-404C-99FF-7639F8B95CD8}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog12" ID="{B9BF4633-C85C-427D-8783-ED3A16A75C13}" ShortID="371127556">
@@ -2520,16 +2578,23 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog12" ID="{2775AFAE-2599-41A7-993D-4288C474708C}">
+										<AudioFileSource Name="TutorialDialog-KubaTake12-PSA1_12" ID="{8A71C608-282F-46BB-8932-9B8646D44C51}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.234148550724638"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.468297101449274"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.62794384057971"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.27632472826087"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog12.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake12-PSA1_12.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="481943279"/>
+												<MediaID ID="768236460"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog12" ID="{2775AFAE-2599-41A7-993D-4288C474708C}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake12-PSA1_12" ID="{8A71C608-282F-46BB-8932-9B8646D44C51}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="TutorialDialog13" ID="{16ED2756-5BE7-4387-9E0D-18C0E4D96371}" ShortID="66640619">
@@ -2549,16 +2614,131 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="TutorialDialog13" ID="{DC02D4AF-46B5-4B3C-9ACE-D86D01B8DAA4}">
+										<AudioFileSource Name="TutorialDialog-KubaTake13-PSA1_13" ID="{37D0D610-F630-486B-B83C-F03D1573B3BD}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.497735507246377"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.418478260869565"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.814764492753623"/>
+												<Property Name="TrimEnd" Type="Real64" Value="6.125"/>
+											</PropertyList>
 											<Language>English(US)</Language>
-											<AudioFile>TutorialDialog13.wav</AudioFile>
+											<AudioFile>TutorialDialog-KubaTake13-PSA1_13.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="24325325"/>
+												<MediaID ID="260981407"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="TutorialDialog13" ID="{DC02D4AF-46B5-4B3C-9ACE-D86D01B8DAA4}" Platform="Linked"/>
+										<ActiveSource Name="TutorialDialog-KubaTake13-PSA1_13" ID="{37D0D610-F630-486B-B83C-F03D1573B3BD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog14" ID="{2BAAA966-A73A-4D5A-BAD6-8B30099575B5}" ShortID="94135660">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog-KubaTake14-PSA1_14" ID="{918B83B1-7ECF-4363-9F57-85D661BC9CB7}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.132019927536232"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.239130434782609"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.631453804347826"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.10235507246377"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog-KubaTake14-PSA1_14.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="250586013"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog-KubaTake14-PSA1_14" ID="{918B83B1-7ECF-4363-9F57-85D661BC9CB7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog15" ID="{AD23C7FE-B8DA-43D4-A0F6-607D4445C6D7}" ShortID="838841954">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog-KubaTake15-PSA1_15" ID="{E773CE4E-3322-433B-B181-D34F5D673587}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.369508605072464"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.172667572463769"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.528362771739131"/>
+												<Property Name="TrimEnd" Type="Real64" Value="7.20714447463768"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog-KubaTake15-PSA1_15.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="855754478"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog-KubaTake15-PSA1_15" ID="{E773CE4E-3322-433B-B181-D34F5D673587}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TutorialDialog16" ID="{D6841DB0-A72C-4FE3-83F2-5306A95B7F16}" ShortID="969685346">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TutorialDialog-KubaTake16-PSA1_16" ID="{57295261-C664-4896-9BD3-4C631613CF6D}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.221127717391304"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.187839673913044"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.359035326086956"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.08118206521739"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>TutorialDialog-KubaTake16-PSA1_16.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="711383758"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TutorialDialog-KubaTake16-PSA1_16" ID="{57295261-C664-4896-9BD3-4C631613CF6D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

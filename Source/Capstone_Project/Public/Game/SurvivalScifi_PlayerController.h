@@ -140,4 +140,7 @@ public:
 	
 	UFUNCTION()
 	void PauseToggle();
+
+	UFUNCTION(BlueprintPure)
+	APlayerCharacter* GetPlayerCharacter() { return PlayerCharacter; }
 };

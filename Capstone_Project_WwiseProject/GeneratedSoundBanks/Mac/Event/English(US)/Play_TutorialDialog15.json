@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2325531830",
+    "Type": "Event",
+    "GUID": "{81EF451E-3AC7-41B0-ADE5-A3D40683CD55}",
+    "Language": "English(US)",
+    "Hash": "{83F4E179-6DF7-23E9-F1F9-34DE67FEF97B}",
+    "ObjectPath": "Play_TutorialDialog15",
+    "ShortName": "Play_TutorialDialog15",
+    "Path": "Event/English(US)/Play_TutorialDialog15.bnk",
+    "Media": [
+     {
+      "Id": "855754478",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "TutorialDialog-KubaTake15-PSA1_15.wav",
+      "Path": "Media/English(US)/855754478.wem",
+      "CachePath": "C7/{C7709221-0FDE-C410-C374-E361E83D3BEB}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2325531830",
+      "Name": "Play_TutorialDialog15",
+      "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog15",
+      "GUID": "{81EF451E-3AC7-41B0-ADE5-A3D40683CD55}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "6.6787815",
+      "DurationMax": "6.6787815",
+      "MediaRefs": [
+       {
+        "Id": "855754478"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{A7F5F2C3-932E-183C-A0A7-2A7121889C65}"
+ }
+}

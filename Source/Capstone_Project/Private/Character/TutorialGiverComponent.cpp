@@ -88,6 +88,24 @@ void UTutorialGiverComponent::OnPartStart()
 		Player->GetTutorialComponent()->ShowSlotInfo = true;
 		Player->GetHUD()->UpdateTutorialInfo();
 	}
+
+	if (GetCurrentPart().ShowPlayerStats)
+	{
+		Player->GetTutorialComponent()->HideStats = false;
+		Player->GetHUD()->ShowGameHUD();
+	}
+
+	if (GetCurrentPart().ShowActionBar)
+	{
+		Player->GetTutorialComponent()->HideActionBar = false;
+		Player->GetHUD()->ShowGameHUD();
+	}
+
+	if (GetCurrentPart().ShowDayTime)
+	{
+		Player->GetTutorialComponent()->HideDayTime = false;
+		Player->GetHUD()->ShowGameHUD();
+	}
 }
 
 void UTutorialGiverComponent::OnSitComplete()
@@ -154,6 +172,11 @@ void UTutorialGiverComponent::BeginTutorial()
 {
 	if (TutorialParts.Num() > 0)
 	{
+		Player->GetTutorialComponent()->HideActionBar = true;
+		Player->GetTutorialComponent()->HideStats = true;
+		Player->GetTutorialComponent()->HideDayTime = true;
+		Player->GetHUD()->ShowGameHUD();
+
 		GoToNextPart();
 		if (AI != nullptr) AI->UpdateBB();
 		UE_LOG(LogTemp, Log, TEXT("Tutorial Starting..."));

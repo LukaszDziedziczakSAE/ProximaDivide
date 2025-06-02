@@ -73,6 +73,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UTutorialUserWidget* Tutorial;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UPlayerTutorialComponent* PlayerTutorialComponent;
 
 public:
 	UFUNCTION()

@@ -10,19 +10,19 @@
     "Type": "Event",
     "GUID": "{83689906-1936-4ACE-859B-0F341AFCF89A}",
     "Language": "English(US)",
-    "Hash": "{D88BF440-71E4-7C60-AF57-C7C987EDF653}",
+    "Hash": "{2C7D0CB8-CD7E-8565-B799-A7CAD76E5254}",
     "ObjectPath": "Play_TutorialDialog3",
     "ShortName": "Play_TutorialDialog3",
     "Path": "Event/English(US)/Play_TutorialDialog3.bnk",
     "Media": [
      {
-      "Id": "1024274161",
+      "Id": "159114607",
       "Language": "English(US)",
       "Streaming": "false",
       "Location": "Loose",
-      "ShortName": "TutorialDialog03.wav",
-      "Path": "Media/English(US)/1024274161.wem",
-      "CachePath": "D9/{D94E502D-C569-85E5-4481-4BECDF78A60C}.wem"
+      "ShortName": "TutorialDialog-KubaTake03-PSA1_03.wav",
+      "Path": "Media/English(US)/159114607.wem",
+      "CachePath": "4A/{4AB9F144-A8B5-478A-B62E-FB9CABF03646}.wem"
      }
     ],
     "Events": [
@@ -33,17 +33,17 @@
       "GUID": "{83689906-1936-4ACE-859B-0F341AFCF89A}",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "4",
-      "DurationMax": "4",
+      "DurationMin": "4.875",
+      "DurationMax": "4.875",
       "MediaRefs": [
        {
-        "Id": "1024274161"
+        "Id": "159114607"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{A4618FF5-5D38-EE48-D2FE-DD1100A6300A}"
+  "FileHash": "{B515E9BE-8B35-ED35-10CC-8A0460B08669}"
  }
 }

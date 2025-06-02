@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2325531829",
+    "Type": "Event",
+    "GUID": "{685411BC-611F-456F-8D5A-C5374FE81383}",
+    "Language": "English(US)",
+    "Hash": "{A4A2140C-2156-452B-86FD-68F2D9B34F78}",
+    "ObjectPath": "Play_TutorialDialog16",
+    "ShortName": "Play_TutorialDialog16",
+    "Path": "Event/English(US)/Play_TutorialDialog16.bnk",
+    "Media": [
+     {
+      "Id": "711383758",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "TutorialDialog-KubaTake16-PSA1_16.wav",
+      "Path": "Media/English(US)/711383758.wem",
+      "CachePath": "D1/{D1C12A1A-B407-F2F5-9C43-46625535B5CA}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2325531829",
+      "Name": "Play_TutorialDialog16",
+      "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Tutorial\\Play_TutorialDialog16",
+      "GUID": "{685411BC-611F-456F-8D5A-C5374FE81383}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "4.7221465",
+      "DurationMax": "4.7221465",
+      "MediaRefs": [
+       {
+        "Id": "711383758"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3B15EE21-B70D-D881-C666-47CEE3BF334A}"
+ }
+}

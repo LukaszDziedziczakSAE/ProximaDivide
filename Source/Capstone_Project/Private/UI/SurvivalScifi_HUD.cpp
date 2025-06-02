@@ -12,6 +12,9 @@
 #include "UI/PauseMenu_UserWidget.h"
 #include "UI/DeathScreenUserWidget.h"
 #include "UI/TutorialUserWidget.h"
+#include "Game/SurvivalScifi_PlayerController.h"
+#include "Character/PlayerCharacter.h"
+#include "Character/PlayerTutorialComponent.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -20,23 +23,35 @@ void ASurvivalScifi_HUD::BeginPlay()
 	if (NotificationsClass != nullptr) Notifications = CreateWidget<UNotificationsUserWidget>(GetWorld(), NotificationsClass);
 	if (Notifications != nullptr) Notifications->AddToViewport();
 
-	//ShowGameHUD();
+	ASurvivalScifi_PlayerController* PlayerController = Cast<ASurvivalScifi_PlayerController>(GetOwningPlayerController());
+	if (PlayerController == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Missing Player Controller reference in HUD"));
+		return;
+	}
+
+	PlayerTutorialComponent = PlayerController->GetPlayerCharacter()->GetTutorialComponent();
 }
 
 void ASurvivalScifi_HUD::ShowGameHUD()
 {
 	HideGameHUD();
+	if (PlayerTutorialComponent == nullptr) return;
 
-	if (PlayerStatsClass != nullptr) PlayerStats = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), PlayerStatsClass);
+	if (PlayerStatsClass != nullptr && !PlayerTutorialComponent->HideStats)
+		PlayerStats = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), PlayerStatsClass);
 	if (PlayerStats != nullptr) PlayerStats->AddToViewport();
 
-	if (ActionBarClass != nullptr) ActionBar = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), ActionBarClass);
+	if (ActionBarClass != nullptr && !PlayerTutorialComponent->HideActionBar) 
+		ActionBar = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), ActionBarClass);
 	if (ActionBar != nullptr) ActionBar->AddToViewport();
 
-	if (CrosshairClass != nullptr) Crosshair = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), CrosshairClass);
+	if (CrosshairClass != nullptr) 
+		Crosshair = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), CrosshairClass);
 	if (Crosshair != nullptr) Crosshair->AddToViewport();
 
-	if (TutorialClass != nullptr) Tutorial = CreateWidget<UTutorialUserWidget>(GetWorld(), TutorialClass);
+	if (TutorialClass != nullptr) 
+		Tutorial = CreateWidget<UTutorialUserWidget>(GetWorld(), TutorialClass);
 	if (Tutorial != nullptr) Tutorial->AddToViewport();
 }
 

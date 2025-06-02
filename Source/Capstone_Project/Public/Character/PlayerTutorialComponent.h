@@ -68,6 +68,15 @@ public:
 	bool ShowInventoryDrop;
 
 	UPROPERTY()
+	bool HideStats;
+
+	UPROPERTY()
+	bool HideActionBar;
+
+	UPROPERTY()
+	bool HideDayTime;
+
+	UPROPERTY()
 	class UTutorialGiverComponent* TutorialGiver;
 
 	UFUNCTION()
