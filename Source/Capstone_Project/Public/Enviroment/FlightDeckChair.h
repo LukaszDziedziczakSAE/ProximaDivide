@@ -32,6 +32,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 	class ULevelSequence* LevelSequence;
 
+	UPROPERTY(EditAnywhere)
+	class UAkStateValue* SeqenceState;
+
 	UFUNCTION()
 	void OnLevelSeqenceComplete();
 

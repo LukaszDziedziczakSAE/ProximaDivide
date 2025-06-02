@@ -77,6 +77,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UPlayerTutorialComponent* PlayerTutorialComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool bSequenceIsPlaying;
+
 public:
 	UFUNCTION()
 	void ShowGameHUD();
@@ -155,4 +158,10 @@ public:
 
 	UFUNCTION()
 	void UpdateTutorialInfo();
+
+	UFUNCTION()
+	void SequenceStart();
+
+	UFUNCTION()
+	void SequeneceEnd();
 };

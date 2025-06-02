@@ -598,6 +598,32 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Decent" ID="{EC5A7421-FB58-4EF3-A6E6-37E5D021EA75}" ShortID="149207845">
+							<ChildrenList>
+								<Event Name="Play_Decent_Commander_01" ID="{84E48C0C-3EED-4F29-BEEA-621E162A7BC8}">
+									<ChildrenList>
+										<Action Name="" ID="{98BFBE46-E335-4E08-84F0-8B6320797A09}" ShortID="22984467">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Decent-Commander_01" ID="{7E0F89DD-6539-434A-B824-025AA7DDC702}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Decent_Pilot_01" ID="{55559CC4-E569-4C20-88C7-A398F634455A}">
+									<ChildrenList>
+										<Action Name="" ID="{F87238BF-9C5B-420A-9F52-8E101195BCD5}" ShortID="984273997">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Decent-Pilot_01" ID="{52EEE4F6-628C-4F9C-94FD-3F23B93B1E49}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

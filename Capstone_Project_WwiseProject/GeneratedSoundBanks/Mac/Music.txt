@@ -5,6 +5,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 	3909959462	Enviroment			\Default Work Unit\Enviroment	
 
 State	ID	Name	State Group			Notes
+	97036328	Decent_Cinematic	Enviroment			
 	284967655	Ship	Enviroment			
 	438105790	Outside	Enviroment			
 	748895195	None	Enviroment			
@@ -12,6 +13,7 @@ State	ID	Name	State Group			Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	180261933	2-Dark Fantasy Studio- Reloaded	C:\Dev_Unreal\Capstone_Project\Capstone_Project_WwiseProject\.cache\6C\{6C13342F-75A5-017C-516A-C528A3F66CA6}.wem		\Interactive Music Hierarchy\Default Work Unit\StartScreenMusic\2-Dark Fantasy Studio- Reloaded\2-Dark Fantasy Studio- Reloaded		22226496
+	298393960	11-Dark Fantasy Studio- Time	C:\Dev_Unreal\Capstone_Project\Capstone_Project_WwiseProject\.cache\A0\{A00E613F-DAA0-A207-D616-5CED4A441DF6}.wem		\Interactive Music Hierarchy\Default Work Unit\GameMusic\Decent Music\11-Dark Fantasy Studio- Time		24278616
 	381046349	18-Dark Fantasy Studio- Productor	C:\Dev_Unreal\Capstone_Project\Capstone_Project_WwiseProject\.cache\71\{71AEC03B-BB23-7B3E-DFBF-73E471E2D395}.wem		\Interactive Music Hierarchy\Default Work Unit\GameMusic\Inside Music\18-Dark Fantasy Studio- Productor\18-Dark Fantasy Studio- Productor		8290896
 	430694212	9-Dark_Fantasy_Studio-Forever_and_a_day	C:\Dev_Unreal\Capstone_Project\Capstone_Project_WwiseProject\.cache\72\{72D510C0-4A71-381B-F67B-A7EE44B9719F}.wem		\Interactive Music Hierarchy\Default Work Unit\GameMusic\Outside Music\9-Dark Fantasy Studio- Forever and a day\9-Dark_Fantasy_Studio-Forever_and_a_day		99389736
 	868120818	3-Dark Fantasy Studio- Dead files	C:\Dev_Unreal\Capstone_Project\Capstone_Project_WwiseProject\.cache\55\{555F49A0-7339-32FE-8D0C-1ED51C78B8C5}.wem		\Interactive Music Hierarchy\Default Work Unit\GameMusic\Inside Music\3-Dark Fantasy Studio- Dead files\3-Dark Fantasy Studio- Dead files		15876096

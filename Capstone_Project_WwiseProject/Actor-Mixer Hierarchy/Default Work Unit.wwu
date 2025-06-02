@@ -1606,7 +1606,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-10</Value>
+												<Value>-6</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -2743,7 +2743,69 @@
 								</Sound>
 							</ChildrenList>
 						</Folder>
-						<Folder Name="Decent" ID="{3B6F4174-DCD8-44AE-8AB7-D59A7646CF30}" ShortID="465442462"/>
+						<Folder Name="Decent" ID="{3B6F4174-DCD8-44AE-8AB7-D59A7646CF30}" ShortID="465442462">
+							<ChildrenList>
+								<Sound Name="Decent-Commander_01" ID="{7E0F89DD-6539-434A-B824-025AA7DDC702}" ShortID="863372880">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Decent-Commander_01" ID="{01807469-0FF9-4B6C-AC87-13104FE52478}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="20"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>Decent-Commander_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="70674728"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Decent-Commander_01" ID="{01807469-0FF9-4B6C-AC87-13104FE52478}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Decent-Pilot_01" ID="{52EEE4F6-628C-4F9C-94FD-3F23B93B1E49}" ShortID="98054341">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Decent-Pilot_01" ID="{19B0C407-557B-4288-84DE-0310B0A4444A}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="20"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>Decent-Pilot_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="732168272"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Decent-Pilot_01" ID="{19B0C407-557B-4288-84DE-0310B0A4444A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

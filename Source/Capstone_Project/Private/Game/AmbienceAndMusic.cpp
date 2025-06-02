@@ -3,6 +3,7 @@
 
 #include "Game/AmbienceAndMusic.h"
 #include "AkGameplayStatics.h"
+#include "AkAudioEvent.h"
 
 // Sets default values
 AAmbienceAndMusic::AAmbienceAndMusic()

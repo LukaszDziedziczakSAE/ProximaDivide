@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{7A81C6AE-5A0B-497F-8EA4-C51B2E492C81}",
     "Language": "English(US)",
-    "Hash": "{EB0E46CB-574B-19CA-DB4F-C576EE481CA0}",
+    "Hash": "{C83C1DBF-5BF9-B9EE-BF8B-765760DF0875}",
     "ObjectPath": "Play_TutorialDialog2",
     "ShortName": "Play_TutorialDialog2",
     "Path": "Event/English(US)/Play_TutorialDialog2.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "TutorialDialog-KubaTake02-PSA1_02.wav",
       "Path": "Media/English(US)/402914802.wem",
-      "CachePath": "BC/{BC320965-78EA-2E85-1A22-89CC67DF9554}.wem"
+      "CachePath": "D7/{D738B056-4EB6-1A26-B637-DA063DD9C4CE}.wem"
      }
     ],
     "Events": [
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{6FEAE6EA-842F-E428-1F5E-2CE795DAD363}"
+  "FileHash": "{CF749A09-5802-9689-22FB-05E38CF0CC1D}"
  }
 }

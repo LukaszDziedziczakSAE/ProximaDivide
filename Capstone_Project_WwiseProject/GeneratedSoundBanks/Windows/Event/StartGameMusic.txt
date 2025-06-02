@@ -5,6 +5,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 	3909959462	Enviroment			\Default Work Unit\Enviroment	
 
 State	ID	Name	State Group			Notes
+	97036328	Decent_Cinematic	Enviroment			
 	284967655	Ship	Enviroment			
 	438105790	Outside	Enviroment			
 	748895195	None	Enviroment			

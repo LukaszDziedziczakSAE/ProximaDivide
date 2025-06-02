@@ -10,11 +10,20 @@
     "Type": "Event",
     "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
     "Language": "SFX",
-    "Hash": "{EC8821F1-4908-55AA-5967-BF510F5DF12F}",
+    "Hash": "{0FE8B858-FD24-53CB-B21D-E0BE5256251F}",
     "ObjectPath": "StartGameMusic",
     "ShortName": "StartGameMusic",
     "Path": "Event/StartGameMusic.bnk",
     "Media": [
+     {
+      "Id": "298393960",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "11-Dark Fantasy Studio- Time.wav",
+      "Path": "Media/298393960.wem",
+      "CachePath": "A0/{A00E613F-DAA0-A207-D616-5CED4A441DF6}.wem"
+     },
      {
       "Id": "381046349",
       "Language": "SFX",
@@ -113,6 +122,19 @@
           "Id": "926149274"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "97036328",
+         "GUID": "{2D788C6D-017F-4372-BB41-2357233E78FB}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "298393960"
+         }
+        ]
        }
       ]
      }
@@ -124,6 +146,12 @@
       "ObjectPath": "\\States\\Default Work Unit\\Enviroment",
       "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
       "States": [
+       {
+        "Id": "97036328",
+        "Name": "Decent_Cinematic",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Decent_Cinematic",
+        "GUID": "{2D788C6D-017F-4372-BB41-2357233E78FB}"
+       },
        {
         "Id": "284967655",
         "Name": "Ship",
@@ -153,6 +181,6 @@
     ]
    }
   ],
-  "FileHash": "{38BEBD4D-1E13-55D6-A496-3165156E6DDC}"
+  "FileHash": "{8627113F-8495-81D1-E4BA-042EEFBD0513}"
  }
 }

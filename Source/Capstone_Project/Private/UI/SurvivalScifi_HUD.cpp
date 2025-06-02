@@ -57,6 +57,8 @@ void ASurvivalScifi_HUD::ShowGameHUD()
 
 void ASurvivalScifi_HUD::HideGameHUD()
 {
+	HideInteraction();
+
 	if (PlayerStats != nullptr)
 	{
 		PlayerStats->RemoveFromParent();
@@ -98,6 +100,8 @@ void ASurvivalScifi_HUD::HideInventory()
 
 void ASurvivalScifi_HUD::ShowInteraction()
 {
+	if (bSequenceIsPlaying) return;
+
 	if (Interaction == nullptr && InteractionClass != nullptr) 
 		Interaction = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), InteractionClass);
 	
@@ -212,4 +216,16 @@ void ASurvivalScifi_HUD::UpdateTutorialInfo()
 
 	if (Inventory != nullptr)
 		Inventory->UpdateTutorialInfo();
+}
+
+void ASurvivalScifi_HUD::SequenceStart()
+{
+	bSequenceIsPlaying = true;
+	HideGameHUD();
+}
+
+void ASurvivalScifi_HUD::SequeneceEnd()
+{
+	bSequenceIsPlaying = false;
+	ShowGameHUD();
 }

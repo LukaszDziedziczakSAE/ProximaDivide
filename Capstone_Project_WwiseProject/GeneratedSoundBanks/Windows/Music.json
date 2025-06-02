@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{FE2C163D-388F-4DF2-94E4-25F807FE7889}",
     "Language": "SFX",
-    "Hash": "{CACC6F6E-5BF2-F331-6A48-0A7AD6F40D5E}",
+    "Hash": "{F0DEF787-8033-29E1-C0F2-C03900CD371C}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -22,6 +22,14 @@
       "Location": "Memory",
       "ShortName": "2-Dark Fantasy Studio- Reloaded.wav",
       "CachePath": "6C/{6C13342F-75A5-017C-516A-C528A3F66CA6}.wem"
+     },
+     {
+      "Id": "298393960",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "11-Dark Fantasy Studio- Time.wav",
+      "CachePath": "A0/{A00E613F-DAA0-A207-D616-5CED4A441DF6}.wem"
      },
      {
       "Id": "381046349",
@@ -121,6 +129,19 @@
           "Id": "926149274"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "97036328",
+         "GUID": "{2D788C6D-017F-4372-BB41-2357233E78FB}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "298393960"
+         }
+        ]
        }
       ]
      }
@@ -132,6 +153,12 @@
       "ObjectPath": "\\States\\Default Work Unit\\Enviroment",
       "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
       "States": [
+       {
+        "Id": "97036328",
+        "Name": "Decent_Cinematic",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Decent_Cinematic",
+        "GUID": "{2D788C6D-017F-4372-BB41-2357233E78FB}"
+       },
        {
         "Id": "284967655",
         "Name": "Ship",
@@ -161,6 +188,6 @@
     ]
    }
   ],
-  "FileHash": "{9FA67472-2695-0676-6DF7-164ECDACA722}"
+  "FileHash": "{1E0954FB-CEF8-F3BA-793A-18C696DE836B}"
  }
 }

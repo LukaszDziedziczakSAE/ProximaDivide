@@ -80,6 +80,12 @@
       "GUID": "{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}",
       "States": [
        {
+        "Id": "97036328",
+        "Name": "Decent_Cinematic",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Decent_Cinematic",
+        "GUID": "{2D788C6D-017F-4372-BB41-2357233E78FB}"
+       },
+       {
         "Id": "284967655",
         "Name": "Ship",
         "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Ship",
@@ -136,6 +142,6 @@
     ]
    }
   ],
-  "FileHash": "{10211C67-556C-DD82-20A0-BD46EC886076}"
+  "FileHash": "{F9D52331-DE5E-587E-98D7-D9D929A43327}"
  }
 }

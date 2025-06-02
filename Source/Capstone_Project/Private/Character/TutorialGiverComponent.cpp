@@ -132,7 +132,7 @@ void UTutorialGiverComponent::PlaybackComplete(EAkCallbackType CallbackType, UAk
 		GoToNextPart();
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Tutorial Audio Complete"));
+	//UE_LOG(LogTemp, Warning, TEXT("Tutorial Audio Complete"));
 }
 
 void UTutorialGiverComponent::GoToNextPart()
@@ -140,11 +140,11 @@ void UTutorialGiverComponent::GoToNextPart()
 	if (AudioIndex != -1)
 	{
 		ObjectivePrecomplete = true;
-		UE_LOG(LogTemp, Log, TEXT("Objective precomplete"));
+		//UE_LOG(LogTemp, Log, TEXT("Objective precomplete"));
 		return;
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("Starting next tutorial part"));
+	//UE_LOG(LogTemp, Log, TEXT("Starting next tutorial part"));
 	if (Index < 0) Index = 0;
 	else Index++;
 
@@ -188,7 +188,11 @@ void UTutorialGiverComponent::CompleteTutorial()
 	Index = -1;
 	HasCompleted = true;
 	if (AI != nullptr) AI->UpdateBB();
-	UE_LOG(LogTemp, Warning, TEXT("Tutorial Complete"));
+	Player->GetTutorialComponent()->HideActionBar = false;
+	Player->GetTutorialComponent()->HideStats = false;
+	Player->GetTutorialComponent()->HideDayTime = false;
+	Player->GetHUD()->ShowGameHUD();
+	UE_LOG(LogTemp, Log, TEXT("Tutorial Complete"));
 }
 
 void UTutorialGiverComponent::PlaySitDownAnimation()

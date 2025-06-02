@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3088435820",
+    "Type": "Event",
+    "GUID": "{55559CC4-E569-4C20-88C7-A398F634455A}",
+    "Language": "English(US)",
+    "Hash": "{BBE3D36B-A1F2-3CE1-5365-F2BDCD2762CF}",
+    "ObjectPath": "Play_Decent_Pilot_01",
+    "ShortName": "Play_Decent_Pilot_01",
+    "Path": "Event/English(US)/Play_Decent_Pilot_01.bnk",
+    "Media": [
+     {
+      "Id": "732168272",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Decent-Pilot_01.wav",
+      "Path": "Media/English(US)/732168272.wem",
+      "CachePath": "6B/{6B351DEB-3E29-8795-25BA-D7D104914CA2}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3088435820",
+      "Name": "Play_Decent_Pilot_01",
+      "ObjectPath": "\\Events\\Default Work Unit\\Dialog\\Decent\\Play_Decent_Pilot_01",
+      "GUID": "{55559CC4-E569-4C20-88C7-A398F634455A}",
+      "DurationType": "OneShot",
+      "DurationMin": "105.25",
+      "DurationMax": "105.25",
+      "MediaRefs": [
+       {
+        "Id": "732168272"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{2E1F570F-CCF5-A928-8CCD-16EE03AB48B9}"
+ }
+}
