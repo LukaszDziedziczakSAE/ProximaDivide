@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C7040C5E-8EA3-48E6-96DC-072A03B8F1BE}",
     "Language": "English(US)",
-    "Hash": "{97131BCB-B13A-B069-42A5-92A9D16FD3C1}",
+    "Hash": "{F1880221-1F82-401E-59C2-07898C547DA2}",
     "ObjectPath": "Play_TutorialDialog9",
     "ShortName": "Play_TutorialDialog9",
     "Path": "Event/English(US)/Play_TutorialDialog9.bnk",
@@ -44,6 +44,6 @@
     ]
    }
   ],
-  "FileHash": "{7DCD1D20-1490-0003-D346-124050B746BE}"
+  "FileHash": "{F420CE1E-8CDE-C03A-BF88-B1C85A8C1B65}"
  }
 }

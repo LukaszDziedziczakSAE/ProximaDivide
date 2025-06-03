@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{84E48C0C-3EED-4F29-BEEA-621E162A7BC8}",
     "Language": "English(US)",
-    "Hash": "{F7FEDCD9-B876-5CC5-4AA9-B5558F46ECC7}",
+    "Hash": "{68C55B5F-DBD9-E21C-9ADE-0130D3BBF346}",
     "ObjectPath": "Play_Decent_Commander_01",
     "ShortName": "Play_Decent_Commander_01",
     "Path": "Event/English(US)/Play_Decent_Commander_01.bnk",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{EE8860F9-417A-02DF-D131-11CBF68A504F}"
+  "FileHash": "{993D7CEB-4ADE-0A35-4D8B-28AE93CCA2A3}"
  }
 }

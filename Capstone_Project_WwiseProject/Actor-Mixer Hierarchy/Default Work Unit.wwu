@@ -2042,7 +2042,7 @@
 								<Property Name="SwitchBehavior" Type="int16" Value="1"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-12</Value>
+										<Value>-10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2136,6 +2136,40 @@
 										<ActiveSource Name="462150-AMBIENCE_Aircraft_Inside_Cockpit_In_Flight_2-LOOP" ID="{9761F48D-68D0-4901-8564-F95007DE3B36}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="Decent Seqence" ID="{EC75CC79-4C3B-4FB8-A37E-E3E738AF2B8C}" ShortID="1019335660">
+									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>1.185</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Decent-InteriorAmbiance" ID="{DB844FB7-E329-4EEB-BD9B-6A5E1530868A}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.47672102416771"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="20"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Decent-InteriorAmbiance.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="93656400"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Decent-InteriorAmbiance" ID="{DB844FB7-E329-4EEB-BD9B-6A5E1530868A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 							<GroupingInfo>
 								<GroupingBehaviorList>
@@ -2143,10 +2177,27 @@
 										<ItemRef Name="Exterior" ID="{0277DA61-AFC6-4C17-BEB3-EA023C46AFC1}"/>
 									</GroupingBehavior>
 									<GroupingBehavior>
+										<ItemRef Name="Decent Seqence" ID="{EC75CC79-4C3B-4FB8-A37E-E3E738AF2B8C}"/>
+										<PropertyList>
+											<Property Name="FadeInTime" Type="Real64">
+												<ValueList>
+													<Value>3</Value>
+												</ValueList>
+											</Property>
+										</PropertyList>
+									</GroupingBehavior>
+									<GroupingBehavior>
 										<ItemRef Name="Interior" ID="{8A6D6C93-8CD3-4D8F-B37E-A260E84AD03D}"/>
 									</GroupingBehavior>
 									<GroupingBehavior>
 										<ItemRef Name="Ship" ID="{64B3FADA-9B46-4DEC-8BA5-0A683CCC68F4}"/>
+										<PropertyList>
+											<Property Name="FadeOutTime" Type="Real64">
+												<ValueList>
+													<Value>3</Value>
+												</ValueList>
+											</Property>
+										</PropertyList>
 									</GroupingBehavior>
 								</GroupingBehaviorList>
 								<GroupingList>
@@ -2154,6 +2205,12 @@
 										<SwitchRef Name="Ship" ID="{0BDF154F-9853-456C-B05E-1376B5D4A092}"/>
 										<ItemList>
 											<ItemRef Name="Ship" ID="{64B3FADA-9B46-4DEC-8BA5-0A683CCC68F4}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Decent_Cinematic" ID="{2D788C6D-017F-4372-BB41-2357233E78FB}"/>
+										<ItemList>
+											<ItemRef Name="Decent Seqence" ID="{EC75CC79-4C3B-4FB8-A37E-E3E738AF2B8C}"/>
 										</ItemList>
 									</Grouping>
 									<Grouping>
@@ -2199,6 +2256,11 @@
 												<Property Name="FadeInDuration" Type="Real64" Value="0.512907608695652"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.575747282608696"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake01-PSA1_01.wav</AudioFile>
@@ -2233,6 +2295,11 @@
 												<Property Name="FadeInDuration" Type="Real64" Value="0.842221467391304"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.635360054347826"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake02-PSA1_02.wav</AudioFile>
@@ -2267,6 +2334,11 @@
 												<Property Name="FadeInDuration" Type="Real64" Value="0.739639945652174"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.90523097826087"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake03-PSA1_03.wav</AudioFile>
@@ -2302,6 +2374,11 @@
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.371376811594203"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.407608695652174"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake04-PSA1_04.wav</AudioFile>
@@ -2337,6 +2414,11 @@
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.413609601449275"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimEnd" Type="Real64" Value="2.74513134057971"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake05-PSA1_05.wav</AudioFile>
@@ -2371,6 +2453,11 @@
 												<Property Name="FadeInDuration" Type="Real64" Value="0.332597373188406"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.172950634057971"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake06-PSA1_06.wav</AudioFile>
@@ -2405,6 +2492,11 @@
 												<Property Name="FadeInDuration" Type="Real64" Value="0.400249094202898"/>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.701426630434782"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake07-PSA1_07.wav</AudioFile>
@@ -2441,6 +2533,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.286231884057971"/>
 												<Property Name="TrimEnd" Type="Real64" Value="9.67374320652174"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake08-PSA1_08.wav</AudioFile>
@@ -2477,6 +2574,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.608695652173913"/>
 												<Property Name="TrimEnd" Type="Real64" Value="3.45471014492754"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake09-PSA1_09.wav</AudioFile>
@@ -2513,6 +2615,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.293478260869565"/>
 												<Property Name="TrimEnd" Type="Real64" Value="4.10461956521739"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake10-PSA1_10.wav</AudioFile>
@@ -2549,6 +2656,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.592447916666667"/>
 												<Property Name="TrimEnd" Type="Real64" Value="4.10354393115942"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake11-PSA1_11.wav</AudioFile>
@@ -2585,6 +2697,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.62794384057971"/>
 												<Property Name="TrimEnd" Type="Real64" Value="5.27632472826087"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake12-PSA1_12.wav</AudioFile>
@@ -2621,6 +2738,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.814764492753623"/>
 												<Property Name="TrimEnd" Type="Real64" Value="6.125"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake13-PSA1_13.wav</AudioFile>
@@ -2657,6 +2779,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.631453804347826"/>
 												<Property Name="TrimEnd" Type="Real64" Value="2.10235507246377"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake14-PSA1_14.wav</AudioFile>
@@ -2693,6 +2820,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.528362771739131"/>
 												<Property Name="TrimEnd" Type="Real64" Value="7.20714447463768"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake15-PSA1_15.wav</AudioFile>
@@ -2729,6 +2861,11 @@
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 												<Property Name="TrimBegin" Type="Real64" Value="0.359035326086956"/>
 												<Property Name="TrimEnd" Type="Real64" Value="5.08118206521739"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>TutorialDialog-KubaTake16-PSA1_16.wav</AudioFile>
@@ -2762,6 +2899,11 @@
 										<AudioFileSource Name="Decent-Commander_01" ID="{01807469-0FF9-4B6C-AC87-13104FE52478}">
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="20"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>5</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>Decent-Commander_01.wav</AudioFile>
@@ -2792,6 +2934,11 @@
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="20"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>5</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<Language>English(US)</Language>
 											<AudioFile>Decent-Pilot_01.wav</AudioFile>
@@ -2802,6 +2949,33 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="Decent-Pilot_01" ID="{19B0C407-557B-4288-84DE-0310B0A4444A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Decent-ConsoleSounds" ID="{E4EA03A6-C439-420D-84E0-3685DCAB18A6}" ShortID="68369897">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Decent-ConsoleSounds" ID="{0E523860-1B0F-4007-B20E-CD3056671A4A}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.572065229001253"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="20"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Decent-ConsoleSounds.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="791396720"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Decent-ConsoleSounds" ID="{0E523860-1B0F-4007-B20E-CD3056671A4A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

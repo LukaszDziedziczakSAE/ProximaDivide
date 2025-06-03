@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{BCC4B4F6-5E14-4BDB-B92D-3BF16A834C67}",
     "Language": "SFX",
-    "Hash": "{FC2C2057-447F-D560-0581-AE00CA0ADBF5}",
+    "Hash": "{3139A55B-9027-83A3-6C4C-ABCB64CFCFB3}",
     "ObjectPath": "AmbientAtmosphere",
     "ShortName": "AmbientAtmosphere",
     "Path": "Event/AmbientAtmosphere.bnk",
@@ -23,6 +23,15 @@
       "ShortName": "462150-AMBIENCE_Aircraft_Inside_Cockpit_In_Flight_2-LOOP.wav",
       "Path": "Media/69997422.wem",
       "CachePath": "02/{02056B11-626F-9A1A-27F0-2DE75D570DFA}.wem"
+     },
+     {
+      "Id": "93656400",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Decent-InteriorAmbiance.wav",
+      "Path": "Media/93656400.wem",
+      "CachePath": "53/{534F4A89-7D52-7DE0-6C51-E37865CF7E0B}.wem"
      },
      {
       "Id": "112375236",
@@ -61,6 +70,19 @@
         "MediaRefs": [
          {
           "Id": "69997422"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "97036328",
+         "GUID": "{2D788C6D-017F-4372-BB41-2357233E78FB}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "93656400"
          }
         ]
        },
@@ -136,6 +158,6 @@
     ]
    }
   ],
-  "FileHash": "{56847945-9C1B-4C95-3BEC-C2D247D34305}"
+  "FileHash": "{E30442E7-E482-1AF2-23DA-1BCBEC232AC1}"
  }
 }

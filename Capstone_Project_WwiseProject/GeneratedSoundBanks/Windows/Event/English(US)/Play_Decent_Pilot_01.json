@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{55559CC4-E569-4C20-88C7-A398F634455A}",
     "Language": "English(US)",
-    "Hash": "{BBE3D36B-A1F2-3CE1-5365-F2BDCD2762CF}",
+    "Hash": "{5CD0D140-BEA8-F834-DA87-20E6FD38734D}",
     "ObjectPath": "Play_Decent_Pilot_01",
     "ShortName": "Play_Decent_Pilot_01",
     "Path": "Event/English(US)/Play_Decent_Pilot_01.bnk",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{816345A3-62B3-2518-5824-ECAF2BDF0B98}"
+  "FileHash": "{0ABF842B-B09F-0D71-40D5-2D3921D15AAC}"
  }
 }

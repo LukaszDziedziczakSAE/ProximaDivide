@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
     "Language": "SFX",
-    "Hash": "{0FE8B858-FD24-53CB-B21D-E0BE5256251F}",
+    "Hash": "{79F3D8B4-4E48-2777-A7EA-2B30DEC1F07B}",
     "ObjectPath": "StartGameMusic",
     "ShortName": "StartGameMusic",
     "Path": "Event/StartGameMusic.bnk",
@@ -181,6 +181,6 @@
     ]
    }
   ],
-  "FileHash": "{8627113F-8495-81D1-E4BA-042EEFBD0513}"
+  "FileHash": "{88ABCA55-5009-46C7-90B9-7187D4E17CDA}"
  }
 }
