@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{BCC4B4F6-5E14-4BDB-B92D-3BF16A834C67}",
     "Language": "SFX",
-    "Hash": "{3139A55B-9027-83A3-6C4C-ABCB64CFCFB3}",
+    "Hash": "{C0774849-9AB1-2018-0F14-AECC2D6A3768}",
     "ObjectPath": "AmbientAtmosphere",
     "ShortName": "AmbientAtmosphere",
     "Path": "Event/AmbientAtmosphere.bnk",
@@ -158,6 +158,6 @@
     ]
    }
   ],
-  "FileHash": "{0CE0CD36-29E6-2ECB-3314-F74817C3CD6E}"
+  "FileHash": "{59D1AE2E-43A3-C52F-583E-431E69DD37E8}"
  }
 }
