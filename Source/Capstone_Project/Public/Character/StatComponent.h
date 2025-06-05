@@ -44,6 +44,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	float GetPercentage() { return CurrentValue / MaxValue; }
 
+	UFUNCTION(BlueprintPure)
+	float GetMissingValue() { return MaxValue - CurrentValue; }
+
 	UFUNCTION(BlueprintCallable)
 	void ModifyValue(float ModifyAmount);
 
