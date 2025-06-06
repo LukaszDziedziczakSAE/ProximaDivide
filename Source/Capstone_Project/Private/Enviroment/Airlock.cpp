@@ -9,6 +9,7 @@
 #include "AkComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Character/PlayerCharacter.h"
+#include "Game/SurvivalScifiGameMode.h"
 
 // Sets default values
 AAirlock::AAirlock()
@@ -102,6 +103,13 @@ void AAirlock::BeginPlay()
 	Collider->OnComponentEndOverlap.AddDynamic(this, &AAirlock::OnColliderEndOverlap);
 }
 
+void AAirlock::OverridePlayerStartTag()
+{
+	if (PlayerStartTagOverride == "") return;
+
+
+}
+
 // Called every frame
 void AAirlock::Tick(float DeltaTime)
 {
@@ -119,7 +127,7 @@ void AAirlock::Tick(float DeltaTime)
 
 		Timer -= DeltaTime;
 
-		if (Timer <= 0)
+		if (Timer <= 0) // cycle complete
 		{
 			if (AirlockState == EAirlockState::CyclingIn)
 			{
@@ -137,7 +145,14 @@ void AAirlock::Tick(float DeltaTime)
 			Light->SetLightColor(StandbyColor);
 			VentingVFX->Deactivate();
 
-			PlayerCharacter->bIsInside = AirlockState == EAirlockState::OpenIn;
+			if (PlayerCharacter != nullptr)
+			{
+				PlayerCharacter->bIsInside = AirlockState == EAirlockState::OpenIn;
+				if (PlayerCharacter->bIsInside && PlayerStartTagOverride != "" && PlayerStartTagOverride != "None" && PlayerStartTagOverride != "none")
+				{
+					Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode())->UpdatePlayerStartTag(PlayerStartTagOverride);
+				}
+			}
 		}
 	}
 }

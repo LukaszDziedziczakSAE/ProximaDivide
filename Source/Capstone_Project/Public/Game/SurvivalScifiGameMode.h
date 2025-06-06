@@ -6,9 +6,6 @@
 #include "GameFramework/GameModeBase.h"
 #include "SurvivalScifiGameMode.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class CAPSTONE_PROJECT_API ASurvivalScifiGameMode : public AGameModeBase
 {
@@ -36,10 +33,15 @@ protected:
 	UPROPERTY()
 	class UDirectionalLightComponent* SunLight;
 
+	UPROPERTY()
+	class USurvivalSciFi_GameInstance* GameInstance;
+
 public:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaSeconds) override;
+
+	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
 	
 	UFUNCTION(BlueprintPure)
 	int GetDay() { return Day; }
@@ -49,4 +51,13 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	float GetTimeProgress();
+
+	UFUNCTION()
+	void UpdatePlayerStartTag(FName PlayerStartTag);
+
+	UFUNCTION()
+	void SaveGame();
+
+	UFUNCTION()
+	void LoadGame(int SlotNumber = -1);
 };

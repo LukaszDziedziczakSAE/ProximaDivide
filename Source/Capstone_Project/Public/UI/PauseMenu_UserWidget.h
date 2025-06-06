@@ -18,6 +18,12 @@ protected:
 	class UButton* ResumeButton;
 
 	UPROPERTY(meta = (BindWidget))
+	UButton* SaveButton;
+
+	UPROPERTY(meta = (BindWidget))
+	UButton* LoadButton;
+
+	UPROPERTY(meta = (BindWidget))
 	UButton* SettingsButton;
 
 	UPROPERTY(meta = (BindWidget))
@@ -25,6 +31,12 @@ protected:
 
 	UFUNCTION()
 	void OnResumeButtonPress();
+
+	UFUNCTION()
+	void OnSaveButtonPress();
+
+	UFUNCTION()
+	void OnLoadButtonPress();
 
 	UFUNCTION()
 	void OnSettingsButtonPress();

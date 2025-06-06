@@ -38,6 +38,12 @@ protected:
 	UFUNCTION()
 	void OnLevelSeqenceComplete();
 
+	UPROPERTY(EditAnywhere)
+	FName NewMapName = TEXT("L_Mars");
+
+	UPROPERTY(EditAnywhere)
+	FName PlayerStartTag = TEXT("crash");
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

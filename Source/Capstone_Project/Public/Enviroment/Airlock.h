@@ -89,6 +89,12 @@ protected:
 	UFUNCTION()
 	void BeginCycling();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName PlayerStartTagOverride;
+
+	UFUNCTION()
+	void OverridePlayerStartTag();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

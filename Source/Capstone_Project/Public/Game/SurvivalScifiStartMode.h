@@ -6,9 +6,6 @@
 #include "GameFramework/GameModeBase.h"
 #include "SurvivalScifiStartMode.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class CAPSTONE_PROJECT_API ASurvivalScifiStartMode : public AGameModeBase
 {

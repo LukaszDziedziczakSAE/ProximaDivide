@@ -8,6 +8,7 @@
 #include "LevelSequencePlayer.h"
 #include "Kismet/GameplayStatics.h"
 #include "UI/SurvivalScifi_HUD.h"
+#include "Game/SurvivalSciFi_GameInstance.h"
 
 // Sets default values
 AFlightDeckChair::AFlightDeckChair()
@@ -33,8 +34,17 @@ void AFlightDeckChair::BeginPlay()
 
 void AFlightDeckChair::OnLevelSeqenceComplete()
 {
-	UGameplayStatics::OpenLevel(GetWorld(), FName("L_Mars"));
+	//UGameplayStatics::OpenLevel(GetWorld(), FName("L_Mars"));
 	//PlayerCharacter->GetHUD()->SequenceEnd();
+
+	USurvivalSciFi_GameInstance* GI = Cast<USurvivalSciFi_GameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+
+	if (GI)
+	{
+		GI->SwitchToMap(NewMapName, PlayerStartTag);
+	}
+
+	else UE_LOG(LogTemp, Error, TEXT("Fligh deck chair cannot find Game Instance"));
 }
 
 // Called every frame
