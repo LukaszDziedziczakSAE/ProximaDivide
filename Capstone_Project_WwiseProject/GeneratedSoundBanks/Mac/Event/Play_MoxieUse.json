@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}",
     "Language": "SFX",
-    "Hash": "{2E256DC8-23B0-A5A2-4275-C6B2650676EF}",
+    "Hash": "{90F77163-59F1-63B5-FBE7-2DC4AFDD958A}",
     "ObjectPath": "Play_MoxieUse",
     "ShortName": "Play_MoxieUse",
     "Path": "Event/Play_MoxieUse.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "156382-Air-Valve-Burst-Hose-Disconnect-Release-Hiss-Blast-Simple.wav",
       "Path": "Media/371937443.wem",
-      "CachePath": "8F/{8FBE41D6-C95D-8D9D-DF03-A113C64464A0}.wem"
+      "CachePath": "95/{951DCC6E-53D5-E10B-3DB0-67CB0086ADEB}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{2D10BB73-9DD1-9DB5-6ABD-1629BE463922}"
+  "FileHash": "{449C6CC7-413B-F2D0-1B64-DA23FC0036B6}"
  }
 }

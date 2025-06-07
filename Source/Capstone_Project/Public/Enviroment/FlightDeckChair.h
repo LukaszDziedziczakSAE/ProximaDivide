@@ -51,6 +51,12 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Post Sequence")
 	EEnviroment PostSequenceEnviroment;
 
+	UPROPERTY(EditAnywhere, Category = "Level Sequence")
+	FName TitleCardEventName;
+
+	UPROPERTY(VisibleAnywhere)
+	APlayerCharacter* Player;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -58,5 +64,8 @@ public:
 	virtual void Interact(class APlayerCharacter* PlayerCharacter) override;
 
 	virtual FString InteractionText() override;
+
+	UFUNCTION()
+	void ReceiveNotify(FName EventName);
 
 };

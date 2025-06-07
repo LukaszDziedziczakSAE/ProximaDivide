@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="4123026185" Type="Event" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" Language="SFX" Hash="{2E256DC8-23B0-A5A2-4275-C6B2650676EF}">
+		<SoundBank Id="4123026185" Type="Event" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" Language="SFX" Hash="{90F77163-59F1-63B5-FBE7-2DC4AFDD958A}">
 			<ObjectPath>Play_MoxieUse</ObjectPath>
 			<ShortName>Play_MoxieUse</ShortName>
 			<Path>Event/Play_MoxieUse.bnk</Path>
@@ -9,7 +9,7 @@
 				<File Id="371937443" Language="SFX" Streaming="false" Location="Loose">
 					<ShortName>156382-Air-Valve-Burst-Hose-Disconnect-Release-Hiss-Blast-Simple.wav</ShortName>
 					<Path>Media/371937443.wem</Path>
-					<CachePath>8F/{8FBE41D6-C95D-8D9D-DF03-A113C64464A0}.wem</CachePath>
+					<CachePath>95/{951DCC6E-53D5-E10B-3DB0-67CB0086ADEB}.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -21,5 +21,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9E604D21-C5B2-E84F-D238-40EDCBD86883}</FileHash>
+	<FileHash>{D9C37FAF-8B80-2F5E-87FB-D3FD8E9D444F}</FileHash>
 </SoundBanksInfo>

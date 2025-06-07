@@ -15,6 +15,7 @@
 #include "Game/SurvivalScifi_PlayerController.h"
 #include "Character/PlayerCharacter.h"
 #include "Character/PlayerTutorialComponent.h"
+#include "UI/TittleCard_UserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -233,4 +234,12 @@ void ASurvivalScifi_HUD::SequeneceEnd()
 {
 	bSequenceIsPlaying = false;
 	ShowGameHUD();
+}
+
+void ASurvivalScifi_HUD::ShowTitleCard()
+{
+	if (TitleCardClass != nullptr) 
+		TitleCard = CreateWidget<UTittleCard_UserWidget>(GetWorld(), TitleCardClass);
+
+	if (TitleCard != nullptr) TitleCard->AddToViewport();
 }

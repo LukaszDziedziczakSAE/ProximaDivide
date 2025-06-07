@@ -435,7 +435,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1568977742" Type="Event" GUID="{F8949438-CCCF-4176-9828-60F978BC455D}" Language="SFX" Hash="{890F4B8C-54D3-0027-435D-90AE2B335A55}">
+		<SoundBank Id="1568977742" Type="Event" GUID="{F8949438-CCCF-4176-9828-60F978BC455D}" Language="SFX" Hash="{EFF9A04A-79BB-70C8-D745-80B1ABAF98E6}">
 			<ObjectPath>StartGameMusic</ObjectPath>
 			<ShortName>StartGameMusic</ShortName>
 			<Path>Event/StartGameMusic.bnk</Path>
@@ -1299,7 +1299,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" GUID="{FE2C163D-388F-4DF2-94E4-25F807FE7889}" Language="SFX" Hash="{0263A907-B665-7C45-2091-C0D4EFC2C95B}">
+		<SoundBank Id="3991942870" Type="User" GUID="{FE2C163D-388F-4DF2-94E4-25F807FE7889}" Language="SFX" Hash="{6D0127C7-C90D-C618-EA3A-2403BA1A23BE}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music</ObjectPath>
 			<ShortName>Music</ShortName>
 			<Path>Music.bnk</Path>
@@ -1387,7 +1387,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="4123026185" Type="Event" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" Language="SFX" Hash="{2E256DC8-23B0-A5A2-4275-C6B2650676EF}">
+		<SoundBank Id="4123026185" Type="Event" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" Language="SFX" Hash="{90F77163-59F1-63B5-FBE7-2DC4AFDD958A}">
 			<ObjectPath>Play_MoxieUse</ObjectPath>
 			<ShortName>Play_MoxieUse</ShortName>
 			<Path>Event/Play_MoxieUse.bnk</Path>
@@ -1395,7 +1395,7 @@
 				<File Id="371937443" Language="SFX" Streaming="false" Location="Loose">
 					<ShortName>156382-Air-Valve-Burst-Hose-Disconnect-Release-Hiss-Blast-Simple.wav</ShortName>
 					<Path>Media/371937443.wem</Path>
-					<CachePath>8F/{8FBE41D6-C95D-8D9D-DF03-A113C64464A0}.wem</CachePath>
+					<CachePath>95/{951DCC6E-53D5-E10B-3DB0-67CB0086ADEB}.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -1426,5 +1426,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{BD0C4E44-FDB9-2050-AA47-B9A2491455C1}</FileHash>
+	<FileHash>{65CDBB86-9778-9EC7-9A7B-8DB98647B213}</FileHash>
 </SoundBanksInfo>

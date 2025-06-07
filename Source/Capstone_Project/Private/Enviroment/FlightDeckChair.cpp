@@ -10,6 +10,7 @@
 #include "UI/SurvivalScifi_HUD.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "Game/SurvivalScifi_SaveGame.h"
+#include "LevelSequenceActor.h"
 
 // Sets default values
 AFlightDeckChair::AFlightDeckChair()
@@ -60,6 +61,7 @@ void AFlightDeckChair::Tick(float DeltaTime)
 
 void AFlightDeckChair::Interact(APlayerCharacter* PlayerCharacter)
 {
+	Player = PlayerCharacter;
 	if (LevelSequence != nullptr)
 	{
 		ALevelSequenceActor* SeqenceActor = nullptr;
@@ -85,4 +87,12 @@ void AFlightDeckChair::Interact(APlayerCharacter* PlayerCharacter)
 FString AFlightDeckChair::InteractionText()
 {
 	return TEXT("Sit Down");
+}
+
+void AFlightDeckChair::ReceiveNotify(FName EventName)
+{
+	if (EventName == TitleCardEventName)
+	{
+		
+	}
 }

@@ -81,7 +81,7 @@ public:
 
 	virtual float PlayMontage(UAnimMontage* Montage) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintPure)
 	class ASurvivalScifi_HUD* GetHUD();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
