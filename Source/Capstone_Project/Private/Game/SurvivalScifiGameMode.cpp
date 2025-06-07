@@ -3,7 +3,6 @@
 
 #include "Game/SurvivalScifiGameMode.h"
 #include "Kismet/GameplayStatics.h"
-#include "Components/DirectionalLightComponent.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "GameFramework/PlayerStart.h"
 #include "Game/SurvivalScifi_SaveGame.h"
@@ -20,12 +19,6 @@ void ASurvivalScifiGameMode::BeginPlay()
 
 	SecondsLeftInHour = SecondsPerHour;
 
-	TArray<AActor*> SunActors;
-	UGameplayStatics::GetAllActorsWithTag(GetWorld(), TEXT("Sun"), SunActors);
-	if (SunActors.Num() > 0) Sun = SunActors[0];
-
-	if (Sun != nullptr) SunLight = Sun->GetComponentByClass<UDirectionalLightComponent>();
-
 	GameInstance = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
 	if (GameInstance != nullptr)
 	{
@@ -33,6 +26,8 @@ void ASurvivalScifiGameMode::BeginPlay()
 		Day = GameInstance->GetCurrentSaveGame()->Day;
 		Hour = GameInstance->GetCurrentSaveGame()->Hour;
 		SecondsLeftInHour = GameInstance->GetCurrentSaveGame()->SecondsLeftInHour;
+
+		OnHourTick.Broadcast();
 	}
 }
 
@@ -53,23 +48,7 @@ void ASurvivalScifiGameMode::Tick(float DeltaSeconds)
 			Day++;
 		}
 
-		if (SunLight != nullptr)
-		{
-			if (Hour >= 6 && Hour < 20)
-			{
-				SunLight->SetIntensity(8.0f);
-			}
-			else
-			{
-				SunLight->SetIntensity(0.0f);
-			}
-		}
-	}
-
-	if (Sun != nullptr)
-	{
-		float angle = FMath::Lerp(185.0f, 355.0f, GetTimeProgress());
-		Sun->SetActorRotation(FQuat::MakeFromEuler(FVector(0, angle, 0)));
+		OnHourTick.Broadcast();
 	}
 }
 

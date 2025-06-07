@@ -5,6 +5,7 @@
 #include "Character/OxygenComponent.h"
 #include "Character/PlayerCharacter.h"
 #include "AkComponent.h"
+#include "AkAudioEvent.h"
 
 // Sets default values
 AMoxie::AMoxie()
@@ -41,10 +42,16 @@ void AMoxie::Tick(float DeltaTime)
 	{
 		Stored = FMath::Clamp(Stored + (RechargeRate * DeltaTime), 0, Capacity);
 	}
+
+	if (CooldownTimer > 0) CooldownTimer -= DeltaTime;
 }
 
 void AMoxie::Interact(APlayerCharacter* PlayerCharacter)
 {
+	if (CooldownTimer > 0) return;
+
+	UE_LOG(LogTemp, Warning, TEXT("Moxie Interaction. Missing: %f, Stored: %f"), PlayerCharacter->GetOxygenComponent()->GetMissingValue(), Stored);
+
 	float RefillAmount = FMath::Min(PlayerCharacter->GetOxygenComponent()->GetMissingValue(), Stored);
 
 	if (RefillAmount > 0)
@@ -53,12 +60,20 @@ void AMoxie::Interact(APlayerCharacter* PlayerCharacter)
 		PlayerCharacter->GetOxygenComponent()->ModifyValue(RefillAmount);
 
 		// play sound
-		// update UI
+		if (MoxieUseSound != nullptr)
+			MoxieUseSound->PostOnActor(PlayerCharacter, FOnAkPostEventCallback(), int32(0), true);
+
+		// update UI ???
+
+		UE_LOG(LogTemp, Log, TEXT("Refilled Oxygen %f"), RefillAmount);
+
+		CooldownTimer = Cooldown;
 	}
 }
 
 FString AMoxie::InteractionText()
 {
+	if (CooldownTimer > 0) return TEXT("");
 	return TEXT("Extract Oxygen");
 }
 

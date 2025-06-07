@@ -268,6 +268,17 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Event Name="Play_HelmetLightToggle" ID="{E97C18C3-32E3-4736-8A11-F72F49C07C50}">
+							<ChildrenList>
+								<Action Name="" ID="{BC3FAF57-CF48-4F96-BB8F-B59F4FE89ECF}" ShortID="184475180">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="HelmetLightToggle" ID="{B27D2F50-F7C4-4E7D-A154-17CA32634953}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Player" ID="{565852B6-C06E-4DAA-92C1-17FBBDAB20A6}" ShortID="741306934">
@@ -325,12 +336,23 @@
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="Play_Moxie" ID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}">
+								<Event Name="Play_MoxieAmbient" ID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}">
 									<ChildrenList>
 										<Action Name="" ID="{DF78B742-BFC6-4DAB-87C3-34664E3D6F71}" ShortID="1016471710">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Moxie" ID="{901F28FD-703B-4B25-9E8E-CECAC421D994}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+													<ObjectRef Name="Moxie Ambient" ID="{901F28FD-703B-4B25-9E8E-CECAC421D994}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_MoxieUse" ID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}">
+									<ChildrenList>
+										<Action Name="" ID="{FE99B991-3197-4771-8A9F-B18BED84D3AA}" ShortID="509350471">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Moxie Use" ID="{493B9BD9-4F4C-42AC-983D-6941F2A809C8}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "SurvivalScifiGameMode.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHourTick);
+
 UCLASS()
 class CAPSTONE_PROJECT_API ASurvivalScifiGameMode : public AGameModeBase
 {
@@ -26,12 +28,6 @@ protected:
 
 	UPROPERTY(VisibleAnywhere)
 	float SecondsLeftInHour;
-
-	UPROPERTY()
-	class AActor* Sun;
-
-	UPROPERTY()
-	class UDirectionalLightComponent* SunLight;
 
 	UPROPERTY()
 	class USurvivalSciFi_GameInstance* GameInstance;
@@ -60,4 +56,7 @@ public:
 
 	UFUNCTION()
 	void LoadGame(int SlotNumber = -1);
+
+	UPROPERTY(BlueprintAssignable, Category = "Delegates")
+	FOnHourTick OnHourTick;
 };

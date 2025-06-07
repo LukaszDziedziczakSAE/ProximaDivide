@@ -70,6 +70,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Jump, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::Jump);
 		Input->BindAction(IA_Pause, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::PauseToggle);
 		Input->BindAction(IA_SkipTutorial, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::SkipTutorial);
+		Input->BindAction(IA_Light, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::ToggleLight);
 	}
 
 	else
@@ -271,6 +272,14 @@ void ASurvivalScifi_PlayerController::SkipTutorial()
 	if (PlayerCharacter != nullptr)
 	{
 		PlayerCharacter->GetTutorialComponent()->SkipTutorial();
+	}
+}
+
+void ASurvivalScifi_PlayerController::ToggleLight()
+{
+	if (PlayerCharacter != nullptr)
+	{
+		PlayerCharacter->ToggleHelmetLight();
 	}
 }
 

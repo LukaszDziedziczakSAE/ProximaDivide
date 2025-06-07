@@ -17,6 +17,8 @@
 #include "UI/SurvivalScifi_HUD.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "Game/SurvivalScifi_SaveGame.h"
+#include "Components/SpotLightComponent.h"
+#include "AkAudioEvent.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -40,12 +42,17 @@ APlayerCharacter::APlayerCharacter()
 
 	FPS_Arms = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Arms"));
 	FPS_Arms->SetupAttachment(CameraComponent);
+
+	SpotLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("Spot Light"));
+	SpotLight->SetupAttachment(CameraComponent);
 }
 
 // Called when the game starts or when spawned
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SpotLight->SetHiddenInGame(true);
 	
 	USurvivalSciFi_GameInstance* GameInstance = Cast<USurvivalSciFi_GameInstance>(GetWorld()->GetGameInstance());
 	if (GameInstance && GameInstance->GetCurrentSaveGame())
@@ -171,5 +178,16 @@ bool APlayerCharacter::TryPickUpItem(UItemDataAsset* Item, bool bShowNotificatio
 	}
 
 	return false;
+}
+
+bool APlayerCharacter::HelemetLightOn()
+{
+	return !SpotLight->bHiddenInGame;
+}
+
+void APlayerCharacter::ToggleHelmetLight()
+{
+	if (SpotLight != nullptr) SpotLight->SetHiddenInGame(!SpotLight->bHiddenInGame);
+	if (HelmetLightSound != nullptr) HelmetLightSound->PostOnActor(this , FOnAkPostEventCallback(), int32(0), true);
 }
 

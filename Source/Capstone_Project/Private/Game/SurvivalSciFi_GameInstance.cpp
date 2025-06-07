@@ -90,8 +90,9 @@ void USurvivalSciFi_GameInstance::StartLoadGame(int SlotNumber)
 	LoadSlot(SlotNumber);
 	if (CurrentSaveGame == nullptr) return;
 
-	SetEnviroment(CurrentSaveGame->Enviroment);
+	//SetEnviroment(CurrentSaveGame->Enviroment);
 
+	// Load Level
 	FString LevelNameString = CurrentSaveGame->CurrentLevelName.ToString();
 	UE_LOG(LogTemp, Log, TEXT("Opening level: %s"), *LevelNameString);
 	UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
@@ -105,9 +106,12 @@ void USurvivalSciFi_GameInstance::SwitchToMap(FName MapName, FName StartTag)
 		return;
 	}
 
+	// Apply new Map Name and Start Tag
 	if (StartTag != "") CurrentSaveGame->PlayerStartTag = StartTag;
 	CurrentSaveGame->CurrentLevelName = MapName;
-	SaveCurrentGame();
+	SaveSlot(CurrentSaveGame->SlotNumber);
+
+	// Load Level
 	FString LevelNameString = CurrentSaveGame->CurrentLevelName.ToString();
 	UE_LOG(LogTemp, Log, TEXT("Switching to level: %s"), *LevelNameString);
 	UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
@@ -139,6 +143,9 @@ void USurvivalSciFi_GameInstance::OnLevelStart()
 			}
 		}
 	}
+	if (CurrentSaveGame == nullptr) return;
+
+	SetEnviroment(CurrentSaveGame->Enviroment);
 }
 
 void USurvivalSciFi_GameInstance::DeleteSlot(int SlotNumber)
@@ -161,6 +168,8 @@ void USurvivalSciFi_GameInstance::PlayMusicAndAmbience()
 	{
 		UAkGameplayStatics::PostEvent(Music, nullptr, int32(0), FOnAkPostEventCallback(), false);
 	}
+
+	bMusicAndAmbience = true;
 }
 
 void USurvivalSciFi_GameInstance::SetEnviroment(EEnviroment Enviroment)
@@ -190,7 +199,8 @@ void USurvivalSciFi_GameInstance::SetEnviroment(EEnviroment Enviroment)
 		UAkGameplayStatics::SetState(ShipState);
 		if (CurrentSaveGame != nullptr) CurrentSaveGame->Enviroment = EEnviroment::Ship;
 		break;
-
 	}
+
+	if (GetWorld()->WorldType == EWorldType::PIE && !bMusicAndAmbience) PlayMusicAndAmbience();
 }
 

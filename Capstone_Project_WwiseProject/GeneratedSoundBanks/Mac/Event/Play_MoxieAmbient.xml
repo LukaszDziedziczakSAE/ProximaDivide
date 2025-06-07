@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="3220222072" Type="Event" GUID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}" Language="SFX" Hash="{0D16FDDE-3A63-CB23-D0B6-041A4440CC8D}">
+			<ObjectPath>Play_MoxieAmbient</ObjectPath>
+			<ShortName>Play_MoxieAmbient</ShortName>
+			<Path>Event/Play_MoxieAmbient.bnk</Path>
+			<Media>
+				<File Id="581891015" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic.wav</ShortName>
+					<Path>Media/581891015.wem</Path>
+					<CachePath>DA/{DA8B854C-0D03-67DB-FC5D-E516AEB73370}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3220222072" Name="Play_MoxieAmbient" ObjectPath="\Events\Default Work Unit\Enviroment\Outside\Play_MoxieAmbient" GUID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}" MaxAttenuation="5000" DurationType="OneShot" DurationMin="64.517334" DurationMax="64.517334">
+					<MediaRefs>
+						<MediaRef Id="581891015"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{17DAE4F6-9368-943C-ECC1-1D944E9F3C8B}</FileHash>
+</SoundBanksInfo>

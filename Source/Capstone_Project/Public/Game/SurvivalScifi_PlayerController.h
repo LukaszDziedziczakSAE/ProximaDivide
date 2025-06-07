@@ -71,6 +71,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_SkipTutorial;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Light;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
@@ -133,6 +136,9 @@ protected:
 
 	UFUNCTION()
 	void SkipTutorial();
+
+	UFUNCTION()
+	void ToggleLight();
 
 public:
 	UFUNCTION()

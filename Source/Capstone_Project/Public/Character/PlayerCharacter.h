@@ -40,6 +40,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPS_Arms;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class USpotLightComponent* SpotLight;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UAkAudioEvent* HelmetLightSound;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -91,4 +97,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool IsControlable = true;
+
+	UFUNCTION()
+	bool HelemetLightOn();
+
+	UFUNCTION()
+	void ToggleHelmetLight();
 };

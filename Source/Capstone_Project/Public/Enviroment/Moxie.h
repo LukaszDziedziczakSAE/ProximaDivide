@@ -29,14 +29,23 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UAkAudioEvent* AmbientSound;
 
-	UPROPERTY()
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UAkAudioEvent* MoxieUseSound;
+
+	UPROPERTY(EditAnywhere)
 	float Stored;
 
-	UPROPERTY()
-	float Capacity;
+	UPROPERTY(EditDefaultsOnly)
+	float Capacity = 120.0f;
 
-	UPROPERTY()
-	float RechargeRate;
+	UPROPERTY(EditDefaultsOnly)
+	float RechargeRate = 0.25f;
+
+	UPROPERTY(EditDefaultsOnly)
+	float Cooldown = 5.0f;
+
+	UPROPERTY(VisibleAnywhere)
+	float CooldownTimer;
 
 public:	
 	// Called every frame

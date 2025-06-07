@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="4123026185" Type="Event" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" Language="SFX" Hash="{2E256DC8-23B0-A5A2-4275-C6B2650676EF}">
+			<ObjectPath>Play_MoxieUse</ObjectPath>
+			<ShortName>Play_MoxieUse</ShortName>
+			<Path>Event/Play_MoxieUse.bnk</Path>
+			<Media>
+				<File Id="371937443" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>156382-Air-Valve-Burst-Hose-Disconnect-Release-Hiss-Blast-Simple.wav</ShortName>
+					<Path>Media/371937443.wem</Path>
+					<CachePath>8F/{8FBE41D6-C95D-8D9D-DF03-A113C64464A0}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="4123026185" Name="Play_MoxieUse" ObjectPath="\Events\Default Work Unit\Enviroment\Outside\Play_MoxieUse" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" DurationType="OneShot" DurationMin="0.8820921" DurationMax="1.360372">
+					<MediaRefs>
+						<MediaRef Id="371937443"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{AA998251-A04A-7D76-9FE9-C7DF34ADB7E6}</FileHash>
+</SoundBanksInfo>

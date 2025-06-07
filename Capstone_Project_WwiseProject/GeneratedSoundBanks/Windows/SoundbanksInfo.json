@@ -213,44 +213,6 @@
     ]
    },
    {
-    "Id": "619782408",
-    "Type": "Event",
-    "GUID": "{312F32C6-4FF7-43B7-B5C4-564A82C194FF}",
-    "Language": "SFX",
-    "Hash": "{977359CE-5CFF-9799-4213-3A6DDF385862}",
-    "ObjectPath": "Play_Moxie",
-    "ShortName": "Play_Moxie",
-    "Path": "Event/Play_Moxie.bnk",
-    "Media": [
-     {
-      "Id": "581891015",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Loose",
-      "ShortName": "331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic.wav",
-      "Path": "Media/581891015.wem",
-      "CachePath": "DA/{DA8B854C-0D03-67DB-FC5D-E516AEB73370}.wem"
-     }
-    ],
-    "Events": [
-     {
-      "Id": "619782408",
-      "Name": "Play_Moxie",
-      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Outside\\Play_Moxie",
-      "GUID": "{312F32C6-4FF7-43B7-B5C4-564A82C194FF}",
-      "MaxAttenuation": "5000",
-      "DurationType": "OneShot",
-      "DurationMin": "64.517334",
-      "DurationMax": "64.517334",
-      "MediaRefs": [
-       {
-        "Id": "581891015"
-       }
-      ]
-     }
-    ]
-   },
-   {
     "Id": "724601160",
     "Type": "Event",
     "GUID": "{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}",
@@ -971,7 +933,7 @@
     "Type": "Event",
     "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
     "Language": "SFX",
-    "Hash": "{2E9883A1-E9EC-4D9F-410B-287547FE5199}",
+    "Hash": "{890F4B8C-54D3-0027-435D-90AE2B335A55}",
     "ObjectPath": "StartGameMusic",
     "ShortName": "StartGameMusic",
     "Path": "Event/StartGameMusic.bnk",
@@ -2250,6 +2212,43 @@
     ]
    },
    {
+    "Id": "2502809735",
+    "Type": "Event",
+    "GUID": "{E97C18C3-32E3-4736-8A11-F72F49C07C50}",
+    "Language": "SFX",
+    "Hash": "{D0162853-B989-9159-BC00-BDDC74B3B962}",
+    "ObjectPath": "Play_HelmetLightToggle",
+    "ShortName": "Play_HelmetLightToggle",
+    "Path": "Event/Play_HelmetLightToggle.bnk",
+    "Media": [
+     {
+      "Id": "193200242",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "239552-SM-Switch_on-off-03.wav",
+      "Path": "Media/193200242.wem",
+      "CachePath": "89/{89D52FA5-E240-7F7C-85FB-E4C1C450BA43}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2502809735",
+      "Name": "Play_HelmetLightToggle",
+      "ObjectPath": "\\Events\\Default Work Unit\\Equipment\\Play_HelmetLightToggle",
+      "GUID": "{E97C18C3-32E3-4736-8A11-F72F49C07C50}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.13763185",
+      "DurationMax": "0.21225733",
+      "MediaRefs": [
+       {
+        "Id": "193200242"
+       }
+      ]
+     }
+    ]
+   },
+   {
     "Id": "2794793258",
     "Type": "Event",
     "GUID": "{55BA20A3-2F3B-4A36-B0D7-FBFE26166A14}",
@@ -2340,6 +2339,44 @@
       "MediaRefs": [
        {
         "Id": "732168272"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "Id": "3220222072",
+    "Type": "Event",
+    "GUID": "{312F32C6-4FF7-43B7-B5C4-564A82C194FF}",
+    "Language": "SFX",
+    "Hash": "{0D16FDDE-3A63-CB23-D0B6-041A4440CC8D}",
+    "ObjectPath": "Play_MoxieAmbient",
+    "ShortName": "Play_MoxieAmbient",
+    "Path": "Event/Play_MoxieAmbient.bnk",
+    "Media": [
+     {
+      "Id": "581891015",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic.wav",
+      "Path": "Media/581891015.wem",
+      "CachePath": "DA/{DA8B854C-0D03-67DB-FC5D-E516AEB73370}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3220222072",
+      "Name": "Play_MoxieAmbient",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Outside\\Play_MoxieAmbient",
+      "GUID": "{312F32C6-4FF7-43B7-B5C4-564A82C194FF}",
+      "MaxAttenuation": "5000",
+      "DurationType": "OneShot",
+      "DurationMin": "64.517334",
+      "DurationMax": "64.517334",
+      "MediaRefs": [
+       {
+        "Id": "581891015"
        }
       ]
      }
@@ -2689,7 +2726,7 @@
     "Type": "User",
     "GUID": "{FE2C163D-388F-4DF2-94E4-25F807FE7889}",
     "Language": "SFX",
-    "Hash": "{18139B73-FEBF-EB62-904E-D34CD3AA5AA6}",
+    "Hash": "{0263A907-B665-7C45-2091-C0D4EFC2C95B}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -2886,6 +2923,43 @@
     ]
    },
    {
+    "Id": "4123026185",
+    "Type": "Event",
+    "GUID": "{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}",
+    "Language": "SFX",
+    "Hash": "{2E256DC8-23B0-A5A2-4275-C6B2650676EF}",
+    "ObjectPath": "Play_MoxieUse",
+    "ShortName": "Play_MoxieUse",
+    "Path": "Event/Play_MoxieUse.bnk",
+    "Media": [
+     {
+      "Id": "371937443",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "156382-Air-Valve-Burst-Hose-Disconnect-Release-Hiss-Blast-Simple.wav",
+      "Path": "Media/371937443.wem",
+      "CachePath": "8F/{8FBE41D6-C95D-8D9D-DF03-A113C64464A0}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4123026185",
+      "Name": "Play_MoxieUse",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Outside\\Play_MoxieUse",
+      "GUID": "{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8820921",
+      "DurationMax": "1.360372",
+      "MediaRefs": [
+       {
+        "Id": "371937443"
+       }
+      ]
+     }
+    ]
+   },
+   {
     "Id": "4156760537",
     "Type": "Event",
     "GUID": "{ED4DA6F6-7639-45E3-B788-57F93507E4BA}",
@@ -2923,6 +2997,6 @@
     ]
    }
   ],
-  "FileHash": "{C27D43BC-080D-113D-77CE-278BD9F8EEE1}"
+  "FileHash": "{E522735E-6E8D-27AE-CB0F-D8307C7C7AE9}"
  }
 }

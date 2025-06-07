@@ -9,6 +9,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "UI/SurvivalScifi_HUD.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
+#include "Game/SurvivalScifi_SaveGame.h"
 
 // Sets default values
 AFlightDeckChair::AFlightDeckChair()
@@ -35,14 +36,15 @@ void AFlightDeckChair::BeginPlay()
 
 void AFlightDeckChair::OnLevelSeqenceComplete()
 {
-	//UGameplayStatics::OpenLevel(GetWorld(), FName("L_Mars"));
-	//PlayerCharacter->GetHUD()->SequenceEnd();
-
 	USurvivalSciFi_GameInstance* GI = Cast<USurvivalSciFi_GameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 
 	if (GI)
 	{
-		if (GameInstance != nullptr) GameInstance->SetEnviroment(PostSequenceEnviroment);
+		//if (GameInstance != nullptr) GameInstance->SetEnviroment(PostSequenceEnviroment);
+		if (GameInstance != nullptr && GameInstance->GetCurrentSaveGame() != nullptr)
+		{
+			GameInstance->GetCurrentSaveGame()->Enviroment = PostSequenceEnviroment;
+		}
 		GI->SwitchToMap(NewMapName, PlayerStartTag);
 	}
 

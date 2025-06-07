@@ -43,6 +43,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	UAkStateValue* OutsideState;
 
+	UPROPERTY(VisibleAnywhere)
+	bool bMusicAndAmbience;
+
 public:
 	UFUNCTION(BlueprintPure)
 	USurvivalScifi_SaveGame* GetCurrentSaveGame() { return CurrentSaveGame; }

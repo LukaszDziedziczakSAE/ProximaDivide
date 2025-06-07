@@ -109,25 +109,6 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="619782408" Type="Event" GUID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}" Language="SFX" Hash="{977359CE-5CFF-9799-4213-3A6DDF385862}">
-			<ObjectPath>Play_Moxie</ObjectPath>
-			<ShortName>Play_Moxie</ShortName>
-			<Path>Event/Play_Moxie.bnk</Path>
-			<Media>
-				<File Id="581891015" Language="SFX" Streaming="false" Location="Loose">
-					<ShortName>331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic.wav</ShortName>
-					<Path>Media/581891015.wem</Path>
-					<CachePath>DA/{DA8B854C-0D03-67DB-FC5D-E516AEB73370}.wem</CachePath>
-				</File>
-			</Media>
-			<Events>
-				<Event Id="619782408" Name="Play_Moxie" ObjectPath="\Events\Default Work Unit\Enviroment\Outside\Play_Moxie" GUID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}" MaxAttenuation="5000" DurationType="OneShot" DurationMin="64.517334" DurationMax="64.517334">
-					<MediaRefs>
-						<MediaRef Id="581891015"/>
-					</MediaRefs>
-				</Event>
-			</Events>
-		</SoundBank>
 		<SoundBank Id="724601160" Type="Event" GUID="{C15ACDF9-E482-4C8C-BD83-11D0942FAEC3}" Language="SFX" Hash="{9235AB59-DA34-899D-81E7-057225F5113A}">
 			<ObjectPath>Crafting_Finished</ObjectPath>
 			<ShortName>Crafting_Finished</ShortName>
@@ -454,7 +435,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1568977742" Type="Event" GUID="{F8949438-CCCF-4176-9828-60F978BC455D}" Language="SFX" Hash="{2E9883A1-E9EC-4D9F-410B-287547FE5199}">
+		<SoundBank Id="1568977742" Type="Event" GUID="{F8949438-CCCF-4176-9828-60F978BC455D}" Language="SFX" Hash="{890F4B8C-54D3-0027-435D-90AE2B335A55}">
 			<ObjectPath>StartGameMusic</ObjectPath>
 			<ShortName>StartGameMusic</ShortName>
 			<Path>Event/StartGameMusic.bnk</Path>
@@ -1068,6 +1049,25 @@
 				</Event>
 			</Events>
 		</SoundBank>
+		<SoundBank Id="2502809735" Type="Event" GUID="{E97C18C3-32E3-4736-8A11-F72F49C07C50}" Language="SFX" Hash="{D0162853-B989-9159-BC00-BDDC74B3B962}">
+			<ObjectPath>Play_HelmetLightToggle</ObjectPath>
+			<ShortName>Play_HelmetLightToggle</ShortName>
+			<Path>Event/Play_HelmetLightToggle.bnk</Path>
+			<Media>
+				<File Id="193200242" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>239552-SM-Switch_on-off-03.wav</ShortName>
+					<Path>Media/193200242.wem</Path>
+					<CachePath>89/{89D52FA5-E240-7F7C-85FB-E4C1C450BA43}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2502809735" Name="Play_HelmetLightToggle" ObjectPath="\Events\Default Work Unit\Equipment\Play_HelmetLightToggle" GUID="{E97C18C3-32E3-4736-8A11-F72F49C07C50}" DurationType="OneShot" DurationMin="0.13763185" DurationMax="0.21225733">
+					<MediaRefs>
+						<MediaRef Id="193200242"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 		<SoundBank Id="2794793258" Type="Event" GUID="{55BA20A3-2F3B-4A36-B0D7-FBFE26166A14}" Language="SFX" Hash="{EA640F99-3AA9-86AB-7A16-A413706DFBBA}">
 			<ObjectPath>Crafting_Stop</ObjectPath>
 			<ShortName>Crafting_Stop</ShortName>
@@ -1110,6 +1110,25 @@
 				<Event Id="3088435820" Name="Play_Decent_Pilot_01" ObjectPath="\Events\Default Work Unit\Dialog\Decent\Play_Decent_Pilot_01" GUID="{55559CC4-E569-4C20-88C7-A398F634455A}" DurationType="OneShot" DurationMin="105.25" DurationMax="105.25">
 					<MediaRefs>
 						<MediaRef Id="732168272"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3220222072" Type="Event" GUID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}" Language="SFX" Hash="{0D16FDDE-3A63-CB23-D0B6-041A4440CC8D}">
+			<ObjectPath>Play_MoxieAmbient</ObjectPath>
+			<ShortName>Play_MoxieAmbient</ShortName>
+			<Path>Event/Play_MoxieAmbient.bnk</Path>
+			<Media>
+				<File Id="581891015" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic.wav</ShortName>
+					<Path>Media/581891015.wem</Path>
+					<CachePath>DA/{DA8B854C-0D03-67DB-FC5D-E516AEB73370}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3220222072" Name="Play_MoxieAmbient" ObjectPath="\Events\Default Work Unit\Enviroment\Outside\Play_MoxieAmbient" GUID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}" MaxAttenuation="5000" DurationType="OneShot" DurationMin="64.517334" DurationMax="64.517334">
+					<MediaRefs>
+						<MediaRef Id="581891015"/>
 					</MediaRefs>
 				</Event>
 			</Events>
@@ -1280,7 +1299,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" GUID="{FE2C163D-388F-4DF2-94E4-25F807FE7889}" Language="SFX" Hash="{18139B73-FEBF-EB62-904E-D34CD3AA5AA6}">
+		<SoundBank Id="3991942870" Type="User" GUID="{FE2C163D-388F-4DF2-94E4-25F807FE7889}" Language="SFX" Hash="{0263A907-B665-7C45-2091-C0D4EFC2C95B}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music</ObjectPath>
 			<ShortName>Music</ShortName>
 			<Path>Music.bnk</Path>
@@ -1368,6 +1387,25 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
+		<SoundBank Id="4123026185" Type="Event" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" Language="SFX" Hash="{2E256DC8-23B0-A5A2-4275-C6B2650676EF}">
+			<ObjectPath>Play_MoxieUse</ObjectPath>
+			<ShortName>Play_MoxieUse</ShortName>
+			<Path>Event/Play_MoxieUse.bnk</Path>
+			<Media>
+				<File Id="371937443" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>156382-Air-Valve-Burst-Hose-Disconnect-Release-Hiss-Blast-Simple.wav</ShortName>
+					<Path>Media/371937443.wem</Path>
+					<CachePath>8F/{8FBE41D6-C95D-8D9D-DF03-A113C64464A0}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="4123026185" Name="Play_MoxieUse" ObjectPath="\Events\Default Work Unit\Enviroment\Outside\Play_MoxieUse" GUID="{D20197FF-87B4-4CCA-92EF-88D1C83D5F46}" DurationType="OneShot" DurationMin="0.8820921" DurationMax="1.360372">
+					<MediaRefs>
+						<MediaRef Id="371937443"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 		<SoundBank Id="4156760537" Type="Event" GUID="{ED4DA6F6-7639-45E3-B788-57F93507E4BA}" Language="SFX" Hash="{13283C21-4FE3-BC1E-F827-02EB2ACE3F89}">
 			<ObjectPath>Press_Switch</ObjectPath>
 			<ShortName>Press_Switch</ShortName>
@@ -1388,5 +1426,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D2BE2E2C-E178-73C5-75E4-8782826DFDA3}</FileHash>
+	<FileHash>{BD0C4E44-FDB9-2050-AA47-B9A2491455C1}</FileHash>
 </SoundBanksInfo>
