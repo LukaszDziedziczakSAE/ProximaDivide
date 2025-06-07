@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="1516176439" Type="Event" GUID="{24998CC0-0795-463D-9F73-EDDD1AF2C52D}" Language="SFX" Hash="{922EBBBF-7987-F0AA-A948-F4BCEA5659CB}">
+			<ObjectPath>Crafting_Closing</ObjectPath>
+			<ShortName>Crafting_Closing</ShortName>
+			<Path>Event/Crafting_Closing.bnk</Path>
+			<Media>
+				<File Id="797298980" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>261103-DOORS-WOOD-GATE-CLOSE-GENTLE.wav</ShortName>
+					<Path>Media/797298980.wem</Path>
+					<CachePath>89/{8995D9E0-2242-4341-CCCF-68B8E630DBEA}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1516176439" Name="Crafting_Closing" ObjectPath="\Events\Default Work Unit\Interactions\CraftingMachine\Crafting_Closing" GUID="{24998CC0-0795-463D-9F73-EDDD1AF2C52D}" DurationType="OneShot" DurationMin="0.31135416" DurationMax="0.31135416">
+					<MediaRefs>
+						<MediaRef Id="797298980"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{069EC92A-D3F3-60DB-C633-816865FBD0C5}</FileHash>
+</SoundBanksInfo>

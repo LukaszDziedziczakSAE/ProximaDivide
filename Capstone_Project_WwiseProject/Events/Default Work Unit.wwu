@@ -312,6 +312,32 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Folder Name="Outside" ID="{9ACAF4D5-C26D-49D1-8734-693851BAF300}" ShortID="832689681">
+							<ChildrenList>
+								<Event Name="Play_Crash_Fire" ID="{20B348CC-6A47-4B67-A876-5E88E16F17AF}">
+									<ChildrenList>
+										<Action Name="" ID="{73031E60-38CB-49C0-A5A7-0335BD41E82F}" ShortID="873692787">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Crash Fire" ID="{87643B12-2D49-44BE-9940-8791914607D4}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Moxie" ID="{312F32C6-4FF7-43B7-B5C4-564A82C194FF}">
+									<ChildrenList>
+										<Action Name="" ID="{DF78B742-BFC6-4DAB-87C3-34664E3D6F71}" ShortID="1016471710">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Moxie" ID="{901F28FD-703B-4B25-9E8E-CECAC421D994}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{B11BFFAF-D977-4C9E-934D-3F765FA5A828}" ShortID="1068502609">

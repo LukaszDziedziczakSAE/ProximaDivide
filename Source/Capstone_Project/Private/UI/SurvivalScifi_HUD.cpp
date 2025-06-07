@@ -36,7 +36,12 @@ void ASurvivalScifi_HUD::BeginPlay()
 void ASurvivalScifi_HUD::ShowGameHUD()
 {
 	HideGameHUD();
-	if (PlayerTutorialComponent == nullptr) return;
+	if (PlayerTutorialComponent == nullptr)
+	{
+		ASurvivalScifi_PlayerController* PlayerController = Cast<ASurvivalScifi_PlayerController>(GetOwningPlayerController());
+		if (PlayerController != nullptr)
+			PlayerTutorialComponent = PlayerController->GetPlayerCharacter()->GetTutorialComponent();
+	}
 
 	if (PlayerStatsClass != nullptr && !PlayerTutorialComponent->HideStats)
 		PlayerStats = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), PlayerStatsClass);

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "Enviroment/EEnviroment.h"
 #include "SurvivalSciFi_GameInstance.generated.h"
 
 UCLASS()
@@ -20,6 +21,27 @@ protected:
 
 	UFUNCTION()
 	void UpdateMapName();
+
+	UPROPERTY(EditAnywhere)
+	class UAkAudioEvent* Ambience;
+
+	UPROPERTY(EditAnywhere)
+	UAkAudioEvent* Music;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UAkStateValue* MenuState;
+
+	UPROPERTY(EditDefaultsOnly)
+	UAkStateValue* DecentCinematicState;
+
+	UPROPERTY(EditDefaultsOnly)
+	UAkStateValue* ShipState;
+
+	UPROPERTY(EditDefaultsOnly)
+	UAkStateValue* InsideState;
+
+	UPROPERTY(EditDefaultsOnly)
+	UAkStateValue* OutsideState;
 
 public:
 	UFUNCTION(BlueprintPure)
@@ -51,4 +73,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void DeleteSlot(int SlotNumber);
+
+	UFUNCTION(BlueprintCallable)
+	void PlayMusicAndAmbience();
+
+	UFUNCTION(BlueprintCallable)
+	void SetEnviroment(EEnviroment Enviroment);
 };

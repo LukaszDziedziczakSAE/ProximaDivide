@@ -10,11 +10,20 @@
     "Type": "Event",
     "GUID": "{F8949438-CCCF-4176-9828-60F978BC455D}",
     "Language": "SFX",
-    "Hash": "{79F3D8B4-4E48-2777-A7EA-2B30DEC1F07B}",
+    "Hash": "{2E9883A1-E9EC-4D9F-410B-287547FE5199}",
     "ObjectPath": "StartGameMusic",
     "ShortName": "StartGameMusic",
     "Path": "Event/StartGameMusic.bnk",
     "Media": [
+     {
+      "Id": "180261933",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "2-Dark Fantasy Studio- Reloaded.wav",
+      "Path": "Media/180261933.wem",
+      "CachePath": "6C/{6C13342F-75A5-017C-516A-C528A3F66CA6}.wem"
+     },
      {
       "Id": "298393960",
       "Language": "SFX",
@@ -135,6 +144,19 @@
           "Id": "298393960"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "2607556080",
+         "GUID": "{0CD35F40-06B8-4154-90B1-AC08A86005DA}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "180261933"
+         }
+        ]
        }
       ]
      }
@@ -171,6 +193,12 @@
         "GUID": "{2BFE9924-4A9E-4F29-AD9B-560230966B40}"
        },
        {
+        "Id": "2607556080",
+        "Name": "Menu",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Menu",
+        "GUID": "{0CD35F40-06B8-4154-90B1-AC08A86005DA}"
+       },
+       {
         "Id": "3553349781",
         "Name": "Inside",
         "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Inside",
@@ -181,6 +209,6 @@
     ]
    }
   ],
-  "FileHash": "{88ABCA55-5009-46C7-90B9-7187D4E17CDA}"
+  "FileHash": "{A6A9677A-15A6-09E0-766B-1B3E8BF003CA}"
  }
 }

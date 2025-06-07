@@ -9,6 +9,8 @@
 
 void UPauseMenu_UserWidget::NativeConstruct()
 {
+	Super::NativeConstruct();
+
 	ResumeButton->OnClicked.AddDynamic(this, &UPauseMenu_UserWidget::OnResumeButtonPress);
 	SaveButton->OnClicked.AddDynamic(this, &UPauseMenu_UserWidget::OnSaveButtonPress);
 	LoadButton->OnClicked.AddDynamic(this, &UPauseMenu_UserWidget::OnLoadButtonPress);

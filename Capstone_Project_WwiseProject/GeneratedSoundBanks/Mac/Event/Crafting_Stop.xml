@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="2794793258" Type="Event" GUID="{55BA20A3-2F3B-4A36-B0D7-FBFE26166A14}" Language="SFX" Hash="{EA640F99-3AA9-86AB-7A16-A413706DFBBA}">
+			<ObjectPath>Crafting_Stop</ObjectPath>
+			<ShortName>Crafting_Stop</ShortName>
+			<Path>Event/Crafting_Stop.bnk</Path>
+			<Events>
+				<Event Id="2794793258" Name="Crafting_Stop" ObjectPath="\Events\Default Work Unit\Interactions\CraftingMachine\Crafting_Stop" GUID="{55BA20A3-2F3B-4A36-B0D7-FBFE26166A14}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{7335668C-6114-64CB-CBDD-7EEB58EB07B9}</FileHash>
+</SoundBanksInfo>

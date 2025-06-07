@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="3991942870" Type="User" GUID="{FE2C163D-388F-4DF2-94E4-25F807FE7889}" Language="SFX" Hash="{18139B73-FEBF-EB62-904E-D34CD3AA5AA6}">
+			<ObjectPath>\SoundBanks\Default Work Unit\Music</ObjectPath>
+			<ShortName>Music</ShortName>
+			<Path>Music.bnk</Path>
+			<Media>
+				<File Id="180261933" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>2-Dark Fantasy Studio- Reloaded.wav</ShortName>
+					<CachePath>6C/{6C13342F-75A5-017C-516A-C528A3F66CA6}.wem</CachePath>
+				</File>
+				<File Id="298393960" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>11-Dark Fantasy Studio- Time.wav</ShortName>
+					<CachePath>A0/{A00E613F-DAA0-A207-D616-5CED4A441DF6}.wem</CachePath>
+				</File>
+				<File Id="381046349" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>18-Dark Fantasy Studio- Productor.wav</ShortName>
+					<CachePath>71/{71AEC03B-BB23-7B3E-DFBF-73E471E2D395}.wem</CachePath>
+				</File>
+				<File Id="430694212" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>9-Dark_Fantasy_Studio-Forever_and_a_day.wav</ShortName>
+					<CachePath>72/{72D510C0-4A71-381B-F67B-A7EE44B9719F}.wem</CachePath>
+				</File>
+				<File Id="868120818" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>3-Dark Fantasy Studio- Dead files.wav</ShortName>
+					<CachePath>55/{555F49A0-7339-32FE-8D0C-1ED51C78B8C5}.wem</CachePath>
+				</File>
+				<File Id="926149274" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>11-Dark Fantasy Studio- Forensic.wav</ShortName>
+					<CachePath>38/{38307690-45CF-B599-8E61-E23866971EE4}.wem</CachePath>
+				</File>
+				<File Id="1041049495" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>7-Dark Fantasy Studio- Monochromatic stain.wav</ShortName>
+					<CachePath>65/{650E76A2-A1DB-A643-DF37-52FA1454E544}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2495197720" Name="StartScreenMusic" ObjectPath="\Events\Default Work Unit\Music\StartScreenMusic" GUID="{B70AE9EC-3F0E-45ED-ADE8-15523F3F0B7F}" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="180261933"/>
+					</MediaRefs>
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="3909959462" Id="3553349781" GUID="{F53BDEA3-FA41-4209-A807-6C9225C147F8}"/>
+							<MediaRefs>
+								<MediaRef Id="381046349"/>
+								<MediaRef Id="868120818"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="3909959462" Id="438105790" GUID="{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"/>
+							<MediaRefs>
+								<MediaRef Id="430694212"/>
+								<MediaRef Id="1041049495"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="3909959462" Id="284967655" GUID="{0BDF154F-9853-456C-B05E-1376B5D4A092}"/>
+							<MediaRefs>
+								<MediaRef Id="926149274"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="3909959462" Id="97036328" GUID="{2D788C6D-017F-4372-BB41-2357233E78FB}"/>
+							<MediaRefs>
+								<MediaRef Id="298393960"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="3909959462" Id="2607556080" GUID="{0CD35F40-06B8-4154-90B1-AC08A86005DA}"/>
+							<MediaRefs>
+								<MediaRef Id="180261933"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+			</Events>
+			<StateGroups>
+				<StateGroup Id="3909959462" Name="Enviroment" ObjectPath="\States\Default Work Unit\Enviroment" GUID="{B4BD3803-FA4B-4E8B-BC13-1C21831AF382}">
+					<States>
+						<State Id="97036328" Name="Decent_Cinematic" ObjectPath="\States\Default Work Unit\Enviroment\Decent_Cinematic" GUID="{2D788C6D-017F-4372-BB41-2357233E78FB}"/>
+						<State Id="284967655" Name="Ship" ObjectPath="\States\Default Work Unit\Enviroment\Ship" GUID="{0BDF154F-9853-456C-B05E-1376B5D4A092}"/>
+						<State Id="438105790" Name="Outside" ObjectPath="\States\Default Work Unit\Enviroment\Outside" GUID="{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\Enviroment\None" GUID="{2BFE9924-4A9E-4F29-AD9B-560230966B40}"/>
+						<State Id="2607556080" Name="Menu" ObjectPath="\States\Default Work Unit\Enviroment\Menu" GUID="{0CD35F40-06B8-4154-90B1-AC08A86005DA}"/>
+						<State Id="3553349781" Name="Inside" ObjectPath="\States\Default Work Unit\Enviroment\Inside" GUID="{F53BDEA3-FA41-4209-A807-6C9225C147F8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{B05120CE-AB45-6D0D-CC89-9B6B4B45C392}</FileHash>
+</SoundBanksInfo>

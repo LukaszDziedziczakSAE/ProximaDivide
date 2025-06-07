@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="815670231" Type="Event" GUID="{E4FCE5C4-DD77-4083-8C9F-5D54B44A5752}" Language="SFX" Hash="{CFA33137-8728-3CE5-E17B-83D5C247B724}">
+			<ObjectPath>Stop_DecentCinematicMusic</ObjectPath>
+			<ShortName>Stop_DecentCinematicMusic</ShortName>
+			<Path>Event/Stop_DecentCinematicMusic.bnk</Path>
+			<Events>
+				<Event Id="815670231" Name="Stop_DecentCinematicMusic" ObjectPath="\Events\Default Work Unit\Music\Stop_DecentCinematicMusic" GUID="{E4FCE5C4-DD77-4083-8C9F-5D54B44A5752}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{45C47252-1F4B-EAA9-1063-2B2CC28B0A98}</FileHash>
+</SoundBanksInfo>

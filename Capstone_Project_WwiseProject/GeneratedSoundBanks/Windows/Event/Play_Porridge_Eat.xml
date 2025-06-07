@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="3522025893" Type="Event" GUID="{79E66881-8DEB-48E4-BBE4-3B7D3210581E}" Language="SFX" Hash="{1CB52053-5EFA-6A79-8394-28836B53BDC3}">
+			<ObjectPath>Play_Porridge_Eat</ObjectPath>
+			<ShortName>Play_Porridge_Eat</ShortName>
+			<Path>Event/Play_Porridge_Eat.bnk</Path>
+			<Media>
+				<File Id="88910009" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>eatRice3.wav</ShortName>
+					<Path>Media/88910009.wem</Path>
+					<CachePath>6A/{6A8735AC-AF99-B438-4EA7-352E3219834A}.wem</CachePath>
+				</File>
+				<File Id="329428398" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>eatRice4.wav</ShortName>
+					<Path>Media/329428398.wem</Path>
+					<CachePath>EE/{EE9A3C79-BB9A-F0A2-F31F-D45CE9D3E97C}.wem</CachePath>
+				</File>
+				<File Id="339262127" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>eatRice1.wav</ShortName>
+					<Path>Media/339262127.wem</Path>
+					<CachePath>6D/{6DDDEAC2-3319-A3DC-2132-172D5312DD95}.wem</CachePath>
+				</File>
+				<File Id="359079766" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>eatRice2.wav</ShortName>
+					<Path>Media/359079766.wem</Path>
+					<CachePath>4B/{4BE38F70-9EC7-2843-0E51-4A7A0B3F1924}.wem</CachePath>
+				</File>
+				<File Id="412786476" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>eatRice5.wav</ShortName>
+					<Path>Media/412786476.wem</Path>
+					<CachePath>2B/{2B68E8CC-EF5D-87D2-853B-E192A108F548}.wem</CachePath>
+				</File>
+				<File Id="705201808" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>eatRice7.wav</ShortName>
+					<Path>Media/705201808.wem</Path>
+					<CachePath>EB/{EBBCA280-D1B3-EE3E-E950-0972BC0BD7DD}.wem</CachePath>
+				</File>
+				<File Id="930135914" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>eatRice6.wav</ShortName>
+					<Path>Media/930135914.wem</Path>
+					<CachePath>95/{95385C08-2CE1-5754-BFE9-D1597B241784}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3522025893" Name="Play_Porridge_Eat" ObjectPath="\Events\Default Work Unit\Equipment\SingleUse\Porridge\Play_Porridge_Eat" GUID="{79E66881-8DEB-48E4-BBE4-3B7D3210581E}" MaxAttenuation="5000" DurationType="OneShot" DurationMin="0.16670805" DurationMax="1.0551798">
+					<MediaRefs>
+						<MediaRef Id="88910009"/>
+						<MediaRef Id="329428398"/>
+						<MediaRef Id="339262127"/>
+						<MediaRef Id="359079766"/>
+						<MediaRef Id="412786476"/>
+						<MediaRef Id="705201808"/>
+						<MediaRef Id="930135914"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{1FE65B62-7A40-1511-714F-64E541209D18}</FileHash>
+</SoundBanksInfo>

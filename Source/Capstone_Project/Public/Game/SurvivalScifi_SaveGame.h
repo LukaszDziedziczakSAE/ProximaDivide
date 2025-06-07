@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "Enviroment/EEnviroment.h"
 #include "SurvivalScifi_SaveGame.generated.h"
 
 UCLASS()
@@ -23,5 +24,17 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bHasCompletedShipIntro;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EEnviroment Enviroment;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int Day = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int Hour = 20;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float SecondsLeftInHour;
 	
 };

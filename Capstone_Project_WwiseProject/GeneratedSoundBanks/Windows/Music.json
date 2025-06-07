@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{FE2C163D-388F-4DF2-94E4-25F807FE7889}",
     "Language": "SFX",
-    "Hash": "{4A103DE7-A4AE-0AFB-A61F-60151D1C79A7}",
+    "Hash": "{18139B73-FEBF-EB62-904E-D34CD3AA5AA6}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -142,6 +142,19 @@
           "Id": "298393960"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "3909959462",
+         "Id": "2607556080",
+         "GUID": "{0CD35F40-06B8-4154-90B1-AC08A86005DA}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "180261933"
+         }
+        ]
        }
       ]
      }
@@ -178,6 +191,12 @@
         "GUID": "{2BFE9924-4A9E-4F29-AD9B-560230966B40}"
        },
        {
+        "Id": "2607556080",
+        "Name": "Menu",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Menu",
+        "GUID": "{0CD35F40-06B8-4154-90B1-AC08A86005DA}"
+       },
+       {
         "Id": "3553349781",
         "Name": "Inside",
         "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Inside",
@@ -188,6 +207,6 @@
     ]
    }
   ],
-  "FileHash": "{42C686BE-906B-4248-DA72-7A2C926C5869}"
+  "FileHash": "{0BEF3219-6E32-8553-0916-FC07D534BFD4}"
  }
 }

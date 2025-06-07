@@ -2233,6 +2233,72 @@
 								</GroupingList>
 							</GroupingInfo>
 						</SwitchContainer>
+						<Folder Name="Outside" ID="{20E7CF74-D8F9-4D8F-97A4-2D3A18576072}" ShortID="172971027">
+							<ChildrenList>
+								<Sound Name="Crash Fire" ID="{87643B12-2D49-44BE-9940-8791914607D4}" ShortID="8006065">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="CenterPercentage" Type="int32">
+											<ValueList>
+												<Value>15</Value>
+											</ValueList>
+										</Property>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Fire_Attenuation" ID="{18EC0C6D-9EAF-4644-9FC7-471437BF8AD1}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Ambient" ID="{427B765F-9C62-4E73-9A5E-8C5358F6E389}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="337443-Fire_-continuous_fire_burning_in_building_or_vehicle_-general_fire_crackling_and_popping_with_medium_flames_-2_minute" ID="{BCBD1CEE-92B4-46BC-B333-86063FCAA97E}">
+											<Language>SFX</Language>
+											<AudioFile>337443-Fire_-continuous_fire_burning_in_building_or_vehicle_-general_fire_crackling_and_popping_with_medium_flames_-2_minute.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="864280437"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="337443-Fire_-continuous_fire_burning_in_building_or_vehicle_-general_fire_crackling_and_popping_with_medium_flames_-2_minute" ID="{BCBD1CEE-92B4-46BC-B333-86063FCAA97E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Moxie" ID="{901F28FD-703B-4B25-9E8E-CECAC421D994}" ShortID="674502782">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic" ID="{5F5F0F9B-2427-4537-B832-308EF8E3D652}">
+											<Language>SFX</Language>
+											<AudioFile>331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="581891015"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="331997-Air_Conditioner-Wall_Unit-Distant-Broken-Hum-Buzz-Cyclic" ID="{5F5F0F9B-2427-4537-B832-308EF8E3D652}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Dialog" ID="{73990B12-E40C-4095-AF9B-D13897B8D24D}" ShortID="545446976">

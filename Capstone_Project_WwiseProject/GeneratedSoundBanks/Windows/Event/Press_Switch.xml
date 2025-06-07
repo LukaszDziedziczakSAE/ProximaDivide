@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="4156760537" Type="Event" GUID="{ED4DA6F6-7639-45E3-B788-57F93507E4BA}" Language="SFX" Hash="{13283C21-4FE3-BC1E-F827-02EB2ACE3F89}">
+			<ObjectPath>Press_Switch</ObjectPath>
+			<ShortName>Press_Switch</ShortName>
+			<Path>Event/Press_Switch.bnk</Path>
+			<Media>
+				<File Id="655488007" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>212725-hifi-button-007.wav</ShortName>
+					<Path>Media/655488007.wem</Path>
+					<CachePath>5C/{5C29421F-B547-87F5-6A0E-08444C5DA4B1}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="4156760537" Name="Press_Switch" ObjectPath="\Events\Default Work Unit\Interactions\Switches\Press_Switch" GUID="{ED4DA6F6-7639-45E3-B788-57F93507E4BA}" DurationType="OneShot" DurationMin="0.18336476" DurationMax="0.19996071">
+					<MediaRefs>
+						<MediaRef Id="655488007"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{92C0BD6A-9766-A3F2-9FE2-0B838DA0CCC9}</FileHash>
+</SoundBanksInfo>

@@ -24,6 +24,8 @@ void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 
 	GetHUD<ASurvivalScifi_HUD>()->HideDeathScreen();
 	GetHUD<ASurvivalScifi_HUD>()->ShowGameHUD();
+
+	UE_LOG(LogTemp, Log, TEXT("Possessed %s"), *aPawn->GetName());
 }
 
 void ASurvivalScifi_PlayerController::SetupInputComponent()

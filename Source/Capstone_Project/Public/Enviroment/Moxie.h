@@ -23,6 +23,12 @@ protected:
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* Mesh;
 
+	UPROPERTY(EditAnywhere)
+	class UAkComponent* AudioComponent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UAkAudioEvent* AmbientSound;
+
 	UPROPERTY()
 	float Stored;
 

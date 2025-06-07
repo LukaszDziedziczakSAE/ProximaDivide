@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="749540107" Type="Event" GUID="{D451F829-F65B-4898-9752-336E24920DB5}" Language="SFX" Hash="{C87C9B4B-AAB1-E806-D85A-3330BF29208F}">
+			<ObjectPath>Pickaxe_Equip</ObjectPath>
+			<ShortName>Pickaxe_Equip</ShortName>
+			<Path>Event/Pickaxe_Equip.bnk</Path>
+			<Media>
+				<File Id="820318597" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>88940-Hatchet_pick_up_scrape_rocks_axe-BLASTWAVEFX-26542.wav</ShortName>
+					<Path>Media/820318597.wem</Path>
+					<CachePath>3E/{3E9ABEB0-C8CB-B4FD-1CEF-76FD82F16CA5}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="749540107" Name="Pickaxe_Equip" ObjectPath="\Events\Default Work Unit\Equipment\Pickaxe\Pickaxe_Equip" GUID="{D451F829-F65B-4898-9752-336E24920DB5}" DurationType="OneShot" DurationMin="0.6386606" DurationMax="0.6386606">
+					<MediaRefs>
+						<MediaRef Id="820318597"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{82D308C2-AFE0-7FCD-2E30-11BF90682CD3}</FileHash>
+</SoundBanksInfo>

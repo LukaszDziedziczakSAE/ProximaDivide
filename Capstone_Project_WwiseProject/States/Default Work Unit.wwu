@@ -10,6 +10,7 @@
 						<State Name="Outside" ID="{04F9B46F-B8FA-42DF-BE2C-C8DBF0A64E29}"/>
 						<State Name="Ship" ID="{0BDF154F-9853-456C-B05E-1376B5D4A092}"/>
 						<State Name="Decent_Cinematic" ID="{2D788C6D-017F-4372-BB41-2357233E78FB}"/>
+						<State Name="Menu" ID="{0CD35F40-06B8-4154-90B1-AC08A86005DA}"/>
 					</ChildrenList>
 				</StateGroup>
 			</ChildrenList>

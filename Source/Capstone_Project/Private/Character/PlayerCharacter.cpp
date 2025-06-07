@@ -15,7 +15,8 @@
 #include "Item/EquipableItemDataAsset.h"
 #include "AkGameplayStatics.h"
 #include "UI/SurvivalScifi_HUD.h"
-
+#include "Game/SurvivalSciFi_GameInstance.h"
+#include "Game/SurvivalScifi_SaveGame.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -46,6 +47,12 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	USurvivalSciFi_GameInstance* GameInstance = Cast<USurvivalSciFi_GameInstance>(GetWorld()->GetGameInstance());
+	if (GameInstance && GameInstance->GetCurrentSaveGame())
+	{
+		EEnviroment Env = GameInstance->GetCurrentSaveGame()->Enviroment;
+		bIsInside = (Env == EEnviroment::Inside || Env == EEnviroment::Ship);
+	}
 }
 
 // Called every frame

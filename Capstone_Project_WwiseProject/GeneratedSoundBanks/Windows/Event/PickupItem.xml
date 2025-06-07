@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="3016565752" Type="Event" GUID="{BEF49E00-27F6-413F-B88E-CF2D5D6844F0}" Language="SFX" Hash="{C6341FA3-B6EF-0825-8DCC-9DE27214CFA8}">
+			<ObjectPath>PickupItem</ObjectPath>
+			<ShortName>PickupItem</ShortName>
+			<Path>Event/PickupItem.bnk</Path>
+			<Media>
+				<File Id="480201553" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>94099-Hockey_helmet_put_in_bag-BLASTWAVEFX-29415.wav</ShortName>
+					<Path>Media/480201553.wem</Path>
+					<CachePath>56/{56C040D4-3E71-2296-CD02-FAF42EAAE777}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3016565752" Name="PickupItem" ObjectPath="\Events\Default Work Unit\Interactions\PickupItem" GUID="{BEF49E00-27F6-413F-B88E-CF2D5D6844F0}" DurationType="OneShot" DurationMin="0.47862533" DurationMax="0.47862533">
+					<MediaRefs>
+						<MediaRef Id="480201553"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{26844A0C-CAEC-60AC-A052-5891CA05BC41}</FileHash>
+</SoundBanksInfo>

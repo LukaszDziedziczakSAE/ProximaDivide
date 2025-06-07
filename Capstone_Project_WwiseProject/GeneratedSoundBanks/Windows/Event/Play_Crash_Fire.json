@@ -1,0 +1,47 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3230358538",
+    "Type": "Event",
+    "GUID": "{20B348CC-6A47-4B67-A876-5E88E16F17AF}",
+    "Language": "SFX",
+    "Hash": "{0AB6C375-CFF4-619C-F940-3C09880467FE}",
+    "ObjectPath": "Play_Crash_Fire",
+    "ShortName": "Play_Crash_Fire",
+    "Path": "Event/Play_Crash_Fire.bnk",
+    "Media": [
+     {
+      "Id": "864280437",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "337443-Fire_-continuous_fire_burning_in_building_or_vehicle_-general_fire_crackling_and_popping_with_medium_flames_-2_minute.wav",
+      "Path": "Media/864280437.wem",
+      "CachePath": "97/{97452282-F9CB-A12E-959B-E716E97A1287}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3230358538",
+      "Name": "Play_Crash_Fire",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Outside\\Play_Crash_Fire",
+      "GUID": "{20B348CC-6A47-4B67-A876-5E88E16F17AF}",
+      "MaxAttenuation": "10000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "864280437"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{A7AAF041-8AF8-BB1C-15B7-6FBC249AB847}"
+ }
+}

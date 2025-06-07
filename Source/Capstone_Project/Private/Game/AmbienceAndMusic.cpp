@@ -21,9 +21,9 @@ void AAmbienceAndMusic::BeginPlay()
 	if (AmbienceState != nullptr && Ambience != nullptr)
 	{
 		UAkGameplayStatics::SetState(AmbienceState);
-		UAkGameplayStatics::PostEvent(Ambience, nullptr, int32(0), FOnAkPostEventCallback(), true);
+		UAkGameplayStatics::PostEvent(Ambience, nullptr, int32(0), FOnAkPostEventCallback(), false);
 	}
-	if (Music != nullptr) UAkGameplayStatics::PostEvent(Music, nullptr, int32(0), FOnAkPostEventCallback(), true);
+	if (Music != nullptr) UAkGameplayStatics::PostEvent(Music, nullptr, int32(0), FOnAkPostEventCallback(), false);
 }
 
 // Called every frame

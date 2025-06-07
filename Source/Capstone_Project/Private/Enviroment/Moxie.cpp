@@ -4,6 +4,7 @@
 #include "Enviroment/Moxie.h"
 #include "Character/OxygenComponent.h"
 #include "Character/PlayerCharacter.h"
+#include "AkComponent.h"
 
 // Sets default values
 AMoxie::AMoxie()
@@ -15,6 +16,9 @@ AMoxie::AMoxie()
 	SetRootComponent(Mesh);
 
 	Mesh->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
+
+	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
+	AudioComponent->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned
@@ -23,6 +27,9 @@ void AMoxie::BeginPlay()
 	Super::BeginPlay();
 
 	Stored = Capacity;
+
+	if (AudioComponent != nullptr && AmbientSound != nullptr)
+		AudioComponent->PostAkEvent(AmbientSound, int32(0), FOnAkPostEventCallback());
 }
 
 // Called every frame

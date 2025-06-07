@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="2325531826" Type="Event" GUID="{3C0ED797-6391-43E8-A6D1-A552212305FB}" Language="English(US)" Hash="{AC3958A7-8B8F-FBA8-ECAA-2B911F5EC9C9}">
+			<ObjectPath>Play_TutorialDialog11</ObjectPath>
+			<ShortName>Play_TutorialDialog11</ShortName>
+			<Path>Event/English(US)/Play_TutorialDialog11.bnk</Path>
+			<Media>
+				<File Id="630438114" Language="English(US)" Streaming="false" Location="Loose">
+					<ShortName>TutorialDialog-KubaTake11-PSA1_11.wav</ShortName>
+					<Path>Media/English(US)/630438114.wem</Path>
+					<CachePath>D9/{D954A72B-F427-293C-9B67-1787511A965D}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2325531826" Name="Play_TutorialDialog11" ObjectPath="\Events\Default Work Unit\Dialog\Tutorial\Play_TutorialDialog11" GUID="{3C0ED797-6391-43E8-A6D1-A552212305FB}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="3.511096" DurationMax="3.511096">
+					<MediaRefs>
+						<MediaRef Id="630438114"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{1EC681F8-6502-944E-A963-CA7CE4920F08}</FileHash>
+</SoundBanksInfo>

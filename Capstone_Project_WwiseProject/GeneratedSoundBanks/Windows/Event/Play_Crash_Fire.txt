@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3230358538	Play_Crash_Fire			\Default Work Unit\Enviroment\Outside\Play_Crash_Fire	
+

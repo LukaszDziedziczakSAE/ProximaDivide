@@ -29,7 +29,8 @@ AFlightDeckChair::AFlightDeckChair()
 void AFlightDeckChair::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	GameInstance = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
 }
 
 void AFlightDeckChair::OnLevelSeqenceComplete()
@@ -41,6 +42,7 @@ void AFlightDeckChair::OnLevelSeqenceComplete()
 
 	if (GI)
 	{
+		if (GameInstance != nullptr) GameInstance->SetEnviroment(PostSequenceEnviroment);
 		GI->SwitchToMap(NewMapName, PlayerStartTag);
 	}
 
@@ -69,7 +71,7 @@ void AFlightDeckChair::Interact(APlayerCharacter* PlayerCharacter)
 			LevelSequencePlayer->OnFinished.AddDynamic(this, &AFlightDeckChair::OnLevelSeqenceComplete);
 			LevelSequencePlayer->Play();
 
-			if (SeqenceState != nullptr) UAkGameplayStatics::SetState(SeqenceState);
+			if (GameInstance != nullptr) GameInstance->SetEnviroment(SequenceEnviroment);
 		}
 		else
 		{

@@ -10,5 +10,12 @@ UCLASS()
 class CAPSTONE_PROJECT_API ASurvivalScifiStartMode : public AGameModeBase
 {
 	GENERATED_BODY()
+
+protected:
+	UPROPERTY()
+	class USurvivalSciFi_GameInstance* GameInstance;
+
+public:
+	virtual void BeginPlay() override;
 	
 };

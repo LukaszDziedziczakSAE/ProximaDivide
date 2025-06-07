@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="1377214290" Type="Event" GUID="{7A81C6AE-5A0B-497F-8EA4-C51B2E492C81}" Language="English(US)" Hash="{9FDFD79F-3ACC-7621-A9E7-48C2CF1EDFDE}">
+			<ObjectPath>Play_TutorialDialog2</ObjectPath>
+			<ShortName>Play_TutorialDialog2</ShortName>
+			<Path>Event/English(US)/Play_TutorialDialog2.bnk</Path>
+			<Media>
+				<File Id="402914802" Language="English(US)" Streaming="false" Location="Loose">
+					<ShortName>TutorialDialog-KubaTake02-PSA1_02.wav</ShortName>
+					<Path>Media/English(US)/402914802.wem</Path>
+					<CachePath>D7/{D738B056-4EB6-1A26-B637-DA063DD9C4CE}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1377214290" Name="Play_TutorialDialog2" ObjectPath="\Events\Default Work Unit\Dialog\Tutorial\Play_TutorialDialog2" GUID="{7A81C6AE-5A0B-497F-8EA4-C51B2E492C81}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="3.625" DurationMax="3.625">
+					<MediaRefs>
+						<MediaRef Id="402914802"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{0CFC4A33-F769-6DD6-31F9-8F870935485E}</FileHash>
+</SoundBanksInfo>

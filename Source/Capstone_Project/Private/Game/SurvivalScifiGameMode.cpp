@@ -6,7 +6,6 @@
 #include "Components/DirectionalLightComponent.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "GameFramework/PlayerStart.h"
-#include "Game/SurvivalSciFi_GameInstance.h"
 #include "Game/SurvivalScifi_SaveGame.h"
 
 ASurvivalScifiGameMode::ASurvivalScifiGameMode()
@@ -31,6 +30,9 @@ void ASurvivalScifiGameMode::BeginPlay()
 	if (GameInstance != nullptr)
 	{
 		GameInstance->OnLevelStart();
+		Day = GameInstance->GetCurrentSaveGame()->Day;
+		Hour = GameInstance->GetCurrentSaveGame()->Hour;
+		SecondsLeftInHour = GameInstance->GetCurrentSaveGame()->SecondsLeftInHour;
 	}
 }
 
@@ -87,15 +89,40 @@ AActor* ASurvivalScifiGameMode::ChoosePlayerStart_Implementation(AController* Pl
 			}
 		}
 
+		
+		if (GameInstance == nullptr) 
+			GameInstance = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
+
 		if (GameInstance != nullptr && GameInstance->GetCurrentSaveGame() != nullptr && PlayerStarts.Num() > 0)
 		{
 			for (APlayerStart* PlayerStart : PlayerStarts)
 			{
 				if (PlayerStart->PlayerStartTag == GameInstance->GetCurrentSaveGame()->PlayerStartTag)
+				{
+					UE_LOG(LogTemp, Log, TEXT("ChoosePlayerStart returning %s"), *PlayerStart->PlayerStartTag.ToString());
 					return PlayerStart;
+				}
 			}
+
+			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find PlayerStartTag matching tag found in save (%s)"), *GameInstance->GetCurrentSaveGame()->PlayerStartTag.ToString());
+		}
+
+		else if (GameInstance == nullptr)
+		{
+			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find GameInstance"));
+		}
+			
+		else if (GameInstance->GetCurrentSaveGame() == nullptr)
+		{
+			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find CurrentSaveGame"));
+		}
+
+		else if (PlayerStarts.Num() == 0)
+		{
+			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart No PlayerStarts found"));
 		}
 	}
+	else UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart No PlayerStartActors found"));
 
 	return Super::ChoosePlayerStart_Implementation(Player);
 }
@@ -127,6 +154,11 @@ void ASurvivalScifiGameMode::UpdatePlayerStartTag(FName PlayerStartTag)
 void ASurvivalScifiGameMode::SaveGame()
 {
 	if (GameInstance == nullptr) return;
+
+	GameInstance->GetCurrentSaveGame()->Day = Day;
+	GameInstance->GetCurrentSaveGame()->Hour = Hour;
+	GameInstance->GetCurrentSaveGame()->SecondsLeftInHour = SecondsLeftInHour;
+
 	GameInstance->SaveCurrentGame();
 }
 

@@ -9,6 +9,7 @@ State	ID	Name	State Group			Notes
 	284967655	Ship	Enviroment			
 	438105790	Outside	Enviroment			
 	748895195	None	Enviroment			
+	2607556080	Menu	Enviroment			
 	3553349781	Inside	Enviroment			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size

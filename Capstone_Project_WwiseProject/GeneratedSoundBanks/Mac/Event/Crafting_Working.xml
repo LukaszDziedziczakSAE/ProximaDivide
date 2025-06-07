@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
+	<SoundBanks>
+		<SoundBank Id="3985867599" Type="Event" GUID="{AC466B88-8C0C-4678-95EB-EEDBFAF9ACA2}" Language="SFX" Hash="{173EB694-A0CF-FFED-A47A-E0E7D5BB4F8B}">
+			<ObjectPath>Crafting_Working</ObjectPath>
+			<ShortName>Crafting_Working</ShortName>
+			<Path>Event/Crafting_Working.bnk</Path>
+			<Media>
+				<File Id="446086034" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>25049-SWEAT_SHOP_BUZZ_-MACHINERY-.wav</ShortName>
+					<Path>Media/446086034.wem</Path>
+					<CachePath>76/{76206604-3849-47BD-A17E-540A75090F71}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3985867599" Name="Crafting_Working" ObjectPath="\Events\Default Work Unit\Interactions\CraftingMachine\Crafting_Working" GUID="{AC466B88-8C0C-4678-95EB-EEDBFAF9ACA2}" DurationType="OneShot" DurationMin="78.92988" DurationMax="78.92988">
+					<MediaRefs>
+						<MediaRef Id="446086034"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{27138B70-10CB-810F-C952-1D0576D0DAE5}</FileHash>
+</SoundBanksInfo>

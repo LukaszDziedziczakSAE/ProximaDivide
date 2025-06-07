@@ -104,6 +104,12 @@
         "GUID": "{2BFE9924-4A9E-4F29-AD9B-560230966B40}"
        },
        {
+        "Id": "2607556080",
+        "Name": "Menu",
+        "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Menu",
+        "GUID": "{0CD35F40-06B8-4154-90B1-AC08A86005DA}"
+       },
+       {
         "Id": "3553349781",
         "Name": "Inside",
         "ObjectPath": "\\States\\Default Work Unit\\Enviroment\\Inside",
@@ -142,6 +148,6 @@
     ]
    }
   ],
-  "FileHash": "{AB27555C-E009-DCFD-E0BF-14560AB4669E}"
+  "FileHash": "{CC8ADA6C-D95A-FE4A-3A72-373DFCF16D38}"
  }
 }
