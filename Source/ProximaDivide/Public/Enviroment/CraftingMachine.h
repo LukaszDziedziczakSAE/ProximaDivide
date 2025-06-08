@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/Interaction.h"
-#include "Item/RecipeDataAsset.h"
+#include "Item/Crafting/RecipeDataAsset.h"
 #include "CraftingMachine.generated.h"
 
 UENUM(BlueprintType)

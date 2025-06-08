@@ -2,10 +2,10 @@
 
 
 #include "Item/SurvivalScifi_Item.h"
-#include "Item/ItemDataAsset.h"
+#include "Item/Crafting/ItemDataAsset.h"
 #include "Components/BoxComponent.h"
-#include "Character/PlayerCharacter.h"
-#include "UI/SurvivalScifi_HUD.h"
+#include "Character/Player/PlayerCharacter.h"
+#include "UI/GameplayHUD/SurvivalScifi_HUD.h"
 
 // Sets default values
 ASurvivalScifi_Item::ASurvivalScifi_Item()

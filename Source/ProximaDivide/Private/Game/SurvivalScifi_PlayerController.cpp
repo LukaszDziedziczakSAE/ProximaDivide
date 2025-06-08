@@ -5,11 +5,11 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Kismet/KismetMathLibrary.h"
-#include "Character/PlayerCharacter.h"
-#include "UI/SurvivalScifi_HUD.h"
+#include "Character/Player/PlayerCharacter.h"
+#include "UI/GameplayHUD/SurvivalScifi_HUD.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Game/SurvivalScifiGameMode.h"
-#include "Character/PlayerTutorialComponent.h"
+#include "Character/Player/PlayerTutorialComponent.h"
 
 void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 {

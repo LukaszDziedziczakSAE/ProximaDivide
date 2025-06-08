@@ -3,14 +3,14 @@
 
 #include "Enviroment/CraftingMachine.h"
 #include "Components/BoxComponent.h"
-#include "UI/SurvivalScifi_HUD.h"
+#include "UI/GameplayHUD/SurvivalScifi_HUD.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
-#include "Item/ItemDataAsset.h"
+#include "Item/Crafting/ItemDataAsset.h"
 #include "Item/SurvivalScifi_Item.h"
 #include "AkGameplayStatics.h"
-#include "Item/InventoryComponent.h"
-#include "Character/PlayerCharacter.h"
+#include "Item/Inventory/InventoryComponent.h"
+#include "Character/Player/PlayerCharacter.h"
 
 
 ACraftingMachine::ACraftingMachine()

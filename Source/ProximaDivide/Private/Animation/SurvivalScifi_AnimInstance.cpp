@@ -4,9 +4,9 @@
 #include "Animation/SurvivalScifi_AnimInstance.h"
 #include "Character/SurvivalSciFi_Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "Character/PaperdollComponent.h"
-#include "Item/EquipableItem.h"
-#include "Item/EquipableSkItem.h"
+#include "Character/Components/PaperdollComponent.h"
+#include "Item/Equipment/EquipableItem.h"
+#include "Item/Equipment/EquipableSkItem.h"
 
 void USurvivalScifi_AnimInstance::NativeBeginPlay()
 {

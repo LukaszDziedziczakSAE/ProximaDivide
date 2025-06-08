@@ -5,7 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Game/SurvivalScifi_SaveGame.h"
 #include "AkGameplayStatics.h"
-#include "Character/PlayerCharacter.h"
+#include "Character/Player/PlayerCharacter.h"
 
 void USurvivalSciFi_GameInstance::UpdateMapName()
 {

@@ -2,12 +2,12 @@
 
 
 #include "Enviroment/FlightDeckChair.h"
-#include "Character/PlayerCharacter.h"
+#include "Character/Player/PlayerCharacter.h"
 #include "AkGameplayStatics.h"
 #include "Camera/CameraComponent.h"
 #include "LevelSequencePlayer.h"
 #include "Kismet/GameplayStatics.h"
-#include "UI/SurvivalScifi_HUD.h"
+#include "UI/GameplayHUD/SurvivalScifi_HUD.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "Game/SurvivalScifi_SaveGame.h"
 #include "LevelSequenceActor.h"

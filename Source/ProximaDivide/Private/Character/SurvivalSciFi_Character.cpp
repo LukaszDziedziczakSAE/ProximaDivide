@@ -2,15 +2,15 @@
 
 
 #include "Character/SurvivalSciFi_Character.h"
-#include "Item/InventoryComponent.h"
-#include "Character/HealthComponent.h"
-#include "Character/PaperdollComponent.h"
+#include "Item/Inventory/InventoryComponent.h"
+#include "Character/Components/HealthComponent.h"
+#include "Character/Components/PaperdollComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "Item/EquipableItem.h"
-#include "Item/EquipableItemDataAsset.h"
+#include "Item/Equipment/EquipableItem.h"
+#include "Item/Equipment/EquipableItemDataAsset.h"
 #include "AkGameplayStatics.h"
 #include "Kismet/GameplayStatics.h"
-#include "Item/EquipableSkItem.h"
+#include "Item/Equipment/EquipableSkItem.h"
 #include "AkComponent.h"
 
 // Sets default values

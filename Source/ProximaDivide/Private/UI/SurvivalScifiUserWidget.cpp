@@ -3,7 +3,7 @@
 
 #include "UI/SurvivalScifiUserWidget.h"
 #include "Kismet/GameplayStatics.h"
-#include "Character/PlayerCharacter.h"
+#include "Character/Player/PlayerCharacter.h"
 
 void USurvivalScifiUserWidget::NativePreConstruct()
 {

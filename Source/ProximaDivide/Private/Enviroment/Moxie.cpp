@@ -2,8 +2,8 @@
 
 
 #include "Enviroment/Moxie.h"
-#include "Character/OxygenComponent.h"
-#include "Character/PlayerCharacter.h"
+#include "Character/Components/OxygenComponent.h"
+#include "Character/Player/PlayerCharacter.h"
 #include "AkComponent.h"
 #include "AkAudioEvent.h"
 

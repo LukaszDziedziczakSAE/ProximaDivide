@@ -2,8 +2,8 @@
 
 
 #include "Enviroment/Container.h"
-#include "Item/InventoryComponent.h"
-#include "Character/PlayerCharacter.h"
+#include "Item/Inventory/InventoryComponent.h"
+#include "Character/Player/PlayerCharacter.h"
 #include "Game/SurvivalScifi_PlayerController.h"
 #include "InputActionValue.h"
 

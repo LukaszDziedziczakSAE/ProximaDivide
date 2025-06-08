@@ -3,8 +3,8 @@
 
 #include "Animation/ItemUsing_AnimNotifyState.h"
 #include "Character/SurvivalSciFi_Character.h"
-#include "Item/EquipableItem.h"
-#include "Item/EquipableSkItem.h"
+#include "Item/Equipment/EquipableItem.h"
+#include "Item/Equipment/EquipableSkItem.h"
 
 void UItemUsing_AnimNotifyState::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration, const FAnimNotifyEventReference& EventReference)
 {

@@ -3,8 +3,8 @@
 
 #include "Animation/AnimNotify_RightHandItemUse.h"
 #include "Character/SurvivalSciFi_Character.h"
-#include "Item/EquipableItem.h"
-#include "Item/EquipableSkItem.h"
+#include "Item/Equipment/EquipableItem.h"
+#include "Item/Equipment/EquipableSkItem.h"
 
 void UAnimNotify_RightHandItemUse::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {

@@ -3,7 +3,7 @@
 
 #include "AI/Astronaut_AIController.h"
 #include "Character/SurvivalSciFi_Character.h"
-#include "Character/TutorialGiverComponent.h"
+#include "Character/Components/TutorialGiverComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Enviroment/Waypoint.h"
 
