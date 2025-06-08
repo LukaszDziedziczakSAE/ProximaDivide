@@ -2,6 +2,7 @@
 
 
 #include "Character/StatComponent.h"
+#include "Character/PlayerCharacter.h"
 
 // Sets default values for this component's properties
 UStatComponent::UStatComponent()

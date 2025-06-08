@@ -11,6 +11,7 @@
 #include "AkGameplayStatics.h"
 #include "Kismet/GameplayStatics.h"
 #include "Item/EquipableSkItem.h"
+#include "AkComponent.h"
 
 // Sets default values
 ASurvivalSciFi_Character::ASurvivalSciFi_Character()

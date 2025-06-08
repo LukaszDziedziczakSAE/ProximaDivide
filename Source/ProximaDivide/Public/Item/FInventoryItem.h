@@ -26,5 +26,5 @@ public:
 
 	TArray<FIntPoint> GetOccupiedSlots() { return Rotated ? OccupiedSlotsRotated() : OccupiedSlots(); }
 
-	inline bool operator==(const FInventoryItem& OtherInventoryItem);
+	bool operator==(const FInventoryItem& OtherInventoryItem);
 };
