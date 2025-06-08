@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	1447533395	Play_Pistol_Use			\Default Work Unit\Equipment\Pistol\Play_Pistol_Use	
-

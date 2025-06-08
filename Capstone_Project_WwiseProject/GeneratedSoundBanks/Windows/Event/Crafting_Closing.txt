@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	1516176439	Crafting_Closing			\Default Work Unit\Interactions\CraftingMachine\Crafting_Closing	
-

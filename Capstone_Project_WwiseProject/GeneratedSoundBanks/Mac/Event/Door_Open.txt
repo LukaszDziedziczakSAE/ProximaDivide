@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	535830432	Door_Open			\Default Work Unit\Interactions\Doors\Door_Open	
-

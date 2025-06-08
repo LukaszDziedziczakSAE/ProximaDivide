@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	248136778	Pickaxe_Use			\Default Work Unit\Equipment\Pickaxe\Pickaxe_Use	
-

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="ProximaDivide_WwiseProject" GUID="{4B5744FD-B3B6-4CB4-AAB5-1820CE6A5B67}" Generator="2024.1.5.8803"/>
+	<CacheRoot>../.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{67F1CA4D-3108-4173-B5F7-25FA7C77FFA1}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../GeneratedSoundBanks/Mac"/>
+		<Platform Name="Windows" GUID="{06594EF2-41B7-42E5-8B5A-81816D92ED64}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../GeneratedSoundBanks/Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{6AB93E5E-88CA-4941-B2B1-5EE485A4485C}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{7795CB8C-C8C7-5997-FCA4-C37630F38465}</FileHash>
+</ProjectInfo>

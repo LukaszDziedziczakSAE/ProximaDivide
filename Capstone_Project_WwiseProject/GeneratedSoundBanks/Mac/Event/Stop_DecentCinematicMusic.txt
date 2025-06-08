@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	815670231	Stop_DecentCinematicMusic			\Default Work Unit\Music\Stop_DecentCinematicMusic	
-

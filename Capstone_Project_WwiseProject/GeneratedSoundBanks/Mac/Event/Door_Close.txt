@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	128625444	Door_Close			\Default Work Unit\Interactions\Doors\Door_Close	
-

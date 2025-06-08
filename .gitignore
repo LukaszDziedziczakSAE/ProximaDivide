@@ -79,8 +79,12 @@ DerivedDataCache/*
 Content/AssetPacks/BigStarStation/Maps/Map_BigStarStation_BuiltData.uasset
 Content/AssetPacks/BigStarStation/Maps/Map_Assets_BuiltData.uasset
 
-Capstone_Project_WwiseProject/GeneratedSoundBanks/Mac/Music.bnk
-Capstone_Project_WwiseProject/GeneratedSoundBanks/Windows/Music.bnk
+# ProximaDivide_WwiseProject/GeneratedSoundBanks/Mac/Music.bnk
+# ProximaDivide_WwiseProject/GeneratedSoundBanks/Windows/Music.bnk
+# Ignore all .bnk soundbank files anywhere in the project
+**/*.bnk
+
+
 Content/AssetPacks/Industrial_Submarine/Assets/floor_roof_19-1/Texture/T_pipe_wall_roof_base_Normal.uasset
 Content/AssetPacks/Industrial_Submarine/Assets/knob_1-6/Texture/T_knobs_base_Normal.uasset
 Content/AssetPacks/Industrial_Submarine/Assets/roof_5-8/Texture/T_roof_5-8_DefaultMaterial_Normal.uasset
@@ -115,3 +119,16 @@ Content/AssetPacks/AlienPlanet/Levels/AlienPlanet02/AlienPlanet02.umap
 Content/AssetPacks/AlienPlanet/Levels/AlienPlanet01/AlienPlanet01.umap
 Content/AssetPacks/AlienPlanet/Textures/Ground/T_Ground03_ORDM.uasset
 Content/AssetPacks/AlienPlanet/Textures/Ground/T_ToxicGround_ORDM.uasset
+
+# Ignore all Wwise generated soundbanks except those explicitly whitelisted
+**/GeneratedSoundBanks/**
+
+# Ignore Wwise Intermediate and Temp folders if any
+**/Intermediate/
+**/Temp/
+
+# Ignore typical build artifacts from Wwise and Unreal plugins (already partly covered)
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+ProximaDivide_WwiseProject/Originals/SFX/*.wav

@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	230679717	Play_DecentCinematicMusic			\Default Work Unit\Music\Play_DecentCinematicMusic	
-

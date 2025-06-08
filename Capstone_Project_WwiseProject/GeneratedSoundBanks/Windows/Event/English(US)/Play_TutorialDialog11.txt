@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2325531826	Play_TutorialDialog11			\Default Work Unit\Dialog\Tutorial\Play_TutorialDialog11	
-

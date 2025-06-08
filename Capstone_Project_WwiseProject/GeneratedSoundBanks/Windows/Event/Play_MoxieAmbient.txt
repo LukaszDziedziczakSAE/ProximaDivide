@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	3220222072	Play_MoxieAmbient			\Default Work Unit\Enviroment\Outside\Play_MoxieAmbient	
-

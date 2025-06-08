@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	3367281124	Pickaxe_Unequip			\Default Work Unit\Equipment\Pickaxe\Pickaxe_Unequip	
-
