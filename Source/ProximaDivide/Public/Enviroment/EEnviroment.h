@@ -13,5 +13,6 @@ enum class EEnviroment : uint8
     Inside UMETA(DisplayName = "Inside"),
     Outside UMETA(DisplayName = "Outside"),
     DecentCinematic UMETA(DisplayName = "Decent Cinematic"),
-    Ship UMETA(DisplayName = "Ship")
+    Ship UMETA(DisplayName = "Ship"),
+    PostCrash UMETA(DisplayName = "Post Crash")
 };

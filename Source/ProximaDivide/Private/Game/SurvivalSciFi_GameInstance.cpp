@@ -3,15 +3,14 @@
 
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "Kismet/GameplayStatics.h"
-#include "Game/SurvivalScifi_SaveGame.h"
 #include "AkGameplayStatics.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Game/SurvivalScifiGameMode.h"
 
 void USurvivalSciFi_GameInstance::UpdateMapName()
 {
 	if (CurrentSaveGame != nullptr)
 	{
-
 		FString MapName = GetWorld()->GetMapName();
 		// Remove PIE prefix if it exists
 		FString CleanMapName = MapName;
@@ -20,10 +19,30 @@ void USurvivalSciFi_GameInstance::UpdateMapName()
 	}
 }
 
+void USurvivalSciFi_GameInstance::LoadCurrentSaveMap()
+{
+	FString LevelNameString = CurrentSaveGame->CurrentLevelName.ToString();
+	UE_LOG(LogTemp, Log, TEXT("Opening level: %s"), *LevelNameString);
+	UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
+}
+
 void USurvivalSciFi_GameInstance::SaveCurrentGame()
 {
 	if (CurrentSaveGame != nullptr)
 	{
+		ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
+		if (GameMode != nullptr)
+		{
+			CurrentSaveGame->WorldData = GameMode->GetSaveData();
+			UE_LOG(LogTemp, Log, TEXT("Saved World Data"));
+		}
+
+		APlayerCharacter* Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+		if (Player != nullptr)
+		{
+			CurrentSaveGame->PlayerData = Player->GetSaveData();
+			UE_LOG(LogTemp, Log, TEXT("Saved Player Data"));
+		}
 
 		SaveSlot(CurrentSaveGame->SlotNumber);
 	}
@@ -73,14 +92,22 @@ bool USurvivalSciFi_GameInstance::DoesSlotExist(int SlotNumber)
 void USurvivalSciFi_GameInstance::StartNewGame(int SlotNumber)
 {
 	UE_LOG(LogTemp, Log, TEXT("Starting new game on slot %d"), SlotNumber);
+
 	USurvivalScifi_SaveGame* NewSave = Cast<USurvivalScifi_SaveGame>(UGameplayStatics::CreateSaveGameObject(USurvivalScifi_SaveGame::StaticClass()));
 	if (NewSave)
 	{
 		NewSave->SlotNumber = SlotNumber;
+		NewSave->PlayerData = InitialPlayerData;
+		NewSave->WorldData = InitialWorldData;
+		NewSave->Enviroment = InitialEnviroment;
+		NewSave->CurrentLevelName = InitialLevelName;
+		NewSave->PlayerStartTag = InitialPlayerStartTag;
+
 		CurrentSaveGame = NewSave;
+
 		FString SlotName = "Slot" + FString::FromInt(SlotNumber);
-		SetEnviroment(EEnviroment::Ship);
 		UGameplayStatics::SaveGameToSlot(CurrentSaveGame, SlotName, 0);
+
 		UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
 	}
 }
@@ -89,13 +116,7 @@ void USurvivalSciFi_GameInstance::StartLoadGame(int SlotNumber)
 {
 	LoadSlot(SlotNumber);
 	if (CurrentSaveGame == nullptr) return;
-
-	//SetEnviroment(CurrentSaveGame->Enviroment);
-
-	// Load Level
-	FString LevelNameString = CurrentSaveGame->CurrentLevelName.ToString();
-	UE_LOG(LogTemp, Log, TEXT("Opening level: %s"), *LevelNameString);
-	UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
+	LoadCurrentSaveMap();
 }
 
 void USurvivalSciFi_GameInstance::SwitchToMap(FName MapName, FName StartTag)
@@ -109,12 +130,8 @@ void USurvivalSciFi_GameInstance::SwitchToMap(FName MapName, FName StartTag)
 	// Apply new Map Name and Start Tag
 	if (StartTag != "") CurrentSaveGame->PlayerStartTag = StartTag;
 	CurrentSaveGame->CurrentLevelName = MapName;
-	SaveSlot(CurrentSaveGame->SlotNumber);
-
-	// Load Level
-	FString LevelNameString = CurrentSaveGame->CurrentLevelName.ToString();
-	UE_LOG(LogTemp, Log, TEXT("Switching to level: %s"), *LevelNameString);
-	UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
+	SaveCurrentGame();
+	LoadCurrentSaveMap();
 }
 
 void USurvivalSciFi_GameInstance::OnLevelStart()
@@ -199,8 +216,32 @@ void USurvivalSciFi_GameInstance::SetEnviroment(EEnviroment Enviroment)
 		UAkGameplayStatics::SetState(ShipState);
 		if (CurrentSaveGame != nullptr) CurrentSaveGame->Enviroment = EEnviroment::Ship;
 		break;
+
+	case EEnviroment::PostCrash:
+		UAkGameplayStatics::SetState(PostCrashState);
+		if (CurrentSaveGame != nullptr) CurrentSaveGame->Enviroment = EEnviroment::PostCrash;
+		break;
 	}
 
 	if (GetWorld()->WorldType == EWorldType::PIE && !bMusicAndAmbience) PlayMusicAndAmbience();
+}
+
+void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep)
+{
+	if (CurrentSaveGame == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("StartWakeFromSleep called but CurrentSaveGame is null!"));
+		return;
+	}
+	UE_LOG(LogTemp, Log, TEXT("Going to sleep for %d hours"), HoursToSleep);
+
+	SaveCurrentGame();
+	CurrentSaveGame->AdvanceHours(HoursToSleep);
+	LoadCurrentSaveMap();
+}
+
+void USurvivalSciFi_GameInstance::StartRespawn()
+{
+
 }
 

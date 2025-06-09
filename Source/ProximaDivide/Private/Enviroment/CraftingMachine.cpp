@@ -241,7 +241,7 @@ void ACraftingMachine::Interact(APlayerCharacter* PlayerCharacter)
 	}
 }
 
-FString ACraftingMachine::InteractionText()
+FString ACraftingMachine::InteractionText(APlayerCharacter* PlayerCharacter)
 {
 	switch (CraftingMachineState)
 	{

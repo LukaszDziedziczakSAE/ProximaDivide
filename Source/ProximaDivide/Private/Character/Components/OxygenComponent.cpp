@@ -8,6 +8,8 @@ void UOxygenComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if (PlayerCharacter == nullptr || !PlayerCharacter->bStatsLoaded) return;
+
 	if (PlayerCharacter->bIsInside)
 	{
 		CurrentValue = FMath::Clamp(CurrentValue + (InsideModifyPerSecond * DeltaTime), 0, MaxValue);

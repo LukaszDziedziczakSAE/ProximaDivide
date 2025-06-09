@@ -31,7 +31,13 @@ protected:
 	class UAkAudioEvent* MusicChange;
 
 	UPROPERTY(EditAnywhere)
-	USceneComponent* PlayerPosition;
+	bool bInteractable;
+
+	UPROPERTY(EditAnywhere)
+	class ASurvivalSciFi_Character* Character;
+
+	UPROPERTY(EditAnywhere)
+	FVector CharacterOffset;
 
 	UPROPERTY(EditAnywhere, Category = "Level Sequence")
 	class ULevelSequence* LevelSequence;
@@ -63,9 +69,17 @@ public:
 
 	virtual void Interact(class APlayerCharacter* PlayerCharacter) override;
 
-	virtual FString InteractionText() override;
+	virtual FString InteractionText(APlayerCharacter* PlayerCharacter) override;
 
 	UFUNCTION()
-	void ReceiveNotify(FName EventName);
+	void ShowCharacter();
 
+	UFUNCTION()
+	void HideCharacter();
+
+	UFUNCTION()
+	FVector CharacterLocation();
+
+	UFUNCTION(BlueprintPure)
+	ASurvivalSciFi_Character* GetCharacter() { return Character; }
 };

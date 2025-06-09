@@ -47,8 +47,14 @@ public:
 	UFUNCTION(BlueprintPure)
 	float GetMissingValue() { return MaxValue - CurrentValue; }
 
+	UFUNCTION(BlueprintPure)
+	float GetMissingPercentage() { return 1.0 - GetPercentage(); }
+
 	UFUNCTION(BlueprintCallable)
 	void ModifyValue(float ModifyAmount);
+
+	UFUNCTION(BlueprintCallable)
+	void SetValue(float NewValue) { CurrentValue = NewValue; }
 
 	UFUNCTION(BlueprintCallable)
 	virtual FString GetLabel() { return TEXT("xx"); }

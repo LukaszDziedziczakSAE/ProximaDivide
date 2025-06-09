@@ -11,7 +11,14 @@ class PROXIMADIVIDE_API UExhaustionComponent : public UStatComponent
 {
 	GENERATED_BODY()
 
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float PerFootstep = 1;
+
 public:
 	virtual FString GetLabel() override { return TEXT("Ex"); }
+
+	UFUNCTION()
+	void Footstep();
 	
 };

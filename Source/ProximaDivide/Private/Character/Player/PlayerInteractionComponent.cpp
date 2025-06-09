@@ -69,12 +69,10 @@ void UPlayerInteractionComponent::TickComponent(float DeltaTime, ELevelTick Tick
 
 			HUD->ShowInteraction();
 		}
-
 	}
 
 	else if (HUD->IsShowingInteraction())
 	{
-		
 		HUD->HideInteraction();
 		InteractionInterface.SetObject(nullptr);
 	}
@@ -85,11 +83,12 @@ FString UPlayerInteractionComponent::GetInteractionText()
 	if (InteractionInterface.GetObject() == nullptr) return TEXT("");
 
 	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
+	FString InteractionText = Interaction->InteractionText(PlayerCharacter);
 
-	if (Interaction == nullptr || Interaction->InteractionText() == TEXT(""))
+	if (Interaction == nullptr || InteractionText == TEXT(""))
 		return TEXT("");
 
-	return TEXT("Press E to ") + Interaction->InteractionText();
+	return TEXT("Press E to ") + InteractionText;
 }
 
 void UPlayerInteractionComponent::Interact()

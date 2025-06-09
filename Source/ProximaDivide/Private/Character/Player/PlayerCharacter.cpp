@@ -60,6 +60,8 @@ void APlayerCharacter::BeginPlay()
 		EEnviroment Env = GameInstance->GetCurrentSaveGame()->Enviroment;
 		bIsInside = (Env == EEnviroment::Inside || Env == EEnviroment::Ship);
 	}
+
+	LoadDataFromSave();
 }
 
 // Called every frame
@@ -189,5 +191,39 @@ void APlayerCharacter::ToggleHelmetLight()
 {
 	if (SpotLight != nullptr) SpotLight->SetHiddenInGame(!SpotLight->bHiddenInGame);
 	if (HelmetLightSound != nullptr) HelmetLightSound->PostOnActor(this , FOnAkPostEventCallback(), int32(0), true);
+}
+
+FPlayerData APlayerCharacter::GetSaveData()
+{
+	FPlayerData Stats = FPlayerData();
+	Stats.Health = HealthComponent->GetCurrentValue();
+	Stats.Oxygen = OxygenComponent->GetCurrentValue();
+	Stats.Sustenance = SustenanceComponent->GetCurrentValue();
+	Stats.Exhaustion = ExhaustionComponent->GetCurrentValue();
+	return Stats;
+}
+
+void APlayerCharacter::LoadDataFromSave()
+{
+	if (GetGameInstance<USurvivalSciFi_GameInstance>()->GetCurrentSaveGame() != nullptr)
+	{
+		FPlayerData Stats = GetGameInstance<USurvivalSciFi_GameInstance>()->GetCurrentSaveGame()->PlayerData;
+
+		HealthComponent->SetValue(Stats.Health);
+		OxygenComponent->SetValue(Stats.Oxygen);
+		SustenanceComponent->SetValue(Stats.Sustenance);
+		ExhaustionComponent->SetValue(Stats.Exhaustion);
+
+		bStatsLoaded = true;
+	}
+
+	else UE_LOG(LogTemp, Error, TEXT("No save data on Player load"));
+}
+
+void APlayerCharacter::Footstep()
+{
+	Super::Footstep();
+
+	ExhaustionComponent->Footstep();
 }
 

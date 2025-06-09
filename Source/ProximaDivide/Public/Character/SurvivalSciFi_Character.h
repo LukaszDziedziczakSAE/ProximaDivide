@@ -118,7 +118,7 @@ public:
 	bool GetUseItemDown() { return UseItemDown; }
 
 	UFUNCTION(BlueprintCallable)
-	void Footstep();
+	virtual void Footstep();
 
 	UFUNCTION(BlueprintPure)
 	ASurvivalScifi_Item* GetRightHandItem() { return RightHandItem; }

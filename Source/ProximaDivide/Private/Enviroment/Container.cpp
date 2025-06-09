@@ -47,7 +47,7 @@ void AContainer::Interact(APlayerCharacter* PlayerCharacter)
 	ContainerState = EContainerState::Open;
 }
 
-FString AContainer::InteractionText()
+FString AContainer::InteractionText(APlayerCharacter* PlayerCharacter)
 {
 	if (ContainerState == EContainerState::Closed) return TEXT("Open Container");
 	else return TEXT("");

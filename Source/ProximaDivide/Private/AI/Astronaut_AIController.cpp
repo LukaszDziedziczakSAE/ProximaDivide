@@ -6,6 +6,7 @@
 #include "Character/Components/TutorialGiverComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Enviroment/Waypoint.h"
+#include "Enviroment/FlightDeckChair.h"
 
 void AAstronaut_AIController::OnPossess(APawn* InPawn)
 {

@@ -3,3 +3,7 @@
 
 #include "Character/Components/ExhaustionComponent.h"
 
+void UExhaustionComponent::Footstep()
+{
+	ModifyValue(PerFootstep);
+}

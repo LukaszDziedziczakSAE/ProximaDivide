@@ -23,6 +23,6 @@ public:
 	virtual void Interact(class APlayerCharacter* PlayerCharacter) = 0;
 
 	UFUNCTION()
-	virtual FString InteractionText() = 0;
+	virtual FString InteractionText(APlayerCharacter* PlayerCharacter) = 0;
 
 };

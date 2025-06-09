@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
 #include "Enviroment/EEnviroment.h"
+#include "Game/SurvivalScifi_SaveGame.h"
 #include "SurvivalSciFi_GameInstance.generated.h"
 
 UCLASS()
@@ -14,7 +15,7 @@ class PROXIMADIVIDE_API USurvivalSciFi_GameInstance : public UGameInstance
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class USurvivalScifi_SaveGame* CurrentSaveGame;
+	USurvivalScifi_SaveGame* CurrentSaveGame;
 
 	UPROPERTY(EditDefaultsOnly)
 	int MaxSlots = 3;
@@ -43,8 +44,29 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	UAkStateValue* OutsideState;
 
+	UPROPERTY(EditDefaultsOnly)
+	UAkStateValue* PostCrashState;
+
 	UPROPERTY(VisibleAnywhere)
 	bool bMusicAndAmbience;
+
+	UFUNCTION()
+	void LoadCurrentSaveMap();
+
+	UPROPERTY(EditDefaultsOnly, Category = "New Game")
+	struct FPlayerData InitialPlayerData;
+
+	UPROPERTY(EditDefaultsOnly, Category = "New Game")
+	struct FWorldData InitialWorldData;
+
+	UPROPERTY(EditDefaultsOnly, Category = "New Game")
+	EEnviroment InitialEnviroment = EEnviroment::Ship;
+
+	UPROPERTY(EditDefaultsOnly, Category = "New Game")
+	FName InitialLevelName = TEXT("L_Ship");
+
+	UPROPERTY(EditDefaultsOnly, Category = "New Game")
+	FName InitialPlayerStartTag = TEXT("");
 
 public:
 	UFUNCTION(BlueprintPure)
@@ -82,4 +104,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetEnviroment(EEnviroment Enviroment);
+
+	UFUNCTION(BlueprintCallable)
+	void StartWakeFromSleep(int HoursToSleep);
+
+	UFUNCTION(BlueprintCallable)
+	void StartRespawn();
 };

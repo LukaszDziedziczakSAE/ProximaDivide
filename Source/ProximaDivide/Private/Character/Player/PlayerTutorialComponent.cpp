@@ -180,6 +180,7 @@ void UPlayerTutorialComponent::SkipTutorial()
 {
 	if (TutorialGiver != nullptr && TutorialGiver->IsInProgress())
 	{
+		TutorialGiver->StopTalkingAnimation();
 		TutorialGiver->CompleteTutorial();
 	}
 }

@@ -7,6 +7,39 @@
 #include "Enviroment/EEnviroment.h"
 #include "SurvivalScifi_SaveGame.generated.h"
 
+USTRUCT(BlueprintType)
+struct FPlayerData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite) 
+	float Health;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite) 
+	float Oxygen;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite) 
+	float Sustenance;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite) 
+	float Exhaustion;
+};
+
+USTRUCT(BlueprintType)
+struct FWorldData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int Day = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int Hour = 20;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float SecondsLeftInHour;
+};
+
 UCLASS()
 class PROXIMADIVIDE_API USurvivalScifi_SaveGame : public USaveGame
 {
@@ -23,18 +56,14 @@ public:
 	FName PlayerStartTag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool bHasCompletedShipIntro;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EEnviroment Enviroment;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int Day = 0;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int Hour = 20;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float SecondsLeftInHour;
+	FWorldData WorldData;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FPlayerData PlayerData;
+
+	UFUNCTION()
+	void AdvanceHours(int HoursToAdvance);
 };

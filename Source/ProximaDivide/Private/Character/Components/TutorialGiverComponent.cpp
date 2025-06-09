@@ -11,6 +11,8 @@
 #include "AI/Astronaut_AIController.h"
 #include "Animation/SurvivalScifi_AnimInstance.h"
 #include "AkGameplayStatics.h"
+#include "Enviroment/FlightDeckChair.h"
+#include "Components/CapsuleComponent.h"
 
 UTutorialGiverComponent::UTutorialGiverComponent()
 {
@@ -43,6 +45,11 @@ void UTutorialGiverComponent::BeginPlay()
 	AnimInstance = Cast<USurvivalScifi_AnimInstance>(Cast<ASurvivalSciFi_Character>(GetOwner())->GetMesh()->GetAnimInstance());
 	if (AnimInstance == nullptr) 
 		UE_LOG(LogTemp, Error, TEXT("Missing AnimInstance reference in tutorial giver"));
+
+	if (FlightDeckChair != nullptr)
+	{
+		FlightDeckChair->HideCharacter();
+	}
 }
 
 void UTutorialGiverComponent::OnPartStart()
@@ -110,6 +117,11 @@ void UTutorialGiverComponent::OnPartStart()
 
 void UTutorialGiverComponent::OnSitComplete()
 {
+	if (FlightDeckChair != nullptr)
+	{
+		FlightDeckChair->ShowCharacter();
+	}
+
 	GetOwner()->Destroy();
 }
 
@@ -118,14 +130,26 @@ void UTutorialGiverComponent::TickComponent(float DeltaTime, ELevelTick TickType
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	if (bMoveTowardsChair)
+	{
+		if (SitDownDelay > 0) SitDownDelay -= DeltaTime;
+
+		if (SitDownDelay <= 0)
+		{
+			FVector Location = GetOwner()->GetActorLocation();
+			FVector Direction = FlightDeckChair->CharacterLocation() - Location;
+			Direction.Normalize();
+			Location = Location + (Direction * MoveSpeed * DeltaTime);
+			GetOwner()->SetActorLocation(Location);
+		}
+	}
 }
 
 void UTutorialGiverComponent::PlaybackComplete(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo)
 {
 	if (AudioIndex == Index) AudioIndex = -1;
 
-	if (AnimInstance != nullptr) AnimInstance->StopTalking();
+	StopTalkingAnimation();
 
 	if (GetCurrentPart().TutorialCondition == OnAudioFinish || ObjectivePrecomplete)
 	{
@@ -202,10 +226,19 @@ void UTutorialGiverComponent::PlaySitDownAnimation()
 	ASurvivalSciFi_Character* Character = GetOwner<ASurvivalSciFi_Character>();
 
 	float t = Character->PlayMontage(SitDownMontage);
+	t *= SitDownCompletePercentage;
 
 	FTimerHandle  UseTimer;
 	GetWorld()->GetTimerManager().SetTimer(UseTimer, this, &UTutorialGiverComponent::OnSitComplete, t, false);
 
+	Character->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	bMoveTowardsChair = true;
+
 	SitDownMontage = nullptr;
+}
+
+void UTutorialGiverComponent::StopTalkingAnimation()
+{
+	if (AnimInstance != nullptr) AnimInstance->StopTalking();
 }
 

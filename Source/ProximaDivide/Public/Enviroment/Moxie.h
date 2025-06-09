@@ -53,5 +53,5 @@ public:
 
 	virtual void Interact(class APlayerCharacter* PlayerCharacter) override;
 
-	virtual FString InteractionText() override;
+	virtual FString InteractionText(APlayerCharacter* PlayerCharacter) override;
 };

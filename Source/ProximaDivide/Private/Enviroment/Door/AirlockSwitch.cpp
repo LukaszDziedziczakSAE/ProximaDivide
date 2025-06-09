@@ -41,7 +41,7 @@ void AAirlockSwitch::Interact(APlayerCharacter* PlayerCharacter)
 	UAkGameplayStatics::PostEvent(SwitchActivatedSound, this, int32(0), FOnAkPostEventCallback(), false);
 }
 
-FString AAirlockSwitch::InteractionText()
+FString AAirlockSwitch::InteractionText(APlayerCharacter* PlayerCharacter)
 {
 	if (Airlock == nullptr) return TEXT("");
 

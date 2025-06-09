@@ -41,7 +41,7 @@ void ASwitch::Interact(APlayerCharacter* PlayerCharacter)
 	UAkGameplayStatics::PostEvent(SwitchActivatedSound, this, int32(0), FOnAkPostEventCallback(), false);
 }
 
-FString ASwitch::InteractionText()
+FString ASwitch::InteractionText(APlayerCharacter* PlayerCharacter)
 {
 	ISwitchActivated* Interface = Cast<ISwitchActivated>(Activatee);
 	if (Interface == nullptr) return TEXT("");

@@ -20,15 +20,9 @@ void ASurvivalScifiGameMode::BeginPlay()
 	SecondsLeftInHour = SecondsPerHour;
 
 	GameInstance = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
-	if (GameInstance != nullptr)
-	{
-		GameInstance->OnLevelStart();
-		Day = GameInstance->GetCurrentSaveGame()->Day;
-		Hour = GameInstance->GetCurrentSaveGame()->Hour;
-		SecondsLeftInHour = GameInstance->GetCurrentSaveGame()->SecondsLeftInHour;
-
-		OnHourTick.Broadcast();
-	}
+	if (GameInstance == nullptr) return;
+	GameInstance->OnLevelStart();
+	LoadDataFromSave();
 }
 
 void ASurvivalScifiGameMode::Tick(float DeltaSeconds)
@@ -134,11 +128,30 @@ void ASurvivalScifiGameMode::SaveGame()
 {
 	if (GameInstance == nullptr) return;
 
-	GameInstance->GetCurrentSaveGame()->Day = Day;
-	GameInstance->GetCurrentSaveGame()->Hour = Hour;
-	GameInstance->GetCurrentSaveGame()->SecondsLeftInHour = SecondsLeftInHour;
-
 	GameInstance->SaveCurrentGame();
+}
+
+struct FWorldData ASurvivalScifiGameMode::GetSaveData()
+{
+	FWorldData Data = FWorldData();
+
+	Data.Day = Day;
+	Data.Hour = Hour;
+	Data.SecondsLeftInHour = SecondsLeftInHour;
+
+	return Data;
+}
+
+void ASurvivalScifiGameMode::LoadDataFromSave()
+{
+	if (GameInstance->GetCurrentSaveGame() == nullptr) return;
+
+	FWorldData Data = GameInstance->GetCurrentSaveGame()->WorldData;
+
+	Day = Data.Day;
+	Hour = Data.Hour;
+	SecondsLeftInHour = Data.SecondsLeftInHour;
+	OnHourTick.Broadcast();
 }
 
 void ASurvivalScifiGameMode::LoadGame(int SlotNumber)

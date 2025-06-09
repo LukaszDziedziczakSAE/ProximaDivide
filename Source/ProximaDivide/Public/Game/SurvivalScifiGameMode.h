@@ -46,6 +46,9 @@ public:
 	int GetHour() { return Hour; }
 
 	UFUNCTION(BlueprintPure)
+	int GetSecondsLeftInHour() { return SecondsLeftInHour; }
+
+	UFUNCTION(BlueprintPure)
 	float GetTimeProgress();
 
 	UFUNCTION()
@@ -53,6 +56,12 @@ public:
 
 	UFUNCTION()
 	void SaveGame();
+
+	UFUNCTION()
+	struct FWorldData GetSaveData();
+
+	UFUNCTION()
+	void LoadDataFromSave();
 
 	UFUNCTION()
 	void LoadGame(int SlotNumber = -1);

@@ -22,9 +22,6 @@ AFlightDeckChair::AFlightDeckChair()
 	SetRootComponent(Chair);
 
 	Chair->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
-
-	PlayerPosition = CreateDefaultSubobject<USceneComponent>(TEXT("Player Position"));
-	PlayerPosition->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned
@@ -61,6 +58,9 @@ void AFlightDeckChair::Tick(float DeltaTime)
 
 void AFlightDeckChair::Interact(APlayerCharacter* PlayerCharacter)
 {
+	if (!bInteractable) return;
+
+
 	Player = PlayerCharacter;
 	if (LevelSequence != nullptr)
 	{
@@ -84,15 +84,27 @@ void AFlightDeckChair::Interact(APlayerCharacter* PlayerCharacter)
 	}
 }
 
-FString AFlightDeckChair::InteractionText()
+FString AFlightDeckChair::InteractionText(APlayerCharacter* PlayerCharacter)
 {
+	if (!bInteractable) return TEXT("");
 	return TEXT("Sit Down");
 }
 
-void AFlightDeckChair::ReceiveNotify(FName EventName)
+void AFlightDeckChair::ShowCharacter()
 {
-	if (EventName == TitleCardEventName)
-	{
-		
-	}
+	if (Character == nullptr) return;
+	Character->SetActorHiddenInGame(false);
 }
+
+void AFlightDeckChair::HideCharacter()
+{
+	if (Character == nullptr) return;
+	Character->SetActorHiddenInGame(true);
+}
+
+FVector AFlightDeckChair::CharacterLocation()
+{
+	if (Character == nullptr) return FVector::Zero();
+	return Character->GetActorLocation() + CharacterOffset;
+}
+

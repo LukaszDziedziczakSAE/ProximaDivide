@@ -71,7 +71,7 @@ void AMoxie::Interact(APlayerCharacter* PlayerCharacter)
 	}
 }
 
-FString AMoxie::InteractionText()
+FString AMoxie::InteractionText(APlayerCharacter* PlayerCharacter)
 {
 	if (CooldownTimer > 0) return TEXT("");
 	return TEXT("Extract Oxygen");

@@ -87,6 +87,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	bool bIsInside = true;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool bStatsLoaded;
+
 	virtual void ChangeStat(EStat StatType, float Amount) override;
 
 	virtual void DropFromInventory(UItemDataAsset* DataAsset, FIntPoint Position) override;
@@ -103,4 +106,12 @@ public:
 
 	UFUNCTION()
 	void ToggleHelmetLight();
+
+	UFUNCTION()
+	struct FPlayerData GetSaveData();
+
+	UFUNCTION()
+	void LoadDataFromSave();
+
+	virtual void Footstep() override;
 };

@@ -91,14 +91,17 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class AWaypoint* EndWaypoint;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	AActor* FlightDeckChair;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Chair Sit")
+	class AFlightDeckChair* FlightDeckChair;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class USurvivalScifi_AnimInstance* AnimInstance;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Chair Sit")
 	UAnimMontage* SitDownMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Chair Sit")
+	float SitDownCompletePercentage = 0.6f;
 
 	UFUNCTION()
 	void OnPartStart();
@@ -111,6 +114,15 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audio Override")
 	bool UseEvent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Chair Sit")
+	bool bMoveTowardsChair;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Chair Sit")
+	float SitDownDelay = 0.5f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Chair Sit")
+	float MoveSpeed = 1;
 
 public:	
 	// Called every frame
@@ -143,7 +155,7 @@ public:
 	AWaypoint* GetEndWaypoint() { return EndWaypoint; }
 
 	UFUNCTION(BlueprintPure)
-	AActor* GetFlightDeckChair() { return FlightDeckChair; }
+	AFlightDeckChair* GetFlightDeckChair() { return FlightDeckChair; }
 	
 	UPROPERTY(VisibleAnywhere)
 	bool HasCompleted;
@@ -156,4 +168,7 @@ public:
 
 	UFUNCTION()
 	bool ReadyToSitDown() { return SitDownMontage != nullptr; }
+
+	UFUNCTION()
+	void StopTalkingAnimation();
 };
