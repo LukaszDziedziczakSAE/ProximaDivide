@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
 #include "Enviroment/EEnviroment.h"
+#include "Game/MissionStructs.h"
 #include "SurvivalScifi_SaveGame.generated.h"
 
 USTRUCT(BlueprintType)
@@ -24,6 +25,24 @@ struct FPlayerData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) 
 	float Exhaustion;
 };
+
+//USTRUCT(BlueprintType)
+//struct FObjectivesData
+//{
+//	GENERATED_BODY()
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	TArray<class UMissionDataAsset*> IncompleteMissions;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	TArray<struct FMissionProgress> MissionProgresses;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	TArray<UMissionDataAsset*> CompleteMissions;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	int CurrentMission = -1;
+//};
 
 USTRUCT(BlueprintType)
 struct FWorldData
@@ -63,6 +82,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FPlayerData PlayerData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	struct FObjectivesData ObjectivesData;
 
 	UFUNCTION()
 	void AdvanceHours(int HoursToAdvance);

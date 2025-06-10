@@ -10,6 +10,7 @@
 #include "Item/SurvivalScifi_Item.h"
 #include "AkGameplayStatics.h"
 #include "Enviroment/Container.h"
+#include "Character/Player/PlayerObjectivesComponent.h"
 
 UPlayerInteractionComponent::UPlayerInteractionComponent()
 {
@@ -104,6 +105,18 @@ void UPlayerInteractionComponent::Interact()
 	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
 	if (Interaction!=nullptr) Interaction->Interact(PlayerCharacter);
 	HUD->ResetInteraction();
+
+	AActor* Actor = Cast<AActor>(InteractionInterface.GetObject());
+	if (Actor != nullptr )
+	{
+		UE_LOG(LogTemp, Log, TEXT("Interaction with %s"), *Actor->GetName());
+
+		if (Actor->Tags.Num() > 0)
+			PlayerCharacter->GetObjectivesComponent()->OnInteractWithActor(Actor->Tags[0]);
+
+		else UE_LOG(LogTemp, Warning, TEXT("Interaction actor has no tags"));
+	}
+
 }
 
 bool UPlayerInteractionComponent::InteractableIsCraftingMachine()

@@ -25,7 +25,15 @@ void UTimeStatUserWidget::UpdateDateTime()
 {
 	if (SurvivalScifiGameMode != nullptr)
 	{
-		Day->SetText(FText::FromString("Sol " + FString::FromInt(SurvivalScifiGameMode->GetDay())));
+		if (SurvivalScifiGameMode->GetDay() == 0)
+		{
+			Day->SetText(FText::FromString(""));
+		}
+		else
+		{
+			Day->SetText(FText::FromString("Sol " + FString::FromInt(SurvivalScifiGameMode->GetDay())));
+		}
+		
 		Time->SetText(FText::FromString(FString::FromInt(SurvivalScifiGameMode->GetHour()) + ":00"));
 	}
 }

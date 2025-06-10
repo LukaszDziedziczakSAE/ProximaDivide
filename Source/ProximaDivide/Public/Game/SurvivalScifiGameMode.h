@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "Game/MissionDataAsset.h"
 #include "SurvivalScifiGameMode.generated.h"
+
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHourTick);
 
@@ -31,6 +33,9 @@ protected:
 
 	UPROPERTY()
 	class USurvivalSciFi_GameInstance* GameInstance;
+
+	UPROPERTY(EditAnywhere)
+	TMap<FString, UMissionDataAsset*> OnStartGiveMission;
 
 public:
 	virtual void BeginPlay() override;
@@ -68,4 +73,10 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Delegates")
 	FOnHourTick OnHourTick;
+
+	UFUNCTION(BlueprintCallable)
+	FString GetCurrentMapName();
+
+	UFUNCTION(BlueprintCallable)
+	UMissionDataAsset* GetOnStartMission();
 };

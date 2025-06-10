@@ -38,6 +38,9 @@ protected:
 	class UPlayerTutorialComponent* TutorialComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UPlayerObjectivesComponent* ObjectivesComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPS_Arms;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -70,6 +73,9 @@ public:
 	
 	UFUNCTION(BlueprintPure)
 	UPlayerTutorialComponent* GetTutorialComponent() { return TutorialComponent; }
+
+	UFUNCTION(BlueprintPure)
+	UPlayerObjectivesComponent* GetObjectivesComponent() { return ObjectivesComponent; }
 
 	UFUNCTION()
 	void Interact();
@@ -111,7 +117,13 @@ public:
 	struct FPlayerData GetSaveData();
 
 	UFUNCTION()
+	struct FObjectivesData GetObjectiveSaveData();
+
+	UFUNCTION()
 	void LoadDataFromSave();
 
 	virtual void Footstep() override;
+
+	UFUNCTION()
+	void AddNewMission(class UMissionDataAsset* MissionDataAsset);
 };

@@ -19,6 +19,9 @@
 #include "Game/SurvivalScifi_SaveGame.h"
 #include "Components/SpotLightComponent.h"
 #include "AkAudioEvent.h"
+#include "Character/Player/PlayerObjectivesComponent.h"
+#include "Game/MissionDataAsset.h"
+#include "Game/SurvivalScifiGameMode.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -45,23 +48,23 @@ APlayerCharacter::APlayerCharacter()
 
 	SpotLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("Spot Light"));
 	SpotLight->SetupAttachment(CameraComponent);
+
+	ObjectivesComponent = CreateDefaultSubobject<UPlayerObjectivesComponent>(TEXT("Objectives"));
 }
 
 // Called when the game starts or when spawned
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
 	SpotLight->SetHiddenInGame(true);
-	
-	USurvivalSciFi_GameInstance* GameInstance = Cast<USurvivalSciFi_GameInstance>(GetWorld()->GetGameInstance());
-	if (GameInstance && GameInstance->GetCurrentSaveGame())
-	{
-		EEnviroment Env = GameInstance->GetCurrentSaveGame()->Enviroment;
-		bIsInside = (Env == EEnviroment::Inside || Env == EEnviroment::Ship);
-	}
-
 	LoadDataFromSave();
+
+	ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
+	if (GameMode != nullptr)
+	{
+		UMissionDataAsset* Mission = GameMode->GetOnStartMission();
+		if (Mission != nullptr) AddNewMission(Mission);
+	}
 }
 
 // Called every frame
@@ -191,6 +194,7 @@ void APlayerCharacter::ToggleHelmetLight()
 {
 	if (SpotLight != nullptr) SpotLight->SetHiddenInGame(!SpotLight->bHiddenInGame);
 	if (HelmetLightSound != nullptr) HelmetLightSound->PostOnActor(this , FOnAkPostEventCallback(), int32(0), true);
+	if (!SpotLight->bHiddenInGame) TutorialComponent->HasTurnOnLight();
 }
 
 FPlayerData APlayerCharacter::GetSaveData()
@@ -203,16 +207,34 @@ FPlayerData APlayerCharacter::GetSaveData()
 	return Stats;
 }
 
+FObjectivesData APlayerCharacter::GetObjectiveSaveData()
+{
+	return ObjectivesComponent->GetSaveData();
+}
+
 void APlayerCharacter::LoadDataFromSave()
 {
-	if (GetGameInstance<USurvivalSciFi_GameInstance>()->GetCurrentSaveGame() != nullptr)
+	USurvivalSciFi_GameInstance* GameInstance = GetGameInstance<USurvivalSciFi_GameInstance>();
+	if (GameInstance == nullptr)
 	{
-		FPlayerData Stats = GetGameInstance<USurvivalSciFi_GameInstance>()->GetCurrentSaveGame()->PlayerData;
+		UE_LOG(LogTemp, Error, TEXT("Player could not GetGameInstance"));
+		return;
+	}
+
+	USurvivalScifi_SaveGame* Save = GameInstance->GetCurrentSaveGame();
+	if (Save != nullptr)
+	{
+		bIsInside = (Save->Enviroment == EEnviroment::Inside 
+			|| Save->Enviroment == EEnviroment::Ship);
+
+		FPlayerData Stats = Save->PlayerData;
 
 		HealthComponent->SetValue(Stats.Health);
 		OxygenComponent->SetValue(Stats.Oxygen);
 		SustenanceComponent->SetValue(Stats.Sustenance);
 		ExhaustionComponent->SetValue(Stats.Exhaustion);
+
+		ObjectivesComponent->LoadDataFromSave(Save->ObjectivesData);
 
 		bStatsLoaded = true;
 	}
@@ -225,5 +247,21 @@ void APlayerCharacter::Footstep()
 	Super::Footstep();
 
 	ExhaustionComponent->Footstep();
+}
+
+void APlayerCharacter::AddNewMission(class UMissionDataAsset* MissionDataAsset)
+{
+	if (ObjectivesComponent == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("AddNewMission failed: ObjectivesComponent is null"));
+		return;
+	}
+	if (MissionDataAsset == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("APlayerCharacter::AddNewMission received null MissionDataAsset"));
+		return;
+	}
+
+	ObjectivesComponent->AddNewMission(MissionDataAsset);
 }
 

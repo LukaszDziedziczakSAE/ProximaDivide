@@ -58,12 +58,12 @@ void UPlayerTutorialComponent::HasLooked(float LookAmount)
 	}
 }
 
-void UPlayerTutorialComponent::HasMovement(float MoveAmount)
+void UPlayerTutorialComponent::HasMovement(float MoveAmount, bool bIsSprinting)
 {
 	if (ShowMovementInfo)
 	{
 		CurrentThreshhold += MoveAmount;
-		if (CurrentThreshhold >= LookThreshhold)
+		if (CurrentThreshhold >= MovementThreshhold)
 		{
 			ShowMovementInfo = false;
 			//ShowJumpInfo = true;
@@ -74,6 +74,16 @@ void UPlayerTutorialComponent::HasMovement(float MoveAmount)
 			{
 				TutorialGiver->GoToNextPart();
 			}
+		}
+	}
+
+	if (bIsSprinting)
+	{
+		if (ShowSprintInfo)
+		{
+			HasSeenSprintInfo = true;
+			ShowSprintInfo = false;
+			GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
 		}
 	}
 }
@@ -129,15 +139,6 @@ void UPlayerTutorialComponent::ItemAddedToSlot()
 	{
 		TutorialGiver->GoToNextPart();
 	}
-
-
-	/*return;
-	if (!SeenSlotInfo && !ShowingAnyInfo())
-	{
-		SeenSlotInfo = true;
-		ShowSlotInfo = true;
-		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
-	}*/
 }
 
 void UPlayerTutorialComponent::HasUsedSlot()
@@ -182,5 +183,15 @@ void UPlayerTutorialComponent::SkipTutorial()
 	{
 		TutorialGiver->StopTalkingAnimation();
 		TutorialGiver->CompleteTutorial();
+	}
+}
+
+void UPlayerTutorialComponent::HasTurnOnLight()
+{
+	HasSeenLightInfo = true;
+	if (ShowLightInfo)
+	{
+		ShowLightInfo = false;
+		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
 	}
 }

@@ -51,6 +51,21 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
 	bool ShowDayTime;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool AllowMovement;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool AllowLook;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool AllowInteract;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool AllowActionBarUse;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "On Start")
+	bool AllowInventoryOpen;
 };
 
 
@@ -78,6 +93,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FTutorialPart> TutorialParts;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	class UMissionDataAsset* PostTutorialMission;
 
 	UPROPERTY()
 	class UAkComponent* CharacterVoice;
@@ -138,6 +156,9 @@ public:
 
 	UFUNCTION()
 	FTutorialPart GetCurrentPart();
+
+	UFUNCTION()
+	void PrepTutorial();
 
 	UFUNCTION()
 	void BeginTutorial();

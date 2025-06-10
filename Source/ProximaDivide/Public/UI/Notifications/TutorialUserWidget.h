@@ -24,6 +24,9 @@ protected:
 	class USizeBox* MovementInfo;
 
 	UPROPERTY(meta = (BindWidget))
+	class USizeBox* SprintInfo;
+
+	UPROPERTY(meta = (BindWidget))
 	class USizeBox* JumpInfo;
 
 	UPROPERTY(meta = (BindWidget))
@@ -31,6 +34,9 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* SlotInfo;
+
+	UPROPERTY(meta = (BindWidget))
+	class USizeBox* LightInfo;
 
 public:
 	UFUNCTION()

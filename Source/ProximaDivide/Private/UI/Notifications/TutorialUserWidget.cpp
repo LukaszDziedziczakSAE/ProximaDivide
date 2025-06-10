@@ -29,6 +29,11 @@ void UTutorialUserWidget::UpdateTutorialInfo()
 		? ESlateVisibility::HitTestInvisible
 		: ESlateVisibility::Collapsed);
 
+	SprintInfo->SetVisibility(
+		PlayerCharacter->GetTutorialComponent()->ShowSprintInfo
+		? ESlateVisibility::HitTestInvisible
+		: ESlateVisibility::Collapsed);
+
 	JumpInfo->SetVisibility(
 		PlayerCharacter->GetTutorialComponent()->ShowJumpInfo
 		? ESlateVisibility::HitTestInvisible
@@ -41,6 +46,11 @@ void UTutorialUserWidget::UpdateTutorialInfo()
 
 	SlotInfo->SetVisibility(
 		PlayerCharacter->GetTutorialComponent()->ShowSlotInfo
+		? ESlateVisibility::HitTestInvisible
+		: ESlateVisibility::Collapsed);
+
+	LightInfo->SetVisibility(
+		PlayerCharacter->GetTutorialComponent()->ShowLightInfo
 		? ESlateVisibility::HitTestInvisible
 		: ESlateVisibility::Collapsed);
 }

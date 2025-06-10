@@ -160,4 +160,22 @@ void ASurvivalScifiGameMode::LoadGame(int SlotNumber)
 	GameInstance->StartLoadGame(SlotNumber);
 }
 
+FString ASurvivalScifiGameMode::GetCurrentMapName()
+{
+	FString MapName = GetWorld()->GetMapName();
+	// Remove PIE prefix if it exists
+	FString CleanMapName = MapName;
+	CleanMapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+	return CleanMapName;
+}
+
+UMissionDataAsset* ASurvivalScifiGameMode::GetOnStartMission()
+{
+	if (OnStartGiveMission.Contains(GetCurrentMapName()))
+	{
+		return OnStartGiveMission[GetCurrentMapName()];
+	}
+	else return nullptr;
+}
+
 

@@ -70,7 +70,7 @@ protected:
 
 public:
 	UFUNCTION(BlueprintPure)
-	USurvivalScifi_SaveGame* GetCurrentSaveGame() { return CurrentSaveGame; }
+	USurvivalScifi_SaveGame* GetCurrentSaveGame();
 
 	UFUNCTION(BlueprintCallable)
 	void SaveCurrentGame();

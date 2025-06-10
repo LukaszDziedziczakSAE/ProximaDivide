@@ -47,6 +47,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class UTittleCard_UserWidget> TitleCardClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UObjectives_UserWidget> ObjectivesClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -83,6 +86,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UTittleCard_UserWidget* TitleCard;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UObjectives_UserWidget* Objectives;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool bSequenceIsPlaying;
@@ -174,4 +179,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ShowTitleCard();
+
+	UFUNCTION()
+	void UpdateObjectives();
 };

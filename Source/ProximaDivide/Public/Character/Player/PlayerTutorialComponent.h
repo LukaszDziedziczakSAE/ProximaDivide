@@ -41,6 +41,9 @@ public:
 	bool ShowMovementInfo;
 
 	UPROPERTY()
+	bool ShowSprintInfo;
+
+	UPROPERTY()
 	bool ShowJumpInfo;
 
 	UPROPERTY()
@@ -56,6 +59,9 @@ public:
 	bool ShowSlotInfo;
 
 	UPROPERTY()
+	bool ShowLightInfo;
+
+	UPROPERTY()
 	bool HasSeenInventoryPickup;
 
 	UPROPERTY()
@@ -68,6 +74,12 @@ public:
 	bool ShowInventoryDrop;
 
 	UPROPERTY()
+	bool HasSeenSprintInfo;
+
+	UPROPERTY()
+	bool HasSeenLightInfo;
+
+	UPROPERTY()
 	bool HideStats;
 
 	UPROPERTY()
@@ -75,6 +87,21 @@ public:
 
 	UPROPERTY()
 	bool HideDayTime;
+
+	UPROPERTY()
+	bool PreventMovement;
+
+	UPROPERTY()
+	bool PreventLook;
+
+	UPROPERTY()
+	bool PreventInteract;
+
+	UPROPERTY()
+	bool PreventActionBarUse;
+
+	UPROPERTY()
+	bool PreventInventoryOpen;
 
 	UPROPERTY()
 	class UTutorialGiverComponent* TutorialGiver;
@@ -92,7 +119,7 @@ public:
 	void HasLooked(float LookAmount);
 
 	UFUNCTION()
-	void HasMovement(float MoveAmount);
+	void HasMovement(float MoveAmount, bool bIsSprinting);
 
 	UFUNCTION()
 	void HasJumped();
@@ -119,4 +146,7 @@ public:
 
 	UFUNCTION()
 	void SkipTutorial();
+
+	UFUNCTION()
+	void HasTurnOnLight();
 };

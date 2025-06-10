@@ -6,6 +6,7 @@
 #include "AkGameplayStatics.h"
 #include "Character/Player/PlayerCharacter.h"
 #include "Game/SurvivalScifiGameMode.h"
+#include "Game/MissionStructs.h"
 
 void USurvivalSciFi_GameInstance::UpdateMapName()
 {
@@ -26,6 +27,31 @@ void USurvivalSciFi_GameInstance::LoadCurrentSaveMap()
 	UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
 }
 
+USurvivalScifi_SaveGame* USurvivalSciFi_GameInstance::GetCurrentSaveGame()
+{
+	if (CurrentSaveGame == nullptr)
+	{
+		if (DoesSlotExist(0))
+		{
+			LoadSlot(0);
+			UpdateMapName();
+		}
+		else
+		{
+			CurrentSaveGame = Cast<USurvivalScifi_SaveGame>(UGameplayStatics::CreateSaveGameObject(USurvivalScifi_SaveGame::StaticClass()));
+
+			if (CurrentSaveGame != nullptr)
+			{
+				CurrentSaveGame->SlotNumber = 0;
+				UpdateMapName();
+				SaveCurrentGame();
+			}
+		}
+	}
+
+	return CurrentSaveGame;
+}
+
 void USurvivalSciFi_GameInstance::SaveCurrentGame()
 {
 	if (CurrentSaveGame != nullptr)
@@ -41,6 +67,7 @@ void USurvivalSciFi_GameInstance::SaveCurrentGame()
 		if (Player != nullptr)
 		{
 			CurrentSaveGame->PlayerData = Player->GetSaveData();
+			CurrentSaveGame->ObjectivesData = Player->GetObjectiveSaveData();
 			UE_LOG(LogTemp, Log, TEXT("Saved Player Data"));
 		}
 
@@ -59,12 +86,12 @@ bool USurvivalSciFi_GameInstance::LoadSlot(int SlotNumber)
 
 		if (CurrentSaveGame == nullptr) return false;
 
-		APlayerCharacter* Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+		/*APlayerCharacter* Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		if (Player != nullptr)
 		{
 			Player->bIsInside = CurrentSaveGame->Enviroment != EEnviroment::Outside;
 		}
-		else UE_LOG(LogTemp, Error, TEXT("Did not find player character during %s load"), *SlotName);
+		else UE_LOG(LogTemp, Error, TEXT("Did not find player character during %s load"), *SlotName);*/
 
 		return true;
 	}

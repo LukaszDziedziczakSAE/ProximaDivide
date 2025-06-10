@@ -94,7 +94,7 @@ void ASurvivalScifi_PlayerController::Move(const FInputActionValue& Value)
 			Value.Get<FVector2D>().X);
 
 		if (Value.Get<FVector2D>().Size() > 0)
-			PlayerCharacter->GetTutorialComponent()->HasMovement(Value.Get<FVector2D>().Size());
+			PlayerCharacter->GetTutorialComponent()->HasMovement(Value.Get<FVector2D>().Size(), bIsSprinting);
 	}
 }
 
@@ -140,6 +140,7 @@ bool ASurvivalScifi_PlayerController::AllowLook()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
 		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu()
+		&& !PlayerCharacter->GetTutorialComponent()->PreventLook
 		&& PlayerCharacter->IsControlable;
 }
 
@@ -147,12 +148,14 @@ bool ASurvivalScifi_PlayerController::AllowMove()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
 		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu()
+		&& !PlayerCharacter->GetTutorialComponent()->PreventMovement
 		&& PlayerCharacter->IsControlable;
 }
 
 bool ASurvivalScifi_PlayerController::AllowInteraction()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
+		&& !PlayerCharacter->GetTutorialComponent()->PreventInteract
 		&& PlayerCharacter->IsControlable;
 }
 
@@ -160,6 +163,7 @@ bool ASurvivalScifi_PlayerController::AllowOpenMenu()
 {
 	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
 		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu()
+		&& !PlayerCharacter->GetTutorialComponent()->PreventInventoryOpen
 		&& PlayerCharacter->IsControlable;
 }
 
@@ -168,6 +172,7 @@ void ASurvivalScifi_PlayerController::RunStart()
 	if (CharacterAlive())
 	{
 		PlayerCharacter->SetMovementSpeed(true);
+		bIsSprinting = true;
 	}
 }
 
@@ -176,6 +181,7 @@ void ASurvivalScifi_PlayerController::RunEnd()
 	if (CharacterAlive())
 	{
 		PlayerCharacter->SetMovementSpeed(false);
+		bIsSprinting = false;
 	}
 }
 
@@ -189,7 +195,7 @@ void ASurvivalScifi_PlayerController::Interact()
 
 void ASurvivalScifi_PlayerController::Slot1()
 {
-	if (CharacterAlive())
+	if (CharacterAlive() && !PlayerCharacter->GetTutorialComponent()->PreventActionBarUse)
 	{
 		PlayerCharacter->SelectSlot(1);
 		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
@@ -198,7 +204,7 @@ void ASurvivalScifi_PlayerController::Slot1()
 
 void ASurvivalScifi_PlayerController::Slot2()
 {
-	if (CharacterAlive())
+	if (CharacterAlive() && !PlayerCharacter->GetTutorialComponent()->PreventActionBarUse)
 	{
 		PlayerCharacter->SelectSlot(2);
 		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
@@ -207,7 +213,7 @@ void ASurvivalScifi_PlayerController::Slot2()
 
 void ASurvivalScifi_PlayerController::Slot3()
 {
-	if (CharacterAlive())
+	if (CharacterAlive() && !PlayerCharacter->GetTutorialComponent()->PreventActionBarUse)
 	{
 		PlayerCharacter->SelectSlot(3);
 		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
@@ -216,7 +222,7 @@ void ASurvivalScifi_PlayerController::Slot3()
 
 void ASurvivalScifi_PlayerController::Slot4()
 {
-	if (CharacterAlive())
+	if (CharacterAlive() && !PlayerCharacter->GetTutorialComponent()->PreventActionBarUse)
 	{
 		PlayerCharacter->SelectSlot(4);
 		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();
@@ -225,7 +231,7 @@ void ASurvivalScifi_PlayerController::Slot4()
 
 void ASurvivalScifi_PlayerController::Slot5()
 {
-	if (CharacterAlive())
+	if (CharacterAlive() && !PlayerCharacter->GetTutorialComponent()->PreventActionBarUse)
 	{
 		PlayerCharacter->SelectSlot(5);
 		PlayerCharacter->GetTutorialComponent()->HasUsedSlot();

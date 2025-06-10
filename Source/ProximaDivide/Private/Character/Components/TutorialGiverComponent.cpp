@@ -50,6 +50,8 @@ void UTutorialGiverComponent::BeginPlay()
 	{
 		FlightDeckChair->HideCharacter();
 	}
+
+	PrepTutorial();
 }
 
 void UTutorialGiverComponent::OnPartStart()
@@ -112,6 +114,31 @@ void UTutorialGiverComponent::OnPartStart()
 	{
 		Player->GetTutorialComponent()->HideDayTime = false;
 		Player->GetHUD()->ShowGameHUD();
+	}
+
+	if (GetCurrentPart().AllowLook)
+	{
+		Player->GetTutorialComponent()->PreventLook = false;
+	}
+
+	if (GetCurrentPart().AllowMovement)
+	{
+		Player->GetTutorialComponent()->PreventMovement = false;
+	}
+
+	if (GetCurrentPart().AllowInteract)
+	{
+		Player->GetTutorialComponent()->PreventInteract = false;
+	}
+
+	if (GetCurrentPart().AllowActionBarUse)
+	{
+		Player->GetTutorialComponent()->PreventActionBarUse = false;
+	}
+
+	if (GetCurrentPart().AllowInventoryOpen)
+	{
+		Player->GetTutorialComponent()->PreventInventoryOpen = false;
 	}
 }
 
@@ -192,14 +219,28 @@ FTutorialPart UTutorialGiverComponent::GetCurrentPart()
 	return FTutorialPart();
 }
 
+void UTutorialGiverComponent::PrepTutorial()
+{
+	if (TutorialParts.Num() == 0) return;
+
+	Player->GetTutorialComponent()->HideActionBar = true;
+	Player->GetTutorialComponent()->HideStats = true;
+	Player->GetTutorialComponent()->HideDayTime = true;
+
+	Player->GetTutorialComponent()->PreventLook = true;
+	Player->GetTutorialComponent()->PreventMovement = true;
+	Player->GetTutorialComponent()->PreventInteract = true;
+	Player->GetTutorialComponent()->PreventActionBarUse = true;
+	Player->GetTutorialComponent()->PreventInventoryOpen = true;
+
+	Player->GetHUD()->ShowGameHUD();
+}
+
 void UTutorialGiverComponent::BeginTutorial()
 {
 	if (TutorialParts.Num() > 0)
 	{
-		Player->GetTutorialComponent()->HideActionBar = true;
-		Player->GetTutorialComponent()->HideStats = true;
-		Player->GetTutorialComponent()->HideDayTime = true;
-		Player->GetHUD()->ShowGameHUD();
+		
 
 		GoToNextPart();
 		if (AI != nullptr) AI->UpdateBB();
@@ -215,8 +256,18 @@ void UTutorialGiverComponent::CompleteTutorial()
 	Player->GetTutorialComponent()->HideActionBar = false;
 	Player->GetTutorialComponent()->HideStats = false;
 	Player->GetTutorialComponent()->HideDayTime = false;
+	Player->GetTutorialComponent()->PreventLook = false;
+	Player->GetTutorialComponent()->PreventMovement = false;
+	Player->GetTutorialComponent()->PreventInteract = false;
+	Player->GetTutorialComponent()->PreventActionBarUse = false;
+	Player->GetTutorialComponent()->PreventInventoryOpen = false;
 	Player->GetHUD()->ShowGameHUD();
 	UE_LOG(LogTemp, Log, TEXT("Tutorial Complete"));
+
+	if (PostTutorialMission != nullptr)
+	{
+		Player->AddNewMission(PostTutorialMission);
+	}
 }
 
 void UTutorialGiverComponent::PlaySitDownAnimation()

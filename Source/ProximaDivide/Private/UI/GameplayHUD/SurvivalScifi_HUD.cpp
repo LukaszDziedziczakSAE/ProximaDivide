@@ -16,6 +16,7 @@
 #include "Character/Player/PlayerCharacter.h"
 #include "Character/Player/PlayerTutorialComponent.h"
 #include "UI/Misc/TittleCard_UserWidget.h"
+#include "UI/Notifications/Objectives_UserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -59,6 +60,10 @@ void ASurvivalScifi_HUD::ShowGameHUD()
 	if (TutorialClass != nullptr) 
 		Tutorial = CreateWidget<UTutorialUserWidget>(GetWorld(), TutorialClass);
 	if (Tutorial != nullptr) Tutorial->AddToViewport();
+
+	if (ObjectivesClass != nullptr)
+		Objectives = CreateWidget<UObjectives_UserWidget>(GetWorld(), ObjectivesClass);
+	if (Objectives != nullptr) Objectives->AddToViewport();
 }
 
 void ASurvivalScifi_HUD::HideGameHUD()
@@ -87,6 +92,12 @@ void ASurvivalScifi_HUD::HideGameHUD()
 	{
 		Tutorial->RemoveFromParent();
 		Tutorial = nullptr;
+	}
+
+	if (Objectives != nullptr)
+	{
+		Objectives->RemoveFromParent();
+		Objectives = nullptr;
 	}
 }
 
@@ -242,4 +253,12 @@ void ASurvivalScifi_HUD::ShowTitleCard()
 		TitleCard = CreateWidget<UTittleCard_UserWidget>(GetWorld(), TitleCardClass);
 
 	if (TitleCard != nullptr) TitleCard->AddToViewport();
+}
+
+void ASurvivalScifi_HUD::UpdateObjectives()
+{
+	if (Objectives != nullptr)
+	{
+		Objectives->UpdateObjectivesWidget();
+	}
 }

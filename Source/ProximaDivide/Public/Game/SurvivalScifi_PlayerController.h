@@ -74,6 +74,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Light;
 
+	UPROPERTY(VisibleAnywhere)
+	bool bIsSprinting;
+
 	UFUNCTION()
 	virtual void SetupInputComponent() override;
 
