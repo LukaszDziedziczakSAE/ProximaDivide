@@ -3,9 +3,13 @@
 
 #include "Enviroment/SleepArea.h"
 #include "Components/BoxComponent.h"
+#include "Components/WidgetComponent.h"
+#include "UI/Notifications/ObjectiveMarker_UserWidget.h"
 #include "Character/Player/PlayerCharacter.h"
 #include "Character/Components/ExhaustionComponent.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
+#include "LevelSequencePlayer.h"
+#include "UI/GameplayHUD/SurvivalScifi_HUD.h"
 
 // Sets default values
 ASleepArea::ASleepArea()
@@ -18,6 +22,11 @@ ASleepArea::ASleepArea()
 	Area->SetBoxExtent(FVector(100.0f, 100.0f, 100.0f));
 	Area->SetEnableGravity(false);
 	Area->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
+
+	ObjectiveMarkerComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("ObjectiveMarkerComponent"));
+	ObjectiveMarkerComponent->SetupAttachment(RootComponent);
+	ObjectiveMarkerComponent->SetWidgetSpace(EWidgetSpace::Screen);
+	ObjectiveMarkerComponent->SetVisibility(false); // Start hidden
 }
 
 // Called when the game starts or when spawned
@@ -25,11 +34,6 @@ void ASleepArea::BeginPlay()
 {
 	Super::BeginPlay();
 	
-}
-
-int ASleepArea::HoursToSleep(APlayerCharacter* PlayerCharacter)
-{
-	return FMath::CeilToInt(PlayerCharacter->GetExhaustionComponent()->GetMissingPercentage() * MaxHoursToSleep);
 }
 
 // Called every frame
@@ -43,8 +47,33 @@ void ASleepArea::Interact(APlayerCharacter* PlayerCharacter)
 {
 	if (!CanPlayerSleep(PlayerCharacter)) return;
 
+	if (LevelSequence != nullptr)
+	{
+		ALevelSequenceActor* SeqenceActor = nullptr;
+		ULevelSequencePlayer* LevelSequencePlayer = ULevelSequencePlayer::CreateLevelSequencePlayer(GetWorld(), LevelSequence, FMovieSceneSequencePlaybackSettings(), SeqenceActor);
+
+		if (LevelSequencePlayer)
+		{
+			PlayerCharacter->IsControlable = false;
+			PlayerCharacter->GetHUD()->HideGameHUD();
+
+			CurrentHoursToSleep = HoursToSleep(PlayerCharacter);
+
+			LevelSequencePlayer->OnFinished.AddDynamic(this, &ASleepArea::OnLevelSeqenceComplete);
+			LevelSequencePlayer->Play();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Unable to create level sequence player"));
+		}
+	}
+
+	else
+	{
+		GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(HoursToSleep(PlayerCharacter));
+	}
+
 	PlayerCharacter->GetExhaustionComponent()->SetValue(0);
-	GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(HoursToSleep(PlayerCharacter));
 }
 
 FString ASleepArea::InteractionText(APlayerCharacter* PlayerCharacter)
@@ -56,5 +85,45 @@ FString ASleepArea::InteractionText(APlayerCharacter* PlayerCharacter)
 bool ASleepArea::CanPlayerSleep(APlayerCharacter* PlayerCharacter)
 {
 	return PlayerCharacter->GetExhaustionComponent()->GetPercentage() >= MinExhaustionPercentage;
+}
+
+int ASleepArea::HoursToSleep(APlayerCharacter* PlayerCharacter)
+{
+	return FMath::CeilToInt(PlayerCharacter->GetExhaustionComponent()->GetMissingPercentage() * MaxHoursToSleep);
+}
+
+void ASleepArea::ShowObjectiveMarker()
+{
+	if (ObjectiveMarkerComponent)
+	{
+		if (ObjectiveMarkerComponent->GetWidgetClass() != ObjectiveMarkerWidgetClass)
+		{
+			ObjectiveMarkerComponent->SetWidgetClass(ObjectiveMarkerWidgetClass);
+			ObjectiveMarkerComponent->InitWidget();
+		}
+
+		if (UObjectiveMarker_UserWidget* Widget = Cast<UObjectiveMarker_UserWidget>(ObjectiveMarkerComponent->GetUserWidgetObject()))
+		{
+			Widget->SetMarkerText(MarkerText);
+			Widget->Owner = ObjectiveMarkerComponent;
+			Widget->Player = GetWorld()->GetFirstPlayerController()->GetPawn<APlayerCharacter>();
+		}
+		ObjectiveMarkerComponent->SetVisibility(true);
+	}
+}
+
+void ASleepArea::HideObjectiveMarker()
+{
+	if (ObjectiveMarkerComponent)
+	{
+		ObjectiveMarkerComponent->SetVisibility(false);
+		ObjectiveMarkerComponent->DestroyComponent();
+		ObjectiveMarkerComponent = nullptr;
+	}
+}
+
+void ASleepArea::OnLevelSeqenceComplete()
+{
+	GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(CurrentHoursToSleep);
 }
 

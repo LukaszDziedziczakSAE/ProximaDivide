@@ -221,17 +221,22 @@ FTutorialPart UTutorialGiverComponent::GetCurrentPart()
 
 void UTutorialGiverComponent::PrepTutorial()
 {
-	if (TutorialParts.Num() == 0) return;
+    if (TutorialParts.Num() == 0) return;
+    if (Player == nullptr) return;
 
-	Player->GetTutorialComponent()->HideActionBar = true;
-	Player->GetTutorialComponent()->HideStats = true;
-	Player->GetTutorialComponent()->HideDayTime = true;
+    UPlayerTutorialComponent* TutorialComp = Player->GetTutorialComponent();
+	if (TutorialComp != nullptr)
+	{
+		TutorialComp->HideActionBar = true;
+		TutorialComp->HideStats = true;
+		TutorialComp->HideDayTime = true;
 
-	Player->GetTutorialComponent()->PreventLook = true;
-	Player->GetTutorialComponent()->PreventMovement = true;
-	Player->GetTutorialComponent()->PreventInteract = true;
-	Player->GetTutorialComponent()->PreventActionBarUse = true;
-	Player->GetTutorialComponent()->PreventInventoryOpen = true;
+		TutorialComp->PreventLook = true;
+		TutorialComp->PreventMovement = true;
+		TutorialComp->PreventInteract = true;
+		TutorialComp->PreventActionBarUse = true;
+		TutorialComp->PreventInventoryOpen = true;
+	}
 
 	Player->GetHUD()->ShowGameHUD();
 }

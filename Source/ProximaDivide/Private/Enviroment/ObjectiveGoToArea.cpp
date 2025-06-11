@@ -3,6 +3,8 @@
 
 #include "Enviroment/ObjectiveGoToArea.h"
 #include "Components/BoxComponent.h"
+#include "Components/WidgetComponent.h"
+#include "UI/Notifications/ObjectiveMarker_UserWidget.h"
 #include "Character/Player/PlayerCharacter.h"
 #include "Character/Player/PlayerObjectivesComponent.h"
 
@@ -16,6 +18,11 @@ AObjectiveGoToArea::AObjectiveGoToArea()
 	SetRootComponent(Area);
 	Area->SetBoxExtent(FVector(100.0f, 100.0f, 100.0f));
 	Area->SetEnableGravity(false);
+
+	ObjectiveMarkerComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("ObjectiveMarkerComponent"));
+	ObjectiveMarkerComponent->SetupAttachment(RootComponent);
+	ObjectiveMarkerComponent->SetWidgetSpace(EWidgetSpace::Screen);
+	ObjectiveMarkerComponent->SetVisibility(false); // Start hidden
 }
 
 // Called when the game starts or when spawned
@@ -45,6 +52,35 @@ void AObjectiveGoToArea::OnBoxBeginOverlap(UPrimitiveComponent* OverlappedCompon
 void AObjectiveGoToArea::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
 
+void AObjectiveGoToArea::ShowObjectiveMarker()
+{
+	if (ObjectiveMarkerComponent)
+	{
+		if (ObjectiveMarkerComponent->GetWidgetClass() != ObjectiveMarkerWidgetClass)
+		{
+			ObjectiveMarkerComponent->SetWidgetClass(ObjectiveMarkerWidgetClass);
+			ObjectiveMarkerComponent->InitWidget();
+		}
+
+		if (UObjectiveMarker_UserWidget* Widget = Cast<UObjectiveMarker_UserWidget>(ObjectiveMarkerComponent->GetUserWidgetObject()))
+		{
+			Widget->SetMarkerText(MarkerText);
+			Widget->Owner = ObjectiveMarkerComponent;
+			Widget->Player = GetWorld()->GetFirstPlayerController()->GetPawn<APlayerCharacter>();
+		}
+		ObjectiveMarkerComponent->SetVisibility(true);
+	}
+}
+
+void AObjectiveGoToArea::HideObjectiveMarker()
+{
+	if (ObjectiveMarkerComponent)
+	{
+		ObjectiveMarkerComponent->SetVisibility(false);
+		ObjectiveMarkerComponent->DestroyComponent();
+		ObjectiveMarkerComponent = nullptr;
+	}
 }
 

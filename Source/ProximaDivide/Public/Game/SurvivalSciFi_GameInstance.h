@@ -73,7 +73,7 @@ public:
 	USurvivalScifi_SaveGame* GetCurrentSaveGame();
 
 	UFUNCTION(BlueprintCallable)
-	void SaveCurrentGame();
+	void SaveCurrentGame(int AdvanceHours = 0);
 
 	UFUNCTION(BlueprintCallable)
 	bool LoadSlot(int SlotNumber);

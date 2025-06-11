@@ -30,6 +30,8 @@ void UStatComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if (PlayerCharacter == nullptr || !PlayerCharacter->bStatsLoaded || PlayerCharacter->IsPlayingSequence()) return;
+
 	CurrentValue = FMath::Clamp(CurrentValue + (ModifyPerSecond * DeltaTime), 0, MaxValue);
 }
 

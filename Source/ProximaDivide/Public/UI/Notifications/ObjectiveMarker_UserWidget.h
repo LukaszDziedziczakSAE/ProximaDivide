@@ -25,7 +25,7 @@ protected:
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	AActor* Owner;
+	class UWidgetComponent* Owner;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AActor* Player;

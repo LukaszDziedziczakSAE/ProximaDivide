@@ -22,6 +22,7 @@
 #include "Character/Player/PlayerObjectivesComponent.h"
 #include "Game/MissionDataAsset.h"
 #include "Game/SurvivalScifiGameMode.h"
+#include "Character/Player/PlayerSequenceComponent.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -50,6 +51,8 @@ APlayerCharacter::APlayerCharacter()
 	SpotLight->SetupAttachment(CameraComponent);
 
 	ObjectivesComponent = CreateDefaultSubobject<UPlayerObjectivesComponent>(TEXT("Objectives"));
+
+	SequenceComponent = CreateDefaultSubobject<UPlayerSequenceComponent>(TEXT("Sequence Component"));
 }
 
 // Called when the game starts or when spawned
@@ -263,5 +266,14 @@ void APlayerCharacter::AddNewMission(class UMissionDataAsset* MissionDataAsset)
 	}
 
 	ObjectivesComponent->AddNewMission(MissionDataAsset);
+}
+
+bool APlayerCharacter::IsPlayingSequence()
+{
+	if (SequenceComponent != nullptr)
+	{
+		return SequenceComponent->IsPlayingSequence();
+	}
+	return false;
 }
 

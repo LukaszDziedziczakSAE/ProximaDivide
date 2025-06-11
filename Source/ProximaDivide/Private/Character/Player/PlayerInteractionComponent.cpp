@@ -96,16 +96,6 @@ void UPlayerInteractionComponent::Interact()
 {
 	if (InteractionInterface.GetObject() == nullptr) return;
 
-	ASurvivalScifi_Item* Item = Cast<ASurvivalScifi_Item>(InteractionInterface.GetObject());
-	if (Item != nullptr)
-	{
-		UAkGameplayStatics::PostEvent(PickUpSound, Item, int32(0), FOnAkPostEventCallback(), false);
-	}
-
-	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
-	if (Interaction!=nullptr) Interaction->Interact(PlayerCharacter);
-	HUD->ResetInteraction();
-
 	AActor* Actor = Cast<AActor>(InteractionInterface.GetObject());
 	if (Actor != nullptr )
 	{
@@ -117,6 +107,15 @@ void UPlayerInteractionComponent::Interact()
 		else UE_LOG(LogTemp, Warning, TEXT("Interaction actor has no tags"));
 	}
 
+	ASurvivalScifi_Item* Item = Cast<ASurvivalScifi_Item>(InteractionInterface.GetObject());
+	if (Item != nullptr)
+	{
+		UAkGameplayStatics::PostEvent(PickUpSound, Item, int32(0), FOnAkPostEventCallback(), false);
+	}
+
+	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
+	if (Interaction!=nullptr) Interaction->Interact(PlayerCharacter);
+	HUD->ResetInteraction();
 }
 
 bool UPlayerInteractionComponent::InteractableIsCraftingMachine()

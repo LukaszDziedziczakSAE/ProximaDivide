@@ -41,6 +41,9 @@ protected:
 	class UPlayerObjectivesComponent* ObjectivesComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UPlayerSequenceComponent* SequenceComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPS_Arms;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -76,6 +79,9 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	UPlayerObjectivesComponent* GetObjectivesComponent() { return ObjectivesComponent; }
+
+	UFUNCTION(BlueprintPure)
+	UPlayerSequenceComponent* GetSequenceComponent() { return SequenceComponent; }
 
 	UFUNCTION()
 	void Interact();
@@ -126,4 +132,7 @@ public:
 
 	UFUNCTION()
 	void AddNewMission(class UMissionDataAsset* MissionDataAsset);
+
+	UFUNCTION(BlueprintPure)
+	bool IsPlayingSequence();
 };

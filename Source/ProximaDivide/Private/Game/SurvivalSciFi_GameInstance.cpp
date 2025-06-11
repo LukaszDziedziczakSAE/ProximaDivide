@@ -52,7 +52,7 @@ USurvivalScifi_SaveGame* USurvivalSciFi_GameInstance::GetCurrentSaveGame()
 	return CurrentSaveGame;
 }
 
-void USurvivalSciFi_GameInstance::SaveCurrentGame()
+void USurvivalSciFi_GameInstance::SaveCurrentGame(int AdvanceHours)
 {
 	if (CurrentSaveGame != nullptr)
 	{
@@ -70,6 +70,9 @@ void USurvivalSciFi_GameInstance::SaveCurrentGame()
 			CurrentSaveGame->ObjectivesData = Player->GetObjectiveSaveData();
 			UE_LOG(LogTemp, Log, TEXT("Saved Player Data"));
 		}
+
+
+		CurrentSaveGame->AdvanceHours(AdvanceHours);
 
 		SaveSlot(CurrentSaveGame->SlotNumber);
 	}
@@ -262,8 +265,7 @@ void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep)
 	}
 	UE_LOG(LogTemp, Log, TEXT("Going to sleep for %d hours"), HoursToSleep);
 
-	SaveCurrentGame();
-	CurrentSaveGame->AdvanceHours(HoursToSleep);
+	SaveCurrentGame(HoursToSleep);
 	LoadCurrentSaveMap();
 }
 

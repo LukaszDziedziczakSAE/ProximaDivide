@@ -32,7 +32,7 @@ void UObjectiveMarker_UserWidget::NativeTick(const FGeometry& MyGeometry, float 
 		return;
 	}
 
-	float Distance = FVector::Distance(Player->GetActorLocation(), Owner->GetActorLocation());
+	float Distance = FVector::Distance(Player->GetActorLocation(), Owner->GetComponentLocation());
 	Distance /= 100; // Convert to meters
 	Distance = FMath::FloorToFloat(Distance);
 	MarkerDistance->SetText(FText::FromString(FString::SanitizeFloat(Distance, 0) + "m"));

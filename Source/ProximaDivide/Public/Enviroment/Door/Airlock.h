@@ -74,6 +74,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	class APlayerCharacter* PlayerCharacter;
 
+	UPROPERTY(EditAnywhere, Category = "Save")
+	FName AirlockID;
+
 	UFUNCTION()
 	bool DoorsClosed();
 
@@ -111,6 +114,12 @@ public:
 	UFUNCTION()
 	void InsideOuterSwitchPress();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintPure)
 	EAirlockState GetAirlockState() { return AirlockState; }
+
+	UFUNCTION(BlueprintPure)
+	FName GetAirlockID() { return AirlockID; }
+
+	UFUNCTION()
+	void SetAirlockState(EAirlockState NewAirlockState);
 };

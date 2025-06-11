@@ -6,6 +6,7 @@
 #include "GameFramework/SaveGame.h"
 #include "Enviroment/EEnviroment.h"
 #include "Game/MissionStructs.h"
+#include "Enviroment/Door/Airlock.h"
 #include "SurvivalScifi_SaveGame.generated.h"
 
 USTRUCT(BlueprintType)
@@ -26,23 +27,17 @@ struct FPlayerData
 	float Exhaustion;
 };
 
-//USTRUCT(BlueprintType)
-//struct FObjectivesData
-//{
-//	GENERATED_BODY()
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-//	TArray<class UMissionDataAsset*> IncompleteMissions;
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-//	TArray<struct FMissionProgress> MissionProgresses;
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-//	TArray<UMissionDataAsset*> CompleteMissions;
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-//	int CurrentMission = -1;
-//};
+USTRUCT(BlueprintType)
+struct FAirlockSaveData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName AirlockID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EAirlockState AirlockState;
+};
 
 USTRUCT(BlueprintType)
 struct FWorldData
@@ -57,6 +52,9 @@ struct FWorldData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float SecondsLeftInHour;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FAirlockSaveData> AirlockData;
 };
 
 UCLASS()

@@ -19,14 +19,13 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (PlayerCharacter != nullptr && PlayerCharacter->bStatsLoaded)
+	if (PlayerCharacter == nullptr || !PlayerCharacter->bStatsLoaded || PlayerCharacter->IsPlayingSequence()) return;
+	
+	if (PlayerCharacter->GetOxygenComponent()->GetCurrentValue() <= 0
+		|| PlayerCharacter->GetSustenanceComponent()->GetCurrentValue() <= 0
+		|| PlayerCharacter->GetExhaustionComponent()->GetCurrentValue() >= PlayerCharacter->GetExhaustionComponent()->GetMaxValue())
 	{
-		if (PlayerCharacter->GetOxygenComponent()->GetCurrentValue() <= 0
-			|| PlayerCharacter->GetSustenanceComponent()->GetCurrentValue() <= 0
-			|| PlayerCharacter->GetExhaustionComponent()->GetCurrentValue() >= PlayerCharacter->GetExhaustionComponent()->GetMaxValue())
-		{
-			CurrentValue = FMath::Clamp(CurrentValue + (ZeroStatHealthLoss * DeltaTime), 0, MaxValue);
-		}
+		CurrentValue = FMath::Clamp(CurrentValue + (ZeroStatHealthLoss * DeltaTime), 0, MaxValue);
 	}
 }
 

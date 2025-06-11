@@ -99,7 +99,7 @@ void AMoxie::ShowObjectiveMarker()
         if (UObjectiveMarker_UserWidget* Widget = Cast<UObjectiveMarker_UserWidget>(ObjectiveMarkerComponent->GetUserWidgetObject()))
         {
             Widget->SetMarkerText(MarkerText);
-            Widget->Owner = this;
+            Widget->Owner = ObjectiveMarkerComponent;
             Widget->Player = GetWorld()->GetFirstPlayerController()->GetPawn<APlayerCharacter>();
         }
         ObjectiveMarkerComponent->SetVisibility(true);

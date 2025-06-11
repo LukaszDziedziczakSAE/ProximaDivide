@@ -216,3 +216,9 @@ void AAirlock::InsideOuterSwitchPress()
 		BeginCycling();
 	}
 }
+
+void AAirlock::SetAirlockState(EAirlockState NewAirlockState)
+{
+	AirlockState = NewAirlockState;
+	SetDoorModes();
+}

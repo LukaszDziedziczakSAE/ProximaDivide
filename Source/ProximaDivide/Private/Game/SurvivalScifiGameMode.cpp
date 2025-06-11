@@ -1,11 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Game/SurvivalScifiGameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "GameFramework/PlayerStart.h"
 #include "Game/SurvivalScifi_SaveGame.h"
+#include "Enviroment/Door/Airlock.h"
+#include "EngineUtils.h"
 
 ASurvivalScifiGameMode::ASurvivalScifiGameMode()
 {
@@ -139,6 +140,17 @@ struct FWorldData ASurvivalScifiGameMode::GetSaveData()
 	Data.Hour = Hour;
 	Data.SecondsLeftInHour = SecondsLeftInHour;
 
+	// save airlock data
+	Data.AirlockData.Empty();
+	for (TActorIterator<AAirlock> It(GetWorld()); It; ++It)
+	{
+		AAirlock* Airlock = *It;
+		FAirlockSaveData Save;
+		Save.AirlockID = Airlock->GetAirlockID();
+		Save.AirlockState = Airlock->GetAirlockState();
+		Data.AirlockData.Add(Save);
+	}
+
 	return Data;
 }
 
@@ -152,6 +164,21 @@ void ASurvivalScifiGameMode::LoadDataFromSave()
 	Hour = Data.Hour;
 	SecondsLeftInHour = Data.SecondsLeftInHour;
 	OnHourTick.Broadcast();
+
+	// load airlock data
+	TMap<FName, AAirlock*> AirlockMap;
+	for (TActorIterator<AAirlock> It(GetWorld()); It; ++It)
+	{
+		AAirlock* Airlock = *It;
+		AirlockMap.Add(Airlock->GetAirlockID(), Airlock);
+	}
+	for (const FAirlockSaveData& Save : Data.AirlockData)
+	{
+		if (AAirlock** Found = AirlockMap.Find(Save.AirlockID))
+		{
+			(*Found)->SetAirlockState(Save.AirlockState);
+		}
+	}
 }
 
 void ASurvivalScifiGameMode::LoadGame(int SlotNumber)

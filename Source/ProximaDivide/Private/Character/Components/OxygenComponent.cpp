@@ -8,7 +8,7 @@ void UOxygenComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (PlayerCharacter == nullptr || !PlayerCharacter->bStatsLoaded) return;
+	if (PlayerCharacter == nullptr || !PlayerCharacter->bStatsLoaded || PlayerCharacter->IsPlayingSequence()) return;
 
 	if (PlayerCharacter->bIsInside)
 	{

@@ -49,7 +49,7 @@ protected:
 	void OnLevelSeqenceComplete();
 
 	UPROPERTY(EditAnywhere, Category = "Post Sequence")
-	FName NewMapName = TEXT("L_Mars");
+	FName NewMapName = TEXT("L_Planet");
 
 	UPROPERTY(EditAnywhere, Category = "Post Sequence")
 	FName PlayerStartTag = TEXT("crash");

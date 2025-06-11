@@ -5,6 +5,8 @@
 
 void USurvivalScifi_SaveGame::AdvanceHours(int HoursToAdvance)
 {
+	if (HoursToAdvance <= 0) return;
+
 	// advance save slot hour, day if needed
 	for (int h = 0; h < HoursToAdvance; h++)
 	{

@@ -22,8 +22,8 @@ void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 
 	PlayerCharacter->OnDestroyed.AddDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
 
-	GetHUD<ASurvivalScifi_HUD>()->HideDeathScreen();
-	GetHUD<ASurvivalScifi_HUD>()->ShowGameHUD();
+	
+	if (!PlayerCharacter->IsPlayingSequence()) GetHUD<ASurvivalScifi_HUD>()->ShowGameHUD();
 
 	UE_LOG(LogTemp, Log, TEXT("Possessed %s"), *aPawn->GetName());
 }
@@ -264,6 +264,8 @@ bool ASurvivalScifi_PlayerController::CharacterAlive()
 
 void ASurvivalScifi_PlayerController::OnPlayerDeath(AActor* DestroyedActor)
 {
+	GetHUD<ASurvivalScifi_HUD>()->HideDeathScreen();
+
 	if (PlayerCharacter != nullptr)
 	{
 		PlayerCharacter->OnDestroyed.RemoveDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
