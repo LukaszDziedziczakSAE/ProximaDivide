@@ -92,6 +92,7 @@ void UPlayerTutorialComponent::HasJumped()
 {
 	if (ShowJumpInfo)
 	{
+		SeenJumpInfo = true;
 		ShowJumpInfo = false;
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
 	}

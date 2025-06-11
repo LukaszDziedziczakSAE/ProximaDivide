@@ -56,6 +56,9 @@ public:
 	bool SeenSlotInfo;
 
 	UPROPERTY()
+	bool SeenJumpInfo;
+
+	UPROPERTY()
 	bool ShowSlotInfo;
 
 	UPROPERTY()

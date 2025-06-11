@@ -5,10 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/Interaction.h"
+#include "Interface/ObjectiveMarkerInterface.h"
 #include "Moxie.generated.h"
 
 UCLASS()
-class PROXIMADIVIDE_API AMoxie : public AActor, public IInteraction
+class PROXIMADIVIDE_API AMoxie : public AActor, public IInteraction, public IObjectiveMarkerInterface
 {
 	GENERATED_BODY()
 	
@@ -47,6 +48,12 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	float CooldownTimer;
 
+	UPROPERTY(EditAnywhere)
+	class UWidgetComponent* ObjectiveMarkerComponent;
+
+	UPROPERTY(EditAnywhere, Category = "Objective Marker")
+	TSubclassOf<class UObjectiveMarker_UserWidget> ObjectiveMarkerWidgetClass;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -54,4 +61,11 @@ public:
 	virtual void Interact(class APlayerCharacter* PlayerCharacter) override;
 
 	virtual FString InteractionText(APlayerCharacter* PlayerCharacter) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Objective Marker")
+	FText MarkerText;
+
+	// Inherited via IObjectiveMarkerInterface
+	virtual void ShowObjectiveMarker() override;
+	virtual void HideObjectiveMarker() override;
 };

@@ -23,7 +23,10 @@ ATutorialCardShowArea::ATutorialCardShowArea()
 void ATutorialCardShowArea::BeginPlay()
 {
 	Super::BeginPlay();
-	Area->OnComponentBeginOverlap.AddDynamic(this, &ATutorialCardShowArea::OnBoxBeginOverlap);
+	if (!Area->OnComponentBeginOverlap.IsAlreadyBound(this, &ATutorialCardShowArea::OnBoxBeginOverlap))
+	{
+		Area->OnComponentBeginOverlap.AddDynamic(this, &ATutorialCardShowArea::OnBoxBeginOverlap);
+	}
 }
 
 
@@ -45,6 +48,12 @@ void ATutorialCardShowArea::OnBoxBeginOverlap(UPrimitiveComponent* OverlappedCom
 			else if (bShowLightInfo && !Tutorial->HasSeenLightInfo)
 			{
 				Tutorial->ShowLightInfo = true;
+				Player->GetHUD()->UpdateTutorialInfo();
+			}
+
+			else if (bShowJumpInfo && !Tutorial->SeenJumpInfo)
+			{
+				Tutorial->ShowJumpInfo = true;
 				Player->GetHUD()->UpdateTutorialInfo();
 			}
 		}

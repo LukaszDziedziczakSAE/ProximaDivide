@@ -6,6 +6,8 @@
 #include "Game/SurvivalScifi_SaveGame.h"
 #include "Game/MissionStructs.h"
 #include "UI/GameplayHUD/SurvivalScifi_HUD.h"
+#include "Kismet/GameplayStatics.h"
+#include "Interface/ObjectiveMarkerInterface.h"
 
 // Sets default values for this component's properties
 UPlayerObjectivesComponent::UPlayerObjectivesComponent()
@@ -30,19 +32,93 @@ void UPlayerObjectivesComponent::BeginPlay()
 
 void UPlayerObjectivesComponent::CompleteCurrentObjective()
 {
-	FMissionProgress Progress = GetCurrentMissionProgress();
-	Progress.CompletedObjectives.Add(Progress.CurrentObjectiveIndex);
-	Progress.CurrentObjectiveIndex++;
+	UE_LOG(LogTemp, Log, TEXT("Completing current objective"));
 
-	UMissionDataAsset* Mission = GetCurrentMission();
-	if (Progress.CurrentObjectiveIndex >= Mission->Objectives.Num())
+	TurnOffObjectiveMarker(GetCurrentObjective().ActorTag);
+
+	UMissionDataAsset* CurrentMissionPtr = GetCurrentMission();
+	int32 Index = MissionProgresses.IndexOfByPredicate([CurrentMissionPtr](const FMissionProgress& Progress)
 	{
-		IncompleteMissions.RemoveAt(CurrentMission);
-		CompleteMissions.Add(Mission);
-		CurrentMission = -1;
+		return Progress.Mission == CurrentMissionPtr;
+	});
+
+	if (Index != INDEX_NONE && CurrentMissionPtr)
+	{
+		FMissionProgress& Progress = MissionProgresses[Index];
+		Progress.CompletedObjectives.Add(Progress.CurrentObjectiveIndex);
+		Progress.CurrentObjectiveIndex++;
+
+		// Check if all objectives are completed
+		if (CurrentMissionPtr->Objectives.IsValidIndex(Progress.CurrentObjectiveIndex) == false)
+		{
+			// Remove from incomplete, add to complete
+			if (IncompleteMissions.IsValidIndex(CurrentMission))
+			{
+				IncompleteMissions.RemoveAt(CurrentMission);
+			}
+			CompleteMissions.Add(CurrentMissionPtr);
+			CurrentMission = -1;
+		}
+		else
+		{
+			TurnOnObjectiveMarker(CurrentMissionPtr->Objectives[Progress.CurrentObjectiveIndex].ActorTag);
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Current mission progress not found!"));
 	}
 
-	GetOwner<APlayerCharacter>()->GetHUD()->UpdateObjectives();
+	// Update HUD
+	if (APlayerCharacter* Player = GetOwner<APlayerCharacter>())
+	{
+		if (ASurvivalScifi_HUD* HUD = Player->GetHUD())
+		{
+			HUD->UpdateObjectives();
+		}
+	}
+}
+
+void UPlayerObjectivesComponent::TurnOnObjectiveMarker(FName ActorTag)
+{
+    UWorld* World = GetWorld();
+    if (!World) return;
+
+    TArray<AActor*> AllActors;
+    UGameplayStatics::GetAllActorsOfClass(World, AActor::StaticClass(), AllActors);
+
+    for (AActor* Actor : AllActors)
+    {
+        if (Actor && Actor->Tags.Num() > 0 && Actor->Tags[0].ToString() == ActorTag.ToString())
+        {
+            if (IObjectiveMarkerInterface* Marker = Cast<IObjectiveMarkerInterface>(Actor))
+            {
+                Marker->ShowObjectiveMarker();
+            }
+            break; // Only one actor will match
+        }
+    }
+}
+
+void UPlayerObjectivesComponent::TurnOffObjectiveMarker(FName ActorTag)
+{
+    UWorld* World = GetWorld();
+    if (!World) return;
+
+    TArray<AActor*> AllActors;
+    UGameplayStatics::GetAllActorsOfClass(World, AActor::StaticClass(), AllActors);
+
+    for (AActor* Actor : AllActors)
+    {
+        if (Actor && Actor->Tags.Num() > 0 && Actor->Tags[0].ToString() == ActorTag.ToString())
+        {
+            if (IObjectiveMarkerInterface* Marker = Cast<IObjectiveMarkerInterface>(Actor))
+            {
+                Marker->HideObjectiveMarker();
+            }
+            break; // Only one actor will match
+        }
+    }
 }
 
 // Called every frame
@@ -95,17 +171,36 @@ void UPlayerObjectivesComponent::AddNewMission(UMissionDataAsset* MissionDataAss
 	
 	GetOwner<APlayerCharacter>()->GetHUD()->UpdateObjectives();
 	UE_LOG(LogTemp, Log, TEXT("Added new mission"));
+
+	TurnOnObjectiveMarker(MissionDataAsset->Objectives[0].ActorTag);
 }
 
 void UPlayerObjectivesComponent::OnInteractWithActor(FName actorTag)
 {
-	UE_LOG(LogTemp, Log, TEXT("Checking %s objective, actor tag = %s, objective tag =%s"), GetCurrentObjective().ObjectiveType != EObjectiveType::Interaction ? TEXT("interaction") : TEXT("non interaction"), * actorTag.ToString(), *GetCurrentObjective().InteractionActorTag.ToString());
-	if (IncompleteMissions.Num() == 0 
-		|| GetCurrentObjective().ObjectiveType != EObjectiveType::Interaction 
-		|| GetCurrentObjective().InteractionActorTag != actorTag) 
-		return;
+	UE_LOG(LogTemp, Log, 
+		TEXT("Checking %s objective, actor tag = %s, objective tag =%s"), 
+		GetCurrentObjective().ObjectiveType == EObjectiveType::Interaction ? TEXT("interaction") : TEXT("non interaction"),
+		* actorTag.ToString(),
+		*GetCurrentObjective().ActorTag.ToString());
 
-	CompleteCurrentObjective();
+	if (IncompleteMissions.Num() > 0 && GetCurrentObjective().ObjectiveType == EObjectiveType::Interaction && GetCurrentObjective().ActorTag == actorTag)
+	{
+		CompleteCurrentObjective();
+	}
+}
+
+void UPlayerObjectivesComponent::OnArriveAtObjective(FName actorTag)
+{
+	UE_LOG(LogTemp, Log,
+		TEXT("Checking %s objective, actor tag = %s, objective tag =%s"),
+		GetCurrentObjective().ObjectiveType == EObjectiveType::GoTo ? TEXT("GoTo") : TEXT("non GotTo"),
+		*actorTag.ToString(),
+		*GetCurrentObjective().ActorTag.ToString());
+
+	if (IncompleteMissions.Num() > 0 && GetCurrentObjective().ObjectiveType == EObjectiveType::GoTo && GetCurrentObjective().ActorTag == actorTag)
+	{
+		CompleteCurrentObjective();
+	}
 }
 
 FObjectivesData UPlayerObjectivesComponent::GetSaveData()

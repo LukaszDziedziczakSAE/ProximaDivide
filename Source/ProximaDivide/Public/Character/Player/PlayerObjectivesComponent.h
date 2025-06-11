@@ -58,6 +58,12 @@ protected:
 	UFUNCTION()
 	void CompleteCurrentObjective();
 
+	UFUNCTION()
+	void TurnOnObjectiveMarker(FName ActorTag);
+
+	UFUNCTION()
+	void TurnOffObjectiveMarker(FName ActorTag);
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -75,6 +81,9 @@ public:
 
 	UFUNCTION()
 	void OnInteractWithActor(FName actorTag);
+
+	UFUNCTION()
+	void OnArriveAtObjective(FName actorTag);
 
 	UFUNCTION(BlueprintPure)
 	bool HasMissions() { return IncompleteMissions.Num() > 0; }

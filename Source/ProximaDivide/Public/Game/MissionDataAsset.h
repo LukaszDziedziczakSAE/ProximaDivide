@@ -30,7 +30,7 @@ struct FObjectiveData
 	EObjectiveType ObjectiveType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FName InteractionActorTag;
+	FName ActorTag;
 
 	bool operator==(const FObjectiveData& Other) const
 	{

@@ -31,6 +31,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 	bool bShowLightInfo;
 
+	UPROPERTY(EditAnywhere)
+	bool bShowJumpInfo;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

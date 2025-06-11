@@ -43,14 +43,26 @@ void UObjectives_UserWidget::UpdateObjectivesWidget()
 			if (ObjectiveUserWidgets.Num() > 0)
 			{
 				bool CurrentObjectiveDisplayed = false;
+				TArray<UObjective_UserWidget*> WidgetsToRemove;
 				for (UObjective_UserWidget* Widget : ObjectiveUserWidgets)
 				{
 					if (CurrentMission != Widget->GetMission() || CurrentObjective != Widget->GetObjective())
 					{
-						ObjectivesBox->RemoveChild(Widget);
-						ObjectiveUserWidgets.Remove(Widget);
+						WidgetsToRemove.Add(Widget);
 					}
-					else CurrentObjectiveDisplayed = true;
+					else
+					{
+						CurrentObjectiveDisplayed = true;
+					}
+				}
+				for (UObjective_UserWidget* Widget : WidgetsToRemove)
+				{
+					ObjectivesBox->RemoveChild(Widget);
+					ObjectiveUserWidgets.Remove(Widget);
+				}
+				if (!CurrentObjectiveDisplayed)
+				{
+					SpawnWidget(CurrentMission, CurrentObjective);
 				}
 			}
 

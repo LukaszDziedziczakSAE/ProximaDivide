@@ -6,6 +6,8 @@
 #include "Character/Player/PlayerCharacter.h"
 #include "AkComponent.h"
 #include "AkAudioEvent.h"
+#include "Components/WidgetComponent.h"
+#include "UI/Notifications/ObjectiveMarker_UserWidget.h"
 
 // Sets default values
 AMoxie::AMoxie()
@@ -20,6 +22,13 @@ AMoxie::AMoxie()
 
 	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
 	AudioComponent->SetupAttachment(GetRootComponent());
+
+	ObjectiveMarkerComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("ObjectiveMarkerComponent"));
+	ObjectiveMarkerComponent->SetupAttachment(RootComponent);
+	ObjectiveMarkerComponent->SetWidgetSpace(EWidgetSpace::Screen);
+	ObjectiveMarkerComponent->SetVisibility(false); // Start hidden
+
+	// Do NOT set the widget class here!
 }
 
 // Called when the game starts or when spawned
@@ -75,5 +84,35 @@ FString AMoxie::InteractionText(APlayerCharacter* PlayerCharacter)
 {
 	if (CooldownTimer > 0) return TEXT("");
 	return TEXT("Extract Oxygen");
+}
+
+void AMoxie::ShowObjectiveMarker()
+{
+    if (ObjectiveMarkerComponent)
+    {
+        if (ObjectiveMarkerComponent->GetWidgetClass() != ObjectiveMarkerWidgetClass)
+        {
+            ObjectiveMarkerComponent->SetWidgetClass(ObjectiveMarkerWidgetClass);
+            ObjectiveMarkerComponent->InitWidget(); // Ensure the widget is constructed
+        }
+
+        if (UObjectiveMarker_UserWidget* Widget = Cast<UObjectiveMarker_UserWidget>(ObjectiveMarkerComponent->GetUserWidgetObject()))
+        {
+            Widget->SetMarkerText(MarkerText);
+            Widget->Owner = this;
+            Widget->Player = GetWorld()->GetFirstPlayerController()->GetPawn<APlayerCharacter>();
+        }
+        ObjectiveMarkerComponent->SetVisibility(true);
+    }
+}
+
+void AMoxie::HideObjectiveMarker()
+{
+	if (ObjectiveMarkerComponent)
+	{
+		ObjectiveMarkerComponent->SetVisibility(false);
+		ObjectiveMarkerComponent->DestroyComponent();
+		ObjectiveMarkerComponent = nullptr;
+	}
 }
 

@@ -4,6 +4,7 @@
 #include "Enviroment/ObjectiveGoToArea.h"
 #include "Components/BoxComponent.h"
 #include "Character/Player/PlayerCharacter.h"
+#include "Character/Player/PlayerObjectivesComponent.h"
 
 // Sets default values
 AObjectiveGoToArea::AObjectiveGoToArea()
@@ -21,15 +22,22 @@ AObjectiveGoToArea::AObjectiveGoToArea()
 void AObjectiveGoToArea::BeginPlay()
 {
 	Super::BeginPlay();
-	Area->OnComponentBeginOverlap.AddDynamic(this, &AObjectiveGoToArea::OnBoxBeginOverlap);
+	if (!Area->OnComponentBeginOverlap.IsAlreadyBound(this, &AObjectiveGoToArea::OnBoxBeginOverlap))
+	{
+		Area->OnComponentBeginOverlap.AddDynamic(this, &AObjectiveGoToArea::OnBoxBeginOverlap);
+	}
+
+	if (Tags.Num() == 0)
+		UE_LOG(LogTemp, Warning, TEXT("%s has no tag"), *GetName());
 }
 
 void AObjectiveGoToArea::OnBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	UE_LOG(LogTemp, Warning, TEXT("OnBoxBeginOverlap"));
 	APlayerCharacter* Player = Cast<APlayerCharacter>(OtherActor);
-	if (Player != nullptr)
+	if (Player != nullptr && Tags.Num() > 0)
 	{
-
+		Player->GetObjectivesComponent()->OnArriveAtObjective(Tags[0]);
 	}
 }
 
