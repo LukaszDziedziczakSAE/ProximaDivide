@@ -45,6 +45,7 @@ void ASleepArea::Tick(float DeltaTime)
 
 void ASleepArea::Interact(APlayerCharacter* PlayerCharacter)
 {
+	Player = PlayerCharacter;
 	if (!CanPlayerSleep(PlayerCharacter)) return;
 
 	if (LevelSequence != nullptr)
@@ -89,7 +90,7 @@ bool ASleepArea::CanPlayerSleep(APlayerCharacter* PlayerCharacter)
 
 int ASleepArea::HoursToSleep(APlayerCharacter* PlayerCharacter)
 {
-	return FMath::CeilToInt(PlayerCharacter->GetExhaustionComponent()->GetMissingPercentage() * MaxHoursToSleep);
+	return FMath::CeilToInt(PlayerCharacter->GetExhaustionComponent()->GetPercentage() * MaxHoursToSleep);
 }
 
 void ASleepArea::ShowObjectiveMarker()
@@ -124,6 +125,7 @@ void ASleepArea::HideObjectiveMarker()
 
 void ASleepArea::OnLevelSeqenceComplete()
 {
+	Player->GetHUD()->ShowBlackscreen();
 	GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(CurrentHoursToSleep);
 }
 

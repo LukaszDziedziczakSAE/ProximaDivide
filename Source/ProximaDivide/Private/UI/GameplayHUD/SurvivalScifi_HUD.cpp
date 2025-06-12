@@ -262,3 +262,11 @@ void ASurvivalScifi_HUD::UpdateObjectives()
 		Objectives->UpdateObjectivesWidget();
 	}
 }
+
+void ASurvivalScifi_HUD::ShowBlackscreen()
+{
+	if (BlackscreenClass != nullptr)
+		Blackscreen = CreateWidget<UUserWidget>(GetWorld(), BlackscreenClass);
+
+	if (Blackscreen != nullptr) Blackscreen->AddToViewport();
+}

@@ -148,9 +148,27 @@ FMissionProgress UPlayerObjectivesComponent::GetCurrentMissionProgress()
 	return FMissionProgress();
 }
 
+UMissionDataAsset* UPlayerObjectivesComponent::GetCurrentMission() const
+{
+    if (IncompleteMissions.IsValidIndex(CurrentMission))
+    {
+        return IncompleteMissions[CurrentMission];
+    }
+    return nullptr;
+}
+
 FObjectiveData UPlayerObjectivesComponent::GetCurrentObjective()
 {
-	return GetCurrentMission()->Objectives[GetCurrentMissionProgress().CurrentObjectiveIndex];
+    UMissionDataAsset* Mission = GetCurrentMission();
+    if (Mission)
+    {
+        const FMissionProgress& Progress = GetCurrentMissionProgress();
+        if (Mission->Objectives.IsValidIndex(Progress.CurrentObjectiveIndex))
+        {
+            return Mission->Objectives[Progress.CurrentObjectiveIndex];
+        }
+    }
+    return FObjectiveData(); // Return default if not valid
 }
 
 void UPlayerObjectivesComponent::AddNewMission(UMissionDataAsset* MissionDataAsset)

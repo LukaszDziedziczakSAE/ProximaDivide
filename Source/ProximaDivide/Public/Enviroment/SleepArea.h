@@ -51,6 +51,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	int CurrentHoursToSleep;
 
+	UPROPERTY(VisibleAnywhere)
+	class APlayerCharacter* Player;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

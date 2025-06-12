@@ -69,7 +69,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION()
-	UMissionDataAsset* GetCurrentMission() { return IncompleteMissions[CurrentMission]; }
+	UMissionDataAsset* GetCurrentMission() const;
 
 	UFUNCTION()
 	FMissionProgress GetCurrentMissionProgress();

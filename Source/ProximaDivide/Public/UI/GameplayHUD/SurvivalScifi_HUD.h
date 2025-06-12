@@ -50,6 +50,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class UObjectives_UserWidget> ObjectivesClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UUserWidget> BlackscreenClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -88,6 +91,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UObjectives_UserWidget* Objectives;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UUserWidget* Blackscreen;	
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool bSequenceIsPlaying;
@@ -182,4 +188,7 @@ public:
 
 	UFUNCTION()
 	void UpdateObjectives();
+
+	UFUNCTION()
+	void ShowBlackscreen();	
 };
