@@ -7,6 +7,8 @@
 #include "Enviroment/EEnviroment.h"
 #include "Game/MissionStructs.h"
 #include "Enviroment/Door/Airlock.h"
+#include "Character/Components/PaperdollComponent.h"
+#include "Item/Inventory/FInventoryItem.h"
 #include "SurvivalScifi_SaveGame.generated.h"
 
 USTRUCT(BlueprintType)
@@ -25,6 +27,12 @@ struct FPlayerData
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) 
 	float Exhaustion;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<struct FInventoryItem> InventoryItems;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	struct FSlotData Paperdoll;
 };
 
 USTRUCT(BlueprintType)

@@ -23,6 +23,7 @@
 #include "Game/MissionDataAsset.h"
 #include "Game/SurvivalScifiGameMode.h"
 #include "Character/Player/PlayerSequenceComponent.h"
+#include "Character/Player/PlayerSuitVoiceComponent.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -53,6 +54,8 @@ APlayerCharacter::APlayerCharacter()
 	ObjectivesComponent = CreateDefaultSubobject<UPlayerObjectivesComponent>(TEXT("Objectives"));
 
 	SequenceComponent = CreateDefaultSubobject<UPlayerSequenceComponent>(TEXT("Sequence Component"));
+
+	SuitVoiceComponent = CreateDefaultSubobject<UPlayerSuitVoiceComponent>(TEXT("Suit Voice Component"));
 }
 
 // Called when the game starts or when spawned
@@ -202,12 +205,16 @@ void APlayerCharacter::ToggleHelmetLight()
 
 FPlayerData APlayerCharacter::GetSaveData()
 {
-	FPlayerData Stats = FPlayerData();
-	Stats.Health = HealthComponent->GetCurrentValue();
-	Stats.Oxygen = OxygenComponent->GetCurrentValue();
-	Stats.Sustenance = SustenanceComponent->GetCurrentValue();
-	Stats.Exhaustion = ExhaustionComponent->GetCurrentValue();
-	return Stats;
+	FPlayerData PlayerData = FPlayerData();
+
+	PlayerData.Health = HealthComponent->GetCurrentValue();
+	PlayerData.Oxygen = OxygenComponent->GetCurrentValue();
+	PlayerData.Sustenance = SustenanceComponent->GetCurrentValue();
+	PlayerData.Exhaustion = ExhaustionComponent->GetCurrentValue();
+
+	PlayerData.InventoryItems = GetInventoryComponent()->GetItems();
+
+	return PlayerData;
 }
 
 FObjectivesData APlayerCharacter::GetObjectiveSaveData()
@@ -230,14 +237,16 @@ void APlayerCharacter::LoadDataFromSave()
 		bIsInside = (Save->Enviroment == EEnviroment::Inside 
 			|| Save->Enviroment == EEnviroment::Ship);
 
-		FPlayerData Stats = Save->PlayerData;
-
-		HealthComponent->SetValue(Stats.Health);
-		OxygenComponent->SetValue(Stats.Oxygen);
-		SustenanceComponent->SetValue(Stats.Sustenance);
-		ExhaustionComponent->SetValue(Stats.Exhaustion);
-
 		ObjectivesComponent->LoadDataFromSave(Save->ObjectivesData);
+		FPlayerData PlayerData = Save->PlayerData;
+
+		HealthComponent->SetValue(PlayerData.Health);
+		OxygenComponent->SetValue(PlayerData.Oxygen);
+		SustenanceComponent->SetValue(PlayerData.Sustenance);
+		ExhaustionComponent->SetValue(PlayerData.Exhaustion);
+
+		InventoryComponent->SetItems(PlayerData.InventoryItems);
+		PaperdollComponent->LoadFromSaveData(PlayerData.Paperdoll);
 
 		bStatsLoaded = true;
 	}

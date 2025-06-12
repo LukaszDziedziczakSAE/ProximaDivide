@@ -75,7 +75,7 @@ void AFlightDeckChair::Interact(APlayerCharacter* PlayerCharacter)
 			LevelSequencePlayer->OnFinished.AddDynamic(this, &AFlightDeckChair::OnLevelSeqenceComplete);
 			LevelSequencePlayer->Play();
 
-			if (GameInstance != nullptr) GameInstance->SetEnviroment(SequenceEnviroment);
+			//if (GameInstance != nullptr) GameInstance->SetEnviroment(SequenceEnviroment);
 		}
 		else
 		{

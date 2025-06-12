@@ -44,6 +44,9 @@ protected:
 	class UPlayerSequenceComponent* SequenceComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UPlayerSuitVoiceComponent* SuitVoiceComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPS_Arms;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -83,6 +86,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	UPlayerSequenceComponent* GetSequenceComponent() { return SequenceComponent; }
 
+	UFUNCTION(BlueprintPure)
+	UPlayerSuitVoiceComponent* GetSuitVoiceComponent() { return SuitVoiceComponent; }
+
 	UFUNCTION()
 	void Interact();
 
@@ -113,10 +119,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool IsControlable = true;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	bool HelemetLightOn();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void ToggleHelmetLight();
 
 	UFUNCTION()

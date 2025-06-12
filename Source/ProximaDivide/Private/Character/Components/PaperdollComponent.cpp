@@ -204,3 +204,24 @@ void UPaperdollComponent::CurrentSlotSingleUseItem()
 	}
 }
 
+void UPaperdollComponent::LoadFromSaveData(FSlotData SlotData)
+{
+	Slot1 = SlotData.Slot1;
+	Slot2 = SlotData.Slot2;
+	Slot3 = SlotData.Slot3;
+	Slot4 = SlotData.Slot4;
+	Slot5 = SlotData.Slot5;
+}
+
+FSlotData UPaperdollComponent::GetSaveData()
+{
+	FSlotData SlotData = FSlotData();
+
+	SlotData.Slot1 = Slot1;
+	SlotData.Slot2 = Slot2;
+	SlotData.Slot3 = Slot3;
+	SlotData.Slot4 = Slot4;
+	SlotData.Slot5 = Slot5;
+
+	return SlotData;
+}

@@ -132,6 +132,28 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="Play_AirlockVoice_Start" ID="{A708D62D-D4F9-4C0D-B089-C8CCEDA1FC66}">
+									<ChildrenList>
+										<Action Name="" ID="{C4531BD9-7D7C-4DE0-B852-830A2292E5A6}" ShortID="433422146">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="AirlockVoice_Start" ID="{2C6DE103-8520-46B9-AE20-E1B6548DFADC}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_AirlockVoice_End" ID="{340DCF04-F745-4D4F-ABAA-A141E1E27D89}">
+									<ChildrenList>
+										<Action Name="" ID="{04B0BAF3-0829-437B-837D-90D21CC20E79}" ShortID="579502085">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="AirlockVoice_End" ID="{6DADCE84-A284-4153-93B7-83A72803EA0A}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
@@ -676,6 +698,80 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="Decent-ConsoleSounds" ID="{E4EA03A6-C439-420D-84E0-3685DCAB18A6}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SuitVoice" ID="{F1F00BFD-E7D9-4DB8-A136-917435313AC1}" ShortID="34896766">
+					<ChildrenList>
+						<Event Name="Play_SuitVoice_FirstWakeUp" ID="{0545917A-18B3-4FA4-8981-25E1CE131071}">
+							<ChildrenList>
+								<Action Name="" ID="{7669205F-9287-4679-9B51-E4F8B76B3BD3}" ShortID="1005751289">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SuitVoice-FirstWakeUp" ID="{B4834544-492E-4527-B215-5A5FF1654330}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Folder Name="Oxygen" ID="{20D5B6AF-40D9-4ACB-8AE5-3C7BF7C4FF37}" ShortID="248000983">
+							<ChildrenList>
+								<Event Name="Play_SuitVoice_OxygenDepleted" ID="{869D7CE4-B8E1-4CED-9065-FB1BBA34BB1B}">
+									<ChildrenList>
+										<Action Name="" ID="{3C134BDC-7C43-4382-A219-6CC9F3AB7BFE}" ShortID="186679419">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SuitVoice-OxygenDepleted" ID="{F8DC2604-4A38-47AF-B06B-AAECE07C1D0F}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_SuitVoice_OxygenLow" ID="{DBE3C226-718B-49D9-A337-0056F4614FB1}">
+									<ChildrenList>
+										<Action Name="" ID="{CEB03415-FC4A-486B-A4B4-D0A476A04D6F}" ShortID="682844942">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SuitVoice-OxygenLow" ID="{2AF172D4-9449-4F82-ADE6-19A55CBD46E7}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_SuitVoice_Oxygen30s" ID="{343AFCCD-F554-4F03-94A1-7656CAB4E098}">
+									<ChildrenList>
+										<Action Name="" ID="{4E727911-5829-4204-89D4-AC25E732BC9D}" ShortID="135602478">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SuitVoice-Oxygen30s" ID="{112A1A96-A5BA-4B81-8B4B-EA3E34C77D0F}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_SuitVoice_Oxygen60s" ID="{10024123-1830-44D5-8FB2-9F4C324B7B69}">
+									<ChildrenList>
+										<Action Name="" ID="{52057C09-A1A8-41CB-B9AD-972E218788DB}" ShortID="758380012">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SuitVoice-Oxygen60s" ID="{E06A3941-FB55-4C09-B8CB-B9FA3CD667FE}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_SuitVoice_Oxygen50p" ID="{A59E79B2-790E-4D4B-A092-DAF625498717}">
+									<ChildrenList>
+										<Action Name="" ID="{223B3FBB-5540-47C2-A739-A7B1A85FEDDF}" ShortID="703460682">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SuitVoice-Oxygen50p" ID="{5B9B4ECE-9033-4749-9724-AE5F25846243}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

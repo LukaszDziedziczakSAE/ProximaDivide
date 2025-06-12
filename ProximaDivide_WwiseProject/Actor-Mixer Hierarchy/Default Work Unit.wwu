@@ -1344,6 +1344,121 @@
 										<ActiveSource Name="258632-KAIB-DOOR-CU-Air_Pressure_Build_Up_And_Release_Submarine_Door-000396" ID="{1DDC6D61-0CD3-4BD3-8A93-EE1E5B91B085}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="AirlockVoice_End" ID="{6DADCE84-A284-4153-93B7-83A72803EA0A}" ShortID="235955492">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>0.5</Value>
+											</ValueList>
+										</Property>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{617AC22B-8946-4EC4-A4A8-A71F0B1CA6D4}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-80"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Vocals" ID="{191B0885-AB1E-475A-90B2-969462B23EEA}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AirlockVoice_End" ID="{30447CC3-B744-449A-9FE5-36C11B7A53E5}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0301177536231884"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.15138134057971"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0919384057971014"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>8</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>AirlockVoice_End.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="217365133"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AirlockVoice_End" ID="{30447CC3-B744-449A-9FE5-36C11B7A53E5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AirlockVoice_Start" ID="{2C6DE103-8520-46B9-AE20-E1B6548DFADC}" ShortID="1046691319">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>0.25</Value>
+											</ValueList>
+										</Property>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{86B503E9-3878-4D89-A267-3CC52595127A}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-80"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Voice_Attenuation" ID="{039AE15A-25BB-40FD-8526-DD5CE9099E71}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Vocals" ID="{191B0885-AB1E-475A-90B2-969462B23EEA}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AirlockVoice_Start" ID="{2BDEA593-6FA7-4839-9F5F-C3FD768503AB}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0186820652173913"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0849184782608694"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>8</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>AirlockVoice_Start.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="171483194"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AirlockVoice_Start" ID="{2BDEA593-6FA7-4839-9F5F-C3FD768503AB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
@@ -3157,6 +3272,268 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="Decent-ConsoleSounds" ID="{0E523860-1B0F-4007-B20E-CD3056671A4A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SuitVoice" ID="{9B35F997-E5D8-4C92-8C05-3C33AD877891}" ShortID="654410370">
+					<ChildrenList>
+						<Sound Name="SuitVoice-FirstWakeUp" ID="{B4834544-492E-4527-B215-5A5FF1654330}" ShortID="788653884">
+							<PropertyList>
+								<Property Name="IsVoice" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Vocals" ID="{191B0885-AB1E-475A-90B2-969462B23EEA}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SuitVoice-FirstWakeUp" ID="{7609CEFD-BFF7-4A6A-83FD-4E7B7E2ECD49}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.101510866828587"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.27684781862342"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.193793473036393"/>
+										<Property Name="TrimEnd" Type="Real64" Value="19.6008261078544"/>
+									</PropertyList>
+									<Language>English(US)</Language>
+									<AudioFile>SuitVoice-FirstWakeUp.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="108355534"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SuitVoice-FirstWakeUp" ID="{7609CEFD-BFF7-4A6A-83FD-4E7B7E2ECD49}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Folder Name="Oxygen" ID="{B6D0FDA0-5894-42A2-A1E5-4B1B81B473F4}" ShortID="992018027">
+							<ChildrenList>
+								<Sound Name="SuitVoice-Oxygen30s" ID="{112A1A96-A5BA-4B81-8B4B-EA3E34C77D0F}" ShortID="69674026">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{1ED24C27-EA11-42C3-B360-18EB9DF9AE78}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SuitVoice-Oxygen30s" ID="{1274D092-7C49-4FFB-ABE4-482C165A1968}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0169836956521739"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0135869565217388"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.277400362318841"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.25769927536232"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>SuitVoice-Oxygen30s.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="521552920"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SuitVoice-Oxygen30s" ID="{1274D092-7C49-4FFB-ABE4-482C165A1968}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SuitVoice-Oxygen50p" ID="{5B9B4ECE-9033-4749-9724-AE5F25846243}" ShortID="585074440">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{9C6321F8-FFC0-498B-934A-FC68A5BBD2B7}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SuitVoice-Oxygen50p" ID="{05452682-89A3-4D67-988F-7EEC172EEB1C}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0161911231884058"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0622735507246377"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.264039855072464"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.40874094202899"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>SuitVoice-Oxygen50p.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="25304310"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SuitVoice-Oxygen50p" ID="{05452682-89A3-4D67-988F-7EEC172EEB1C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SuitVoice-Oxygen60s" ID="{E06A3941-FB55-4C09-B8CB-B9FA3CD667FE}" ShortID="993946851">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{ED98BAB7-F89D-434F-8731-064724DD29CD}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SuitVoice-Oxygen60s" ID="{7CE59B2B-0D48-4200-85A5-8006677DB49A}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.072463768115942"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.271739130434783"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>SuitVoice-Oxygen60s.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="809635628"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SuitVoice-Oxygen60s" ID="{7CE59B2B-0D48-4200-85A5-8006677DB49A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SuitVoice-OxygenDepleted" ID="{F8DC2604-4A38-47AF-B06B-AAECE07C1D0F}" ShortID="1044445506">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{3FAF56AC-44E4-443F-BBB2-A32E1700D8D3}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SuitVoice-OxygenDepleted" ID="{819594E2-AA81-49D6-90F3-25C90E045CD7}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.00373641304347827"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.10348731884058"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.40749547101449"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>SuitVoice-OxygenDepleted.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="520834273"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SuitVoice-OxygenDepleted" ID="{819594E2-AA81-49D6-90F3-25C90E045CD7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SuitVoice-OxygenLow" ID="{2AF172D4-9449-4F82-ADE6-19A55CBD46E7}" ShortID="4913544">
+									<PropertyList>
+										<Property Name="IsVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{44A3B645-5E3D-476C-ADB3-3DB845A631E0}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SuitVoice-OxygenLow" ID="{8BE2062B-6B78-4343-8A86-F7C81B026979}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0154551630434783"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.121263586956522"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.115319293478261"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.28736413043478"/>
+											</PropertyList>
+											<Language>English(US)</Language>
+											<AudioFile>SuitVoice-OxygenLow.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="747542394"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SuitVoice-OxygenLow" ID="{8BE2062B-6B78-4343-8A86-F7C81B026979}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

@@ -46,7 +46,6 @@ void UPlayerSequenceComponent::BeginPlay()
 	}
 }
 
-
 // Called every frame
 void UPlayerSequenceComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {

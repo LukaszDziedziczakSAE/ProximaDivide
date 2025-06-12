@@ -49,10 +49,13 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION()
-	FIntPoint GetSize() { return Size; }
+	void SetItems(TArray<FInventoryItem> SavedItems) { Items = SavedItems; }
 
-	UFUNCTION()
-	TArray<struct FInventoryItem> GetItems() { return Items; }
+	UFUNCTION(BlueprintPure)
+	TArray<FInventoryItem> GetItems() { return Items; }
+
+	UFUNCTION(BlueprintPure)
+	FIntPoint GetSize() { return Size; }
 
 	UFUNCTION()
 	bool TryAddItem(UItemDataAsset* DataAsset, bool bShowNotification = true);

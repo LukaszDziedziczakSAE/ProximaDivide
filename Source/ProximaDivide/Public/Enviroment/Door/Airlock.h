@@ -59,8 +59,17 @@ protected:
 	UPROPERTY(EditAnywhere)
 	class UAkComponent* AudioComponent;
 
+	UPROPERTY(EditAnywhere)
+	class UAkComponent* VoiceComponent;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UAkAudioEvent* AirlockCycleSound;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UAkAudioEvent* AirlockVoiceStart;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UAkAudioEvent* AirlockVoiceEnd;
 
 	UPROPERTY(VisibleAnywhere)
 	bool bHasPlayedCycleSound;

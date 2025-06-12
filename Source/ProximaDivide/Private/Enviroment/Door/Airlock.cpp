@@ -29,6 +29,9 @@ AAirlock::AAirlock()
 	AudioComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Audio Component"));
 	AudioComponent->SetupAttachment(Root);
 
+	VoiceComponent = CreateDefaultSubobject<UAkComponent>(TEXT("Voice Component"));
+	VoiceComponent->SetupAttachment(Root);
+
 	VentingVFX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Venting VFX"));
 	VentingVFX->SetupAttachment(Root);
 }
@@ -78,6 +81,10 @@ void AAirlock::BeginCycling()
 	Light->SetLightColor(CyclingColor);
 	bHasPlayedCycleSound = false;
 	VentingVFX->Activate();
+	if (AirlockVoiceStart != nullptr)
+	{
+		VoiceComponent->PostAkEvent(AirlockVoiceStart, int32(0), FOnAkPostEventCallback());
+	}
 }
 
 // Called when the game starts or when spawned
@@ -153,6 +160,12 @@ void AAirlock::Tick(float DeltaTime)
 					Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode())->UpdatePlayerStartTag(PlayerStartTagOverride);
 				}
 			}
+
+			if (AirlockVoiceEnd != nullptr)
+			{
+				VoiceComponent->PostAkEvent(AirlockVoiceEnd, int32(0), FOnAkPostEventCallback());
+			}
+				
 		}
 	}
 }

@@ -19,6 +19,28 @@ public:
 	class UEquipableItemDataAsset* Item;
 };
 
+USTRUCT(BlueprintType)
+struct FSlotData
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FSlotItem Slot1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FSlotItem Slot2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FSlotItem Slot3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FSlotItem Slot4;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FSlotItem Slot5;
+};
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PROXIMADIVIDE_API UPaperdollComponent : public UActorComponent
 {
@@ -104,4 +126,10 @@ public:
 
 	UFUNCTION()
 	void CurrentSlotSingleUseItem();
+
+	UFUNCTION()
+	FSlotData GetSaveData();
+
+	UFUNCTION()
+	void LoadFromSaveData(FSlotData SlotData);
 };
