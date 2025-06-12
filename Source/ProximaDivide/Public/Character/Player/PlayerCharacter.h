@@ -141,4 +141,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool IsPlayingSequence();
+
+	UFUNCTION()
+	bool PreventInteraction();
 };

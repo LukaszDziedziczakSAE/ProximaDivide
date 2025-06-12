@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Game/SurvivalScifi_SaveGame.h"
 #include "PlayerTutorialComponent.generated.h"
 
-
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class PROXIMADIVIDE_API UPlayerTutorialComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -29,10 +29,15 @@ protected:
 	UPROPERTY(EditAnywhere)
 	float MovementThreshhold = 50;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+	FTutorialState TutorialState;
 
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+	UPROPERTY()
+	class UTutorialGiverComponent* TutorialGiver;
 
 	UPROPERTY()
 	bool ShowMouseMoveInfo;
@@ -47,16 +52,7 @@ public:
 	bool ShowJumpInfo;
 
 	UPROPERTY()
-	bool SeenInventoryInfo;
-
-	UPROPERTY()
 	bool ShowInventoryInfo;
-
-	UPROPERTY()
-	bool SeenSlotInfo;
-
-	UPROPERTY()
-	bool SeenJumpInfo;
 
 	UPROPERTY()
 	bool ShowSlotInfo;
@@ -65,22 +61,10 @@ public:
 	bool ShowLightInfo;
 
 	UPROPERTY()
-	bool HasSeenInventoryPickup;
-
-	UPROPERTY()
-	bool HasSeenInventoryDrop;
-
-	UPROPERTY()
-	bool ShowInventoryPickup = true;
+	bool ShowInventoryPickup;
 
 	UPROPERTY()
 	bool ShowInventoryDrop;
-
-	UPROPERTY()
-	bool HasSeenSprintInfo;
-
-	UPROPERTY()
-	bool HasSeenLightInfo;
 
 	UPROPERTY()
 	bool HideStats;
@@ -106,16 +90,17 @@ public:
 	UPROPERTY()
 	bool PreventInventoryOpen;
 
-	UPROPERTY()
-	class UTutorialGiverComponent* TutorialGiver;
-
 	UFUNCTION()
 	bool ShowingAnyInfo() {
 		return ShowMouseMoveInfo
-			|| ShowMouseMoveInfo
+			|| ShowMovementInfo
+			|| ShowSprintInfo
 			|| ShowJumpInfo
 			|| ShowInventoryInfo
-			|| ShowSlotInfo;
+			|| ShowSlotInfo
+			|| ShowLightInfo
+			|| ShowInventoryPickup
+			|| ShowInventoryDrop;
 	}
 
 	UFUNCTION()
@@ -152,4 +137,17 @@ public:
 
 	UFUNCTION()
 	void HasTurnOnLight();
+
+	UFUNCTION(BlueprintCallable)
+	const FTutorialState& GetTutorialState() const { return TutorialState; }
+
+	UFUNCTION(BlueprintCallable)
+	void SetTutorialState(const FTutorialState& NewState) { TutorialState = NewState; }
+
+	// Optionally, individual setters/getters for each flag:
+	UFUNCTION(BlueprintCallable)
+	bool GetSeenInventoryInfo() const { return TutorialState.SeenInventoryInfo; }
+	
+	UFUNCTION(BlueprintCallable)
+	void SetSeenInventoryInfo(bool bValue) { TutorialState.SeenInventoryInfo = bValue; }
 };

@@ -7,6 +7,8 @@
 #include "Game/SurvivalScifi_SaveGame.h"
 #include "Enviroment/Door/Airlock.h"
 #include "EngineUtils.h"
+#include "Item/SurvivalScifi_Item.h"
+#include "Enviroment/Container.h"
 
 ASurvivalScifiGameMode::ASurvivalScifiGameMode()
 {
@@ -136,10 +138,6 @@ struct FWorldData ASurvivalScifiGameMode::GetSaveData()
 {
 	FWorldData Data = FWorldData();
 
-	Data.Day = Day;
-	Data.Hour = Hour;
-	Data.SecondsLeftInHour = SecondsLeftInHour;
-
 	// save airlock data
 	Data.AirlockData.Empty();
 	for (TActorIterator<AAirlock> It(GetWorld()); It; ++It)
@@ -151,34 +149,113 @@ struct FWorldData ASurvivalScifiGameMode::GetSaveData()
 		Data.AirlockData.Add(Save);
 	}
 
+	// Save item data
+	Data.LevelItems.Empty();
+	for (TActorIterator<ASurvivalScifi_Item> It(GetWorld()); It; ++It)
+	{
+		ASurvivalScifi_Item* Item = *It;
+		FLevelItemSaveData ItemData;
+		ItemData.ItemID = Item->GetItemID(); // Use the getter here
+		ItemData.ItemClass = Item->GetClass();
+		ItemData.ItemTransform = Item->GetActorTransform();
+		Data.LevelItems.Add(ItemData);
+	}
+
+	// Save container data
+	Data.ContainerData.Empty();
+	for (TActorIterator<AContainer> It(GetWorld()); It; ++It)
+	{
+		AContainer* Container = *It;
+		Data.ContainerData.Add(Container->GetContainerSaveData());
+	}
+
 	return Data;
+}
+
+FTimeData ASurvivalScifiGameMode::GetTimeData()
+{
+	FTimeData TimeData = FTimeData();
+
+	TimeData.Day = Day;
+	TimeData.Hour = Hour;
+	TimeData.SecondsLeftInHour = SecondsLeftInHour;
+
+	return TimeData;
 }
 
 void ASurvivalScifiGameMode::LoadDataFromSave()
 {
-	if (GameInstance->GetCurrentSaveGame() == nullptr) return;
+    if (GameInstance == nullptr || GameInstance->GetCurrentSaveGame() == nullptr)
+        return;
 
-	FWorldData Data = GameInstance->GetCurrentSaveGame()->WorldData;
+	FTimeData TimeData = GameInstance->GetCurrentSaveGame()->TimeData;
 
-	Day = Data.Day;
-	Hour = Data.Hour;
-	SecondsLeftInHour = Data.SecondsLeftInHour;
-	OnHourTick.Broadcast();
+    Day = TimeData.Day;
+    Hour = TimeData.Hour;
+    SecondsLeftInHour = TimeData.SecondsLeftInHour;
+    OnHourTick.Broadcast();
 
-	// load airlock data
-	TMap<FName, AAirlock*> AirlockMap;
-	for (TActorIterator<AAirlock> It(GetWorld()); It; ++It)
-	{
-		AAirlock* Airlock = *It;
-		AirlockMap.Add(Airlock->GetAirlockID(), Airlock);
-	}
-	for (const FAirlockSaveData& Save : Data.AirlockData)
-	{
-		if (AAirlock** Found = AirlockMap.Find(Save.AirlockID))
-		{
-			(*Found)->SetAirlockState(Save.AirlockState);
-		}
-	}
+	if (!GameInstance->HasMapDataForCurrentMap()) return;
+
+    FWorldData Data = GameInstance->GetCurrentMapData();
+
+    // Load airlock data
+    TMap<FName, AAirlock*> AirlockMap;
+    for (TActorIterator<AAirlock> It(GetWorld()); It; ++It)
+    {
+        AAirlock* Airlock = *It;
+        AirlockMap.Add(Airlock->GetAirlockID(), Airlock);
+    }
+    for (const FAirlockSaveData& Save : Data.AirlockData)
+    {
+        if (AAirlock** Found = AirlockMap.Find(Save.AirlockID))
+        {
+            (*Found)->SetAirlockState(Save.AirlockState);
+        }
+    }
+
+    // Only delete and respawn items if there is saved item data
+    if (Data.LevelItems.Num() > 0)
+    {
+        // Remove existing items before respawning
+        for (TActorIterator<ASurvivalScifi_Item> It(GetWorld()); It; ++It)
+        {
+            It->Destroy();
+        }
+
+        // Spawn items from save data
+        for (const FLevelItemSaveData& ItemData : Data.LevelItems)
+        {
+            FActorSpawnParameters SpawnParams;
+            ASurvivalScifi_Item* NewItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(
+                ItemData.ItemClass, ItemData.ItemTransform, SpawnParams);
+            if (NewItem)
+            {
+                NewItem->GetItemID() = ItemData.ItemID;
+            }
+        }
+    }
+
+    // Load container data
+    if (Data.ContainerData.Num() > 0)
+    {
+        // Map existing containers by ID
+        TMap<FGuid, AContainer*> ContainerMap;
+        for (TActorIterator<AContainer> It(GetWorld()); It; ++It)
+        {
+            AContainer* Container = *It;
+            ContainerMap.Add(Container->GetContainerID(), Container);
+        }
+
+        // Apply saved data to matching containers
+        for (const FContainerSaveData& Save : Data.ContainerData)
+        {
+            if (AContainer** Found = ContainerMap.Find(Save.ContainerID))
+            {
+                (*Found)->LoadContainerSaveData(Save);
+            }
+        }
+    }
 }
 
 void ASurvivalScifiGameMode::LoadGame(int SlotNumber)

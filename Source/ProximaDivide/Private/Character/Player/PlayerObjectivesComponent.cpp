@@ -239,6 +239,11 @@ void UPlayerObjectivesComponent::LoadDataFromSave(FObjectivesData SaveData)
 	CompleteMissions = SaveData.CompleteMissions;
 	MissionProgresses = SaveData.MissionProgresses;
 	CurrentMission = SaveData.CurrentMission;
-	GetOwner<APlayerCharacter>()->GetHUD()->UpdateObjectives();
+
+	ASurvivalScifi_HUD* HUD = GetOwner<APlayerCharacter>()->GetHUD();
+	if (IsValid(HUD))
+	{
+		HUD->UpdateObjectives();	
+	}
 }
 

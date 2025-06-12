@@ -55,8 +55,7 @@ void UPlayerSequenceComponent::TickComponent(float DeltaTime, ELevelTick TickTyp
 void UPlayerSequenceComponent::PlayLevelSequence(class ULevelSequence* LevelSequence)
 {
 	if (LevelSequence == nullptr || Player == nullptr) return;
-	
-	
+
 	ALevelSequenceActor* SeqenceActor = nullptr;
 	ULevelSequencePlayer* LevelSequencePlayer = ULevelSequencePlayer::CreateLevelSequencePlayer(GetWorld(), LevelSequence, FMovieSceneSequencePlaybackSettings(), SeqenceActor);
 
@@ -64,14 +63,26 @@ void UPlayerSequenceComponent::PlayLevelSequence(class ULevelSequence* LevelSequ
 	{
 		Player->IsControlable = false;
 		bIsPlayingSequence = true;
-		Player->GetHUD()->HideGameHUD();
+
+		ASurvivalScifi_HUD* HUD = Player->GetHUD();
+		if (HUD)
+		{
+			HUD->HideGameHUD();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("PlayLevelSequence: Player HUD is null, cannot hide game HUD."));
+		}
+
 		Player->SetActorHiddenInGame(true);
 
 		LevelSequencePlayer->OnFinished.AddDynamic(this, &UPlayerSequenceComponent::OnLevelSeqenceComplete);
 		LevelSequencePlayer->Play();
 	}
-
-	else UE_LOG(LogTemp, Error, TEXT("Unable to create level sequence player"));
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Unable to create level sequence player"));
+	}
 }
 
 void UPlayerSequenceComponent::OnLevelSeqenceComplete()
@@ -79,5 +90,14 @@ void UPlayerSequenceComponent::OnLevelSeqenceComplete()
 	Player->SetActorHiddenInGame(false);
 	bIsPlayingSequence = false;
 	Player->IsControlable = true;
-	Player->GetHUD()->ShowGameHUD();
+
+	ASurvivalScifi_HUD* HUD = Player->GetHUD();
+	if (HUD)
+	{
+		HUD->ShowGameHUD();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("OnLevelSeqenceComplete: Player HUD is null, cannot show game HUD."));
+	}
 }

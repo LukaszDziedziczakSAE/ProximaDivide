@@ -14,6 +14,8 @@ class PROXIMADIVIDE_API ASurvivalScifi_PlayerController : public APlayerControll
 protected:
 	virtual void OnPossess(APawn* aPawn) override;
 
+	virtual void Tick(float DeltaSeconds) override;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	bool bUIOnlyMode;
 
@@ -142,6 +144,12 @@ protected:
 
 	UFUNCTION()
 	void ToggleLight();
+
+	UFUNCTION()
+	void ResetPlayer();
+
+	UPROPERTY()
+	bool bIsPlayerResetting;
 
 public:
 	UFUNCTION()

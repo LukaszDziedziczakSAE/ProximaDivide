@@ -29,6 +29,7 @@ void ADayNightManager::BeginPlay()
 	{
 		GameMode->OnHourTick.AddDynamic(this, &ADayNightManager::OnHourTick);
 	}
+	else UE_LOG(LogTemp, Error, TEXT("DayNightManager has no gameMode reference"))
 
 	TArray<AActor*> FoundLights;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ALightActor::StaticClass(), FoundLights);
@@ -39,6 +40,10 @@ void ADayNightManager::BeginPlay()
 			LightActors.Add(Light);
 		}
 	}
+	if (LightActors.Num() == 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No LightActors found in the scene!"));
+	}	
 
 	// Find sun
 	TArray<AActor*> SunActors;
@@ -84,7 +89,7 @@ void ADayNightManager::OnHourTick()
 			FogComponent->SetFogInscatteringColor(IsDayTime() ? DaytimeFogColor : NighttimeFogColor);
 		}
 	}
-	if (SkyLight && SkyLight->GetLightComponent())
+	if (SkyLight != nullptr && SkyLight->GetLightComponent())
 	{
 		SkyLight->GetLightComponent()->SetLightColor(IsDayTime() ? DaytimeColor : NighttimeColor);
 		SkyLight->GetLightComponent()->MarkRenderStateDirty(); // Apply the change

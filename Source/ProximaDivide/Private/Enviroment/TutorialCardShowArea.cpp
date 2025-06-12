@@ -39,19 +39,19 @@ void ATutorialCardShowArea::OnBoxBeginOverlap(UPrimitiveComponent* OverlappedCom
 		UPlayerTutorialComponent* Tutorial = Player->GetTutorialComponent();
 		if (Tutorial != nullptr)
 		{
-			if (bShowSprintInfo && !Tutorial->HasSeenSprintInfo)
+			if (bShowSprintInfo && !Tutorial->GetTutorialState().HasSeenSprintInfo)
 			{
 				Tutorial->ShowSprintInfo = true;
 				Player->GetHUD()->UpdateTutorialInfo();
 			}
 
-			else if (bShowLightInfo && !Tutorial->HasSeenLightInfo)
+			else if (bShowLightInfo && !Tutorial->GetTutorialState().HasSeenLightInfo)
 			{
 				Tutorial->ShowLightInfo = true;
 				Player->GetHUD()->UpdateTutorialInfo();
 			}
 
-			else if (bShowJumpInfo && !Tutorial->SeenJumpInfo)
+			else if (bShowJumpInfo && !Tutorial->GetTutorialState().SeenJumpInfo)
 			{
 				Tutorial->ShowJumpInfo = true;
 				Player->GetHUD()->UpdateTutorialInfo();

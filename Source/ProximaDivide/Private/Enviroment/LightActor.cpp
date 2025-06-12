@@ -3,6 +3,7 @@
 
 #include "Enviroment/LightActor.h"
 #include "Components/PointLightComponent.h"
+#include "Game/SurvivalScifiGameMode.h"
 
 // Sets default values
 ALightActor::ALightActor()
@@ -21,7 +22,6 @@ ALightActor::ALightActor()
 void ALightActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame

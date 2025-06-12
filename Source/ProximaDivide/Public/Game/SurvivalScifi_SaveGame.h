@@ -12,6 +12,33 @@
 #include "SurvivalScifi_SaveGame.generated.h"
 
 USTRUCT(BlueprintType)
+struct FTutorialState
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool SeenInventoryInfo = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool SeenSlotInfo = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool SeenJumpInfo = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool HasSeenInventoryPickup = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool HasSeenInventoryDrop = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool HasSeenSprintInfo = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool HasSeenLightInfo = false;
+};
+
+USTRUCT(BlueprintType)
 struct FPlayerData
 {
 	GENERATED_BODY()
@@ -33,6 +60,9 @@ struct FPlayerData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	struct FSlotData Paperdoll;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FTutorialState TutorialState;
 };
 
 USTRUCT(BlueprintType)
@@ -48,7 +78,34 @@ struct FAirlockSaveData
 };
 
 USTRUCT(BlueprintType)
-struct FWorldData
+struct FLevelItemSaveData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FGuid ItemID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> ItemClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FTransform ItemTransform;
+};
+
+USTRUCT(BlueprintType)
+struct FContainerSaveData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FGuid ContainerID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FInventoryItem> InventoryItems;
+};
+
+USTRUCT(BlueprintType)
+struct FTimeData
 {
 	GENERATED_BODY()
 
@@ -56,14 +113,27 @@ struct FWorldData
 	int Day = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int Hour = 20;
+	int Hour = 21;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float SecondsLeftInHour;
+	float SecondsLeftInHour = 0.0f;
+};
+
+USTRUCT(BlueprintType)
+struct FWorldData
+{
+	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FAirlockSaveData> AirlockData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FLevelItemSaveData> LevelItems;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FContainerSaveData> ContainerData;
 };
+
 
 UCLASS()
 class PROXIMADIVIDE_API USurvivalScifi_SaveGame : public USaveGame
@@ -84,13 +154,16 @@ public:
 	EEnviroment Enviroment;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FWorldData WorldData;
+	TMap<FName, FWorldData> MapData;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FPlayerData PlayerData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	struct FObjectivesData ObjectivesData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FTimeData TimeData;
 
 	UFUNCTION()
 	void AdvanceHours(int HoursToAdvance);

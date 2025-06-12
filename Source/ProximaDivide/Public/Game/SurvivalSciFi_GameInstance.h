@@ -57,7 +57,7 @@ protected:
 	struct FPlayerData InitialPlayerData;
 
 	UPROPERTY(EditDefaultsOnly, Category = "New Game")
-	struct FWorldData InitialWorldData;
+	struct FTimeData InitialTimeData;
 
 	UPROPERTY(EditDefaultsOnly, Category = "New Game")
 	EEnviroment InitialEnviroment = EEnviroment::Ship;
@@ -71,6 +71,15 @@ protected:
 public:
 	UFUNCTION(BlueprintPure)
 	USurvivalScifi_SaveGame* GetCurrentSaveGame();
+
+	UFUNCTION(BlueprintPure)
+	FName GetCurrentMapName() const;
+
+	UFUNCTION(BlueprintCallable)
+	FWorldData GetCurrentMapData();
+
+	UFUNCTION(BlueprintPure)
+	bool HasMapDataForCurrentMap() const;
 
 	UFUNCTION(BlueprintCallable)
 	void SaveCurrentGame(int AdvanceHours = 0);

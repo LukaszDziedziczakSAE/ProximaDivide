@@ -81,7 +81,10 @@ void UPlayerInteractionComponent::TickComponent(float DeltaTime, ELevelTick Tick
 
 FString UPlayerInteractionComponent::GetInteractionText()
 {
-	if (InteractionInterface.GetObject() == nullptr) return TEXT("");
+
+	if (PlayerCharacter->PreventInteraction()
+		|| InteractionInterface.GetObject() == nullptr)
+		return TEXT("");
 
 	IInteraction* Interaction = Cast<IInteraction>(InteractionInterface.GetObject());
 	FString InteractionText = Interaction->InteractionText(PlayerCharacter);
@@ -120,8 +123,6 @@ void UPlayerInteractionComponent::Interact()
 
 bool UPlayerInteractionComponent::InteractableIsCraftingMachine()
 {
-	if (InteractionInterface.GetObject() == nullptr) return false;
-
 	class ACraftingMachine* CraftingMachine = Cast<ACraftingMachine>(InteractionInterface.GetObject());
 
 	return CraftingMachine != nullptr;

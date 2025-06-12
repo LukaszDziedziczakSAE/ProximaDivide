@@ -66,6 +66,9 @@ public:
 	struct FWorldData GetSaveData();
 
 	UFUNCTION()
+	struct FTimeData GetTimeData();
+
+	UFUNCTION()
 	void LoadDataFromSave();
 
 	UFUNCTION()

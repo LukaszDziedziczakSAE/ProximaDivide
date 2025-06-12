@@ -78,12 +78,11 @@ void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!IsAlive() && GetController<APlayerController>() != nullptr && GetHUD() != nullptr && !GetHUD()->IsShowingDeathScreen())
+	if (!IsAlive() && GetHUD() != nullptr && !GetHUD()->IsShowingDeathScreen())
 	{
 		GetHUD()->HideInventory();
 		GetHUD()->HideCraftingMenuOnly();
 		GetHUD()->HideGameHUD();
-		GetHUD()->HideInteraction();
 		GetHUD()->ShowDeathScreen();
 	}
 }
@@ -130,7 +129,12 @@ float APlayerCharacter::PlayMontage(UAnimMontage* Montage)
 
 ASurvivalScifi_HUD* APlayerCharacter::GetHUD()
 {
-	return GetController<APlayerController>()->GetHUD<ASurvivalScifi_HUD>();;
+    APlayerController* PC = Cast<APlayerController>(GetController());
+    if (!PC)
+    {
+        return nullptr;
+    }
+    return Cast<ASurvivalScifi_HUD>(PC->GetHUD());
 }
 
 void APlayerCharacter::ChangeStat(EStat StatType, float Amount)
@@ -213,6 +217,8 @@ FPlayerData APlayerCharacter::GetSaveData()
 	PlayerData.Exhaustion = ExhaustionComponent->GetCurrentValue();
 
 	PlayerData.InventoryItems = GetInventoryComponent()->GetItems();
+	PlayerData.Paperdoll = PaperdollComponent->GetSaveData();
+	PlayerData.TutorialState = TutorialComponent->GetTutorialState();
 
 	return PlayerData;
 }
@@ -247,6 +253,7 @@ void APlayerCharacter::LoadDataFromSave()
 
 		InventoryComponent->SetItems(PlayerData.InventoryItems);
 		PaperdollComponent->LoadFromSaveData(PlayerData.Paperdoll);
+		TutorialComponent->SetTutorialState(PlayerData.TutorialState);
 
 		bStatsLoaded = true;
 	}
@@ -284,5 +291,10 @@ bool APlayerCharacter::IsPlayingSequence()
 		return SequenceComponent->IsPlayingSequence();
 	}
 	return false;
+}
+
+bool APlayerCharacter::PreventInteraction()
+{
+	return TutorialComponent->PreventInteract;
 }
 

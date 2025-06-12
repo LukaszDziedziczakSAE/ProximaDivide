@@ -10,6 +10,7 @@
 #include "Framework/Application/SlateApplication.h"
 #include "Game/SurvivalScifiGameMode.h"
 #include "Character/Player/PlayerTutorialComponent.h"
+#include "Game/SurvivalSciFi_GameInstance.h"
 
 void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 {
@@ -21,10 +22,9 @@ void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 	SetInputMode(FInputModeGameOnly());
 
 	PlayerCharacter->OnDestroyed.AddDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
-
 	
 	if (!PlayerCharacter->IsPlayingSequence()) GetHUD<ASurvivalScifi_HUD>()->ShowGameHUD();
-
+	bIsPlayerResetting = false;
 	UE_LOG(LogTemp, Log, TEXT("Possessed %s"), *aPawn->GetName());
 }
 
@@ -100,7 +100,11 @@ void ASurvivalScifi_PlayerController::Move(const FInputActionValue& Value)
 
 void ASurvivalScifi_PlayerController::Look(const FInputActionValue& Value)
 {
-	if (CharacterAlive() && !AllowLook()) return;
+	if (!CharacterAlive())
+		return;
+
+	if (!AllowLook())
+		return;
 
 	AddYawInput(Value.Get<FVector2D>().X);
 	AddPitchInput(-1 * Value.Get<FVector2D>().Y);
@@ -259,20 +263,29 @@ void ASurvivalScifi_PlayerController::Jump()
 
 bool ASurvivalScifi_PlayerController::CharacterAlive()
 {
-	return PlayerCharacter != nullptr && PlayerCharacter->IsAlive();
+	if (PlayerCharacter == nullptr) return false;
+	return PlayerCharacter->IsAlive();
 }
 
 void ASurvivalScifi_PlayerController::OnPlayerDeath(AActor* DestroyedActor)
 {
-	GetHUD<ASurvivalScifi_HUD>()->HideDeathScreen();
+	UE_LOG(LogTemp, Log, TEXT("Player Destoryed"));
+
+	ASurvivalScifi_HUD* HUD = GetHUD<ASurvivalScifi_HUD>();
+	if (HUD != nullptr)
+	{
+		HUD->HideDeathScreen();
+	}
 
 	if (PlayerCharacter != nullptr)
 	{
 		PlayerCharacter->OnDestroyed.RemoveDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
+		PlayerCharacter = nullptr;
 	}
 
-	ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
-	if (GameMode != nullptr) GameMode->RestartPlayer(this);
+	GetGameInstance<USurvivalSciFi_GameInstance>()->StartRespawn();
+	//ResetPlayer();
+	//bIsPlayerResetting = true;
 }
 
 void ASurvivalScifi_PlayerController::SkipTutorial()
@@ -289,6 +302,12 @@ void ASurvivalScifi_PlayerController::ToggleLight()
 	{
 		PlayerCharacter->ToggleHelmetLight();
 	}
+}
+
+void ASurvivalScifi_PlayerController::ResetPlayer()
+{
+	ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
+	if (GameMode != nullptr) GameMode->RestartPlayer(this);
 }
 
 void ASurvivalScifi_PlayerController::PauseToggle()
@@ -317,4 +336,11 @@ void ASurvivalScifi_PlayerController::PauseToggle()
 		SetShowMouseCursor(true);
 	}
 	
+}
+
+void ASurvivalScifi_PlayerController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+
+	//if (bIsPlayerResetting) ResetPlayer();
 }

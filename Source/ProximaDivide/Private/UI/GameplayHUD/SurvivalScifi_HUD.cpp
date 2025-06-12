@@ -68,33 +68,57 @@ void ASurvivalScifi_HUD::ShowGameHUD()
 
 void ASurvivalScifi_HUD::HideGameHUD()
 {
+	if (IsPendingKillPending())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HideGameHUD aborted: HUD is pending kill."));
+		return;
+	}
+
+	if (!IsValidLowLevel())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HideGameHUD aborted: HUD is not valid at low level."));
+		return;
+	}
+
+	if (GetWorld() == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HideGameHUD aborted: World is nullptr."));
+		return;
+	}
+
+	if (GetWorld()->bIsTearingDown)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HideGameHUD aborted: World is tearing down."));
+		return;
+	}
+
 	HideInteraction();
 
-	if (PlayerStats != nullptr)
+	if (IsValid(PlayerStats))
 	{
 		PlayerStats->RemoveFromParent();
 		PlayerStats = nullptr;
 	}
 
-	if (ActionBar != nullptr)
+	if (IsValid(ActionBar))
 	{
 		ActionBar->RemoveFromParent();
 		ActionBar = nullptr;
 	}
 
-	if (Crosshair != nullptr)
+	if (IsValid(Crosshair))
 	{
 		Crosshair->RemoveFromParent();
 		Crosshair = nullptr;
 	}
 
-	if (Tutorial != nullptr)
+	if (IsValid(Tutorial))
 	{
 		Tutorial->RemoveFromParent();
 		Tutorial = nullptr;
 	}
 
-	if (Objectives != nullptr)
+	if (IsValid(Objectives))
 	{
 		Objectives->RemoveFromParent();
 		Objectives = nullptr;
@@ -130,12 +154,11 @@ void ASurvivalScifi_HUD::ShowInteraction()
 
 void ASurvivalScifi_HUD::HideInteraction()
 {
-	if (Interaction != nullptr)
+	if (IsValid(Interaction))
 	{
 		Interaction->RemoveFromParent();
 		Interaction = nullptr;
 	}
-	
 }
 
 void ASurvivalScifi_HUD::ResetInteraction()
@@ -257,7 +280,7 @@ void ASurvivalScifi_HUD::ShowTitleCard()
 
 void ASurvivalScifi_HUD::UpdateObjectives()
 {
-	if (Objectives != nullptr)
+	if (IsValid(Objectives))
 	{
 		Objectives->UpdateObjectivesWidget();
 	}

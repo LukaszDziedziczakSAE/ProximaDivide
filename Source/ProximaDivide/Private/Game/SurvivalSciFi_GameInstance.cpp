@@ -12,12 +12,36 @@ void USurvivalSciFi_GameInstance::UpdateMapName()
 {
 	if (CurrentSaveGame != nullptr)
 	{
-		FString MapName = GetWorld()->GetMapName();
-		// Remove PIE prefix if it exists
-		FString CleanMapName = MapName;
-		CleanMapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-		CurrentSaveGame->CurrentLevelName = FName(*CleanMapName);
+		CurrentSaveGame->CurrentLevelName = GetCurrentMapName();
 	}
+}
+
+FName USurvivalSciFi_GameInstance::GetCurrentMapName() const
+{
+	UWorld* World = GetWorld();
+	if (!World) return NAME_None;
+	FString MapName = World->GetMapName();
+	FString CleanMapName = MapName;
+	CleanMapName.RemoveFromStart(World->StreamingLevelsPrefix);
+	return FName(*CleanMapName);
+}
+
+FWorldData USurvivalSciFi_GameInstance::GetCurrentMapData()
+{
+	static FWorldData DummyData; // fallback if not found
+	if (CurrentSaveGame == nullptr) return DummyData;
+	FName MapName = GetCurrentMapName();
+	if (FWorldData* Found = CurrentSaveGame->MapData.Find(MapName))
+	{
+		return *Found;
+	}
+	return DummyData;
+}
+
+bool USurvivalSciFi_GameInstance::HasMapDataForCurrentMap() const
+{
+	if (CurrentSaveGame == nullptr) return false;
+	return CurrentSaveGame->MapData.Contains(GetCurrentMapName());
 }
 
 void USurvivalSciFi_GameInstance::LoadCurrentSaveMap()
@@ -59,7 +83,7 @@ void USurvivalSciFi_GameInstance::SaveCurrentGame(int AdvanceHours)
 		ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
 		if (GameMode != nullptr)
 		{
-			CurrentSaveGame->WorldData = GameMode->GetSaveData();
+			CurrentSaveGame->MapData.FindOrAdd(GetCurrentMapName()) = GameMode->GetSaveData();
 			UE_LOG(LogTemp, Log, TEXT("Saved World Data"));
 		}
 
@@ -128,7 +152,7 @@ void USurvivalSciFi_GameInstance::StartNewGame(int SlotNumber)
 	{
 		NewSave->SlotNumber = SlotNumber;
 		NewSave->PlayerData = InitialPlayerData;
-		NewSave->WorldData = InitialWorldData;
+		NewSave->TimeData = InitialTimeData;
 		NewSave->Enviroment = InitialEnviroment;
 		NewSave->CurrentLevelName = InitialLevelName;
 		NewSave->PlayerStartTag = InitialPlayerStartTag;
@@ -271,6 +295,8 @@ void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep)
 
 void USurvivalSciFi_GameInstance::StartRespawn()
 {
-
+	SetEnviroment(EEnviroment::Inside);
+	SaveCurrentGame();
+	LoadCurrentSaveMap();
 }
 

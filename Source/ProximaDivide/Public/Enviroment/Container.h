@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/Interaction.h"
+#include "Item/Inventory/InventoryComponent.h"
 #include "Container.generated.h"
 
 UENUM(BlueprintType)
@@ -53,12 +54,24 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	EContainerState ContainerState;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FGuid ContainerID;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
 	UInventoryComponent* GetInventoryComponent() { return InventoryComponent; }
+
+	UFUNCTION(BlueprintPure)
+	FGuid GetContainerID() const { return ContainerID; }
+
+	UFUNCTION(BlueprintCallable)
+	struct FContainerSaveData GetContainerSaveData() const;
+
+	UFUNCTION(BlueprintCallable)
+	void LoadContainerSaveData(const FContainerSaveData& Data);
 
 	virtual void Interact(class APlayerCharacter* PlayerCharacter) override;
 

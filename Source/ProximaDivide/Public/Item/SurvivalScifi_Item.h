@@ -26,6 +26,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UItemDataAsset* DataAsset;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item")
+	FGuid ItemID;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -51,6 +54,9 @@ public:
 
 	UFUNCTION()
 	FVector GetBoxExtent();
+
+	UFUNCTION(BlueprintPure)
+	FGuid GetItemID() const { return ItemID; }
 
 	UFUNCTION()
 	virtual void UpdateRelatives() {}

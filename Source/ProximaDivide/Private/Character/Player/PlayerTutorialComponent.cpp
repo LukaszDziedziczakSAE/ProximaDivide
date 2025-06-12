@@ -81,7 +81,7 @@ void UPlayerTutorialComponent::HasMovement(float MoveAmount, bool bIsSprinting)
 	{
 		if (ShowSprintInfo)
 		{
-			HasSeenSprintInfo = true;
+			TutorialState.HasSeenSprintInfo = true;
 			ShowSprintInfo = false;
 			GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
 		}
@@ -92,7 +92,7 @@ void UPlayerTutorialComponent::HasJumped()
 {
 	if (ShowJumpInfo)
 	{
-		SeenJumpInfo = true;
+		TutorialState.SeenJumpInfo = true;
 		ShowJumpInfo = false;
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
 	}
@@ -100,9 +100,9 @@ void UPlayerTutorialComponent::HasJumped()
 
 void UPlayerTutorialComponent::ItemPickedUp()
 {
-	if (!SeenInventoryInfo && !ShowingAnyInfo())
+	if (!TutorialState.SeenInventoryInfo && !ShowingAnyInfo())
 	{
-		SeenInventoryInfo = true;
+		TutorialState.SeenInventoryInfo = true;
 		ShowInventoryInfo = true;
 
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
@@ -161,9 +161,9 @@ void UPlayerTutorialComponent::InventoryPickUp()
 {
 	if (ShowInventoryPickup)
 	{
-		HasSeenInventoryPickup = true;
+		TutorialState.HasSeenInventoryPickup = true;
 		ShowInventoryPickup = false;
-		if (!HasSeenInventoryDrop) ShowInventoryDrop = true;
+		if (!TutorialState.HasSeenInventoryDrop) ShowInventoryDrop = true;
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
 	}
 }
@@ -173,7 +173,7 @@ void UPlayerTutorialComponent::InventoryDrop()
 	if (ShowInventoryDrop)
 	{
 		ShowInventoryDrop = false;
-		HasSeenInventoryDrop = true;
+		TutorialState.HasSeenInventoryDrop = true;
 		GetOwner<APlayerCharacter>()->GetHUD()->UpdateTutorialInfo();
 	}
 }
@@ -189,7 +189,7 @@ void UPlayerTutorialComponent::SkipTutorial()
 
 void UPlayerTutorialComponent::HasTurnOnLight()
 {
-	HasSeenLightInfo = true;
+	TutorialState.HasSeenLightInfo = true;
 	if (ShowLightInfo)
 	{
 		ShowLightInfo = false;

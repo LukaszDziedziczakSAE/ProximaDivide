@@ -6,6 +6,7 @@
 #include "Character/Player/PlayerCharacter.h"
 #include "Game/SurvivalScifi_PlayerController.h"
 #include "InputActionValue.h"
+#include "Game/SurvivalScifi_SaveGame.h"
 
 // Sets default values
 AContainer::AContainer()
@@ -23,6 +24,11 @@ AContainer::AContainer()
 
 	Body->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
 	Lid->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
+
+	if (!ContainerID.IsValid())
+	{
+	    ContainerID = FGuid::NewGuid();
+	}
 }
 
 // Called when the game starts or when spawned
@@ -51,5 +57,24 @@ FString AContainer::InteractionText(APlayerCharacter* PlayerCharacter)
 {
 	if (ContainerState == EContainerState::Closed) return TEXT("Open Container");
 	else return TEXT("");
+}
+
+FContainerSaveData AContainer::GetContainerSaveData() const
+{
+    FContainerSaveData Data;
+    Data.ContainerID = ContainerID;
+    if (InventoryComponent)
+    {
+        Data.InventoryItems = InventoryComponent->GetItems();
+    }
+    return Data;
+}
+
+void AContainer::LoadContainerSaveData(const FContainerSaveData& Data)
+{
+    if (ContainerID == Data.ContainerID && InventoryComponent != nullptr)
+    {
+        InventoryComponent->SetItems(Data.InventoryItems);
+    }
 }
 

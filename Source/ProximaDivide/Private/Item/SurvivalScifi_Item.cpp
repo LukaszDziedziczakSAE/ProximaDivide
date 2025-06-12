@@ -17,6 +17,12 @@ ASurvivalScifi_Item::ASurvivalScifi_Item()
 	Collider->SetupAttachment(GetRootComponent());
 
 	Collider->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
+
+	// Generate a new GUID for this item if not already set
+	if (!ItemID.IsValid())
+	{
+		ItemID = FGuid::NewGuid();
+	}
 }
 
 // Called when the game starts or when spawned
