@@ -24,6 +24,7 @@
 #include "Game/SurvivalScifiGameMode.h"
 #include "Character/Player/PlayerSequenceComponent.h"
 #include "Character/Player/PlayerSuitVoiceComponent.h"
+#include "Game/SurvivalScifi_PlayerController.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()

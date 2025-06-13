@@ -34,16 +34,19 @@ void AFlightDeckChair::BeginPlay()
 
 void AFlightDeckChair::OnLevelSeqenceComplete()
 {
-	USurvivalSciFi_GameInstance* GI = Cast<USurvivalSciFi_GameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+	UE_LOG(LogTemp, Log, TEXT("Fligh deck chair OnLevelSeqenceComplete call"));
 
-	if (GI)
+	if (GameInstance != nullptr)
 	{
-		//if (GameInstance != nullptr) GameInstance->SetEnviroment(PostSequenceEnviroment);
-		if (GameInstance != nullptr && GameInstance->GetCurrentSaveGame() != nullptr)
+		if (GameInstance->GetCurrentSaveGame() != nullptr)
 		{
 			GameInstance->GetCurrentSaveGame()->Enviroment = PostSequenceEnviroment;
 		}
-		GI->SwitchToMap(NewMapName, PlayerStartTag);
+		else UE_LOG(LogTemp, Error, TEXT("Fligh deck chair cannot get current save game"));
+
+		UE_LOG(LogTemp, Log, TEXT("Fligh deck chair OnLevelSeqenceComplete SwitchToMap call"));
+		GameInstance->SwitchToMap(NewMapName, PlayerStartTag);
+		UE_LOG(LogTemp, Log, TEXT("Fligh deck chair OnLevelSeqenceComplete SwitchToMap complete"));
 	}
 
 	else UE_LOG(LogTemp, Error, TEXT("Fligh deck chair cannot find Game Instance"));

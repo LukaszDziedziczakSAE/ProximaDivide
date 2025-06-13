@@ -34,6 +34,13 @@ AAirlock::AAirlock()
 
 	VentingVFX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Venting VFX"));
 	VentingVFX->SetupAttachment(Root);
+
+	if (!AirlockID.IsValid())
+	{
+		// Generate a new GUID for the airlock if it doesn't have one already
+		AirlockID = FGuid::NewGuid();
+	}
+		
 }
 
 bool AAirlock::DoorsClosed()

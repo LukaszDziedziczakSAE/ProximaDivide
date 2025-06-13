@@ -26,6 +26,7 @@ void ASurvivalScifiGameMode::BeginPlay()
 	if (GameInstance == nullptr) return;
 	GameInstance->OnLevelStart();
 	LoadDataFromSave();
+	GameInstance->bLevelSwitchInProgress = false;
 }
 
 void ASurvivalScifiGameMode::Tick(float DeltaSeconds)
@@ -195,73 +196,14 @@ void ASurvivalScifiGameMode::LoadDataFromSave()
     SecondsLeftInHour = TimeData.SecondsLeftInHour;
     OnHourTick.Broadcast();
 
-	if (!GameInstance->HasMapDataForCurrentMap()) return;
+	UE_LOG(LogTemp, Log, TEXT("Set Day = %d, Hour = %d, RemaingSeconds = %f"), Day, Hour, SecondsLeftInHour);
 
-    FWorldData Data = GameInstance->GetCurrentMapData();
-
-    // Load airlock data
-    TMap<FName, AAirlock*> AirlockMap;
-    for (TActorIterator<AAirlock> It(GetWorld()); It; ++It)
-    {
-        AAirlock* Airlock = *It;
-        AirlockMap.Add(Airlock->GetAirlockID(), Airlock);
-    }
-    for (const FAirlockSaveData& Save : Data.AirlockData)
-    {
-        if (AAirlock** Found = AirlockMap.Find(Save.AirlockID))
-        {
-            (*Found)->SetAirlockState(Save.AirlockState);
-        }
-    }
-
-    // Only delete and respawn items if there is saved item data
-    if (Data.LevelItems.Num() > 0)
-    {
-        // Remove existing items before respawning
-        for (TActorIterator<ASurvivalScifi_Item> It(GetWorld()); It; ++It)
-        {
-            It->Destroy();
-        }
-
-        // Spawn items from save data
-        for (const FLevelItemSaveData& ItemData : Data.LevelItems)
-        {
-            FActorSpawnParameters SpawnParams;
-            ASurvivalScifi_Item* NewItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(
-                ItemData.ItemClass, ItemData.ItemTransform, SpawnParams);
-            if (NewItem)
-            {
-                NewItem->GetItemID() = ItemData.ItemID;
-            }
-        }
-    }
-
-    // Load container data
-    if (Data.ContainerData.Num() > 0)
-    {
-        // Map existing containers by ID
-        TMap<FGuid, AContainer*> ContainerMap;
-        for (TActorIterator<AContainer> It(GetWorld()); It; ++It)
-        {
-            AContainer* Container = *It;
-            ContainerMap.Add(Container->GetContainerID(), Container);
-        }
-
-        // Apply saved data to matching containers
-        for (const FContainerSaveData& Save : Data.ContainerData)
-        {
-            if (AContainer** Found = ContainerMap.Find(Save.ContainerID))
-            {
-                (*Found)->LoadContainerSaveData(Save);
-            }
-        }
-    }
-}
-
-void ASurvivalScifiGameMode::LoadGame(int SlotNumber)
-{
-	if (GameInstance == nullptr) return;
-	GameInstance->StartLoadGame(SlotNumber);
+	if (bRestoreObjectsOnBeginPlay && !GameInstance->HasMapDataForCurrentMap())
+	{
+		UE_LOG(LogTemp, Log, TEXT("LoadDataFromSave restoring level objects"));
+		PopulateLevelFromData(GameInstance->GetCurrentMapData());
+		bWorldObjectsRestored = true;
+	}
 }
 
 FString ASurvivalScifiGameMode::GetCurrentMapName()
@@ -282,4 +224,122 @@ UMissionDataAsset* ASurvivalScifiGameMode::GetOnStartMission()
 	else return nullptr;
 }
 
+void ASurvivalScifiGameMode::PopulateLevelFromData(FWorldData Data)
+{
+    // Restore Airlocks
+    if (Data.AirlockData.Num() > 0)
+    {
+        UE_LOG(LogTemp, Log, TEXT("Populating level: Iterating airlocks"));
+        TMap<FGuid, AAirlock*> AirlockMap;
+        for (TActorIterator<AAirlock> It(GetWorld()); It; ++It)
+        {
+            AAirlock* Airlock = *It;
+            if (!Airlock)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Null Airlock found in world!"));
+                continue;
+            }
+            AirlockMap.Add(Airlock->GetAirlockID(), Airlock);
+        }
 
+        UE_LOG(LogTemp, Log, TEXT("Populating level: Restoring airlock states"));
+        for (const FAirlockSaveData& Save : Data.AirlockData)
+        {
+            AAirlock** Found = AirlockMap.Find(Save.AirlockID);
+            if (!Found || !*Found)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Airlock with ID %s not found!"), *Save.AirlockID.ToString());
+                continue;
+            }
+            if ((*Found)->IsPendingKillPending() || !IsValid(*Found))
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Airlock with ID %s is invalid or pending kill!"), *Save.AirlockID.ToString());
+                continue;
+            }
+            (*Found)->SetAirlockState(Save.AirlockState);
+        }
+    }
+
+    // Restore Items
+    if (Data.LevelItems.Num() > 0)
+    {
+        UE_LOG(LogTemp, Log, TEXT("Populating level: Destroying existing items"));
+        for (TActorIterator<ASurvivalScifi_Item> It(GetWorld()); It; ++It)
+        {
+            if (*It)
+            {
+                It->Destroy();
+            }
+        }
+
+        UE_LOG(LogTemp, Log, TEXT("Populating level: Spawning saved items"));
+        for (const FLevelItemSaveData& ItemData : Data.LevelItems)
+        {
+            if (!ItemData.ItemClass)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("ItemData.ItemClass is null! Skipping item."));
+                continue;
+            }
+            FActorSpawnParameters SpawnParams;
+            ASurvivalScifi_Item* NewItem = GetWorld()->SpawnActor<ASurvivalScifi_Item>(
+                ItemData.ItemClass, ItemData.ItemTransform, SpawnParams);
+            if (!NewItem)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Failed to spawn item of class %s"), *ItemData.ItemClass->GetName());
+                continue;
+            }
+            NewItem->GetItemID() = ItemData.ItemID;
+        }
+    }
+
+    // Restore Containers
+    if (Data.ContainerData.Num() > 0)
+    {
+        UE_LOG(LogTemp, Log, TEXT("Populating level: Iterating containers"));
+        TMap<FGuid, AContainer*> ContainerMap;
+        for (TActorIterator<AContainer> It(GetWorld()); It; ++It)
+        {
+            AContainer* Container = *It;
+            if (!Container)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Null Container found in world!"));
+                continue;
+            }
+            ContainerMap.Add(Container->GetContainerID(), Container);
+        }
+
+        UE_LOG(LogTemp, Log, TEXT("Populating level: Loading container states"));
+        for (const FContainerSaveData& Save : Data.ContainerData)
+        {
+            AContainer** Found = ContainerMap.Find(Save.ContainerID);
+            if (!Found || !*Found)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Container with ID %s not found!"), *Save.ContainerID.ToString());
+                continue;
+            }
+            if ((*Found)->IsPendingKillPending() || !IsValid(*Found))
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Container with ID %s is invalid or pending kill!"), *Save.ContainerID.ToString());
+                continue;
+            }
+            (*Found)->LoadContainerSaveData(Save);
+        }
+    }
+}
+
+void ASurvivalScifiGameMode::HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer)
+{
+    if (bRestoreObjectsOnStartingNewPlayer && !bRestoreObjectsOnBeginPlay && !bWorldObjectsRestored)
+    {
+		UE_LOG(LogTemp, Log, TEXT("HandleStartingNewPlayer restoring level objects"));
+
+		USurvivalSciFi_GameInstance* GI = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
+		if (GI != nullptr && GI->HasMapDataForCurrentMap())
+        {
+            PopulateLevelFromData(GI->GetCurrentMapData());
+        }
+        bWorldObjectsRestored = true;
+    }
+
+    Super::HandleStartingNewPlayer_Implementation(NewPlayer);
+}

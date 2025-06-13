@@ -7,11 +7,19 @@
 #include "Character/Player/PlayerCharacter.h"
 #include "Game/SurvivalScifiGameMode.h"
 #include "Game/MissionStructs.h"
+#include "Engine/World.h"
+#include "Engine/LevelStreaming.h"
+#include "EngineUtils.h"
+#include "Enviroment/Door/Airlock.h"
+#include "Item/SurvivalScifi_Item.h"
+#include "Enviroment/Container.h"
 
 void USurvivalSciFi_GameInstance::UpdateMapName()
 {
 	if (CurrentSaveGame != nullptr)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("UpdateMapName called. OldName = %s, NewName = %s"), *CurrentSaveGame->CurrentLevelName.ToString(), *GetCurrentMapName().ToString());
+
 		CurrentSaveGame->CurrentLevelName = GetCurrentMapName();
 	}
 }
@@ -41,11 +49,29 @@ FWorldData USurvivalSciFi_GameInstance::GetCurrentMapData()
 bool USurvivalSciFi_GameInstance::HasMapDataForCurrentMap() const
 {
 	if (CurrentSaveGame == nullptr) return false;
-	return CurrentSaveGame->MapData.Contains(GetCurrentMapName());
+	if (CurrentSaveGame->MapData.Contains(GetCurrentMapName()))
+	{
+		UE_LOG(LogTemp, Log, TEXT("Map data found for %s"), *GetCurrentMapName().ToString());
+		return true;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("No map data for %s"), *GetCurrentMapName().ToString());
+		return false;
+	}
+	
 }
 
 void USurvivalSciFi_GameInstance::LoadCurrentSaveMap()
 {
+	if (bLevelSwitchInProgress)
+	{
+		UE_LOG(LogTemp, Log, TEXT("Tring opening level during level switch"));
+		return;
+	}
+
+	bLevelSwitchInProgress = true;
+
 	FString LevelNameString = CurrentSaveGame->CurrentLevelName.ToString();
 	UE_LOG(LogTemp, Log, TEXT("Opening level: %s"), *LevelNameString);
 	UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
@@ -84,6 +110,7 @@ void USurvivalSciFi_GameInstance::SaveCurrentGame(int AdvanceHours)
 		if (GameMode != nullptr)
 		{
 			CurrentSaveGame->MapData.FindOrAdd(GetCurrentMapName()) = GameMode->GetSaveData();
+			CurrentSaveGame->TimeData = GameMode->GetTimeData();
 			UE_LOG(LogTemp, Log, TEXT("Saved World Data"));
 		}
 
@@ -112,13 +139,6 @@ bool USurvivalSciFi_GameInstance::LoadSlot(int SlotNumber)
 		CurrentSaveGame = Cast<USurvivalScifi_SaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
 
 		if (CurrentSaveGame == nullptr) return false;
-
-		/*APlayerCharacter* Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-		if (Player != nullptr)
-		{
-			Player->bIsInside = CurrentSaveGame->Enviroment != EEnviroment::Outside;
-		}
-		else UE_LOG(LogTemp, Error, TEXT("Did not find player character during %s load"), *SlotName);*/
 
 		return true;
 	}
@@ -156,6 +176,7 @@ void USurvivalSciFi_GameInstance::StartNewGame(int SlotNumber)
 		NewSave->Enviroment = InitialEnviroment;
 		NewSave->CurrentLevelName = InitialLevelName;
 		NewSave->PlayerStartTag = InitialPlayerStartTag;
+		NewSave->MapData.Empty(); // Clear any existing map data
 
 		CurrentSaveGame = NewSave;
 
@@ -175,6 +196,16 @@ void USurvivalSciFi_GameInstance::StartLoadGame(int SlotNumber)
 
 void USurvivalSciFi_GameInstance::SwitchToMap(FName MapName, FName StartTag)
 {
+	if (GetCurrentMapName() == MapName)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Already on map %s — skipping switch."), *MapName.ToString());
+		return;
+	}
+
+	if (bLevelSwitchInProgress) return;
+
+	UE_LOG(LogTemp, Warning, TEXT("SwitchToMap called"));
+
 	if (CurrentSaveGame == nullptr)
 	{
 		UE_LOG(LogTemp, Error, TEXT("SwitchToMap called but CurrentSaveGame is null!"));
@@ -185,7 +216,22 @@ void USurvivalSciFi_GameInstance::SwitchToMap(FName MapName, FName StartTag)
 	if (StartTag != "") CurrentSaveGame->PlayerStartTag = StartTag;
 	CurrentSaveGame->CurrentLevelName = MapName;
 	SaveCurrentGame();
+
+	if (CurrentSaveGame->CurrentLevelName == "L_Planet" && CurrentSaveGame->TimeData.Day == 0 && GetCurrentMapName() != "L_Ship")
+	{
+		if (CurrentSaveGame->MapData.Contains("L_Planet"))
+		{
+			UE_LOG(LogTemp, Error, TEXT("SwitchToMap called from ship, save already has planet data"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("SwitchToMap called from ship, save does not have planet data"));
+		}
+		
+	}
+
 	LoadCurrentSaveMap();
+	UE_LOG(LogTemp, Warning, TEXT("SwitchToMap call end"));
 }
 
 void USurvivalSciFi_GameInstance::OnLevelStart()
@@ -245,6 +291,8 @@ void USurvivalSciFi_GameInstance::PlayMusicAndAmbience()
 
 void USurvivalSciFi_GameInstance::SetEnviroment(EEnviroment Enviroment)
 {
+	UE_LOG(LogTemp, Log, TEXT("Setting enviroment to %s"), *UEnum::GetValueAsString(Enviroment));
+
 	switch (Enviroment)
 	{
 	case EEnviroment::Menu:
@@ -280,7 +328,7 @@ void USurvivalSciFi_GameInstance::SetEnviroment(EEnviroment Enviroment)
 	if (GetWorld()->WorldType == EWorldType::PIE && !bMusicAndAmbience) PlayMusicAndAmbience();
 }
 
-void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep)
+void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep, FName PlayerStartTag)
 {
 	if (CurrentSaveGame == nullptr)
 	{
@@ -289,14 +337,50 @@ void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep)
 	}
 	UE_LOG(LogTemp, Log, TEXT("Going to sleep for %d hours"), HoursToSleep);
 
+	CurrentSaveGame->PlayerStartTag = PlayerStartTag;
 	SaveCurrentGame(HoursToSleep);
 	LoadCurrentSaveMap();
 }
 
 void USurvivalSciFi_GameInstance::StartRespawn()
 {
-	SetEnviroment(EEnviroment::Inside);
-	SaveCurrentGame();
+	UE_LOG(LogTemp, Warning, TEXT("StartRespawn called"));
+	//SetEnviroment(EEnviroment::Inside);
+	//SaveCurrentGame();
 	LoadCurrentSaveMap();
 }
+
+// Streams in a level and restores save data after load
+void USurvivalSciFi_GameInstance::StreamInLevelAndRestore(FName LevelName)
+{
+	UWorld* World = GetWorld();
+	if (!World) return;
+
+	FLatentActionInfo LatentInfo;
+	LatentInfo.CallbackTarget = this;
+	LatentInfo.ExecutionFunction = FName("OnLevelStreamedIn");
+	LatentInfo.Linkage = 0;
+	LatentInfo.UUID = __LINE__; // Unique ID
+
+	// Stream in the level (async, not blocking)
+	UGameplayStatics::LoadStreamLevel(World, LevelName, true, false, LatentInfo);
+}
+
+// Called when the streamed level is fully loaded and visible
+void USurvivalSciFi_GameInstance::OnLevelStreamedIn()
+{
+	//RestoreLevelObjects();
+}
+
+// Restores all objects (airlocks, items, containers, etc.) from save data for the current map
+void USurvivalSciFi_GameInstance::RestoreLevelObjects()
+{
+	if (!CurrentSaveGame) return;
+
+	FWorldData Data = GetCurrentMapData();
+	//PopulateLevelFromData(GetCurrentMapData());
+	
+}
+
+
 

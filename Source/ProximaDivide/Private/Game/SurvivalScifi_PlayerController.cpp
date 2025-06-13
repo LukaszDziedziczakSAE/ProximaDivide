@@ -269,23 +269,27 @@ bool ASurvivalScifi_PlayerController::CharacterAlive()
 
 void ASurvivalScifi_PlayerController::OnPlayerDeath(AActor* DestroyedActor)
 {
-	UE_LOG(LogTemp, Log, TEXT("Player Destoryed"));
+	if (DestroyedActor != PlayerCharacter || PlayerCharacter == nullptr) return;
 
-	ASurvivalScifi_HUD* HUD = GetHUD<ASurvivalScifi_HUD>();
-	if (HUD != nullptr)
+	bool respawning = !PlayerCharacter->IsAlive();
+
+	PlayerCharacter->OnDestroyed.RemoveDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
+	PlayerCharacter = nullptr;
+
+	if (respawning)
 	{
-		HUD->HideDeathScreen();
-	}
+		UE_LOG(LogTemp, Log, TEXT("Player Destoryed for respawn"));
 
-	if (PlayerCharacter != nullptr)
-	{
-		PlayerCharacter->OnDestroyed.RemoveDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
-		PlayerCharacter = nullptr;
-	}
+		ASurvivalScifi_HUD* HUD = GetHUD<ASurvivalScifi_HUD>();
+		if (HUD != nullptr)
+		{
+			HUD->HideDeathScreen();
+			HUD->ShowBlackscreen();
+		}
 
-	GetGameInstance<USurvivalSciFi_GameInstance>()->StartRespawn();
-	//ResetPlayer();
-	//bIsPlayerResetting = true;
+		GetGameInstance<USurvivalSciFi_GameInstance>()->StartRespawn();
+	}
+	else UE_LOG(LogTemp, Log, TEXT("Player Destoryed"));
 }
 
 void ASurvivalScifi_PlayerController::SkipTutorial()

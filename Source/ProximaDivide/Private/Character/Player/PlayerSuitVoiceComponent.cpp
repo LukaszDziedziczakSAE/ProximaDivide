@@ -42,7 +42,7 @@ void UPlayerSuitVoiceComponent::BeginPlay()
 				if (BPE.MapName == SaveGame->CurrentLevelName &&
 					BPE.PlayerStartTag == SaveGame->PlayerStartTag)
 				{
-					Play(BPE.AkAudioEvent);
+					Play(BPE.AkAudioEvent, true);
 				}
 			}
 		}

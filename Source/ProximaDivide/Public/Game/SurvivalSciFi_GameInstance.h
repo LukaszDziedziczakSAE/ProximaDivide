@@ -115,8 +115,22 @@ public:
 	void SetEnviroment(EEnviroment Enviroment);
 
 	UFUNCTION(BlueprintCallable)
-	void StartWakeFromSleep(int HoursToSleep);
+	void StartWakeFromSleep(int HoursToSleep, FName PlayerStartTag);
 
 	UFUNCTION(BlueprintCallable)
 	void StartRespawn();
+
+	/** Streams in a level by name and restores save data after load. */
+	UFUNCTION(BlueprintCallable)
+	void StreamInLevelAndRestore(FName LevelName);
+
+	/** Called when the streamed level is fully loaded and visible. */
+	UFUNCTION()
+	void OnLevelStreamedIn();
+
+	/** Restores all objects (airlocks, items, containers, etc.) from save data for the current map. */
+	void RestoreLevelObjects();
+
+	UPROPERTY(VisibleAnywhere)
+	bool bLevelSwitchInProgress = false;
 };

@@ -23,7 +23,7 @@ protected:
 	int Day = 1;
 
 	UPROPERTY(EditAnywhere)
-	int Hour = 9;
+	int Hour = 8;
 
 	UPROPERTY(EditAnywhere)
 	float SecondsPerHour = 120;
@@ -37,12 +37,25 @@ protected:
 	UPROPERTY(EditAnywhere)
 	TMap<FString, UMissionDataAsset*> OnStartGiveMission;
 
+	UPROPERTY(VisibleAnywhere)
+	// Add this flag to ensure restoration only happens once
+	bool bWorldObjectsRestored = false;
+
+	UPROPERTY(EditAnywhere)
+	bool bRestoreObjectsOnStartingNewPlayer;
+
+	UPROPERTY(EditAnywhere)
+	bool bRestoreObjectsOnBeginPlay;
+
 public:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaSeconds) override;
 
 	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
+
+	// Override to restore world objects before player pawn is spawned
+	virtual void HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer) override;
 	
 	UFUNCTION(BlueprintPure)
 	int GetDay() { return Day; }
@@ -71,9 +84,6 @@ public:
 	UFUNCTION()
 	void LoadDataFromSave();
 
-	UFUNCTION()
-	void LoadGame(int SlotNumber = -1);
-
 	UPROPERTY(BlueprintAssignable, Category = "Delegates")
 	FOnHourTick OnHourTick;
 
@@ -82,4 +92,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	UMissionDataAsset* GetOnStartMission();
+
+	UFUNCTION(BlueprintCallable)
+	void PopulateLevelFromData(struct FWorldData Data);
 };

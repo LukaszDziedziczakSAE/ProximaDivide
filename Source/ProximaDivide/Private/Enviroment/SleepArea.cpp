@@ -10,6 +10,7 @@
 #include "Game/SurvivalSciFi_GameInstance.h"
 #include "LevelSequencePlayer.h"
 #include "UI/GameplayHUD/SurvivalScifi_HUD.h"
+#include "GameFramework/PlayerStart.h"
 
 // Sets default values
 ASleepArea::ASleepArea()
@@ -48,6 +49,8 @@ void ASleepArea::Interact(APlayerCharacter* PlayerCharacter)
 	Player = PlayerCharacter;
 	if (!CanPlayerSleep(PlayerCharacter)) return;
 
+	PlayerCharacter->GetExhaustionComponent()->SetValue(0);
+
 	if (LevelSequence != nullptr)
 	{
 		ALevelSequenceActor* SeqenceActor = nullptr;
@@ -71,10 +74,9 @@ void ASleepArea::Interact(APlayerCharacter* PlayerCharacter)
 
 	else
 	{
-		GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(HoursToSleep(PlayerCharacter));
+		GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(CurrentHoursToSleep, GetPlayerStartTag());
 	}
 
-	PlayerCharacter->GetExhaustionComponent()->SetValue(0);
 }
 
 FString ASleepArea::InteractionText(APlayerCharacter* PlayerCharacter)
@@ -123,9 +125,15 @@ void ASleepArea::HideObjectiveMarker()
 	}
 }
 
+FName ASleepArea::GetPlayerStartTag()
+{
+	if (PlayerStart == nullptr ) return FName();
+	return PlayerStart->PlayerStartTag;
+}
+
 void ASleepArea::OnLevelSeqenceComplete()
 {
 	Player->GetHUD()->ShowBlackscreen();
-	GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(CurrentHoursToSleep);
+	GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(CurrentHoursToSleep, GetPlayerStartTag());
 }
 

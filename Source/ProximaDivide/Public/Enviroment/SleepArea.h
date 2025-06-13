@@ -54,6 +54,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	class APlayerCharacter* Player;
 
+	UPROPERTY(EditAnywhere)
+	class APlayerStart* PlayerStart;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -68,4 +71,7 @@ public:
 	// IObjectiveMarkerInterface
 	virtual void ShowObjectiveMarker() override;
 	virtual void HideObjectiveMarker() override;
+
+	UFUNCTION(BlueprintCallable)
+	FName GetPlayerStartTag();
 };

@@ -83,8 +83,8 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	class APlayerCharacter* PlayerCharacter;
 
-	UPROPERTY(EditAnywhere, Category = "Save")
-	FName AirlockID;
+	UPROPERTY(VisibleAnywhere, Category = "Save")
+	FGuid AirlockID;
 
 	UFUNCTION()
 	bool DoorsClosed();
@@ -127,7 +127,7 @@ public:
 	EAirlockState GetAirlockState() { return AirlockState; }
 
 	UFUNCTION(BlueprintPure)
-	FName GetAirlockID() { return AirlockID; }
+	FGuid GetAirlockID() const { return AirlockID; }
 
 	UFUNCTION()
 	void SetAirlockState(EAirlockState NewAirlockState);

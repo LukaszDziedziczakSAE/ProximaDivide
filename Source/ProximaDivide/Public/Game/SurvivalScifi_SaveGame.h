@@ -71,7 +71,7 @@ struct FAirlockSaveData
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName AirlockID;
+	FGuid AirlockID;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EAirlockState AirlockState;
@@ -113,7 +113,7 @@ struct FTimeData
 	int Day = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int Hour = 21;
+	int Hour = 20;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float SecondsLeftInHour = 0.0f;

@@ -12,6 +12,8 @@ void USurvivalScifi_SaveGame::AdvanceHours(int HoursToAdvance)
 		TimeData.Day = 1;
 		TimeData.Hour = 8;
 		TimeData.SecondsLeftInHour = 0;
+
+		UE_LOG(LogTemp, Log, TEXT("SaveGame overriding time data: Day = %d, Hour = %d, RemaingSeconds = %f"), TimeData.Day, TimeData.Hour, TimeData.SecondsLeftInHour);
 	}
 
 	else
@@ -30,5 +32,7 @@ void USurvivalScifi_SaveGame::AdvanceHours(int HoursToAdvance)
 		// add extra hour to clear remaining time in hour
 		TimeData.SecondsLeftInHour = 0;
 		TimeData.Hour++;
+
+		UE_LOG(LogTemp, Log, TEXT("SaveGame advancing time %d hours, New TimeData: Day = %d, Hour = %d, RemaingSeconds = %f"), HoursToAdvance, TimeData.Day, TimeData.Hour, TimeData.SecondsLeftInHour);
 	}
 }

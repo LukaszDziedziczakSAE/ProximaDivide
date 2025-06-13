@@ -29,6 +29,9 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	UButton* ReturnToStartButton;
 
+	UPROPERTY(VisibleAnywhere)
+	class USurvivalSciFi_GameInstance* GameInstance;
+
 	UFUNCTION()
 	void OnResumeButtonPress();
 
