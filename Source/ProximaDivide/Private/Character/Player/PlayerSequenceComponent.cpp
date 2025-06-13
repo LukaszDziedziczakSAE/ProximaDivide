@@ -32,7 +32,7 @@ void UPlayerSequenceComponent::BeginPlay()
 		GI->GetCurrentSaveGame();
 		USurvivalScifi_SaveGame* SaveGame = GI->GetCurrentSaveGame();
 
-		if (SaveGame != nullptr)
+		if (SaveGame != nullptr && !SaveGame->bIsExitSave)
 		{
 			for (FBeginPlaySequence BPS : BeginPlaySequences)
 			{

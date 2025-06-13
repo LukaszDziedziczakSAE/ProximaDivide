@@ -16,11 +16,33 @@ ASurvivalScifiGameMode::ASurvivalScifiGameMode()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
+TArray<APlayerStart*> ASurvivalScifiGameMode::GetPlayerStarts()
+{
+	TArray<AActor*> PlayerStartActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStartActors);
+
+	if (PlayerStartActors.Num() == 0)
+	{
+		UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart No PlayerStartActors found"));
+		return TArray<APlayerStart*>();
+	}
+
+	TArray<APlayerStart*> PlayerStarts;
+	for (AActor* Actor : PlayerStartActors)
+	{
+		if (APlayerStart* Start = Cast<APlayerStart>(Actor))
+		{
+			PlayerStarts.Add(Start);
+		}
+	}
+	return PlayerStarts;
+}
+
 void ASurvivalScifiGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SecondsLeftInHour = SecondsPerHour;
+	//SecondsLeftInHour = SecondsPerHour;
 
 	GameInstance = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
 	if (GameInstance == nullptr) return;
@@ -52,56 +74,64 @@ void ASurvivalScifiGameMode::Tick(float DeltaSeconds)
 
 AActor* ASurvivalScifiGameMode::ChoosePlayerStart_Implementation(AController* Player)
 {
-	TArray<AActor*> PlayerStartActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStartActors);
-
-	if (PlayerStartActors.Num() > 0)
+	// error checks
+	if (GameInstance == nullptr)
 	{
-		TArray<APlayerStart*> PlayerStarts;
-		for (AActor* Actor : PlayerStartActors)
-		{
-			if (APlayerStart* Start = Cast<APlayerStart>(Actor))
-			{
-				PlayerStarts.Add(Start);
-			}
-		}
-
-		
-		if (GameInstance == nullptr) 
-			GameInstance = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
-
-		if (GameInstance != nullptr && GameInstance->GetCurrentSaveGame() != nullptr && PlayerStarts.Num() > 0)
-		{
-			for (APlayerStart* PlayerStart : PlayerStarts)
-			{
-				if (PlayerStart->PlayerStartTag == GameInstance->GetCurrentSaveGame()->PlayerStartTag)
-				{
-					UE_LOG(LogTemp, Log, TEXT("ChoosePlayerStart returning %s"), *PlayerStart->PlayerStartTag.ToString());
-					return PlayerStart;
-				}
-			}
-
-			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find PlayerStartTag matching tag found in save (%s)"), *GameInstance->GetCurrentSaveGame()->PlayerStartTag.ToString());
-		}
-
-		else if (GameInstance == nullptr)
+		GameInstance = Cast<USurvivalSciFi_GameInstance>(GetGameInstance());
+		if (GameInstance == nullptr)
 		{
 			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find GameInstance"));
-		}
-			
-		else if (GameInstance->GetCurrentSaveGame() == nullptr)
-		{
-			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find CurrentSaveGame"));
-		}
-
-		else if (PlayerStarts.Num() == 0)
-		{
-			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart No PlayerStarts found"));
+			return Super::ChoosePlayerStart_Implementation(Player);
 		}
 	}
-	else UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart No PlayerStartActors found"));
+	if (GameInstance->GetCurrentSaveGame() == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find CurrentSaveGame"));
+		return Super::ChoosePlayerStart_Implementation(Player);
+	}
 
-	return Super::ChoosePlayerStart_Implementation(Player);
+	// spawn player in place if it was exit save
+	if (GameInstance->GetCurrentSaveGame()->bIsExitSave)
+	{
+		// Spawn a temporary APlayerStart at the saved location
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		
+		APlayerStart* TempPlayerStart = GetWorld()->SpawnActor<APlayerStart>(APlayerStart::StaticClass(), GameInstance->GetCurrentSaveGame()->ExitPlayerData.PlayerTransform, SpawnParams);
+
+		if (!TempPlayerStart)
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to spawn temporary PlayerStart at saved transform"));
+			return Super::ChoosePlayerStart_Implementation(Player);
+		}
+
+		UE_LOG(LogTemp, Log, TEXT("ChoosePlayerStart: Returning temporary APlayerStart from saved transform"));
+		return TempPlayerStart;
+	}
+
+	else // find playerStart with tag from save game
+	{
+		TArray<APlayerStart*> PlayerStarts = GetPlayerStarts();
+		if (PlayerStarts.Num() == 0)
+		{
+			UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart No PlayerStarts found"));
+			return Super::ChoosePlayerStart_Implementation(Player);
+		}
+
+		for (APlayerStart* PlayerStart : PlayerStarts)
+		{
+			if (PlayerStart->PlayerStartTag == GameInstance->GetCurrentSaveGame()->PlayerStartTag)
+			{
+				UE_LOG(LogTemp, Log, TEXT("ChoosePlayerStart returning %s"), *PlayerStart->PlayerStartTag.ToString());
+				return PlayerStart;
+			}
+		}
+
+		UE_LOG(LogTemp, Error, TEXT("ChoosePlayerStart did not find PlayerStartTag matching tag found in save (%s)"), *GameInstance->GetCurrentSaveGame()->PlayerStartTag.ToString());
+		return Super::ChoosePlayerStart_Implementation(Player);
+	}
+
+	
 }
 
 float ASurvivalScifiGameMode::GetTimeProgress()
@@ -133,6 +163,16 @@ void ASurvivalScifiGameMode::SaveGame()
 	if (GameInstance == nullptr) return;
 
 	GameInstance->SaveCurrentGame();
+}
+
+void ASurvivalScifiGameMode::SetTime(FTimeData TimeData)
+{
+	Day = TimeData.Day;
+	Hour = TimeData.Hour;
+	//SecondsLeftInHour = TimeData.SecondsLeftInHour;
+	OnHourTick.Broadcast();
+
+	UE_LOG(LogTemp, Log, TEXT("Set Day = %d, Hour = %d, RemaingSeconds = %f"), Day, Hour, SecondsLeftInHour);
 }
 
 struct FWorldData ASurvivalScifiGameMode::GetSaveData()
@@ -186,19 +226,15 @@ FTimeData ASurvivalScifiGameMode::GetTimeData()
 
 void ASurvivalScifiGameMode::LoadDataFromSave()
 {
-    if (GameInstance == nullptr || GameInstance->GetCurrentSaveGame() == nullptr)
-        return;
+	if (GameInstance == nullptr) return;
+	USurvivalScifi_SaveGame* SaveGame = GameInstance->GetCurrentSaveGame();
+	if (SaveGame == nullptr) return;
 
-	FTimeData TimeData = GameInstance->GetCurrentSaveGame()->TimeData;
+	SetTime(SaveGame->bIsExitSave ?
+		SaveGame->ExitTimeData :
+		SaveGame->TimeData);
 
-    Day = TimeData.Day;
-    Hour = TimeData.Hour;
-    SecondsLeftInHour = TimeData.SecondsLeftInHour;
-    OnHourTick.Broadcast();
-
-	UE_LOG(LogTemp, Log, TEXT("Set Day = %d, Hour = %d, RemaingSeconds = %f"), Day, Hour, SecondsLeftInHour);
-
-	if (bRestoreObjectsOnBeginPlay && !GameInstance->HasMapDataForCurrentMap())
+	if (bRestoreObjectsOnBeginPlay && GameInstance->HasMapDataForCurrentMap())
 	{
 		UE_LOG(LogTemp, Log, TEXT("LoadDataFromSave restoring level objects"));
 		PopulateLevelFromData(GameInstance->GetCurrentMapData());

@@ -221,6 +221,8 @@ FPlayerData APlayerCharacter::GetSaveData()
 	PlayerData.Paperdoll = PaperdollComponent->GetSaveData();
 	PlayerData.TutorialState = TutorialComponent->GetTutorialState();
 
+	PlayerData.PlayerTransform = GetActorTransform();
+
 	return PlayerData;
 }
 
@@ -244,8 +246,8 @@ void APlayerCharacter::LoadDataFromSave()
 		bIsInside = (Save->Enviroment == EEnviroment::Inside 
 			|| Save->Enviroment == EEnviroment::Ship);
 
-		ObjectivesComponent->LoadDataFromSave(Save->ObjectivesData);
-		FPlayerData PlayerData = Save->PlayerData;
+		ObjectivesComponent->LoadDataFromSave(Save->bIsExitSave ? Save->ExitObjectivesData : Save->ObjectivesData);
+		FPlayerData PlayerData = Save->bIsExitSave ? Save->ExitPlayerData : Save->PlayerData;
 
 		HealthComponent->SetValue(PlayerData.Health);
 		OxygenComponent->SetValue(PlayerData.Oxygen);

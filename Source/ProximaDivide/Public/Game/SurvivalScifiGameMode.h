@@ -29,7 +29,7 @@ protected:
 	float SecondsPerHour = 120;
 
 	UPROPERTY(VisibleAnywhere)
-	float SecondsLeftInHour;
+	float SecondsLeftInHour = 120;
 
 	UPROPERTY()
 	class USurvivalSciFi_GameInstance* GameInstance;
@@ -46,6 +46,9 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	bool bRestoreObjectsOnBeginPlay;
+
+	UFUNCTION()
+	TArray<APlayerStart*> GetPlayerStarts();
 
 public:
 	virtual void BeginPlay() override;
@@ -74,6 +77,9 @@ public:
 
 	UFUNCTION()
 	void SaveGame();
+
+	UFUNCTION()
+	void SetTime(struct FTimeData TimeData);
 
 	UFUNCTION()
 	struct FWorldData GetSaveData();

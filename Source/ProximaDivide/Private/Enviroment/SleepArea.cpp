@@ -49,8 +49,6 @@ void ASleepArea::Interact(APlayerCharacter* PlayerCharacter)
 	Player = PlayerCharacter;
 	if (!CanPlayerSleep(PlayerCharacter)) return;
 
-	PlayerCharacter->GetExhaustionComponent()->SetValue(0);
-
 	if (LevelSequence != nullptr)
 	{
 		ALevelSequenceActor* SeqenceActor = nullptr;
@@ -64,7 +62,9 @@ void ASleepArea::Interact(APlayerCharacter* PlayerCharacter)
 			CurrentHoursToSleep = HoursToSleep(PlayerCharacter);
 
 			LevelSequencePlayer->OnFinished.AddDynamic(this, &ASleepArea::OnLevelSeqenceComplete);
+			Player->GetHUD()->SequenceStart();
 			LevelSequencePlayer->Play();
+
 		}
 		else
 		{
@@ -75,8 +75,8 @@ void ASleepArea::Interact(APlayerCharacter* PlayerCharacter)
 	else
 	{
 		GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(CurrentHoursToSleep, GetPlayerStartTag());
+		CurrentHoursToSleep = -1;
 	}
-
 }
 
 FString ASleepArea::InteractionText(APlayerCharacter* PlayerCharacter)
@@ -133,7 +133,11 @@ FName ASleepArea::GetPlayerStartTag()
 
 void ASleepArea::OnLevelSeqenceComplete()
 {
+	if (Player == nullptr) return;
+
+	Player->GetExhaustionComponent()->SetValue(0);
 	Player->GetHUD()->ShowBlackscreen();
 	GetGameInstance<USurvivalSciFi_GameInstance>()->StartWakeFromSleep(CurrentHoursToSleep, GetPlayerStartTag());
+	CurrentHoursToSleep = -1;
 }
 

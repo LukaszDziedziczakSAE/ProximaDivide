@@ -49,7 +49,7 @@ protected:
 	void OnLevelSeqenceComplete();
 
 	UPROPERTY(VisibleAnywhere)
-	int CurrentHoursToSleep;
+	int CurrentHoursToSleep = -1;
 
 	UPROPERTY(VisibleAnywhere)
 	class APlayerCharacter* Player;

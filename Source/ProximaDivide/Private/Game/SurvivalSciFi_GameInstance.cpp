@@ -38,12 +38,21 @@ FWorldData USurvivalSciFi_GameInstance::GetCurrentMapData()
 {
 	static FWorldData DummyData; // fallback if not found
 	if (CurrentSaveGame == nullptr) return DummyData;
-	FName MapName = GetCurrentMapName();
-	if (FWorldData* Found = CurrentSaveGame->MapData.Find(MapName))
+
+	if (CurrentSaveGame->bIsExitSave)
 	{
-		return *Found;
+		return CurrentSaveGame->ExitMapData;
 	}
-	return DummyData;
+
+	else
+	{
+		FName MapName = GetCurrentMapName();
+		if (FWorldData* Found = CurrentSaveGame->MapData.Find(MapName))
+		{
+			return *Found;
+		}
+		return DummyData;
+	}
 }
 
 bool USurvivalSciFi_GameInstance::HasMapDataForCurrentMap() const
@@ -102,29 +111,46 @@ USurvivalScifi_SaveGame* USurvivalSciFi_GameInstance::GetCurrentSaveGame()
 	return CurrentSaveGame;
 }
 
-void USurvivalSciFi_GameInstance::SaveCurrentGame(int AdvanceHours)
+void USurvivalSciFi_GameInstance::SaveCurrentGame(int AdvanceHours, bool bIsExitSave)
 {
 	if (CurrentSaveGame != nullptr)
 	{
+		CurrentSaveGame->bIsExitSave = bIsExitSave;
+
 		ASurvivalScifiGameMode* GameMode = Cast<ASurvivalScifiGameMode>(GetWorld()->GetAuthGameMode());
 		if (GameMode != nullptr)
 		{
-			CurrentSaveGame->MapData.FindOrAdd(GetCurrentMapName()) = GameMode->GetSaveData();
-			CurrentSaveGame->TimeData = GameMode->GetTimeData();
+			if (bIsExitSave)
+			{
+				CurrentSaveGame->ExitMapData = GameMode->GetSaveData();
+				CurrentSaveGame->ExitTimeData = GameMode->GetTimeData();
+			}
+			else
+			{
+				CurrentSaveGame->MapData.FindOrAdd(GetCurrentMapName()) = GameMode->GetSaveData();
+				CurrentSaveGame->TimeData = GameMode->GetTimeData();
+			}
 			UE_LOG(LogTemp, Log, TEXT("Saved World Data"));
 		}
 
 		APlayerCharacter* Player = Cast<APlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		if (Player != nullptr)
 		{
-			CurrentSaveGame->PlayerData = Player->GetSaveData();
-			CurrentSaveGame->ObjectivesData = Player->GetObjectiveSaveData();
+			if (bIsExitSave)
+			{
+				CurrentSaveGame->ExitPlayerData = Player->GetSaveData();
+				CurrentSaveGame->ExitObjectivesData = Player->GetObjectiveSaveData();
+			}
+			else
+			{
+				CurrentSaveGame->PlayerData = Player->GetSaveData();
+				CurrentSaveGame->ObjectivesData = Player->GetObjectiveSaveData();
+			}
 			UE_LOG(LogTemp, Log, TEXT("Saved Player Data"));
 		}
 
-
 		CurrentSaveGame->AdvanceHours(AdvanceHours);
-
+		
 		SaveSlot(CurrentSaveGame->SlotNumber);
 	}
 }
@@ -330,6 +356,12 @@ void USurvivalSciFi_GameInstance::SetEnviroment(EEnviroment Enviroment)
 
 void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep, FName PlayerStartTag)
 {
+	if (HoursToSleep < 0)
+	{
+		UE_LOG(LogTemp, Error, TEXT("StartWakeFromSleep called with negative hours: %d"), HoursToSleep);
+		return;			
+	}
+
 	if (CurrentSaveGame == nullptr)
 	{
 		UE_LOG(LogTemp, Error, TEXT("StartWakeFromSleep called but CurrentSaveGame is null!"));
@@ -345,8 +377,8 @@ void USurvivalSciFi_GameInstance::StartWakeFromSleep(int HoursToSleep, FName Pla
 void USurvivalSciFi_GameInstance::StartRespawn()
 {
 	UE_LOG(LogTemp, Warning, TEXT("StartRespawn called"));
-	//SetEnviroment(EEnviroment::Inside);
-	//SaveCurrentGame();
+	SetEnviroment(EEnviroment::Inside);
+	CurrentSaveGame->bIsExitSave = false; // Reset exit save flag
 	LoadCurrentSaveMap();
 }
 
@@ -380,6 +412,13 @@ void USurvivalSciFi_GameInstance::RestoreLevelObjects()
 	FWorldData Data = GetCurrentMapData();
 	//PopulateLevelFromData(GetCurrentMapData());
 	
+}
+
+void USurvivalSciFi_GameInstance::SaveAndExitGame()
+{
+	UE_LOG(LogTemp, Log, TEXT("Exiting Game..."));
+	SaveCurrentGame(0, true);
+	UGameplayStatics::OpenLevel(GetWorld(), TEXT("L_Start"));
 }
 
 

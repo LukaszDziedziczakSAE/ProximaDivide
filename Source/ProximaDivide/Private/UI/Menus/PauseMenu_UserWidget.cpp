@@ -33,7 +33,7 @@ void UPauseMenu_UserWidget::OnSaveButtonPress()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("GameInstance is null in UPauseMenu_UserWidget::OnSaveButtonPress"));
+		UE_LOG(LogTemp, Error, TEXT("GameInstance is null in UPauseMenu_UserWidget::OnSaveButtonPress"));
 		return;
 	}
 
@@ -66,5 +66,15 @@ void UPauseMenu_UserWidget::OnSettingsButtonPress()
 
 void UPauseMenu_UserWidget::OnReturnToStartButtonPress()
 {
-	UGameplayStatics::OpenLevel(GetWorld(), TEXT("L_Start"));
+	GetOwningPlayer<ASurvivalScifi_PlayerController>()->PauseToggle();
+
+	if (GameInstance != nullptr)
+	{
+		GameInstance->SaveAndExitGame();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("GameInstance is null in UPauseMenu_UserWidget::OnSaveButtonPress"));
+		return;
+	}
 }

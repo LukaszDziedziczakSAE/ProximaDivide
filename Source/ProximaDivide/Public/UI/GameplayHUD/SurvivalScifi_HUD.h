@@ -95,8 +95,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UUserWidget* Blackscreen;	
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	bool bSequenceIsPlaying;
+	
 
 public:
 	UFUNCTION()
@@ -191,4 +190,7 @@ public:
 
 	UFUNCTION()
 	void ShowBlackscreen();	
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool bSequenceIsPlaying;
 };

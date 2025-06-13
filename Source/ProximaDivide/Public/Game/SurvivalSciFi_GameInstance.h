@@ -82,7 +82,7 @@ public:
 	bool HasMapDataForCurrentMap() const;
 
 	UFUNCTION(BlueprintCallable)
-	void SaveCurrentGame(int AdvanceHours = 0);
+	void SaveCurrentGame(int AdvanceHours = 0, bool bIsExitSave = false);
 
 	UFUNCTION(BlueprintCallable)
 	bool LoadSlot(int SlotNumber);
@@ -133,4 +133,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	bool bLevelSwitchInProgress = false;
+
+	UFUNCTION()
+	void SaveAndExitGame();
 };

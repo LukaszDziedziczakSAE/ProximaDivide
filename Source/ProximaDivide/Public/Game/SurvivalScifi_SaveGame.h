@@ -63,6 +63,9 @@ struct FPlayerData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FTutorialState TutorialState;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FTransform PlayerTransform;
 };
 
 USTRUCT(BlueprintType)
@@ -164,6 +167,22 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FTimeData TimeData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsExitSave = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FWorldData ExitMapData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FPlayerData ExitPlayerData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	struct FObjectivesData ExitObjectivesData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FTimeData ExitTimeData;
+
 
 	UFUNCTION()
 	void AdvanceHours(int HoursToAdvance);
