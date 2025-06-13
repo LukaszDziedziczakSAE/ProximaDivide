@@ -14,6 +14,7 @@ void UStartScreen_UserWidget::NativeConstruct()
 
 	StartButton->OnClicked.AddDynamic(this, &UStartScreen_UserWidget::OnStartButtonPress);
 	ContinueButton->OnClicked.AddDynamic(this, &UStartScreen_UserWidget::OnContinueButtonPress);
+	SkipIntroButton->OnClicked.AddDynamic(this, &UStartScreen_UserWidget::OnSkipIntroButtonPress);
 	ExitButton->OnClicked.AddDynamic(this, &UStartScreen_UserWidget::OnExitButtonPress);
 
 	if (GameInstance == nullptr)
@@ -50,4 +51,11 @@ void UStartScreen_UserWidget::OnExitButtonPress()
 	{
 		UKismetSystemLibrary::QuitGame(World, PlayerController, EQuitPreference::Quit, false);
 	}
+}
+
+void UStartScreen_UserWidget::OnSkipIntroButtonPress()
+{
+	if (GameInstance == nullptr) return;
+
+	GameInstance->StartSkipIntroGame(0);
 }

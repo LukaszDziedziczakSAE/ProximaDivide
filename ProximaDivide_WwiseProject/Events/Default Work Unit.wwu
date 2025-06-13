@@ -382,6 +382,35 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Interior" ID="{77CCCBAF-ED0F-4579-897F-CDAFD5A1418E}" ShortID="202268724">
+							<ChildrenList>
+								<Event Name="Play_Shower" ID="{AD54B0E0-7216-43C1-BA3E-EF853219803A}">
+									<ChildrenList>
+										<Action Name="" ID="{DFCEC2BF-EA29-42EA-A03B-4779A073411C}" ShortID="13773957">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Shower" ID="{6CDC7D74-54DF-40AC-B918-FC441A145865}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Stop_Shower" ID="{C9B48266-CBEC-4722-985E-8D5DCC00ADEC}">
+									<ChildrenList>
+										<Action Name="" ID="{2E4F0AC0-2FFC-4955-9A35-37F97BD6BEC3}" ShortID="1066070197">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Shower" ID="{6CDC7D74-54DF-40AC-B918-FC441A145865}" WorkUnitID="{68EFAF27-BEAD-41C9-9C3C-6E3CF837024D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{B11BFFAF-D977-4C9E-934D-3F765FA5A828}" ShortID="1068502609">

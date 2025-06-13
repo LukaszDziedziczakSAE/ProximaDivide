@@ -213,6 +213,30 @@ void USurvivalSciFi_GameInstance::StartNewGame(int SlotNumber)
 	}
 }
 
+void USurvivalSciFi_GameInstance::StartSkipIntroGame(int SlotNumber)
+{
+	UE_LOG(LogTemp, Log, TEXT("Starting new game on slot %d"), SlotNumber);
+
+	USurvivalScifi_SaveGame* NewSave = Cast<USurvivalScifi_SaveGame>(UGameplayStatics::CreateSaveGameObject(USurvivalScifi_SaveGame::StaticClass()));
+	if (NewSave)
+	{
+		NewSave->SlotNumber = SlotNumber;
+		NewSave->PlayerData = SkipIntroPlayerData;
+		NewSave->TimeData = SkipIntroTimeData;
+		NewSave->Enviroment = SkipIntroEnviroment;
+		NewSave->CurrentLevelName = SkipIntroLevelName;
+		NewSave->PlayerStartTag = SkipIntroPlayerStartTag;
+		NewSave->MapData.Empty(); // Clear any existing map data
+
+		CurrentSaveGame = NewSave;
+
+		FString SlotName = "Slot" + FString::FromInt(SlotNumber);
+		UGameplayStatics::SaveGameToSlot(CurrentSaveGame, SlotName, 0);
+
+		UGameplayStatics::OpenLevel(this, CurrentSaveGame->CurrentLevelName);
+	}
+}
+
 void USurvivalSciFi_GameInstance::StartLoadGame(int SlotNumber)
 {
 	LoadSlot(SlotNumber);

@@ -23,6 +23,9 @@ class PROXIMADIVIDE_API UStartScreen_UserWidget : public USurvivalScifiUserWidge
 	UButton* ContinueButton;
 
 	UPROPERTY(meta = (BindWidget))
+	UButton* SkipIntroButton;
+
+	UPROPERTY(meta = (BindWidget))
 	UButton* ExitButton;
 
 	UFUNCTION()
@@ -33,4 +36,6 @@ class PROXIMADIVIDE_API UStartScreen_UserWidget : public USurvivalScifiUserWidge
 
 	UFUNCTION()
 	void OnExitButtonPress();
+
+	void OnSkipIntroButtonPress();
 };

@@ -68,12 +68,6 @@ void ASurvivalScifi_HUD::ShowGameHUD()
 
 void ASurvivalScifi_HUD::HideGameHUD()
 {
-	if (IsPendingKillPending())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("HideGameHUD aborted: HUD is pending kill."));
-		return;
-	}
-
 	if (!IsValidLowLevel())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("HideGameHUD aborted: HUD is not valid at low level."));
@@ -92,6 +86,12 @@ void ASurvivalScifi_HUD::HideGameHUD()
 		return;
 	}
 
+	if (IsPendingKillPending())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HideGameHUD aborted: HUD is pending kill."));
+		return;
+	}
+	
 	HideInteraction();
 
 	if (IsValid(PlayerStats))

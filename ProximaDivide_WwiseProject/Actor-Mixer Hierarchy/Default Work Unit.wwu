@@ -2186,7 +2186,7 @@
 						</SwitchContainer>
 					</ChildrenList>
 				</Folder>
-				<Folder Name="Ambient" ID="{B7B0F383-6B2B-48E0-AEB3-55AAF5E45075}" ShortID="869016117">
+				<Folder Name="Enviroment" ID="{B7B0F383-6B2B-48E0-AEB3-55AAF5E45075}" ShortID="869016117">
 					<ChildrenList>
 						<SwitchContainer Name="AmbientAtmosphere" ID="{7DC019F4-2F83-4149-93A4-645F8F8D6B08}" ShortID="745780583">
 							<PropertyList>
@@ -2520,6 +2520,38 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="156382-Air-Valve-Burst-Hose-Disconnect-Release-Hiss-Blast-Simple" ID="{C550E3BF-EC63-43EA-BD46-89328FA5DFED}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Interior" ID="{F776422A-B644-4F0D-90DB-9BF87DC1D2DB}" ShortID="315430411">
+							<ChildrenList>
+								<Sound Name="Shower" ID="{6CDC7D74-54DF-40AC-B918-FC441A145865}" ShortID="1044863913">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="General_Attenuation" ID="{58C02F5E-1DA5-4457-B9EA-A3C711621C36}" WorkUnitID="{FCC8A96F-9CF8-4D03-A022-2D8050C27ED5}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{328AEC0D-89F1-40E0-A7BC-C640333CDC24}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{1DDC58FF-19AE-4879-9712-2CEA8150F3BC}" WorkUnitID="{A798F14F-7B93-4F5F-9502-FF71A21FE6F4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="270933-Shower-1" ID="{955AE87C-ED2C-404A-9CC6-799E38EA038C}">
+											<Language>SFX</Language>
+											<AudioFile>270933-Shower-1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="54764004"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="270933-Shower-1" ID="{955AE87C-ED2C-404A-9CC6-799E38EA038C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

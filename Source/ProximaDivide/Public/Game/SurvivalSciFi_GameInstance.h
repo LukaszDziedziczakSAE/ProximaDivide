@@ -68,6 +68,21 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "New Game")
 	FName InitialPlayerStartTag = TEXT("");
 
+	UPROPERTY(EditDefaultsOnly, Category = "Skip Intro Game")
+	struct FPlayerData SkipIntroPlayerData;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Skip Intro Game")
+	struct FTimeData SkipIntroTimeData;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Skip Intro Game")
+	EEnviroment SkipIntroEnviroment = EEnviroment::Ship;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Skip Intro Game")
+	FName SkipIntroLevelName = TEXT("L_Ship");
+
+	UPROPERTY(EditDefaultsOnly, Category = "Skip Intro Game")
+	FName SkipIntroPlayerStartTag = TEXT("");
+
 public:
 	UFUNCTION(BlueprintPure)
 	USurvivalScifi_SaveGame* GetCurrentSaveGame();
@@ -95,6 +110,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void StartNewGame(int SlotNumber);
+
+	UFUNCTION(BlueprintCallable)
+	void StartSkipIntroGame(int SlotNumber);
 
 	UFUNCTION(BlueprintCallable)
 	void StartLoadGame(int SlotNumber);
