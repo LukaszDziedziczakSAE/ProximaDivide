@@ -8,6 +8,7 @@
 #include "Enviroment/Door/Airlock.h"
 #include "EngineUtils.h"
 #include "Item/SurvivalScifi_Item.h"
+#include "Game/MapStartDataStruct.h"
 #include "Enviroment/Container.h"
 
 ASurvivalScifiGameMode::ASurvivalScifiGameMode()
@@ -253,9 +254,11 @@ FString ASurvivalScifiGameMode::GetCurrentMapName()
 
 UMissionDataAsset* ASurvivalScifiGameMode::GetOnStartMission()
 {
-	if (OnStartGiveMission.Contains(GetCurrentMapName()))
+	if (GameInstance == nullptr) return nullptr;
+
+	if (OnStartGiveMission.Contains(GameInstance->GetCurrentMapStartData()))
 	{
-		return OnStartGiveMission[GetCurrentMapName()];
+		return OnStartGiveMission[GameInstance->GetCurrentMapStartData()];
 	}
 	else return nullptr;
 }

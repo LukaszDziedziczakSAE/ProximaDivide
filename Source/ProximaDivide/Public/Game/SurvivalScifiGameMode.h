@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "Game/MissionDataAsset.h"
+#include "Game/MapStartDataStruct.h"
 #include "SurvivalScifiGameMode.generated.h"
 
 
@@ -35,7 +36,7 @@ protected:
 	class USurvivalSciFi_GameInstance* GameInstance;
 
 	UPROPERTY(EditAnywhere)
-	TMap<FString, UMissionDataAsset*> OnStartGiveMission;
+	TMap<FMapStartData, UMissionDataAsset*> OnStartGiveMission;
 
 	UPROPERTY(VisibleAnywhere)
 	// Add this flag to ensure restoration only happens once

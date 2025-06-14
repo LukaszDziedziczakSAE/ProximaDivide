@@ -71,6 +71,7 @@ void ASurvivalScifi_PlayerController::SetupInputComponent()
 		Input->BindAction(IA_Pause, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::PauseToggle);
 		Input->BindAction(IA_SkipTutorial, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::SkipTutorial);
 		Input->BindAction(IA_Light, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::ToggleLight);
+		Input->BindAction(IA_Info, ETriggerEvent::Started, this, &ASurvivalScifi_PlayerController::ToggleInfo);
 	}
 
 	else
@@ -113,6 +114,62 @@ void ASurvivalScifi_PlayerController::Look(const FInputActionValue& Value)
 		PlayerCharacter->GetTutorialComponent()->HasLooked(Value.Get<FVector2D>().Size());
 }
 
+void ASurvivalScifi_PlayerController::ToggleInfo()
+{
+	if (CharacterAlive() && AllowOpenMenu())
+	{
+		GetHUD<ASurvivalScifi_HUD>()->ShowMissions();
+		SetShowMouseCursor(true);
+		if (bUIOnlyMode) SetInputMode(FInputModeUIOnly());
+		else
+		{
+			FInputModeGameAndUI InputModeGameAndUI;
+			InputModeGameAndUI.SetHideCursorDuringCapture(false);
+			InputModeGameAndUI.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+			SetInputMode(InputModeGameAndUI);
+		}
+	}
+
+	else CloseAnyMenu();
+}
+
+void ASurvivalScifi_PlayerController::CloseAnyMenu()
+{
+	ASurvivalScifi_HUD* HUD = GetHUD<ASurvivalScifi_HUD>();
+	if (HUD == nullptr) return;
+
+	if (HUD->IsShowingInventory())
+	{
+		HUD->HideInventory();
+		SetShowMouseCursor(false);
+		SetInputMode(FInputModeGameOnly());
+		PlayerCharacter->GetTutorialComponent()->HasClosedInventory();
+	}
+
+	if (HUD->IsShowingMissions())
+	{
+		HUD->HideMissions();
+		SetShowMouseCursor(false);
+		SetInputMode(FInputModeGameOnly());
+	}
+
+	if (HUD->IsShowingCraftingMenu() || HUD->IsShowingRepairPanel())
+	{
+		PlayerCharacter->Interact();
+	}
+}
+
+bool ASurvivalScifi_PlayerController::IsShowingAnyMenu()
+{
+	ASurvivalScifi_HUD* HUD = GetHUD<ASurvivalScifi_HUD>();
+	if (HUD == nullptr) return false;
+
+	return HUD->IsShowingInventory()
+		|| HUD->IsShowingCraftingMenu()
+		|| HUD->IsShowingMissions()
+		|| HUD->IsShowingRepairPanel();
+}
+
 void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& Value)
 {
 	if (CharacterAlive() && AllowOpenMenu())
@@ -131,42 +188,33 @@ void ASurvivalScifi_PlayerController::ToggleInventory(const FInputActionValue& V
 		PlayerCharacter->GetTutorialComponent()->HasOpenedInventory();
 	}
 
-	else if (GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory())
-	{
-		GetHUD<ASurvivalScifi_HUD>()->HideInventory();
-		SetShowMouseCursor(false);
-		SetInputMode(FInputModeGameOnly());
-		PlayerCharacter->GetTutorialComponent()->HasClosedInventory();
-	}
+	else CloseAnyMenu();
 }
 
 bool ASurvivalScifi_PlayerController::AllowLook()
 {
-	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
-		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu()
+	return !IsShowingAnyMenu()
 		&& !PlayerCharacter->GetTutorialComponent()->PreventLook
 		&& PlayerCharacter->IsControlable;
 }
 
 bool ASurvivalScifi_PlayerController::AllowMove()
 {
-	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
-		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu()
+	return !IsShowingAnyMenu()
 		&& !PlayerCharacter->GetTutorialComponent()->PreventMovement
 		&& PlayerCharacter->IsControlable;
 }
 
 bool ASurvivalScifi_PlayerController::AllowInteraction()
 {
-	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
+	return /*!GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()*/ !IsShowingAnyMenu()
 		&& !PlayerCharacter->GetTutorialComponent()->PreventInteract
 		&& PlayerCharacter->IsControlable;
 }
 
 bool ASurvivalScifi_PlayerController::AllowOpenMenu()
 {
-	return !GetHUD<ASurvivalScifi_HUD>()->IsShowingInventory()
-		&& !GetHUD<ASurvivalScifi_HUD>()->IsShowingCraftingMenu()
+	return !IsShowingAnyMenu()
 		&& !PlayerCharacter->GetTutorialComponent()->PreventInventoryOpen
 		&& PlayerCharacter->IsControlable;
 }
@@ -195,6 +243,7 @@ void ASurvivalScifi_PlayerController::Interact()
 	{
 		PlayerCharacter->Interact();
 	}
+	else CloseAnyMenu();
 }
 
 void ASurvivalScifi_PlayerController::Slot1()

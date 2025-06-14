@@ -59,8 +59,6 @@ void AMoxie::Interact(APlayerCharacter* PlayerCharacter)
 {
 	if (CooldownTimer > 0) return;
 
-	//UE_LOG(LogTemp, Warning, TEXT("Moxie Interaction. Missing: %f, Stored: %f"), PlayerCharacter->GetOxygenComponent()->GetMissingValue(), Stored);
-
 	float RefillAmount = FMath::Min(PlayerCharacter->GetOxygenComponent()->GetMissingValue(), Stored);
 
 	if (RefillAmount > 0)

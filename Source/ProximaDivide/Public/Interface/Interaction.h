@@ -25,4 +25,7 @@ public:
 	UFUNCTION()
 	virtual FString InteractionText(APlayerCharacter* PlayerCharacter) = 0;
 
+	UFUNCTION()
+	virtual void InteractAlternative(class APlayerCharacter* PlayerCharacter) {}
+
 };

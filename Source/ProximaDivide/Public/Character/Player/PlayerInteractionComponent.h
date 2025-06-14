@@ -32,6 +32,12 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	TScriptInterface<class IInteraction> InteractionInterface;
 
+	UPROPERTY(VisibleAnywhere)
+	TScriptInterface<class IRepair> RepairInterface;
+
+	UPROPERTY(VisibleAnywhere)
+	bool IsRepairInteraction;
+
 	UFUNCTION()
 	void InputModeUI(bool UIMode);
 
@@ -59,4 +65,10 @@ public:
 
 	UFUNCTION()
 	class AContainer* GetContainer();
+
+	UFUNCTION()
+	bool IsLookingAtRepairZone();
+
+	UFUNCTION()
+	class UMaintenanceComponent* GetRepairComponent() const;
 };

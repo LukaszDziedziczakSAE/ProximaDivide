@@ -76,6 +76,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* IA_Light;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UInputAction* IA_Info;
+
 	UPROPERTY(VisibleAnywhere)
 	bool bIsSprinting;
 
@@ -150,6 +153,15 @@ protected:
 
 	UPROPERTY()
 	bool bIsPlayerResetting;
+
+	UFUNCTION()
+	void ToggleInfo(); // mission info
+
+	UFUNCTION()
+	void CloseAnyMenu();
+
+	UFUNCTION()
+	bool IsShowingAnyMenu();
 
 public:
 	UFUNCTION()

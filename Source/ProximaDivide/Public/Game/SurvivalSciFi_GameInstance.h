@@ -6,6 +6,7 @@
 #include "Engine/GameInstance.h"
 #include "Enviroment/EEnviroment.h"
 #include "Game/SurvivalScifi_SaveGame.h"
+#include "Game/MapStartDataStruct.h"
 #include "SurvivalSciFi_GameInstance.generated.h"
 
 UCLASS()
@@ -92,6 +93,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	FWorldData GetCurrentMapData();
+
+	UFUNCTION(BlueprintCallable)
+	FMapStartData GetCurrentMapStartData() const;
 
 	UFUNCTION(BlueprintPure)
 	bool HasMapDataForCurrentMap() const;

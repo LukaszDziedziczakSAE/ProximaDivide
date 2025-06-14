@@ -55,6 +55,16 @@ FWorldData USurvivalSciFi_GameInstance::GetCurrentMapData()
 	}
 }
 
+FMapStartData USurvivalSciFi_GameInstance::GetCurrentMapStartData() const
+{
+	if (CurrentSaveGame != nullptr)
+	{
+		return CurrentSaveGame->MapStartData();
+	}
+
+	return FMapStartData();
+}
+
 bool USurvivalSciFi_GameInstance::HasMapDataForCurrentMap() const
 {
 	if (CurrentSaveGame == nullptr) return false;

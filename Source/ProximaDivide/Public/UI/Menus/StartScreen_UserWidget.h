@@ -37,5 +37,6 @@ class PROXIMADIVIDE_API UStartScreen_UserWidget : public USurvivalScifiUserWidge
 	UFUNCTION()
 	void OnExitButtonPress();
 
+	UFUNCTION()
 	void OnSkipIntroButtonPress();
 };

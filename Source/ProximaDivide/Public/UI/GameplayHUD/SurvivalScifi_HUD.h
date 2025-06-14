@@ -53,6 +53,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class UUserWidget> BlackscreenClass;
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UMissions_UserWidget> MissionsClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class URepair_UserWidget> RepairClass;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USurvivalScifiUserWidget* PlayerStats;
 
@@ -95,7 +101,11 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UUserWidget* Blackscreen;	
 
-	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UMissions_UserWidget* Missions;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	URepair_UserWidget* Repair;
 
 public:
 	UFUNCTION()
@@ -193,4 +203,22 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool bSequenceIsPlaying;
+
+	UFUNCTION()
+	void ShowMissions();
+
+	UFUNCTION()
+	void HideMissions();
+
+	UFUNCTION(BlueprintPure)
+	bool IsShowingMissions() { return Missions != nullptr; }
+
+	UFUNCTION()
+	void ShowRepairPanel();
+
+	UFUNCTION()
+	void HideRepairPanel();
+
+	UFUNCTION(BlueprintPure)
+	bool IsShowingRepairPanel() { return Repair != nullptr; }
 };

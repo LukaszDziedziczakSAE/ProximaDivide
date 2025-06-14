@@ -17,6 +17,8 @@
 #include "Character/Player/PlayerTutorialComponent.h"
 #include "UI/Misc/TittleCard_UserWidget.h"
 #include "UI/Notifications/Objectives_UserWidget.h"
+#include "UI/Missions/Missions_UserWidget.h"
+#include "UI/Repair/Repair_UserWidget.h"
 
 void ASurvivalScifi_HUD::BeginPlay()
 {
@@ -292,4 +294,56 @@ void ASurvivalScifi_HUD::ShowBlackscreen()
 		Blackscreen = CreateWidget<UUserWidget>(GetWorld(), BlackscreenClass);
 
 	if (Blackscreen != nullptr) Blackscreen->AddToViewport();
+}
+
+void ASurvivalScifi_HUD::ShowMissions()
+{
+	HideGameHUD();
+	if (Missions == nullptr && MissionsClass != nullptr)
+		Missions = CreateWidget<UMissions_UserWidget>(GetWorld(), MissionsClass);
+
+	if (Missions != nullptr && !Missions->IsInViewport())
+		Missions->AddToViewport();
+
+	GetOwningPlayerController()->SetShowMouseCursor(true);
+	GetOwningPlayerController()->SetInputMode(FInputModeGameAndUI());
+}
+
+void ASurvivalScifi_HUD::HideMissions()
+{
+	if (Missions != nullptr)
+	{
+		Missions->RemoveFromParent();
+		Missions = nullptr;
+	}
+
+	GetOwningPlayerController()->SetShowMouseCursor(false);
+	GetOwningPlayerController()->SetInputMode(FInputModeGameOnly());
+	ShowGameHUD();
+}
+
+void ASurvivalScifi_HUD::ShowRepairPanel()
+{
+	HideGameHUD();
+	if (Repair == nullptr && RepairClass != nullptr)
+		Repair = CreateWidget<URepair_UserWidget>(GetWorld(), RepairClass);
+
+	if (Repair != nullptr && !Repair->IsInViewport())
+		Repair->AddToViewport();
+
+	GetOwningPlayerController()->SetShowMouseCursor(true);
+	GetOwningPlayerController()->SetInputMode(FInputModeGameAndUI());
+}
+
+void ASurvivalScifi_HUD::HideRepairPanel()
+{
+	if (Repair != nullptr)
+	{
+		Repair->RemoveFromParent();
+		Repair = nullptr;
+	}
+
+	GetOwningPlayerController()->SetShowMouseCursor(false);
+	GetOwningPlayerController()->SetInputMode(FInputModeGameOnly());
+	ShowGameHUD();
 }

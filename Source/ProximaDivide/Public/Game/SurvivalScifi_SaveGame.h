@@ -9,6 +9,7 @@
 #include "Enviroment/Door/Airlock.h"
 #include "Character/Components/PaperdollComponent.h"
 #include "Item/Inventory/FInventoryItem.h"
+#include "Game/MapStartDataStruct.h"
 #include "SurvivalScifi_SaveGame.generated.h"
 
 USTRUCT(BlueprintType)
@@ -152,6 +153,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName PlayerStartTag;
+
+	UFUNCTION(BlueprintCallable)
+	FMapStartData MapStartData() { return FMapStartData(CurrentLevelName, PlayerStartTag); }
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EEnviroment Enviroment;
