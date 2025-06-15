@@ -23,6 +23,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* Planet;
 
+	UPROPERTY(VisibleAnywhere)
+	USkeletalMeshComponent* PlanetSkeleton;
+
 	UPROPERTY(EditAnywhere)
 	float Speed{ 1.0 };
 

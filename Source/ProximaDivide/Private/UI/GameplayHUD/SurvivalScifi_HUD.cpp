@@ -28,24 +28,36 @@ void ASurvivalScifi_HUD::BeginPlay()
 	if (Notifications != nullptr) Notifications->AddToViewport();
 
 	ASurvivalScifi_PlayerController* PlayerController = Cast<ASurvivalScifi_PlayerController>(GetOwningPlayerController());
-	if (PlayerController == nullptr)
+	if (!IsValid(PlayerController))
 	{
-		UE_LOG(LogTemp, Error, TEXT("Missing Player Controller reference in HUD"));
+		UE_LOG(LogTemp, Error, TEXT("PlayerController reference is nullptr in HUD!"));
 		return;
 	}
 
-	PlayerTutorialComponent = PlayerController->GetPlayerCharacter()->GetTutorialComponent();
+	PlayerCharacter = PlayerController->GetPlayerCharacter();
+	if (!IsValid(PlayerCharacter))
+	{
+		UE_LOG(LogTemp, Error, TEXT("PlayerCharacter reference is nullptr in HUD!"));
+		return;
+		
+	}
+
+	PlayerTutorialComponent = PlayerCharacter->GetTutorialComponent();
+
+	if (!PlayerCharacter->IsPlayingSequence()) ShowGameHUD();
 }
 
 void ASurvivalScifi_HUD::ShowGameHUD()
 {
 	HideGameHUD();
-	if (PlayerTutorialComponent == nullptr)
+	if (!IsValid(PlayerTutorialComponent))
 	{
 		ASurvivalScifi_PlayerController* PlayerController = Cast<ASurvivalScifi_PlayerController>(GetOwningPlayerController());
 		if (PlayerController != nullptr)
 			PlayerTutorialComponent = PlayerController->GetPlayerCharacter()->GetTutorialComponent();
 	}
+
+	if (!IsValid(PlayerTutorialComponent)) return;
 
 	if (PlayerStatsClass != nullptr && !PlayerTutorialComponent->HideStats)
 		PlayerStats = CreateWidget<USurvivalScifiUserWidget>(GetWorld(), PlayerStatsClass);

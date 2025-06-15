@@ -23,7 +23,7 @@ void ASurvivalScifi_PlayerController::OnPossess(APawn* aPawn)
 
 	PlayerCharacter->OnDestroyed.AddDynamic(this, &ASurvivalScifi_PlayerController::OnPlayerDeath);
 	
-	if (!PlayerCharacter->IsPlayingSequence()) GetHUD<ASurvivalScifi_HUD>()->ShowGameHUD();
+	//if (!PlayerCharacter->IsPlayingSequence()) GetHUD<ASurvivalScifi_HUD>()->ShowGameHUD();
 	bIsPlayerResetting = false;
 	UE_LOG(LogTemp, Log, TEXT("Possessed %s"), *aPawn->GetName());
 }

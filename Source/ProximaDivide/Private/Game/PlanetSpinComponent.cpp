@@ -20,7 +20,7 @@ void UPlanetSpinComponent::BeginPlay()
 	Super::BeginPlay();
 
 	Planet = GetOwner()->GetComponentByClass<UStaticMeshComponent>();
-	
+	PlanetSkeleton = GetOwner()->GetComponentByClass<USkeletalMeshComponent>();
 }
 
 
@@ -29,11 +29,21 @@ void UPlanetSpinComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (Planet == nullptr) return;
+	if (Planet != nullptr)
+	{
+		FRotator Rotation = Planet->GetRelativeRotation();
+		Rotation.Yaw += Speed * DeltaTime;
+		if (Rotation.Yaw > 360) Rotation.Yaw -= 360;
+		Planet->SetRelativeRotation(Rotation);
+	}
 
-	FRotator Rotation = Planet->GetRelativeRotation();
-	Rotation.Yaw += Speed * DeltaTime;
-	if (Rotation.Yaw > 360) Rotation.Yaw -= 360;
-	Planet->SetRelativeRotation(Rotation);
+	else if (PlanetSkeleton != nullptr)
+	{
+		FRotator Rotation = PlanetSkeleton->GetRelativeRotation();
+		Rotation.Yaw += Speed * DeltaTime;
+		if (Rotation.Yaw > 360) Rotation.Yaw -= 360;
+		PlanetSkeleton->SetRelativeRotation(Rotation);
+	}
+	
 }
 

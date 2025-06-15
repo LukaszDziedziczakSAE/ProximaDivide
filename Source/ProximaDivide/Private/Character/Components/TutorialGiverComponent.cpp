@@ -34,6 +34,12 @@ void UTutorialGiverComponent::BeginPlay()
 		return;
 	}
 
+	if (Player->GetTutorialComponent() == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Missing tutorial component in player character"));
+		return;
+	}
+
 	Player->GetTutorialComponent()->TutorialGiver = this;
 
 	CharacterVoice = Cast<ASurvivalSciFi_Character>(GetOwner())->GetVoiceComponent();
@@ -238,15 +244,13 @@ void UTutorialGiverComponent::PrepTutorial()
 		TutorialComp->PreventInventoryOpen = true;
 	}
 
-	Player->GetHUD()->ShowGameHUD();
+	if (IsValid(Player->GetHUD())) Player->GetHUD()->ShowGameHUD();
 }
 
 void UTutorialGiverComponent::BeginTutorial()
 {
 	if (TutorialParts.Num() > 0)
 	{
-		
-
 		GoToNextPart();
 		if (AI != nullptr) AI->UpdateBB();
 		UE_LOG(LogTemp, Log, TEXT("Tutorial Starting..."));

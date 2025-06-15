@@ -14,6 +14,9 @@ class PROXIMADIVIDE_API ASurvivalScifi_HUD : public AHUD
 protected:
 	virtual void BeginPlay() override;
 
+	UPROPERTY(VisibleAnywhere)
+	class APlayerCharacter* PlayerCharacter;
+
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class USurvivalScifiUserWidget> PlayerStatsClass;
 
