@@ -8,7 +8,7 @@ public class ProximaDivide : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG", "Niagara", "AkAudio", "SlateCore", "LevelSequence" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG", "Niagara", "AkAudio", "SlateCore", "LevelSequence", "OnlineSubsystem", "OnlineSubsystemUtils", "OnlineSubsystemSteam" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore", "MovieScene" });
 
